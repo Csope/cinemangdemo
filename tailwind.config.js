@@ -27,6 +27,7 @@ module.exports = {
 				'site-5': '#f8f3f9',
 				'site-6': '#c8acd5',
 				'site-7': '#d5bddf',
+				'site-8': '#ac86bf',
 			},
 		},
 	},

@@ -17,11 +17,19 @@ const FiveColSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
 		<div className="px-10 relative">
 			<Swiper
 				effect={'coverflow'}
+				breakpoints={{
+					576: {
+						slidesPerView: 3,
+					},
+					768: {
+						slidesPerView: 5,
+					},
+				}}
 				grabCursor={true}
 				onSwiper={(swiperInstance) => setControlledSwiper(swiperInstance)}
 				initialSlide={initialSlide || 0}
 				centeredSlides={true}
-				slidesPerView={5}
+				// slidesPerView={2}
 				coverflowEffect={{
 					rotate: 20,
 					stretch: -40,

@@ -8,7 +8,7 @@ function DateFilter(): JSX.Element {
 
 	return (
 		<div className="w-full bg-site-6 mt-6">
-			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center">
+			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center custom-scrollbar">
 				{next7Dates.map((date, i) => (
 					<div
 						key={i}

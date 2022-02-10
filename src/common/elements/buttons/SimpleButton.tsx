@@ -8,7 +8,7 @@ interface PropTypes {
 function SimpleButton({ text, customClasses }: PropTypes) {
 	return (
 		<button
-			className={`block text-center rounded-2xl py-1 px-4 uppercase tracking-wider ${customClasses}`}
+			className={`block text-center rounded-2xl py-1 px-4 text-sm uppercase tracking-wider ${customClasses}`}
 		>
 			{text}
 		</button>

@@ -86,3 +86,27 @@ img {
 		margin-top: -160px;
 	}
 }
+
+.custom-scrollbar {
+	/* width */
+	&::-webkit-scrollbar {
+		width: 2px;
+		height: 5px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: $siteColor_2;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: $siteColor_3;
+		border-radius: 3px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: $siteColor_4;
+	}
+}

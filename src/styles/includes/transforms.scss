@@ -78,26 +78,30 @@
 	align-items: center;
 	flex-direction: column;
 	gap: 2px;
+	transition: all 0.15s linear;
+	cursor: pointer;
 
 	&.marked {
+		background: $siteColor_2;
+
 		.ListCloseIcon__first {
 			width: 40%;
 			height: 3px;
-			background: $siteColor_4;
+			background: white;
 			opacity: 0;
 		}
 		.ListCloseIcon__second {
 			width: 40%;
 			height: 3px;
-			background: $siteColor_4;
-			transform: rotate(45deg) translateY(-5px) translateX(-1px);
+			background: white;
+			transform: rotate(45deg) translateY(-6px) translateX(-1px);
 			transform-origin: top left;
 		}
 		.ListCloseIcon__third {
 			width: 40%;
 			height: 3px;
-			background: $siteColor_4;
-			transform: rotate(-45deg) translateY(-9px) translateX(4px);
+			background: white;
+			transform: rotate(-45deg) translateY(-9px) translateX(5px);
 			transform-origin: top right;
 		}
 	}
@@ -106,7 +110,8 @@
 		width: 60%;
 		height: 3px;
 		background: $siteColor_4;
-		transition: opacity 0.08s linear, width 0.12s linear, height 0.16s linear;
+		transition: opacity 0.08s linear, width 0.12s linear, height 0.16s linear,
+			background 0.12s linear;
 	}
 	&__second {
 		width: 40%;
@@ -119,5 +124,17 @@
 		height: 3px;
 		background: $siteColor_4;
 		transition: all 0.15s linear;
+	}
+}
+
+.ExpandedFilter {
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+
+	&--show {
+		opacity: 1;
+		max-height: 1000px;
 	}
 }

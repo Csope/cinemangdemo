@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ListCloseIcon from '../../common/elements/icons/ListCloseIcon';
 
-function OtherFilter() {
-	const [active, setActive] = useState(false);
+interface PropTypes {
+	show: boolean;
+	clickEvent: () => void;
+}
 
+function OtherFilter({ show, clickEvent }: PropTypes) {
 	return (
 		<div>
 			<div className="text-site-4 uppercase text-sm text-center mb-4">
 				Egyéb
 			</div>
 			<div>
-				<ListCloseIcon status={active} clickEvent={() => setActive(!active)} />
+				<ListCloseIcon status={show} clickEvent={clickEvent} />
 			</div>
 		</div>
 	);
