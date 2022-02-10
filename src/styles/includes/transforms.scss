@@ -1,0 +1,123 @@
+.transformed-image-container {
+	perspective: 40em;
+	position: relative;
+
+	&.left-to-right {
+		.image-shadow {
+			position: absolute;
+			left: 20px;
+			right: 20px;
+			top: 20px;
+			bottom: 20px;
+			z-index: -1;
+			transform: rotateY(6deg) rotateX(-9deg) rotateZ(-5deg) scale(0.94)
+				translateX(15px) translateY(4px);
+			box-shadow: -40px -23px 38px 14px #9467a8b8;
+		}
+	}
+
+	&.right-to-left {
+		.image-shadow {
+			position: absolute;
+			left: 20px;
+			right: 20px;
+			top: 20px;
+			bottom: 20px;
+			z-index: -1;
+			transform: rotateY(6deg) rotateX(-9deg) rotateZ(5deg) scale(0.94)
+				translateX(15px) translateY(4px);
+			box-shadow: 40px -23px 38px 14px #9467a8a3;
+		}
+	}
+
+	img {
+		border-radius: $radiusBig;
+		width: 100% !important;
+		max-width: 100% !important;
+		transition: transform 0.2s 0s ease-out;
+
+		&.vertical {
+			transform: rotateX(-5deg) scale(0.95);
+
+			&:hover {
+				transform: scale(1) rotateX(-3deg);
+			}
+		}
+
+		&.left-to-right {
+			transform: rotateY(6deg) rotateX(-9deg) rotateZ(-5deg) scale(0.94)
+				translateX(15px) translateY(4px);
+			position: relative;
+
+			&:hover {
+				transform: scale(1) rotateY(3deg) rotateX(-4deg) rotateZ(-2deg)
+					translateX(10px) translateY(4px);
+			}
+		}
+
+		&.right-to-left {
+			transform: rotateY(-6deg) rotateX(-9deg) rotateZ(5deg) scale(0.94)
+				translateX(-15px) translateY(4px);
+
+			&:hover {
+				transform: scale(1) rotateY(-3deg) rotateX(-4deg) rotateZ(2deg)
+					translateX(-10px) translateY(4px);
+			}
+		}
+	}
+}
+
+.ListCloseIcon {
+	display: inline-block;
+	background: white;
+	width: 36px;
+	height: 36px;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2px;
+
+	&.marked {
+		.ListCloseIcon__first {
+			width: 40%;
+			height: 3px;
+			background: $siteColor_4;
+			opacity: 0;
+		}
+		.ListCloseIcon__second {
+			width: 40%;
+			height: 3px;
+			background: $siteColor_4;
+			transform: rotate(45deg) translateY(-5px) translateX(-1px);
+			transform-origin: top left;
+		}
+		.ListCloseIcon__third {
+			width: 40%;
+			height: 3px;
+			background: $siteColor_4;
+			transform: rotate(-45deg) translateY(-9px) translateX(4px);
+			transform-origin: top right;
+		}
+	}
+
+	&__first {
+		width: 60%;
+		height: 3px;
+		background: $siteColor_4;
+		transition: opacity 0.08s linear, width 0.12s linear, height 0.16s linear;
+	}
+	&__second {
+		width: 40%;
+		height: 3px;
+		background: $siteColor_4;
+		transition: all 0.15s linear;
+	}
+	&__third {
+		width: 14%;
+		height: 3px;
+		background: $siteColor_4;
+		transition: all 0.15s linear;
+	}
+}

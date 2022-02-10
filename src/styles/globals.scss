@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.btn-light {
+		font-size: 17px;
+		box-shadow: 1px 3px 8px 0px rgb(142 94 165);
+		@apply px-8 py-2 uppercase rounded-3xl bg-site-5 text-site-4 font-bold tracking-wider cursor-pointer;
+	}
+	.btn-dark {
+		font-size: 15px;
+		box-shadow: 1px 3px 8px 0px rgb(142 94 165);
+		@apply px-8 py-2 uppercase rounded-3xl bg-site-4 text-white font-bold tracking-widest cursor-pointer;
+	}
+
+	.h3 {
+		@apply mb-4 text-site-4 uppercase font-extrabold tracking-wide italic text-lg font-montserrat;
+
+		@media only screen and (min-width: 576px) {
+			@apply text-lg;
+		}
+		@media only screen and (min-width: 768px) {
+			@apply text-xl;
+		}
+		@media only screen and (min-width: 992px) {
+			@apply text-2xl;
+		}
+	}
+
+	.p-quote {
+		@apply font-montserrat text-xl italic;
+
+		&--white {
+			@apply text-white;
+			text-shadow: 2px 2px #9467a8;
+		}
+
+		&--purple {
+			color: #680b65;
+			text-shadow: 2px 2px white;
+		}
+	}
+
+	.h1-shadow {
+		@apply uppercase font-extrabold italic text-2xl font-montserrat;
+
+		@media only screen and (min-width: 576px) {
+			@apply text-2xl;
+		}
+		@media only screen and (min-width: 768px) {
+			@apply text-3xl;
+		}
+		@media only screen and (min-width: 992px) {
+			@apply text-4xl;
+		}
+
+		&--white {
+			@apply text-white;
+			text-shadow: 2px 2px #9467a8;
+		}
+
+		&--purple {
+			color: #680b65;
+			text-shadow: 2px 2px white;
+		}
+	}
+
+	.bg-white-linear {
+		background: linear-gradient(0deg, #e3d5ec 0%, #e3d5ec 50%, white 100%);
+	}
+}

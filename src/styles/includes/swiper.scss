@@ -1,0 +1,31 @@
+.TransformedSwiper {
+	img {
+		min-height: 300px;
+		width: 200px;
+		object-fit: cover;
+		border-radius: $radiusSmall;
+	}
+}
+
+.FiveColSwiper {
+	img {
+		min-height: 300px;
+		object-fit: cover;
+		border-radius: $radiusSmall;
+	}
+
+	&__next-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0;
+		font-size: 40px;
+	}
+	&__prev-btn {
+		transform: translateY(-50%);
+		position: absolute;
+		top: 50%;
+		left: 0;
+		font-size: 40px;
+	}
+}
