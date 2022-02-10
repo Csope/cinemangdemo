@@ -33,7 +33,7 @@ const Trainers: NextPage = () => {
 			<div className="bg-site-2 pb-16">
 				<div className="container">
 					<div className="text-center p-quote p-quote--white">
-						"a lustaság fél egészség!"
+						&quot;a lustaság fél egészség!&quot;
 					</div>
 					<div className="text-center font-montserrat italic text-white py-10">
 						Aerobic

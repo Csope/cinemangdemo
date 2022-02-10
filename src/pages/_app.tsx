@@ -24,16 +24,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<SessionProvider session={pageProps.session}>
 			<ParallaxProvider>
 				<QueryClientProvider client={queryClient}>
-					<ClassesProvider>
-						<div className="bg-site-1 w-full py-3">
-							<div className="container relative">
-								<HeaderLogo />
-								<MainNavbar />
-							</div>
+					<div className="bg-site-1 w-full py-3">
+						<div className="container relative">
+							<HeaderLogo />
+							<MainNavbar />
 						</div>
-						<Component {...pageProps} />
-						<SiteFooter />
-					</ClassesProvider>
+					</div>
+					<Component {...pageProps} />
+					<SiteFooter />
 				</QueryClientProvider>
 			</ParallaxProvider>
 		</SessionProvider>
