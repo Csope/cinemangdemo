@@ -1,224 +1,96 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
 import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
+import { Dialog } from '@headlessui/react';
+import ClassDescription from '../../common/site/ClassDescription';
+import { IoClose } from 'react-icons/io5';
 
 function FilteredClassesListView() {
+	const [showDescription, setShowDescription] = useState(false);
+
+	const showClassDescription = () => {
+		setShowDescription(!showDescription);
+	};
+
 	return (
-		<div className="FilteredClassesListView bg-white">
-			<div className="divide-y divide-site-2 border-t border-b border-site-2 ">
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
+		<>
+			<div className="FilteredClassesListView bg-white">
+				<div className="divide-y divide-site-2 border-t border-b border-site-2 ">
+					<div
+						onClick={() => showClassDescription()}
+						className="hover:bg-slate-100 cursor-pointer"
+					>
+						<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
+							<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
+								17:00 - 17:45
 							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
+							<div className="mb-1 md:mb-0 md:basis-1/12">
+								<div className="inline-block bg-rose-500 text-white rounded-full">
+									<FiAlertCircle className="mx-auto w-10 h-10" />
+								</div>
 							</div>
+							<div className="mb-2 md:mb-0 md:basis-5/12">
+								<div className="text-site-4 text-2xl mb-2 ">
+									Deepwork & Bodyart Mix
+								</div>
 
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
+								<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
+									<div>Cardio</div>
+									<div>
+										<BsDot />
+									</div>
+									<div>Impulse Terem</div>
+									<div>
+										<BsDot />
+									</div>
+									<div>Pakucs Eta</div>
 								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
 							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
+							<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
+								Még 17 hely
 							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
+							<div className="md:basis-2/12 md:text-right">
+								<NormalDarkButton isLink={false} text="Foglalás" />
 							</div>
-
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
-							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
-							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
-							</div>
-
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
-							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
-							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
-							</div>
-
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
-							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
-							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
-							</div>
-
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
-							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
-						</div>
-					</div>
-				</div>
-				<div>
-					<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-						<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-							17:00 - 17:45
-						</div>
-						<div className="mb-1 md:mb-0 md:basis-1/12">
-							<div className="inline-block bg-rose-500 text-white rounded-full">
-								<FiAlertCircle className="mx-auto w-10 h-10" />
-							</div>
-						</div>
-						<div className="mb-2 md:mb-0 md:basis-5/12">
-							<div className="text-site-4 text-2xl mb-2 ">
-								Deepwork & Bodyart Mix
-							</div>
-
-							<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-								<div>Cardio</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Impulse Terem</div>
-								<div>
-									<BsDot />
-								</div>
-								<div>Pakucs Eta</div>
-							</div>
-						</div>
-						<div className="text-lg mb-4 md:mb-0 md:basis-2/12 md:text-right md:text-xl lg:mr-4">
-							Még 17 hely
-						</div>
-						<div className="md:basis-2/12 md:text-right">
-							<NormalDarkButton isLink={false} text="Foglalás" />
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			<Dialog
+				open={showDescription}
+				onClose={() => setShowDescription(false)}
+				className="fixed z-10 inset-0 overflow-y-auto"
+			>
+				<div className="flex items-center justify-center min-h-screen">
+					<Dialog.Overlay
+						className="fixed inset-0 opacity-60"
+						style={{ backgroundColor: '#280935' }}
+					/>
+
+					<div className="relative w-full">
+						<div className="px-4 bg-site-8 py-3">
+							<div className="container relative">
+								<h1 className="h1-shadow h1-shadow--white text-center ">
+									Deepwork & BodyArt MIX
+								</h1>
+								<div
+									onClick={() => setShowDescription(false)}
+									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-2 cursor-pointer text-lg"
+								>
+									<IoClose />
+								</div>
+							</div>
+						</div>
+						<div className="bg-site-1 py-8">
+							<div className="container">
+								<ClassDescription />
+							</div>
+						</div>
+					</div>
+				</div>
+			</Dialog>
+		</>
 	);
 }
 
