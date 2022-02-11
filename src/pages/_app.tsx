@@ -3,9 +3,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import MainNavbar from '../modules/SiteHeader/MainNavbar';
 import HeaderLogo from '../modules/SiteHeader/HeaderLogo';
-import HeaderUser from '../modules/SiteHeader/HeaderUser';
 import SiteFooter from '../modules/SiteFooter/SiteFooter';
-import { ClassesProvider } from '../contexts';
+import { ClassFilterProvider } from '../contexts';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -22,18 +21,20 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<SessionProvider session={pageProps.session}>
-			<ParallaxProvider>
-				<QueryClientProvider client={queryClient}>
-					<div className="bg-site-1 w-full py-3">
-						<div className="container relative">
-							<HeaderLogo />
-							<MainNavbar />
+			<ClassFilterProvider>
+				<ParallaxProvider>
+					<QueryClientProvider client={queryClient}>
+						<div className="bg-site-1 w-full py-3">
+							<div className="container relative">
+								<HeaderLogo />
+								<MainNavbar />
+							</div>
 						</div>
-					</div>
-					<Component {...pageProps} />
-					<SiteFooter />
-				</QueryClientProvider>
-			</ParallaxProvider>
+						<Component {...pageProps} />
+						<SiteFooter />
+					</QueryClientProvider>
+				</ParallaxProvider>
+			</ClassFilterProvider>
 		</SessionProvider>
 	);
 }

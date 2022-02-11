@@ -29,10 +29,6 @@ const marks = {
 };
 
 function StartTimeFilter() {
-	function log(value: any) {
-		console.log(value); //eslint-disable-line
-	}
-
 	return (
 		<div className="px-4">
 			<div className="text-site-4 uppercase text-sm text-center mb-4">
@@ -48,7 +44,6 @@ function StartTimeFilter() {
 					max={3}
 					marks={marks}
 					step={1}
-					onChange={log}
 					defaultValue={[0, 3]}
 					handleStyle={[
 						{

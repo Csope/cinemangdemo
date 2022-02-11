@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { useClassFilter } from '../../hooks';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 import ExpandedFilter from './ExpandedFilter';
 import FavoritesFilter from './FavoritesFilter';
-import FilteredClasses from './FilteredClasses';
+import FilteredClassesSwiperView from './FilteredClassesSwiperView';
 import OtherFilter from './OtherFilter';
 import SearchFilter from './SearchFilter';
 import StartTimeFilter from './StartTimeFilter';
+import { ViewList } from '../../types/ClassFilterTypes';
+import FilteredClassesListView from './FilteredClassesListView';
+import FilteredClassesCalendarView from './FilteredClassesCalendarView';
 
 function ClassFilter(): JSX.Element {
 	const [filterExpanded, setFilterExpanded] = useState(false);
+	const {
+		classFilterState: { view },
+	} = useClassFilter();
 
 	return (
 		<div className="ClassFilter">
@@ -45,7 +52,9 @@ function ClassFilter(): JSX.Element {
 			</div>
 			<ExpandedFilter show={filterExpanded} />
 			<div>
-				<FilteredClasses />
+				{view === ViewList.SWIPER && <FilteredClassesSwiperView />}
+				{view === ViewList.CALENDAR && <FilteredClassesCalendarView />}
+				{view === ViewList.LIST && <FilteredClassesListView />}
 			</div>
 		</div>
 	);

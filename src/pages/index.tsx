@@ -3,7 +3,6 @@ import NormalDarkButton from '../common/elements/buttons/NormalDarkButton';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
 import TriangleDivider from '../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../common/elements/TriangleDividerNextItem';
-import useClasses from '../hooks/useClasses';
 import CardioSection from '../modules/FitnessFeatures/CardioSection';
 import CareerSection from '../modules/FitnessFeatures/CareerSection';
 import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
@@ -11,9 +10,6 @@ import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 
 const Home: NextPage = () => {
-	const { state } = useClasses();
-	console.log(state);
-
 	return (
 		<div className="bg-site-1">
 			<div className=" bg-site-1 w-full pt-0 md:pt-6 pb-10">

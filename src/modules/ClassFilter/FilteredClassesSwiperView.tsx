@@ -5,9 +5,9 @@ import TriangleDividerNextItem from '../../common/elements/TriangleDividerNextIt
 import { FiAlertCircle } from 'react-icons/fi';
 import FiveColSwiper from '../../common/swiper/FiveColSwiper';
 
-function FilteredClasses() {
+function FilteredClassesSwiperView() {
 	return (
-		<div>
+		<div className="FilteredClassesSwiperView">
 			<div className="container pt-6">
 				<FiveColSwiper
 					initialSlide={3}
@@ -89,4 +89,4 @@ function FilteredClasses() {
 	);
 }
 
-export default FilteredClasses;
+export default FilteredClassesSwiperView;

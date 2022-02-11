@@ -131,7 +131,7 @@ const SiteFooter = () => {
 			<div className="container">
 				<hr className="border-black" />
 			</div>
-			<div className="container flex flex-col-reverse md:flex-row py-10">
+			<div className="container flex flex-col-reverse md:flex-row py-10 px-4">
 				<div className="w-full md:w-1/3 text-center md:text-left">
 					Fotexnet Kft. 2022 © Minden jog fenntartva.
 				</div>
