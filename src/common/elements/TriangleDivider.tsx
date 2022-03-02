@@ -6,12 +6,13 @@ interface PropTypes {
 	 */
 	mTop?: number;
 	customClasses?: string;
+	bgClass: string;
 }
 
-const TriangleDivider = ({ mTop, customClasses }: PropTypes) => {
+const TriangleDivider = ({ mTop, bgClass, customClasses }: PropTypes) => {
 	return (
 		<div
-			className={`bg-site-3 TriangleDivider ${customClasses}`}
+			className={`${bgClass} TriangleDivider ${customClasses}`}
 			style={{ marginTop: mTop }}
 		></div>
 	);

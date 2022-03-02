@@ -4,7 +4,7 @@ import BrandLogo from '../../common/site/BrandLogo';
 
 const SiteFooter = () => {
 	return (
-		<div className="bg-site-1">
+		<div className="site-footer bg-site-15 text-white border-t-2 border-t-gray-400">
 			<div className="container flex flex-col md:flex-row px-4 py-10">
 				<div className="w-full md:w-3/12 mb-8">
 					<div className=" font-bold mb-4 md:mb-6 text-center md:text-left">
@@ -14,31 +14,45 @@ const SiteFooter = () => {
 						<table className="w-full">
 							<tbody>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Hetfo</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Hetfo
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Kedd</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Kedd
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Szerda</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Szerda
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Csutortok</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Csutortok
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Pentek</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Pentek
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Szombat</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Szombat
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
-									<td className="pr-4 text-right md:text-left">Vasarnap</td>
+									<td className="pr-4 text-gray-300 text-right md:text-left">
+										Vasarnap
+									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 							</tbody>
@@ -52,7 +66,7 @@ const SiteFooter = () => {
 					<div className="mb-8 md:mb-6 text-center md:text-left">
 						<div>1148. Budapest, Örs vezér tere 24.</div>
 						<div>Sugár Üzletközpont (bejárat az Üzletközpont 2. emeletén)</div>
-						<div className="text-site-4">info@sugarfitness.hu</div>
+						<div className="text-site-16">info@sugarfitness.hu</div>
 					</div>
 					<div className=" font-bold mb-4 md:mb-6 text-center md:text-left">
 						Megközelítés
@@ -61,7 +75,7 @@ const SiteFooter = () => {
 						<table>
 							<tbody>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Busz
 									</td>
 									<td>
@@ -71,31 +85,31 @@ const SiteFooter = () => {
 									</td>
 								</tr>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Éjszakai járat
 									</td>
 									<td>907, 908, 931, 956, 990</td>
 								</tr>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Villamos
 									</td>
 									<td>3, 62, 62A</td>
 								</tr>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Metró
 									</td>
 									<td>M2</td>
 								</tr>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Troli
 									</td>
 									<td>80, 81, 82</td>
 								</tr>
 								<tr>
-									<td className="pr-4 whitespace-nowrap align-top text-right md:text-left">
+									<td className="pr-4 text-gray-300 whitespace-nowrap align-top text-right md:text-left">
 										Hév
 									</td>
 									<td>H8, H9</td>
@@ -104,7 +118,7 @@ const SiteFooter = () => {
 						</table>
 					</div>
 				</div>
-				<div className="w-full md:w-3/12 mb-4 text-center md:text-right text-site-4 font-bold">
+				<div className="w-full md:w-3/12 mb-4 text-center md:text-right text-site-16 font-bold">
 					<div className="flex flex-col gap-1 mb-6">
 						<a href="#">Sugár Mozi</a>
 						<a href="#">Sugár Bowling & Pub</a>
@@ -129,10 +143,10 @@ const SiteFooter = () => {
 				</div>
 			</div>
 			<div className="container">
-				<hr className="border-black" />
+				<hr className="border-white" />
 			</div>
 			<div className="container flex flex-col-reverse md:flex-row py-10 px-4">
-				<div className="w-full md:w-1/3 text-center md:text-left">
+				<div className="w-full text-gray-300 md:w-1/3 text-center md:text-left">
 					Fotexnet Kft. 2022 © Minden jog fenntartva.
 				</div>
 				<div className="w-full md:w-1/3 mb-8 md:mb-0">
@@ -140,7 +154,7 @@ const SiteFooter = () => {
 						<BrandLogo />
 					</div>
 				</div>
-				<div className="w-full md:w-1/3 mb-8 md:mb-0 text-center md:text-right font-bold text-site-4">
+				<div className="w-full md:w-1/3 mb-8 md:mb-0 text-center md:text-right font-bold text-site-16">
 					<a href="#">Adatvédelmi szabályzat</a>
 				</div>
 			</div>

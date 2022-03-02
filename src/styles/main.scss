@@ -3,6 +3,8 @@
 @import './includes/swiper';
 @import './includes/parallax';
 @import './includes/sections';
+@import './includes/class-filter';
+@import './includes/cards';
 
 body {
 	letter-spacing: 1px;
@@ -12,6 +14,12 @@ img {
 	max-width: 100%;
 	height: auto;
 	display: block;
+}
+
+.main-wrapper {
+	background-image: url('../../public/images/pattern-header.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 .white-textarea {
@@ -47,13 +55,13 @@ img {
 .FormWithMap {
 	&__map-img {
 		transform: rotate(355deg) translateY(-21px);
-		box-shadow: 5px 7px 32px -3px #680b65bf;
+		box-shadow: 5px 7px 32px -3px #000000bf;
 	}
 }
 
 .page {
 	padding-top: 20px;
-	padding-bottom: 20px;
+	// padding-bottom: 20px;
 }
 
 .TriangleDivider {
@@ -108,5 +116,28 @@ img {
 	/* Handle on hover */
 	&::-webkit-scrollbar-thumb:hover {
 		background: $siteColor_4;
+	}
+}
+
+.site-footer {
+	background-image: url('../../public//images//pattern-footer.png');
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: bottom;
+}
+
+.SalesAndEvents {
+	&__masonry-grid {
+		display: flex;
+		margin-left: -30px;
+		width: auto;
+	}
+	&__masonry-grid_column {
+		padding-left: 30px;
+		background-clip: padding-box;
+
+		> div {
+			margin-bottom: 30px;
+		}
 	}
 }

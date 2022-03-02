@@ -1,0 +1,75 @@
+.filtered-classes {
+	&__calendar-locations {
+	}
+
+	&__calendar-dates {
+		display: grid;
+		gap: 2px;
+		grid-template-columns: 80px repeat(7, 3fr);
+	}
+
+	&__calendar {
+		display: grid;
+		gap: 2px;
+		grid-template-columns: 80px repeat(7, 3fr);
+		background-color: $siteColor_6;
+		.column {
+			gap: 2px;
+			display: grid;
+			grid-auto-rows: 70px;
+
+			> div {
+				&:nth-child(odd) {
+					background-color: $siteColor_1;
+				}
+				&:nth-child(even) {
+					background-color: $siteColor_7;
+				}
+			}
+			.time-col {
+				text-align: center;
+				color: $siteColor_4;
+				font-size: 12px;
+				padding-top: 12px;
+				background-color: $siteColor_1;
+			}
+
+			.data-col {
+				background-color: $siteColor_1;
+				position: relative;
+			}
+
+			.data-item {
+				margin: 3px 3px;
+				width: calc(100% - 6px);
+				position: absolute;
+				background-color: white;
+				border-radius: 8px;
+				z-index: 10;
+				border: 1px px solid #c6a6d3bd;
+				color: $siteColor_4;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				text-align: center;
+
+				.time {
+					font-size: 11px;
+				}
+				.title {
+					margin-top: 3px;
+					margin-bottom: 3px;
+					line-height: 14px;
+					font-size: 13px;
+					text-transform: uppercase;
+					max-height: 45px;
+					overflow: hidden;
+				}
+				.trainer {
+					font-size: 10px;
+				}
+			}
+		}
+	}
+}

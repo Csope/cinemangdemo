@@ -1,61 +1,98 @@
-import React, { useState } from 'react';
-import { useClassFilter } from '../../hooks';
+import React, { useEffect, useState } from 'react';
+import { useClassFilter, useDebounce } from '../../hooks';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 import ExpandedFilter from './ExpandedFilter';
 import FavoritesFilter from './FavoritesFilter';
-import FilteredClassesSwiperView from './FilteredClassesSwiperView';
 import OtherFilter from './OtherFilter';
 import SearchFilter from './SearchFilter';
 import StartTimeFilter from './StartTimeFilter';
+import BaseFilteredClasses from './BaseFilteredClasses';
+import { SessionType } from '../../types';
 import { ViewList } from '../../types/ClassFilterTypes';
-import FilteredClassesListView from './FilteredClassesListView';
-import FilteredClassesCalendarView from './FilteredClassesCalendarView';
+import { format } from 'date-fns';
 
-function ClassFilter(): JSX.Element {
+type PropTypes = {
+	sessions: SessionType[];
+};
+
+function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	const [filterExpanded, setFilterExpanded] = useState(false);
+	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
 	const {
-		classFilterState: { view },
+		classFilterState: { favorites, view, startDate, category },
+		classFilterDispatch,
 	} = useClassFilter();
+
+	/**
+	 * FIlter by date, category
+	 */
+	useEffect(() => {
+		const fSessions = sessions.filter((session) => {
+			const sDate = format(new Date(session.start), 'yyyy-MM-dd');
+			const filDate = format(startDate, 'yyyy-MM-dd');
+
+			if (sDate !== filDate) {
+				return false;
+			}
+
+			if (category && category !== session.class.category) {
+				return false;
+			} else {
+			}
+
+			return true;
+		});
+
+		setFilteredSessions(fSessions);
+	}, [startDate, category]);
 
 	return (
 		<div className="ClassFilter">
-			<DateFilter />
-			<div className="bg-site-7">
-				<div className="container lg:py-4">
-					<div className="flex flex-col xl:flex-row py-2 xl:divide-x-2 xl:divide-site-3">
-						<div className="w-full flex flex-col lg:flex-row lg:mb-8 xl:mb-0  xl:w-10/12 xl:divide-x-2 xl:divide-site-3">
-							<div className="px-4 mb-6 mt-2 md:mt-0 lg:w-1/3 xl:w-1/4 lg:mb-0 xl:pb-4">
-								<SearchFilter />
-							</div>
-							<div className="flex flex-col md:flex-row lg:w-2/3 xl:w-3/4 xl:divide-x-2 xl:divide-site-3">
-								<div className="md:w-1/2 px-4 mb-6 xl:w-6/12 lg:mb-0 xl:pb-4">
-									<CategoryFilter />
+			{view !== ViewList.CALENDAR && (
+				<>
+					<DateFilter />
+					<div className="bg-site-7">
+						<div className="container lg:py-4">
+							<div className="flex flex-col xl:flex-row py-2 xl:divide-x-2 xl:divide-site-3">
+								<div className="w-full flex flex-col lg:flex-row lg:mb-8 xl:mb-0  xl:w-10/12 xl:divide-x-2 xl:divide-site-3">
+									<div className="px-4 mb-6 mt-2 md:mt-0 lg:w-1/3 xl:w-1/4 lg:mb-0 xl:pb-4">
+										<SearchFilter />
+									</div>
+									<div className="flex flex-col md:flex-row lg:w-2/3 xl:w-3/4 xl:divide-x-2 xl:divide-site-3">
+										<div className="md:w-1/2 px-4 mb-6 xl:w-6/12 lg:mb-0 xl:pb-4">
+											<CategoryFilter />
+										</div>
+										<div className="md:w-1/2 px-4 mb-12 xl:w-6/12 lg:mb-0 xl:pb-4">
+											<StartTimeFilter />
+										</div>
+									</div>
 								</div>
-								<div className="md:w-1/2 px-4 mb-12 xl:w-6/12 lg:mb-0 xl:pb-4">
-									<StartTimeFilter />
+								<div className="w-full px-4 mb-6 flex justify-evenly gap-4 xl:w-2/12 lg:mb-0 xl:pb-4">
+									<FavoritesFilter
+										active={favorites}
+										clickEvent={() =>
+											classFilterDispatch({
+												type: 'SET_FAVORITES',
+												payload: !favorites,
+											})
+										}
+									/>
+									<OtherFilter
+										show={filterExpanded}
+										clickEvent={() => setFilterExpanded(!filterExpanded)}
+									/>
 								</div>
 							</div>
-						</div>
-						<div className="w-full px-4 mb-6 flex justify-evenly gap-4 xl:w-2/12 lg:mb-0 xl:pb-4">
-							<FavoritesFilter
-								active={true}
-								clickEvent={() => console.log('asdasd')}
-							/>
-							<OtherFilter
-								show={filterExpanded}
-								clickEvent={() => setFilterExpanded(!filterExpanded)}
-							/>
 						</div>
 					</div>
-				</div>
-			</div>
-			<ExpandedFilter show={filterExpanded} />
-			<div>
-				{view === ViewList.SWIPER && <FilteredClassesSwiperView />}
-				{view === ViewList.CALENDAR && <FilteredClassesCalendarView />}
-				{view === ViewList.LIST && <FilteredClassesListView />}
-			</div>
+				</>
+			)}
+			<BaseFilteredClasses
+				filterExpanded={filterExpanded}
+				sessions={filteredSessions}
+				originalSessions={sessions}
+			/>
 		</div>
 	);
 }

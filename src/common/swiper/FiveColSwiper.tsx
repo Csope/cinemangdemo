@@ -7,9 +7,10 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 interface PropTypes {
 	initialSlide: number;
 	imgSrcs: string[];
+	onSlideChange: (swiper: any) => void;
 }
 
-const FiveColSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
+const FiveColSwiper = ({ initialSlide, imgSrcs, onSlideChange }: PropTypes) => {
 	const [controlledSwiper, setControlledSwiper] =
 		useState<SwiperInstance | null>(null);
 
@@ -37,14 +38,18 @@ const FiveColSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
 					modifier: 1,
 					slideShadows: false,
 				}}
-				loop={true}
-				pagination={true}
+				onSlideChangeTransitionEnd={onSlideChange}
+				// loop={true}
+				// pagination={true}
 				modules={[EffectCoverflow]}
 				className="FiveColSwiper"
+				// preventClicks={false}
+				allowTouchMove={false}
+				slideToClickedSlide={true}
 			>
 				{imgSrcs.map((src, i) => (
 					<SwiperSlide key={i}>
-						<img src={src} />
+						<img src={src} className="select-none" />
 					</SwiperSlide>
 				))}
 			</Swiper>

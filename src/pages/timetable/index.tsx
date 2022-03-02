@@ -2,12 +2,19 @@ import { BsViewList } from 'react-icons/bs';
 import { GoCalendar } from 'react-icons/go';
 import { HiMap } from 'react-icons/hi';
 import ClassFilter from '../../modules/ClassFilter/ClassFilter';
-
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
+import { addDays, format } from 'date-fns';
+import { ResType, SessionType } from '../../types';
 import type { NextPage } from 'next';
 import { ViewList } from '../../types/ClassFilterTypes';
 import { useClassFilter } from '../../hooks';
 
-const Timetable: NextPage = () => {
+type PropTypes = {
+	sessions: SessionType[];
+};
+
+const Timetable: NextPage<PropTypes> = ({ sessions }: PropTypes) => {
 	const {
 		classFilterState: { view },
 		classFilterDispatch,
@@ -18,7 +25,7 @@ const Timetable: NextPage = () => {
 	};
 
 	return (
-		<div className="Timetable_page page bg-site-1">
+		<div className="Timetable_page page ">
 			<div className="relative container">
 				<h1 className="px-4 h1-shadow h1-shadow--purple text-center">
 					Csoportos órakereső
@@ -50,9 +57,42 @@ const Timetable: NextPage = () => {
 					</div>
 				</div>
 			</div>
-			<ClassFilter />
+			<ClassFilter sessions={sessions} />
 		</div>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const fromDate = format(new Date(), 'yyyy-MM-dd');
+	const toDate = format(addDays(new Date(), 7), 'yyyy-MM-dd');
+
+	try {
+		const {
+			data: {
+				data: { sessions },
+			},
+		} = await axios.post<ResType<SessionType[]>>(
+			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/filtered`,
+			{
+				by_date: {
+					from: fromDate,
+					to: toDate,
+				},
+			}
+		);
+
+		return {
+			props: {
+				sessions: sessions || [],
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				sessions: [],
+			},
+		};
+	}
 };
 
 export default Timetable;

@@ -14,6 +14,7 @@ import '../styles/globals.scss';
 import '../styles/main.scss';
 
 import type { AppProps } from 'next/app';
+import InitPageLoad from '../modules/InitPageLoad';
 
 // React query client
 const queryClient = new QueryClient();
@@ -24,14 +25,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<ClassFilterProvider>
 				<ParallaxProvider>
 					<QueryClientProvider client={queryClient}>
-						<div className="bg-site-1 w-full py-3">
-							<div className="container relative">
-								<HeaderLogo />
-								<MainNavbar />
-							</div>
-						</div>
-						<Component {...pageProps} />
-						<SiteFooter />
+						<InitPageLoad>
+							<>
+								<div className="main-wrapper bg-site-1">
+									<div className="w-full py-3">
+										<div className="container relative">
+											<HeaderLogo />
+											<MainNavbar />
+										</div>
+									</div>
+									<Component {...pageProps} />
+								</div>
+
+								<SiteFooter />
+							</>
+						</InitPageLoad>
 					</QueryClientProvider>
 				</ParallaxProvider>
 			</ClassFilterProvider>

@@ -13,6 +13,16 @@
 		box-shadow: 1px 3px 8px 0px rgb(142 94 165);
 		@apply px-8 py-2 uppercase rounded-3xl bg-site-4 text-white font-bold tracking-widest cursor-pointer;
 	}
+	.btn-cian {
+		font-size: 17px;
+		box-shadow: 1px 3px 8px 0px #27a7b3;
+		@apply px-8 py-2 uppercase rounded-3xl bg-site-5 text-site-11 font-bold tracking-wider cursor-pointer;
+	}
+	.btn-gray {
+		font-size: 17px;
+		box-shadow: 1px 3px 8px 0px #252626;
+		@apply px-8 py-2 uppercase rounded-3xl bg-site-5 text-gray-800 font-bold tracking-wider cursor-pointer;
+	}
 
 	.h3 {
 		@apply mb-4 text-site-4 uppercase font-extrabold tracking-wide italic text-lg font-montserrat;
@@ -60,13 +70,34 @@
 			text-shadow: 2px 2px #9467a8;
 		}
 
+		&--white-2 {
+			@apply text-white;
+			text-shadow: 2px 2px #000;
+		}
+
 		&--purple {
 			color: #680b65;
+			text-shadow: 2px 2px white;
+		}
+
+		&--cian {
+			color: #028d9a;
+			text-shadow: 2px 2px white;
+		}
+
+		&--gray {
+			color: #353849;
 			text-shadow: 2px 2px white;
 		}
 	}
 
 	.bg-white-linear {
 		background: linear-gradient(0deg, #e3d5ec 0%, #e3d5ec 50%, white 100%);
+	}
+	.bg-purple-linear {
+		background: linear-gradient(0deg, #bc9acc 0%, #b391c3 50%, #9772a9 100%);
+	}
+	.bg-cian-linear {
+		background: linear-gradient(0deg, #d3e6ea 0%, #e8f4f7 50%, #ffffff 100%);
 	}
 }

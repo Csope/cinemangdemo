@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import NormalDarkButton from '../common/elements/buttons/NormalDarkButton';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
 import TriangleDivider from '../common/elements/TriangleDivider';
@@ -10,16 +11,18 @@ import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 
 const Home: NextPage = () => {
+	const authSession = useSession();
+
 	return (
-		<div className="bg-site-1">
-			<div className=" bg-site-1 w-full pt-0 md:pt-6 pb-10">
+		<div>
+			<div className="w-full pt-0 md:pt-6 pb-10">
 				<div className="container ">
 					<HeroSection />
 				</div>
 			</div>
-			<TriangleDivider mTop={-40} />
-			<TriangleDividerNextItem>
-				<div className="bg-site-2 mt-10">
+			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
+			<TriangleDividerNextItem bgClass="bg-purple-linear">
+				<div className="mt-10">
 					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
 				</div>
 			</TriangleDividerNextItem>
@@ -31,9 +34,9 @@ const Home: NextPage = () => {
 					customClasses="mt-5 md:mt-0"
 				/>
 			</div>
-			<div className="bg-site-2 w-full">
-				<div className="container pt-10 md:pt-16 pb-16">
-					<div>
+			<div className="w-full">
+				<div className="bg-site-2 pt-10 md:pt-16 pb-12">
+					<div className="container">
 						<TwoColClassSection
 							direction="text-img"
 							classTitle={'Cardió'}
@@ -52,7 +55,9 @@ const Home: NextPage = () => {
 							}}
 						/>
 					</div>
-					<div className="mt-16">
+				</div>
+				<div className="pt-12 pb-12 bg-site-9">
+					<div className="container">
 						<TwoColClassSection
 							classTitle={'Cardió'}
 							direction="img-text"
@@ -71,8 +76,10 @@ const Home: NextPage = () => {
 							}}
 						/>
 					</div>
+				</div>
 
-					<div className="pt-16">
+				<div className="bg-site-2 pt-12 pb-12">
+					<div className="container">
 						<TwoColClassSection
 							direction="text-img"
 							classTitle={'Cardió'}
@@ -100,10 +107,14 @@ const Home: NextPage = () => {
 					src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 				/>
 			</div>
-			<TriangleDivider mTop={-155} customClasses="TriangleDivider--parallax" />
-			<TriangleDividerNextItem bgClass="bg-white-linear" borderColor="#e3d5ec">
+			<TriangleDivider
+				mTop={-155}
+				bgClass="bg-site-11"
+				customClasses="TriangleDivider--parallax"
+			/>
+			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
 				<div className="mt-10">
-					<h1 className="h1-shadow h1-shadow--purple">Cardio részleg</h1>
+					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
 				</div>
 			</TriangleDividerNextItem>
 			<CardioSection />

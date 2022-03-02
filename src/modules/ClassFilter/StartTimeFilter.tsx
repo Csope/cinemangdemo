@@ -1,37 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Range } from 'rc-slider';
-
-const marks = {
-	0: {
-		style: {
-			color: 'black',
-		},
-		label: <span>8:00</span>,
-	},
-	1: {
-		style: {
-			color: 'black',
-		},
-		label: <span>8:30</span>,
-	},
-	2: {
-		style: {
-			color: 'black',
-		},
-		label: <span>9:00</span>,
-	},
-	3: {
-		style: {
-			color: 'black',
-		},
-		label: <span>12:00</span>,
-	},
-};
+import { useClassFilter, useDebounce } from '../../hooks';
+import marks from '../../static/startTimeMarks';
 
 function StartTimeFilter() {
+	const [sliderValue, setSliderValue] = useState([0, 14]);
+	const debouncedValue = useDebounce(sliderValue, 1000);
+	const { classFilterDispatch } = useClassFilter();
+
+	useEffect(() => {
+		const [min, max] = debouncedValue;
+
+		classFilterDispatch({
+			type: 'SET_START_TIME',
+			payload: [marks[min].value, marks[max].value],
+		});
+	}, [debouncedValue]);
+
 	return (
 		<div className="px-4">
-			<div className="text-site-4 uppercase text-sm text-center mb-4">
+			<div className="text-site-4 uppercase text-sm text-center mb-4 select-none">
 				Kezdési időpont
 			</div>
 			<div className="relative">
@@ -41,10 +29,11 @@ function StartTimeFilter() {
 				></div>
 				<Range
 					min={0}
-					max={3}
+					max={14}
 					marks={marks}
 					step={1}
-					defaultValue={[0, 3]}
+					onChange={(val) => setSliderValue(val)}
+					defaultValue={sliderValue}
 					handleStyle={[
 						{
 							width: 17,

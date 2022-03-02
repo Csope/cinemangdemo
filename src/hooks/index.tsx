@@ -1,3 +1,5 @@
 import useClassFilter from './useClassFilter';
+import useDebounce from './useDebounce';
+import useUser from './useUser';
 
-export { useClassFilter };
+export { useClassFilter, useDebounce, useUser };

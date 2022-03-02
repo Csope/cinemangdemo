@@ -1,6 +1,19 @@
-export default interface ResType {
-	code: 200 | 404 | 501;
+export enum DataTypes {
+	TRAINER = 'trainer',
+	TRAINERS = 'trainers',
+	SESSIONS = 'sessions',
+}
+
+export enum HttpCodeTypes {
+	_200 = 200,
+}
+
+export default interface ResType<T> {
+	http_status_code: number;
 	status: boolean;
-	message: string;
-	data: object;
+	message?: string;
+	data: {
+		[k in DataTypes]: T;
+	};
+	// errors?: object[];
 }

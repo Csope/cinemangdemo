@@ -9,7 +9,7 @@ interface PropTypes {
 function OtherFilter({ show, clickEvent }: PropTypes) {
 	return (
 		<div>
-			<div className="text-site-4 uppercase text-sm text-center mb-4">
+			<div className="text-site-4 uppercase text-sm text-center mb-4 select-none">
 				Egyéb
 			</div>
 			<div>

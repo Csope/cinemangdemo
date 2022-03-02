@@ -1,116 +1,135 @@
 import type { NextPage } from 'next';
+import { useEffect, useState } from 'react';
 import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
+import ContentLoader from '../../common/elements/ContentLoader';
 import TriangleDivider from '../../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../../common/elements/TriangleDividerNextItem';
 import FiveColSwiper from '../../common/swiper/FiveColSwiper';
+import { useGetTrainers } from '../../queries';
+import { TrainerType } from '../../types';
+import { HttpCodeTypes } from '../../types/ResType';
+// @ts-ignore
+import { unescape } from 'lodash';
 
 const Trainers: NextPage = () => {
+	const { data, error, isLoading } = useGetTrainers();
+	const [selectedTrainer, setSelectedTrainer] = useState<
+		TrainerType | undefined
+	>(undefined);
+
+	useEffect(() => {
+		if (!selectedTrainer) {
+			setSelectedTrainer(data?.data.trainers[2]);
+		}
+	}, [data]);
+
 	return (
-		<div className="Trainers_page page bg-site-1">
+		<div className="Trainers_page page">
 			<div className="container">
 				<div>
 					<h1 className="h1-shadow h1-shadow--purple text-center mb-8">
 						Oktatók
 					</h1>
 				</div>
-				<FiveColSwiper
-					initialSlide={2}
-					imgSrcs={[
-						'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-						'https://geocdn.fotex.net/static.sugarfitness.hu/files/1476/preview.jpg',
-						'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-						'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
-						'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-					]}
-				/>
+				{isLoading ? (
+					<div className="flex items-center justify-center pt-20 pb-28">
+						<ContentLoader />
+					</div>
+				) : (
+					<FiveColSwiper
+						initialSlide={2}
+						onSlideChange={(swiper: any) => {
+							setSelectedTrainer(data?.data.trainers[swiper.snapIndex]);
+						}}
+						imgSrcs={
+							data?.data.trainers
+								? data?.data.trainers.map(
+										(trainer) =>
+											'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg'
+								  )
+								: []
+						}
+					/>
+				)}
 			</div>
-			<TriangleDivider mTop={-20} />
+
+			<TriangleDivider bgClass="bg-site-3" mTop={-20} />
+
 			<TriangleDividerNextItem>
 				<div className="bg-site-2 mt-10">
-					<h1 className="h1-shadow h1-shadow--white">Pakucs Eta</h1>
+					<h1 className="h1-shadow h1-shadow--white">
+						{selectedTrainer?.last_name} {selectedTrainer?.first_name}
+					</h1>
 				</div>
 			</TriangleDividerNextItem>
-			<div className="bg-site-2 pb-16">
-				<div className="container">
-					<div className="text-center p-quote p-quote--white">
-						&quot;a lustaság fél egészség!&quot;
-					</div>
-					<div className="text-center font-montserrat italic text-white py-10">
-						Aerobic
-					</div>
-					<div className="flex gap-6 justify-center mb-14">
-						<NormalDarkButton
-							text="Összes óratípus"
-							isLink={true}
-							linkHref="/trainers"
-						/>
-						<NormalDarkButton
-							text="Bodyart"
-							isLink={true}
-							linkHref="/trainers"
-						/>
-						<NormalDarkButton
-							text="Deepwork"
-							isLink={true}
-							linkHref="/trainers"
-						/>
-					</div>
+			{selectedTrainer && (
+				<>
+					<div className="bg-site-2 pb-16">
+						<div className="container">
+							<div className="text-center p-quote p-quote--white">
+								{/* &quot; */}
+								{unescape(selectedTrainer.motto)}
+								{/* &quot; */}
+							</div>
+							<div className="text-center font-montserrat italic text-white py-10">
+								{selectedTrainer.position}
+							</div>
+							<div className="flex gap-6 justify-center mb-14">
+								<NormalDarkButton
+									text="Összes óratípus"
+									isLink={true}
+									linkHref="/trainers"
+								/>
+								<NormalDarkButton
+									text="Bodyart"
+									isLink={true}
+									linkHref="/trainers"
+								/>
+								<NormalDarkButton
+									text="Deepwork"
+									isLink={true}
+									linkHref="/trainers"
+								/>
+							</div>
 
-					<div className="text-white mb-10">
-						<div>Végzettségem:</div>
-						<div className="leading-7">
-							2018 - Csoportos Fitness Instruktor - IWI 2018 - Capoeira Aerobik
-							Instruktor 2018 - FitFight Instruktor
+							<div className="text-white mb-10">
+								<div
+									dangerouslySetInnerHTML={{
+										__html: unescape(selectedTrainer.description),
+									}}
+								></div>
+							</div>
+
+							<div className="flex gap-10">
+								<div className="w-1/2">
+									<iframe
+										style={{ borderRadius: '14px' }}
+										width="100%"
+										height="350px"
+										src={`https://www.youtube.com/embed/48w9kcBfrVA`}
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+										title="Embedded youtube"
+									/>
+								</div>
+								<div className="w-1/2">
+									<iframe
+										style={{ borderRadius: '14px' }}
+										width="100%"
+										height="350px"
+										src={`https://www.youtube.com/embed?v=KCrXgy8qtjM`}
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+										title="Embedded youtube"
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
-
-					<div className="text-white leading-7 mb-10">
-						Már kiskoromban számos sportot kibróbáltam, végül a táncban találtam
-						meg önmagam. Úgy éreztem, hogy ebből tudok erőt meríteni és ez az,
-						ami feltölt. Az akrobatikus rock and roll megalapozta az
-						érdeklődésemet a mozgás iránt. Versenyzői múltam után ösztönös
-						döntés volt, hogy az életemet a sportnak fogom szentelni. Célom,
-						hogy mindenkivel megismertessem azt a bizonyos flow élményt, melynek
-						segítségével átélhetsz egy különleges belülről fakadó motivációt,
-						amit felhasználhatsz a mindennapokban. Alakformáló óráimon a cardio
-						részt ötvözzül a pörgős dinamikus gyakorlatokkal, aminek
-						eredményeképpen a teljes testi-lelki energetizálódás mellett a
-						bombaforma már csak ráadás. A jó hangulat, és a feltöltődés az óráim
-						szerves részét képezik. Ha te is szeretnél egy hosszú nap után
-						kikapcsolódni vagy csak szimplán jól indítani a napodat, akkor nem
-						kell mást tenned, mint edzőcipőt húznod, és eljönni az órámra. Várok
-						mindenkit szeretettel, legyél akár kezdő vagy haladó, fiú vagy lány,
-						gyere és éljük át együtt a sport örömét.
-					</div>
-
-					<div className="flex gap-10">
-						<div className="w-1/2">
-							<iframe
-								style={{ borderRadius: '14px' }}
-								width="100%"
-								height="350px"
-								src={`https://www.youtube.com/embed/asdasd`}
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-								title="Embedded youtube"
-							/>
-						</div>
-						<div className="w-1/2">
-							<iframe
-								style={{ borderRadius: '14px' }}
-								width="100%"
-								height="350px"
-								src={`https://www.youtube.com/embed/asdasd`}
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-								title="Embedded youtube"
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
+				</>
+			)}
 		</div>
 	);
 };

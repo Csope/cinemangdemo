@@ -1,9 +1,20 @@
+import { ClassType, LocationType, TrainerType } from '.';
 export default interface SessionType {
-	startDate: Date;
-	employeeName: string;
-	location: number;
-	sessionId: number;
-	sessionName: string;
+	start: string;
+	end: string;
+	date: string;
+	class: ClassType;
+	trainer: TrainerType;
+	open_day: boolean;
+	max_headcount: number;
+	current_headcount: number;
+	location: LocationType;
+	id: number;
+	frequented_type: any;
+	frequented: boolean;
 
-	// isReserved: false
+	// employeeName: string;
+	// location: number;
+	// sessionId: number;
+	// sessionName: string;
 }
