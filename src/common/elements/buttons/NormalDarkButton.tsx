@@ -7,15 +7,23 @@ const NormalDarkButton = ({
 	customClasses,
 	isLink,
 	linkHref,
+	appendBefore,
+	clickEvent,
 }: ButtonPropType) => {
 	const classes = `btn-dark inline-block ${customClasses || ''}`;
 
 	return isLink && linkHref ? (
 		<Link href={linkHref || '/'}>
-			<a className={classes}>{text}</a>
+			<a className={classes} onClick={clickEvent}>
+				{appendBefore ? appendBefore : null}
+				{text}
+			</a>
 		</Link>
 	) : (
-		<button className={classes}>{text}</button>
+		<button className={classes} onClick={clickEvent}>
+			{appendBefore ? appendBefore : null}
+			{text}
+		</button>
 	);
 };
 

@@ -2,6 +2,8 @@ export enum DataTypes {
 	TRAINER = 'trainer',
 	TRAINERS = 'trainers',
 	SESSIONS = 'sessions',
+	USER = 'user',
+	TOKEN = 'token',
 }
 
 export enum HttpCodeTypes {
@@ -13,7 +15,7 @@ export default interface ResType<T> {
 	status: boolean;
 	message?: string;
 	data: {
-		[k in DataTypes]: T;
+		[k in DataTypes]?: T;
 	};
 	// errors?: object[];
 }

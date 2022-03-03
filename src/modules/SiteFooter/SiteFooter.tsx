@@ -151,7 +151,7 @@ const SiteFooter = () => {
 				</div>
 				<div className="w-full md:w-1/3 mb-8 md:mb-0">
 					<div className="mx-auto" style={{ maxWidth: '200px' }}>
-						<BrandLogo />
+						<BrandLogo fillColor="white" />
 					</div>
 				</div>
 				<div className="w-full md:w-1/3 mb-8 md:mb-0 text-center md:text-right font-bold text-site-16">

@@ -14,8 +14,8 @@ const InitPageLoad = ({ children }: any) => {
 		);
 	}
 
-	if (status === 'authenticated' && user && user.authToken) {
-		setAuthToken(user.authToken);
+	if (status === 'authenticated' && user && data?.authToken) {
+		setAuthToken(data.authToken);
 	} else {
 		removeAuthToken();
 	}

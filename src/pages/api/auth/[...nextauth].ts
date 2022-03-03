@@ -1,5 +1,7 @@
+import axios from 'axios';
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import { ResType, UserType } from '../../../types';
 
 export default NextAuth({
 	providers: [
@@ -9,20 +11,33 @@ export default NextAuth({
 				email: { label: 'Email', type: 'email' },
 				password: { label: 'Password', type: 'password' },
 			},
+			// @ts-ignore
 			async authorize(credentials, req) {
 				const email = credentials?.email;
 				const password = credentials?.password;
 
-				const user = {
-					id: 3,
-					authToken: 'adgjenvjkntriuwbnt4uin4un3u943894indjdsnfm',
-					name: 'J Smith',
-					email: 'balazscsabak93@gmail.com',
-				};
+				try {
+					const {
+						data: {
+							status,
+							data: { user },
+						},
+					} = await axios.post<ResType<UserType>>(
+						`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/login`,
+						{
+							email,
+							password,
+						}
+					);
 
-				if (user) {
-					return user;
-				} else {
+					if (status && user) {
+						return user;
+					} else {
+						return null;
+					}
+				} catch (error) {
+					console.log(error);
+					//TODO: handle error
 					return null;
 				}
 			},
@@ -31,17 +46,19 @@ export default NextAuth({
 
 	callbacks: {
 		async jwt({ token, account, user }) {
+			console.log(user);
 			if (account) {
-				token.id = user?.id;
-				token.authToken = user?.authToken;
+				token.user = user;
+				token.authToken = 'THIS-IS-MY-TOKEN';
 			}
 
 			return token;
 		},
 
 		async session({ session, token }) {
-			session.user.id = token.id as number;
-			session.user.authToken = token.authToken as string;
+			// @ts-ignore
+			session.user = { ...token.user };
+			session.authToken = token.authToken as string;
 
 			return session;
 		},

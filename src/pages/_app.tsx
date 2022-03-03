@@ -5,6 +5,7 @@ import MainNavbar from '../modules/SiteHeader/MainNavbar';
 import HeaderLogo from '../modules/SiteHeader/HeaderLogo';
 import SiteFooter from '../modules/SiteFooter/SiteFooter';
 import { ClassFilterProvider } from '../contexts';
+import NextNProgress from 'nextjs-progressbar';
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -38,6 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 								</div>
 
 								<SiteFooter />
+								<NextNProgress color="#680b65" />
 							</>
 						</InitPageLoad>
 					</QueryClientProvider>

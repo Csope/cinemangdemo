@@ -7,7 +7,7 @@ const HeaderLogo = (): JSX.Element => {
 		<div className="w-full flex justify-center pb-3 md:pd-0 md:p-4">
 			<Link href="/">
 				<div className="w-44 md:w-96 cursor-pointer">
-					<BrandLogo />
+					<BrandLogo fillColor="#680b65" />
 				</div>
 			</Link>
 		</div>

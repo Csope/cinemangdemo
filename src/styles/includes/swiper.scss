@@ -8,6 +8,16 @@
 }
 
 .FiveColSwiper {
+	padding-top: 50px;
+
+	.swiper-slide {
+		transition: all 0.3s ease-in-out;
+	}
+	.swiper-slide-active {
+		transform: scale(1.13) !important;
+		transform-origin: bottom !important;
+	}
+
 	img {
 		min-height: 300px;
 		object-fit: cover;

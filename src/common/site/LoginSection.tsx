@@ -57,7 +57,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<input
 										type="email"
 										className="w-full"
-										value="balazscsabak93@gmail.com"
+										// value="doncica86@gmail.com"
 										{...register('email')}
 									/>
 								</div>
@@ -66,7 +66,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<input
 										type="password"
 										className="w-full"
-										value="123456789Aa"
+										// value="12345678Aa"
 										{...register('password', { required: true, minLength: 8 })}
 									/>
 								</div>

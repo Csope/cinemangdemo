@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { getNextDates } from '../../utils';
+import { Dialog } from '@headlessui/react';
 import {
 	isSameDay,
 	format,
@@ -11,12 +12,17 @@ import { hu } from 'date-fns/locale';
 import { SessionType } from '../../types';
 // @ts-ignore
 import { includes } from 'lodash';
+import { IoClose } from 'react-icons/io5';
+import ClassDescription from '../../common/site/ClassDescription';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesCalendarView({ sessions }: PropTypes) {
+	const [showDescription, setShowDescription] = useState<
+		SessionType | undefined
+	>(undefined);
 	const [selectedLocation, setSelectedLocation] = useState('');
 	const next7days = useMemo(() => getNextDates(7, true), []);
 
@@ -108,13 +114,15 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 			<>
 				<div className="column">
 					{hours.map((hour) => (
-						<div className="time-col">{hour}:00</div>
+						<div className="time-col" key={hour}>
+							{hour}:00
+						</div>
 					))}
 				</div>
-				{_sessions.map((day) => {
+				{_sessions.map((day, dIndex) => {
 					return (
-						<div className="column">
-							{day.map((s) => {
+						<div className="column" key={dIndex}>
+							{day.map((s, i) => {
 								if (s && s.location.title === selectedLocation) {
 									const start = new Date(s.start);
 									const end = new Date(s.end);
@@ -127,7 +135,11 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 									const top = (minutes / 60) * 100;
 
 									return (
-										<div className="data-col">
+										<div
+											className="data-col"
+											onClick={() => setShowDescription(s)}
+											key={i}
+										>
 											<div
 												className="data-item"
 												style={{ height, top: `${top}%` }}
@@ -143,7 +155,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 										</div>
 									);
 								} else {
-									return <div></div>;
+									return <div key={i}></div>;
 								}
 							})}
 						</div>
@@ -154,23 +166,58 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 	};
 
 	return (
-		<div className="mt-8 pb-8">
-			<div className="bg-site-6">
-				<div className="filtered-classes__calendar-locations container">
-					{generateLocations()}
+		<>
+			<div className="mt-8 pb-8">
+				<div className="bg-site-6">
+					<div className="filtered-classes__calendar-locations container">
+						{generateLocations()}
+					</div>
+				</div>
+				<div className="bg-site-7">
+					<div className="filtered-classes__calendar-dates container">
+						{generateDates()}
+					</div>
+				</div>
+				<div className="bg-site-1">
+					<div className="filtered-classes__calendar container">
+						{generateCalendar()}
+					</div>
 				</div>
 			</div>
-			<div className="bg-site-7">
-				<div className="filtered-classes__calendar-dates container">
-					{generateDates()}
+			<Dialog
+				open={showDescription ? true : false}
+				onClose={() => setShowDescription(undefined)}
+				className="fixed z-10 inset-0 overflow-y-auto"
+			>
+				<div className="flex items-center justify-center min-h-screen">
+					<Dialog.Overlay
+						className="fixed inset-0 opacity-60"
+						style={{ backgroundColor: '#2e152e' }}
+					/>
+
+					<div className="relative w-full">
+						<div className="px-4 bg-site-8 py-3">
+							<div className="container relative">
+								<h1 className="h1-shadow h1-shadow--white text-center ">
+									{showDescription?.class.title}
+								</h1>
+								<div
+									onClick={() => setShowDescription(undefined)}
+									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-2 cursor-pointer text-lg"
+								>
+									<IoClose />
+								</div>
+							</div>
+						</div>
+						<div className="bg-site-1 py-8">
+							<div className="container">
+								<ClassDescription session={showDescription} />
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div className="bg-site-1">
-				<div className="filtered-classes__calendar container">
-					{generateCalendar()}
-				</div>
-			</div>
-		</div>
+			</Dialog>
+		</>
 	);
 }
 

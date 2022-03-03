@@ -53,6 +53,12 @@
 				align-items: center;
 				flex-direction: column;
 				text-align: center;
+				cursor: pointer;
+
+				&:hover {
+					background-color: #faf3ff;
+					color: #550552;
+				}
 
 				.time {
 					font-size: 11px;

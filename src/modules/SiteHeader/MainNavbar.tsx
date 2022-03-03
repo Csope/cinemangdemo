@@ -29,7 +29,7 @@ const MainNavbar = (): JSX.Element => {
 						<div className="flex flex-col  absolute top-full left-0 right-0 z-50 bg-site-1">
 							<nav className="w-full text-center flex flex-col  justify-center gap-4 uppercase p-6 md:p-2  text-md text-site-4">
 								<Link href={'/'}>Órák</Link>
-								<Link href={'/'}>Árak</Link>
+								<Link href={'/prices'}>Árak</Link>
 								<Link href={'/sales-events'}>Akciók/Események</Link>
 								<Link href={'/trainers'}>Oktatók</Link>
 								<Link href={'/timetable'}>Órarend</Link>
@@ -44,7 +44,7 @@ const MainNavbar = (): JSX.Element => {
 					<div className="flex flex-col top-full left-0 right-0 z-50 ">
 						<nav className="w-full text-center flex flex-row justify-center gap-8 uppercase p-6 md:p-2  text-md text-site-4">
 							<Link href={'/'}>Órák</Link>
-							<Link href={'/'}>Árak</Link>
+							<Link href={'/prices'}>Árak</Link>
 							<Link href={'/sales-events'}>Akciók/Események</Link>
 							<Link href={'/trainers'}>Oktatók</Link>
 							<Link href={'/timetable'}>Órarend</Link>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
 import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
@@ -19,6 +19,10 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 		SessionType | undefined
 	>(undefined);
 
+	const reservationClick = (e: MouseEvent) => {
+		e.stopPropagation();
+	};
+
 	return (
 		<>
 			<div className="FilteredClassesListView bg-white">
@@ -34,8 +38,9 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 
 							return (
 								<div
+									key={session.id}
 									onClick={() => setShowDescription(session)}
-									className="hover:bg-slate-100 cursor-pointer"
+									className="hover:bg-site-5 cursor-pointer"
 								>
 									<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
 										<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
@@ -71,7 +76,11 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											hely
 										</div>
 										<div className="md:basis-2/12 md:text-right">
-											<NormalDarkButton isLink={false} text="Foglalás" />
+											<NormalDarkButton
+												isLink={false}
+												text="Foglalás"
+												clickEvent={(e) => reservationClick(e)}
+											/>
 										</div>
 									</div>
 								</div>

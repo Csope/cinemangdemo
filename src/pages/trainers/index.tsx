@@ -18,7 +18,7 @@ const Trainers: NextPage = () => {
 	>(undefined);
 
 	useEffect(() => {
-		if (!selectedTrainer) {
+		if (!selectedTrainer && data?.data.trainers) {
 			setSelectedTrainer(data?.data.trainers[2]);
 		}
 	}, [data]);
@@ -39,7 +39,9 @@ const Trainers: NextPage = () => {
 					<FiveColSwiper
 						initialSlide={2}
 						onSlideChange={(swiper: any) => {
-							setSelectedTrainer(data?.data.trainers[swiper.snapIndex]);
+							if (data?.data.trainers) {
+								setSelectedTrainer(data?.data.trainers[swiper.snapIndex]);
+							}
 						}}
 						imgSrcs={
 							data?.data.trainers
