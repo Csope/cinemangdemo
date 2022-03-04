@@ -4,7 +4,7 @@ import BrandLogo from '../../common/site/BrandLogo';
 
 const SiteFooter = () => {
 	return (
-		<div className="site-footer bg-site-15 text-white border-t-2 border-t-gray-400">
+		<div className="site-footer bg-site-15 text-white">
 			<div className="container flex flex-col md:flex-row px-4 py-10">
 				<div className="w-full md:w-3/12 mb-8">
 					<div className=" font-bold mb-4 md:mb-6 text-center md:text-left">

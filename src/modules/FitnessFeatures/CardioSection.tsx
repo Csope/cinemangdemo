@@ -1,6 +1,14 @@
 import React from 'react';
 import { BsDot } from 'react-icons/bs';
 import NormalCianButton from '../../common/elements/buttons/NormalCianButton';
+import CardioBookIcon from '../../common/icons/fitness/CardioBookIcon';
+import CardioBurnIcon from '../../common/icons/fitness/CardioBurnIcon';
+import CardioGroupIcon from '../../common/icons/fitness/CardioGroupIcon';
+import CardioHeartIcon from '../../common/icons/fitness/CardioHeartIcon';
+import CardioMuscleIcon from '../../common/icons/fitness/CardioMuscleIcon';
+import CardioTreadmillIcon from '../../common/icons/fitness/CardioTreadmillIcon';
+import CardioWatchIcon from '../../common/icons/fitness/CardioWatchIcon';
+import CardioWaterIcon from '../../common/icons/fitness/CardioWaterIcon';
 
 const CardioSection = () => {
 	return (
@@ -15,10 +23,10 @@ const CardioSection = () => {
 							Élet, erō, egészség!
 						</h3>
 						<div className="text-center md:text-left">
-							Lorem ipsum dolor sit amet consectetur adipisicing elit.
-							Praesentium adipisci, earum explicabo deleniti quas nobis vel,
-							ratione voluptatem eligendi placeat exercitationem dolorem
-							voluptates quaerat. Voluptas?
+							Fitness termünkben új modern Mátrix géppark várja az edzeni
+							vágyókat. Erősítő részlegünkön nem kifejezetten a nagy izom
+							növelésére inkább a test formálására alkalmas súlyok találhatók
+							így a hölgyek is kényelmesen tudják használni őket.
 						</div>
 						<div className="mt-10 text-center md:text-left">
 							<NormalCianButton
@@ -28,49 +36,65 @@ const CardioSection = () => {
 							/>
 						</div>
 					</div>
-					<div className="w-full md:w-3/5 flex gap-4">
+					<div className="md:pl-10 w-full md:w-3/5 flex gap-4">
 						<div className=" w-1/2">
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
+								<CardioWatchIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								modern géppark
+							</div>
+							<div className="flex items-center text-lg md:text-2xl mb-5">
+								<CardioBurnIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
 								szauna
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								bufe
+								<CardioTreadmillIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								futópad
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								futogepek
-							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								33-fele edzogep
-							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								1500 m2
+								<CardioWaterIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								büfé
 							</div>
 						</div>
 						<div className=" w-1/2">
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								szauna
+								<CardioHeartIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								cardio részleg
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								bufe
+								<CardioMuscleIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								erősítő részleg
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								futogepek
+								<CardioBookIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								600 m2
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								33-fele edzogep
-							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
-								<BsDot color="black" />
-								1500 m2
+								<CardioGroupIcon
+									customClasses="w-8 h-8 mr-4"
+									fillColor="#028d9a"
+								/>
+								jó közösség
 							</div>
 						</div>
 					</div>

@@ -52,7 +52,7 @@ const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
 							trainers
 								? trainers.map(
 										(trainer) =>
-											'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg'
+											'https://geocdn.fotex.net/static.sugarfitness.hu/images/default_employee.jpg'
 								  )
 								: []
 						}

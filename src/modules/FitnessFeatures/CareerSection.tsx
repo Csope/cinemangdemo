@@ -3,6 +3,7 @@ import CoupleImage from '../../../public/images/carrier-couple.png';
 import BgImage from '../../../public/images/carrier-bg.jpg';
 import NormalLightButton from '../../common/elements/buttons/NormalLightButton';
 import NormalGrayButton from '../../common/elements/buttons/NormalGrayButton';
+import NormalMagentaButton from '../../common/elements/buttons/NormalMagentaButton';
 
 const CareerSection = () => {
 	return (
@@ -16,14 +17,16 @@ const CareerSection = () => {
 						Karrier
 					</h1>
 					<div className="text-gray-800 leading-7 w-full md:w-3/4 text-center md:text-left">
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil
-						praesentium, quia, excepturi blanditiis illo reiciendis id illum
-						omnis alias, sed aut neque velit tenetur porro. Quidem illo esse
-						ipsum aliquid, pariatur veritatis quasi reprehenderit iste ratione
-						quibusdam delectus, aspernatur consectetur?
+						A főváros jól megközelíthető pontján, a Sugár Üzletközpontban,
+						modern környezetben és felszereltséggel, több mint negyven különböző
+						óratípussal várja vendégeit a Sugár Fitness! Hatvan szakképzett,
+						elhivatott oktató hét különböző teremben tart edzéseket a hét minden
+						napján, cardio- és külön erősítő termünkben pedig tréning
+						lehetőséget biztosítunk a személyi edzést előnyben részesítő
+						vendégeink számára.
 					</div>
 					<div className="mt-10 mb-10 md:mb-0 text-center md:text-left">
-						<NormalGrayButton
+						<NormalMagentaButton
 							text={'Jelentkezés!'}
 							isLink={true}
 							linkHref={'/'}

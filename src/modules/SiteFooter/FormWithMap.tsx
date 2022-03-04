@@ -6,7 +6,7 @@ import NormalGrayButton from '../../common/elements/buttons/NormalGrayButton';
 const FormWithMap = () => {
 	return (
 		<div className="bg-site-14 FormWithMap px-4">
-			<div className="container w-full flex flex-col-reverse md:flex-row gap-28 py-4 items-center">
+			<div className="container w-full flex flex-col-reverse md:flex-row gap-28 items-center">
 				<div className="basis-full">
 					<img src={MapBg.src} className="FormWithMap__map-img " />
 				</div>
@@ -25,7 +25,7 @@ const FormWithMap = () => {
 						/>
 					</div>
 					<div className="mb-6">
-						<textarea className="white-textarea" />
+						<textarea className="white-textarea" placeholder="Üzenet szövege" />
 					</div>
 					<div className="text-center md:text-right">
 						<NormalGrayButton text="Küldés" customClasses="" isLink={false} />

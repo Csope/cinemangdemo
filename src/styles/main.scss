@@ -17,17 +17,18 @@ img {
 }
 
 .white-textarea {
-	min-height: 200px;
+	min-height: 150px;
 	background-color: transparent;
-	color: white;
+	color: #d9dbe1;
 	outline: none;
 	font-size: 18px;
-	border: 1px solid white;
+	border: 1px solid #818897;
 	width: 100%;
 	padding: 10px;
+	border-radius: 6px;
 
 	&::placeholder {
-		color: white;
+		color: #d9dbe1;
 		font-size: 18px;
 	}
 }
@@ -35,21 +36,19 @@ img {
 	border: none;
 	background-color: transparent;
 	outline: none;
-	border-bottom: 1px solid white;
-	color: white;
+	border-bottom: 1px solid #818897;
+	color: #d9dbe1;
 	padding: 5px 0px;
 	font-size: 18px;
 	width: 100%;
 
 	&::placeholder {
-		color: white;
+		color: #d9dbe1;
 	}
 }
 
 .FormWithMap {
 	&__map-img {
-		transform: rotate(355deg) translateY(-21px);
-		box-shadow: 5px 7px 32px -3px #000000bf;
 	}
 }
 

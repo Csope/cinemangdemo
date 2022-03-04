@@ -37,6 +37,7 @@ module.exports = {
 				'site-15': '#3a3939',
 				'site-16': '#92def7',
 				'site-17': '#f1eee7',
+				'site-18': '#f85799',
 			},
 		},
 	},

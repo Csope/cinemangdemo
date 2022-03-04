@@ -37,9 +37,9 @@ const Home: NextPage = () => {
 					<div className="container">
 						<TwoColClassSection
 							direction="text-img"
-							classTitle={'Cardió'}
+							classTitle={'Cardio'}
 							classDescription={
-								'Lorem ipsum dolor sit amet s duis blandit est feugiat, dis id at integer bibendum posuere etiam porttitor, mollis euismod dictumst cum sociis sagittis litora taciti, facilisis tortor diam enim eu lacus dui. Convallis diam etiam tempor elementum tempus iaculis donec condimentum egestas, curae vulputate justo ultricies sagittis tortor urna aptent facilisis'
+								'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
 							}
 							imgSrcs={[
 								'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
@@ -57,10 +57,10 @@ const Home: NextPage = () => {
 				<div className="pt-12 pb-12 bg-site-9">
 					<div className="container">
 						<TwoColClassSection
-							classTitle={'Cardió'}
+							classTitle={'Erősítő'}
 							direction="img-text"
 							classDescription={
-								'Lorem ipsum dolor sit amet consectetuida nascetur ultrices rutrum. Sodales lacinia metus at integer bibendum posuere etiam porttitor, mollis euismod dictumst cum sociis sagittis litora taciti, facilisis tortor diam enim eu lacus dui. Convallis diam etiam tempor elementum tempus iaculis donec condimentum egestas, curae vulputate justo ultricies sagittis tortor urna aptent facilisis'
+								'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
 							}
 							imgSrcs={[
 								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
@@ -70,7 +70,7 @@ const Home: NextPage = () => {
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
-								text: 'Cardió órák',
+								text: 'Erősítő órák',
 							}}
 						/>
 					</div>
@@ -80,9 +80,9 @@ const Home: NextPage = () => {
 					<div className="container">
 						<TwoColClassSection
 							direction="text-img"
-							classTitle={'Cardió'}
+							classTitle={'Mobilitás'}
 							classDescription={
-								'Lorem ipsum dolor sit amet s duis blandit est feugiat, dis id at integer bibendum posuere etiam porttitor, mollis euismod dictumst cum sociis sagittis litora taciti, facilisis tortor diam enim eu lacus dui. Convallis diam etiam tempor elementum tempus iaculis donec condimentum egestas, curae vulputate justo ultricies sagittis tortor urna aptent facilisis'
+								'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
 							}
 							imgSrcs={[
 								'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
@@ -92,7 +92,7 @@ const Home: NextPage = () => {
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
-								text: 'Cardió órák',
+								text: 'Mobilitás órák',
 							}}
 						/>
 					</div>
