@@ -2,7 +2,6 @@ import React from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { SessionType } from '../../types';
 import NormalDarkButton from '../elements/buttons/NormalDarkButton';
-// @ts-ignore
 import { unescape } from 'lodash';
 import { format } from 'date-fns';
 

@@ -4,7 +4,10 @@ import NormalCianButton from '../../common/elements/buttons/NormalCianButton';
 
 const CardioSection = () => {
 	return (
-		<div className="Homepage-cardio-section bg-site-10 py-10">
+		<div
+			className="Homepage-cardio-section bg-site-10 py-10"
+			style={{ marginTop: -1 }}
+		>
 			<div className="container">
 				<div className="flex flex-col md:flex-row px-4 items-center gap-10">
 					<div className="w-full md:w-2/5 mb- md:mb-10 leading-7">

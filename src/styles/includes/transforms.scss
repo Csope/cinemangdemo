@@ -2,34 +2,6 @@
 	perspective: 40em;
 	position: relative;
 
-	&.left-to-right {
-		.image-shadow {
-			position: absolute;
-			left: 20px;
-			right: 20px;
-			top: 20px;
-			bottom: 20px;
-			z-index: -1;
-			transform: rotateY(6deg) rotateX(-9deg) rotateZ(-5deg) scale(0.94)
-				translateX(15px) translateY(4px);
-			box-shadow: -40px -23px 38px 14px #9467a8b8;
-		}
-	}
-
-	&.right-to-left {
-		.image-shadow {
-			position: absolute;
-			left: 20px;
-			right: 20px;
-			top: 20px;
-			bottom: 20px;
-			z-index: -1;
-			transform: rotateY(6deg) rotateX(-9deg) rotateZ(5deg) scale(0.94)
-				translateX(15px) translateY(4px);
-			box-shadow: 40px -23px 38px 14px #9467a8a3;
-		}
-	}
-
 	img {
 		border-radius: $radiusBig;
 		width: 100% !important;

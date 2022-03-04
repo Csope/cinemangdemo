@@ -10,7 +10,6 @@ import {
 } from 'date-fns';
 import { hu } from 'date-fns/locale';
 import { SessionType } from '../../types';
-// @ts-ignore
 import { includes } from 'lodash';
 import { IoClose } from 'react-icons/io5';
 import ClassDescription from '../../common/site/ClassDescription';
@@ -167,7 +166,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 	return (
 		<>
-			<div className="mt-8 pb-8">
+			<div className="mt-8 pb-12 bg-site-1">
 				<div className="bg-site-6">
 					<div className="filtered-classes__calendar-locations container">
 						{generateLocations()}
@@ -178,7 +177,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						{generateDates()}
 					</div>
 				</div>
-				<div className="bg-site-1">
+				<div className="bg-site-1 pt-12">
 					<div className="filtered-classes__calendar container">
 						{generateCalendar()}
 					</div>

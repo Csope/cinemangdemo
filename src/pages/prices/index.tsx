@@ -1,9 +1,19 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
-import SimpleButton from '../../common/elements/buttons/SimpleButton';
+import { GetServerSideProps } from 'next';
+import axios from 'axios';
+import { ResType, PassTypes } from '../../types';
+import { chunk } from 'lodash';
 
-const Prices = () => {
+type PropTypes = {
+	passTypes: PassTypes[];
+};
+
+const Prices = ({ passTypes }: PropTypes) => {
+	const _passTypes = chunk(passTypes, passTypes.length / 2);
+	console.log(_passTypes);
+
 	return (
 		<div className="Prices page">
 			<div className="container pb-10">
@@ -11,73 +21,29 @@ const Prices = () => {
 					<h1 className="h1-shadow h1-shadow--purple mb-6">
 						Csoportos bérletek
 					</h1>
+
 					<p className="mb-2">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
 						nulla ad facere autem voluptatem ullam. Aperiam molestias possimus
 						odit nobis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						A, fuga.
 					</p>
+
 					<div className="divide-y divide-site-6">
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
+						{_passTypes[0].map((pass) => (
+							<div className="price-row py-6" key={pass.id}>
+								<div className="title">{pass.title}</div>
+								<div className="desc">Nem hosszabítható</div>
+								<div className="price">
+									<NormalDarkButton
+										text={(pass.price as unknown as string) + ' Ft'}
+										isLink={false}
+										customClasses="flex items-center justify-center ml-auto"
+										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 
@@ -89,66 +55,20 @@ const Prices = () => {
 						odit nobis.
 					</p>
 					<div className="divide-y divide-site-6">
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
+						{_passTypes[1].map((pass) => (
+							<div className="price-row py-6" key={pass.id}>
+								<div className="title">{pass.title}</div>
+								<div className="desc">Nem hosszabítható</div>
+								<div className="price">
+									<NormalDarkButton
+										text={(pass.price as unknown as string) + ' Ft'}
+										isLink={false}
+										customClasses="flex items-center justify-center ml-auto"
+										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
+									/>
+								</div>
 							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
-						<div className="price-row py-6">
-							<div className="title">Fitness 1 Honap</div>
-							<div className="desc">Nem hosszabítható</div>
-							<div className="price">
-								<NormalDarkButton
-									text="19.990 Ft"
-									isLink={false}
-									customClasses="flex items-center justify-center ml-auto"
-									appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
-								/>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 
@@ -180,6 +100,30 @@ const Prices = () => {
 			</div>
 		</div>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	try {
+		const {
+			data: {
+				data: { pass_types },
+			},
+		} = await axios.get<ResType<PassTypes[]>>(
+			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types`
+		);
+
+		return {
+			props: {
+				passTypes: pass_types || [],
+			},
+		};
+	} catch (error) {
+		return {
+			props: {
+				passTypes: [],
+			},
+		};
+	}
 };
 
 export default Prices;

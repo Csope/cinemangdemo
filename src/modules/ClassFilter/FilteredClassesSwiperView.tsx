@@ -6,7 +6,6 @@ import { FiAlertCircle } from 'react-icons/fi';
 import FiveColSwiper from '../../common/swiper/FiveColSwiper';
 import ClassDescription from '../../common/site/ClassDescription';
 import { SessionType } from '../../types';
-// @ts-ignore
 import { isEmpty } from 'lodash';
 
 type PropTypes = {
@@ -23,9 +22,9 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 	}, [sessions]);
 
 	return (
-		<div className="FilteredClassesSwiperView">
+		<div className="FilteredClassesSwiperView bg-site-1">
 			{isEmpty(sessions) ? (
-				<div className="text-center my-20">Nincs találat TODO: new message</div>
+				<div className="text-center py-20">Nincs találat TODO: new message</div>
 			) : (
 				<div className="container pt-6">
 					<FiveColSwiper

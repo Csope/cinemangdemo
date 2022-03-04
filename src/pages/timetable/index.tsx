@@ -9,6 +9,7 @@ import { ResType, SessionType } from '../../types';
 import type { NextPage } from 'next';
 import { ViewList } from '../../types/ClassFilterTypes';
 import { useClassFilter } from '../../hooks';
+import testSessionData from '../../static/testSessionData.json';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -81,15 +82,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			}
 		);
 
+		/**
+		 * FIXME: TEST DATA DONT FORGET TO CHANGE BACK
+		 */
 		return {
 			props: {
-				sessions: sessions || [],
+				sessions: testSessionData.data.sessions,
 			},
 		};
 	} catch (error) {
 		return {
 			props: {
-				sessions: [],
+				sessions: testSessionData,
 			},
 		};
 	}

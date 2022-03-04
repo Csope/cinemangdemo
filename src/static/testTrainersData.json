@@ -1,0 +1,804 @@
+{
+	"http_status_code": 200,
+	"status": true,
+	"message": "TRAINER_TRAINERSFOUND",
+	"data": {
+		"trainers": [
+			{
+				"id": 120,
+				"first_name": "Sándor",
+				"last_name": "Fehér",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2003-2007: Nyíregyházi Művészeti Szakközépiskola (tánc)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2011-2011: Zumba Instruktor képzés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2014-2015: Fitness Akadémia (Csoportos Fitness Instruktor)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2015-2015: Aqua Fitness (Fitness Akadémia)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2015-2015: Hot Iron Instruktor képzés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016-: Fitness Akadémia - Személyi edző&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kiskoromtól kezdve a tánc, a mozgás és az ének nagyon fontos szerepet töltött be az életemben. Nyíregyházán Táncművészeti Szakközépiskolában végeztem, majd színházakban táncoltam. Egy baleset miatt sajnos abba kellett hagynom a táncolást, így szinte azonnal felszaladtak rám a kilók. Felépülésem után nem éreztem jól magam a bőrömben, ezért elmentem egy ZUMBA órára, ami a hangulata miatt nagyon megfogott. Később úgy gondoltam, hogy ezt én is szeretném oktatni, ezért elvégeztem egy zumba képzést, így sikerült 1-2 fitness terembe bekerülnöm.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ezek után úgy &amp;nbsp;éreztem, már nem elég az, ha lefogyok, szerettem volna izmosodni, így került az életembe a HOT IRON és a KÖREDZÉS. A változatos eszközhasználatnak köszönhetően rengeteget fejlődtem. Szerettem volna segíteni az embereknek, hogy ők is átérezhessék a fejlődés örömét, ezért elvégeztem a Fitness Akadémia csoportos instruktor szakát, így még több csoportos órával ismerkedtem meg. Sokan érdeklődnek tőlem a helyes táplálkozással és a kondi gépek használatátával kapcsolatban, mit-mikor-hogyan csináljanak. Ezért is jelentkeztem a Fitness Akadémia személyi edző szakára.&lt;/div&gt;",
+				"motto": "&quot;A tanítvány sikere az edzőt minősíti! Mindennél fontosabbnak tartja tanítványa fejlődését, ezért gondolatai folyamatosan ekörül jár. Újabb és újabb gyakorlatokat talál ki szabadidejében is, hogy rákényszerítse a helyes mozgásra az ígéretes sportolót.&quot;",
+				"birth_date": "1988-02-21",
+				"email": "feher.sandor1988@gmail.com",
+				"others": {
+					"contract_date": "2019-04-05",
+					"display_gross_price": "false",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/biTHwaJIIXA&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/_FW6dlWqFwQ&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/g8gWgsNvIS8&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;",
+					"company": "Fehér Sándor e.v.",
+					"other_lesson_place": "Life1 Corvin, Life1 Váci 35, Gilda Max Flórián, H2O Fitness."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 126,
+				"first_name": "Ildi",
+				"last_name": "Krekács",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségem:&lt;/div&gt;&lt;div&gt;2013-2015 Fitness-wellness instruktor, &amp;nbsp;Szinergia Óbudai Tagintézmény&lt;/div&gt;&lt;div&gt;2015 Gyermek Aerobik, Dinamik SE&lt;/div&gt;&lt;div&gt;2015 Drum&amp;amp;Ball tanfolyam&lt;/div&gt;&lt;div&gt;2015 Kangoo Power &amp;nbsp;K.C.H. Company Kft.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Számos edzőnél/oktatónál olvashatjuk bemutatkozásképp, hogy a sport kiskoruktól kezdve az életük része. &amp;nbsp;Nos, nálam ez úgy indult, hogy gyermekkoromban súlyproblémákkal küzdöttem és elhatároztam, mindent megteszek annak érdekében, hogy változtassak a megszokott életemen és a sport segítségével egy „új úton” induljak el. A sport megtanított a küzdelemre, kitartásra, alázatra, fegyelemre, szorgalomra, kudarcra és sikerre egyaránt.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Edzőként a vendégeim a legértékesebbek számomra. Minden edzésen a maximumra törekszek és imádom a vendégeim „rejtett képességeit” előhozni. Néhányan nem is tudják mennyi mindenre képesek, csak küzdeni és akarni kell, de ebben egy jó edző mindig segít a szaktudásával, motiválásával, energiájával! Lelkes és segítőkész edzőnek tartom magam, aki szívvel-lélekkel dolgozik azon, hogy a vendégei is jól érezzék magukat (főleg, amikor éppen úgy érzik, hogy nem bírják tovább)! Legyen az óra kangoo, alakformáló vagy bármi más, az izomláz garantált!&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;„Biztos sokan vannak úgy, hogy félnek elmenni egyedül egy új közegbe, egy új órára, valamint új sportot kipróbálni, vagy talán nem is hiszik, hogy nekik is menne. Egy kicsit én is ilyen voltam egészen addig, amíg el nem kezdtem kangoozni Ildivel. Fantasztikus, hogy mennyi energia és vidámság van benne, és hogy ezt képes minden gond nélkül átadni a környezetének. Nemcsak a kezdőknek tudom ajánlani Ildi óráit, ahol motivációra és jó hangulatra lelhetnek, hanem az edzettebbeknek is, hiszen az izzasztó és erőt próbáló gyakorlatsorok is garantáltak. Az egyetlen dolog, amitől &quot;félhettek&quot; az az, hogy függővé váltok!” – K. Anna kitartó vendégem véleménye az óráimról&lt;/div&gt;",
+				"motto": "Két választásod van: vagy bedobod a törölközőt vagy letörlöd vele az izzadságot!",
+				"birth_date": null,
+				"email": "ilducc@gmail.com",
+				"others": {
+					"contract_date": "2019-04-24",
+					"display_gross_price": "false",
+					"company": "Krekács Ildikó Katalin e.v.",
+					"other_lesson_place": "Aréna Fitness Centerben tart csoportos órát (Kangoo)."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 248,
+				"first_name": "Éva",
+				"last_name": "Lazsán",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;&lt;u&gt;Végzettségeim:&lt;/u&gt;&lt;/div&gt;&lt;div&gt;2020 - Funkcionális Fascia Tréning - Balance Medical Fitness Akadémia (BMFA)&lt;/div&gt;&lt;div&gt;2020 - TripleX training® - Almásy Mozgásakadémia&lt;/div&gt;&lt;div&gt;2020 - Core-stabilizáció - Almásy Mozgásakadémia&lt;/div&gt;&lt;div&gt;2020 - Preventív gerincedzés - Almásy Mozgásakadémia&lt;/div&gt;&lt;div&gt;2019 - Alternatív mozgás- és masszázsterapeuta - Állami Egészségügyi Ellátó Központ&lt;/div&gt;&lt;div&gt;2018 - Hatha jóga oktatóképzés - YAI 200 – Samadhi Jógastúdió&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;u&gt;Egyéb kapcsolódó továbbképzéseim:&lt;/u&gt;&lt;/div&gt;&lt;div&gt;2020 - Köpölyözés – Mobilizáció és tonizálás - BMFA&amp;nbsp;&lt;/div&gt;&lt;div&gt;2018/2019/2020 - Kinesiology-taping/Sporttaping/Kismama taping - BMFA&lt;/div&gt;&lt;div&gt;2019 - Flossing terápia a mozgásszervi problémák és sportsérülések rehabilitációjában - BMFA&lt;/div&gt;&lt;div&gt;2019 - Komplex mozgásszervi állapotfelmérés - testtartáselemzés, mozgássztereotípia vizsgálatok, funkcionális- és izomtesztek - BMFA&lt;/div&gt;&lt;div&gt;2019 - Mozgásszervi anatómia és kórélettan - BMFA&lt;/div&gt;&lt;div&gt;2019 - Felső Végtag és Függesztőövének Anatómiája - FitCollege Képzési Központ – Semmelweis Egyetem&lt;/div&gt;&lt;div&gt;2019 - Gerinc Anatómiája - FitCollege Képzési Központ – Semmelweis Egyetem&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sok kollégámmal ellentétben én nem sportolok gyerekkorom óta. Vékony, törékeny, betegeskedő gyermek voltam. Szemüveges, fogszabályzós, allergiás, súlyos gerincferdüléssel. Közgazdászként sajnos elég hamar a saját bőrömön tapasztaltam meg a sok ülés, a mozgásszegény életmód és a stressz hatásait. Huszonéves koromra komoly egészségügyi problémákkal kellett farkasszemet néznem. A gerincferdülésem ekkorra már jelentős derékfájdalmat okozott, térdproblémák is jelentkeztek, az immunrendszerem romokban hevert. Számtalan kezelés, injekciók és gyógyszerek következtek, melyek csak a tüneteket fedték el tényleges javulás nélkül.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ez elfogadhatatlan volt számomra, így elindított az utamon. Végeláthatatlan tanulásba kezdtem. Az egészséges életmód, az anatómia, a gerinc- és egyéb mozgásszervi betegségek hatékony megelőzése illetve rehabilitációja, valamint természetes gyógymódja foglalkoztatott. Saját sportolásom (tánc, jóga, síelés, kerékpározás, funkcionális edzés, stb.) során meg kellett tapasztalnom, hogy egy nem megfelelően felkészült oktatóval, egy nem jól összeállított, kellő tudatosság nélkül, sokszor rossz mozgásmintával végzett gyakorlatok komoly problémát is okozhatnak. Ezért én kiemelt jelentőségűnek tartom, hogy folyamatosan képezzem magam, naprakész tudással segítsem a hozzám fordulókat és a legfrissebb sporttudományi eredményeken alapuló edzésterveket állítsam össze.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Hivatásomnak érzem a széleskörű tájékoztatást, az ismeretterjesztést, megértetni a tudatos mozgás fontosságát, a mozgásszervi problémák mögötti ok-okozati összefüggéseket. Fontos számomra, hogy támogatásommal gyakorlóm is megtalálja az élete mindennapjaiban a mozgás (fájdalommentes) csodáját, a boldogságot, a harmóniát, a lelkesedést, a pozitív gondolkodást és a mosolyt.&lt;/div&gt;",
+				"motto": "„Élj szívből, mozogj mosollyal!”",
+				"birth_date": null,
+				"email": "lazsaneva@gmail.com",
+				"others": {
+					"contract_date": "2020-08-10",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 28,
+				"first_name": "Andris",
+				"last_name": "Angyal",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;b&gt;Végzettségem&lt;/b&gt;:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2000 - Magyar Táncművészeti Főiskola&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1994 óta foglalkozom a versenytánccal. Keleti Andrea tánciskolájában kezdtem el tanulni. 2006 májusában bekerültem a Szombat esti láz első szériájába, ahol Ábrahám Edit színésznő volt a párom. A műsor második sorozatában Farkasházi Réka színésznőt tanítottam táncolni. 2014-ben a megújult műsorban Szinetár Dóra partnereként harmadik helyezést értünk el.&lt;/div&gt;",
+				"motto": "&quot;Tánc közben az lehetsz, ami csak lenni akarsz abban a pillanatban.&quot;",
+				"birth_date": null,
+				"email": "angyalandras@yahoo.com",
+				"others": {
+					"company": "Angyal Betű Bt.",
+					"contract_date": "2016-02-01",
+					"display_gross_price": "true",
+					"other_lesson_place": "A Fit and Go stúdió egyik termét és egy belvárosi termet bérel, Zumbát és versenytáncot oktat.",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/DyXFzwIHbwM&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/mpPCJZhr520&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/wnaA4q0ewAM&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;"
+				},
+				"fees": {
+					"am_fee": 540,
+					"pm_fee": 430,
+					"saturday_am_fee": 540,
+					"saturday_pm_fee": 430,
+					"sunday_am_fee": 540,
+					"sunday_pm_fee": 430
+				},
+				"enabled": true
+			},
+			{
+				"id": 193,
+				"first_name": "Dóra",
+				"last_name": "Majoros",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - Madd Dogg Athletics - Spinning instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - IWI - Csoportos Fitness Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2019 - Art edzőképzés Személyi edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2021 - R-Med Akadémia TRX edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;3 éves voltam, amikor betotyogtam az első ritmikus gimnasztika órámra. Ez egyből szerelem lett, és 13 évig kísérte végig a napjaimat, aminek köszönhetően rövid idő alatt rájöttem arra, mit is jelent a rendszeres testmozgás, és mennyi energiával feltölt testileg-lelkileg, felszabadít, kiragad a hétköznapokból. Ezután jött a moderntánc korszaka, és mindezek mellett egyúttal tagja voltam az iskola kézilabdacsapatának is. Később elkezdtem spinning, és aerobik órákra járni, majd azon kaptam magam, hogy már nem elég a heti 2-3 óra, a részemmé vált a mindennapi testmozgás, az egészséges életmód, megtaláltam benne magam, és ma már hivatásként tekintek rá. Így elhatároztam magam, hogy megvalósítom az álmomat, hogy vendégből edző legyek, amire a legbüszkébb vagyok eddigi életem során.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Fontosnak tartom a rendszerességet, hiszen elengedhetetlen egészségünk megőrzésében, így célom az, hogy vendégeim jókedvvel és elégedetten távozzanak az edzés után, ezért igyekszem a maximumot kihozni magamból az óráimon, és változatosan összeállítani azokat. Nálam nem számít, hogy valaki kezdő, vagy már régóta sportol, egy a lényeg, hogy élvezze, amit csinál. Számomra ez okoz örömet, persze kellő kitartással és hozáállással a siker sem fog elmaradni!&lt;/div&gt;",
+				"motto": "&quot;Az első lépés a legnehezebb, de ha rálépsz a megvalósítás útjára, közelebb leszel önmagadhoz, a céljaidhoz.&quot;",
+				"birth_date": "1996-09-06",
+				"email": "majoriis15@gmail.com",
+				"others": {
+					"display_gross_price": "true",
+					"company": "Crassfilmmedia Kft.",
+					"contract_date": "2020-03-01"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 16,
+				"first_name": "Gyula",
+				"last_name": "Wekerle",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2006 - 2010 Prananadi gyógyító mester / level l-Vll&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2007 - Channelling course / level ll-lll&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2007 - Agama jóga&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2005 - Transpersonális pszihológia&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2000 - Aerobika Akademia / Fitboxe instruttore&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1996­­ - TF / Kick box szakedző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1996­­­ - Ad Sidera - Born To Win / Személyiség fejlesztô tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1996 - California Fitness / Előadás és eladás tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1992 - California Fitness / Táplálkozás tanácsadó&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1989 - Biang - Tong Long instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1988 - Kick-box 1 DAN mesterfokozat&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1982 - Testnevelési Fôiskola / Sportszervezôi szak&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1977 - 1981 Gimnázium / Testnevelés tagozat&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Gyermekkorom óta aktívan sportolok. A Kick-box tanulásával és oktatásával tizenkét évig foglalkoztam. Több nemzetközi versenyen vettem részt kisebb-nagyobb sikerrel. 1986-92-ig Magyar bajnok voltam. Közben 7-14 éves korú gyerekeket edzettem. 1999-ben volt egy sérülésem, melynek következtében (sajnos) sikerült felhíznom 99 kg-ra. Most 76 kg vagyok, amit a fitboxnak köszönhetek. Célom: az egészség, a jó hangulat, a stresszoldás, a zsírégetés és az állóképesség-javítás.&lt;/div&gt;",
+				"motto": "&quot;Ép testben, ép lélek.&quot;",
+				"birth_date": null,
+				"email": "gyuszkathepowerful@gmail.com",
+				"others": {
+					"company": "Wekerle Gyula ev.",
+					"contract_date": "2020-03-08",
+					"display_gross_price": "false",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/AGZHYZVSI_E&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;"
+				},
+				"fees": {
+					"am_fee": 450,
+					"pm_fee": 360
+				},
+				"enabled": true
+			},
+			{
+				"id": 10,
+				"first_name": "István",
+				"last_name": "Oravecz",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2009 - Fitness Akadémia - Fitness Instructor / Személyi edző&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2010 - Fitness Akadémia - Aerobik edző és személyi edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Eredményeim a versenyzésben (2012): Fitness Model magyar bajnok, Fitparádé győztes.&amp;nbsp;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Mindig is szerves részét képezte a sport az életemnek. Hat évesen kezdtem az edzéseket egyesületi és versenyszerűen is. Tíz éves labdarúgó pályafutásom alatt többek között országos bajnoki címeket is szereztem. Több mozgásformát kipróbáltam, atlétikában is jelentős sikereket értem el egyénileg és csapatban. 2006-ban a főiskolán egy számomra nem ismeretlen terület, a fitness-aerobik lett az irányzat, melyet hivatásomnak is választottam. Elvégeztem a szükséges iskolákat, ezenkívül folyamatosan képzem magam, hogy hobbimat céljaim elérésében is kamatoztatni tudjam. 2009-ben tartottam az első csoportos órámat, azóta töretlen lelkesedés és nagy érdeklődés jellemzi az edzéseimet. 2011 óta tartok fellépéseket, a Fittaréna, Fitbalance rendezvényeken. Jelenleg a sportnak élek, mind szakmai, mind hobbi vonalon egyaránt.&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Célom, hogy minél szélesebb körben népszerűsítsem a mozgást. Szeretnék passzív embereket bevonni ebbe a körbe, akik mostanában túl keveset, vagy nem sportoltak, és megtapasztalhassák a jótékony hatását magukon!&lt;/div&gt;&lt;/div&gt;",
+				"motto": "&quot;A győzelem a tapasztaltaké!&quot;",
+				"birth_date": null,
+				"email": "istvan.oravecz@yahoo.com",
+				"others": {
+					"company": "Oravecz István ev.",
+					"contract_date": "2016-02-01",
+					"display_gross_price": "false",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/nKmEVjMD8EM&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/pX_aVyz03_g&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/__zb3ktf4k4&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/r_qW9EZ4GAg&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/5Nk3huD11es&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;",
+					"other_lesson_place": "Nem tart máshol csoportos órát."
+				},
+				"fees": {
+					"am_fee": 450,
+					"pm_fee": 360
+				},
+				"enabled": true
+			},
+			{
+				"id": 177,
+				"first_name": "Diana",
+				"last_name": "Varga",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Fitness-wellness instruktor&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- World jumping tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Fanatic Jump tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Step instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- TRX&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Egészen általános iskolás koromig nyúlik vissza a sport iránti szeretetem.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Nyolc évig versenyszerűen táncoltam akrobatikus hip-hopot (világbajnoki 6. helyezés), különböző atlétikai, röpladba, kötélmászó, floorball stb. versenyekre vittek a testnevelőtanárok. A tanulmányaimat a Dózsa György Gimnázium testnevelés szakán folytattam, majd az utolsó másfél évben átiratkoztam az Egressy Béni Zeneművészeti Szakközépiskolába, ugyanis az éneklés a másik fontos dolog az életemben.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Érettségi után a Szinergia Üzleti Szakképző Iskolában tanultam 2 évig, ahol fitness-wellness instruktorrá váltam, amiért a mai napig hálás vagyok, mert úgy érzem megtaláltam azt, amitől igazán boldoggá és felszabadulttá válok, ami nem más, mint a zene, az emberekkel való kapcsolat kialakítása, és a mozgás. Szeretnék segítő kezet nyújtani az embereknek, motiválni őket, elindítani egy úton, hogy elérhessék kitűzött céljaikat. Fontos számomra, hogy egy vendég jól érezze magát edzés közben, így óráim keményen, ámde jókedvűen telnek el. Segítek mindenben, csak húzd fel az edzőcipőd és gyere!&amp;nbsp;&lt;span style=&quot;font-family: Helvetica;&quot;&gt;☺️&lt;/span&gt;&lt;/div&gt;",
+				"motto": "&quot;Senki sem nyert még versenyt, aki nem nevezett be!&quot;",
+				"birth_date": "2011-05-04",
+				"email": "varga.dejja@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Varga Diána Ev.",
+					"contract_date": "2017-09-01"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 254,
+				"first_name": "Ramóna",
+				"last_name": "Németh",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;2020 - Csoportos Fitness Instruktor - IWI&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;Gyermekkorom óta fontos szerepet játszik életemben a mozgás, ezen belül a tánc áll legközelebb hozzám, ezért több stílust is kipróbáltam.&lt;/div&gt;&lt;div&gt;Emellett szeretek segíteni másoknak, emiatt is döntöttem úgy, hogy csoportos fitness órákkal segítek a mozogni, kikapcsolódni és formálódni vágyóknak, hozzájárulva a fizikális és mentális egészségük megőrzéséhez.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Fit dance óráimon megismerkedhettek a street dance különböző stílusainak lépéseivel (hip-hop, funky, house, locking, stb.) ismerős aerobik mozdulatokkal ötvözve, mindeközben pop / r'n'b / hip-hop zenék garantálják a bulis hangulatot! A koreográfiákat úgy építem fel, hogy könnyedén elsajátítható, ám változatos mozdulatokból álljanak. A táncot követően lenyújtjuk fáradt izmainkat.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Alakformáló óráimon kardiós belemegítést követően &amp;nbsp;minden izomcsoportot átdolgozunk, a saját testsúlyunkat, illetve eszközöket használva - kézi súlyzó, gumiszalag, óriáslabda és step pad. A változatosság itt is mérvadó, így is fokozva az óra élvezetét. Kifejezetten nagy hangsúlyt fektetek a nyújtásra, hiszen így megelőzhető a később jelentkező kellemetlen izomláz.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Várok mindenkit szeretettel, táncoljuk, formálódjunk együtt!&lt;/div&gt;&lt;/div&gt;",
+				"motto": null,
+				"birth_date": null,
+				"email": "ramonanemeth021@gmail.com",
+				"others": {
+					"contract_date": "2021-09-06",
+					"company": "Németh Ramóna E.V.",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 260,
+				"first_name": "Klaudia",
+				"last_name": "Papp",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;YMCA Fitness - London&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Mindig szerettem aktív életet élni. Gyerekként az úszás részesítettem előnyben, mára a kerékpározást lett a legnagyobb szenvedélyem. Az évek során megszerettem a funkcionális edzéseket illetve súlyzós traininget, és 8 éve rendszeresen jógázom.&amp;nbsp;&lt;/div&gt;&lt;div&gt;2013-ban döntöttem úgy, hogy hobbimat fitnesz edzőként is elkezdem kamatoztatni és mint munkám része kezdem el oktatni, bíztatni az embereket egy egészségesebb, kiegyensúlyozottabb életformára.&lt;/div&gt;&lt;div&gt;Szeretem megmutatni azt, hogy a sport nem csak szenvedés és fájdalom, hanem egy szórakoztató tevékenység, ami teljesebbé, boldogabbá teszi életünket, és általa könnyebben tudjuk venni a mindennapi akadályokat, stresszes helyzeteket is.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Óráimat, edzés terveimet &amp;nbsp;változatosság és hatékonyság jellemzi, és azokat igény szerint alakítom a csoporttól/kliensektől kapott visszajelzések alapján.&lt;/div&gt;&lt;div&gt;Előszeretettel foglalkozom az idősebb korosztállyal, de nagyon kedvelem a magas intenzitású edzéseket is. &amp;nbsp;&lt;/div&gt;&lt;div&gt;Tudásomat és tapasztalataim nagy részét Londonban szereztem, így örömmel &amp;nbsp;várom &amp;nbsp;a más országból érkező, angolul beszélő vendéket is.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Tény, hogy a hatékony edzés mellett a helyes étkezes is nagyon fontos az egészséges életmódhoz. A hozzám fordulóknak a helyes táplálkozásban is tudok tanácsokat adni.&amp;nbsp;&lt;/div&gt;",
+				"motto": "“Az élet olyan mint a biciklizés. Ha meg akarod tartani az egyensúlyt, mozgásban kell maradnod”",
+				"birth_date": null,
+				"email": "klaudiapapp1981@gmail.com",
+				"others": {
+					"is_new": "1",
+					"contract_date": "2022-01-26",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 174,
+				"first_name": "Alexandra",
+				"last_name": "Szabó",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2015/2016 - Fintess Company - Aerobik sportoktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Kangoo Club Hungary - Kangoo Power instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Fitness Company - SpinRacing instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Fitness Company - Gymstick Muscle instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Fitness Company - Életmód tanácsadó&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2020 - Almásy Mozgásakadémia - SpineUp preventív gerinctréning&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A mozgás mindig is jelen volt az életemben. Gyerekként versenyszerűen futottam, aerobikoztam, és hobbi szinten bicikliztem. Mára ez kibővült hobbi szintű úszással, alakformáló, köredző edzésformával, de ami igazi szenvedélyemmé vált, az a kangoo. Ebben az óratípusban teljesen magamra ismertem, találtam. Pörgés, pattogás, dinamika, koreográfia. Olyan energiák szabadulnak fel, amiről nem hitted, hogy van, és az, hogy akarva-akaratlanul mosolyogsz, egyszerűen szuper!&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ezért döntöttem úgy, hogy edzői pályára lépek, mert szeretném másokkal, a vendégeimmel megosztani, megélni a mozgás adta örömöt, szeretetet, pozitív energiát, és a kemény munka okozta sikerélményt. Szeretném, hogy úgy gondoljanak a mozgásra, akárcsak én, hogy igénylik, az életük részévé vált, élvezik, szeretik, mintsem kényszer. Azt gondolom, aktív pihenésre is szüksége van mind a testünknek, mind a lelkünknek egyaránt. Cserébe testünk meghálálja a gondoskodást, és ezt ott kamatoztatja, ahol kell. Aktív idődért pedig, had legyek az egyik programfelelősöd! :)&lt;/div&gt;",
+				"motto": "&quot;Egyszer élünk, és én inkább magas térdemeléssel megyek végig, mint lógó orral! Gyere, tarts velem!&quot;",
+				"birth_date": null,
+				"email": "s16szasza@gmail.com",
+				"others": {
+					"company": "Szabó Alexandra E.V",
+					"display_gross_price": "false",
+					"other_lesson_place": "Nem tart máshol csoportos órát, főállása van.",
+					"contract_date": "2021-06-01"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 104,
+				"first_name": "Péter",
+				"last_name": "Ézsiás",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2013 - Kranking oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2010 - International Wellness Institute aerobik edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2007 - Concept Regatta okatató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2006 - Spinning Star 2 oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2004 - Spinning Star 1 oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2012 óta rendszeres előadó vagyok a Fittaréna, Coca-Cola Testébresztő és a Fitbalance budapesti rendezvényein, de tartottam órát az Aggteleki cseppkőbarlang hangversenytermében is.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A Sugár Fitnessben Spinning edzéseket tartok, többségében ismert zenéket mixelek össze az órákra, és mindig a jó hangulat elérésére törekszem, hiszen az edzés, mint minden más úgy jó, ha jól érezzük magunkat közben. Így a legnehezebb órákat is könnyebb átvészelni...&lt;/div&gt;",
+				"motto": "&quot;Tedd, vagy ne tedd, de ne próbáld!&quot; (Yoda)",
+				"birth_date": null,
+				"email": "ezsias.peter@gmail.com",
+				"others": {
+					"company": "Ézsiás Péter e.v.",
+					"contract_date": "2018-01-01",
+					"display_gross_price": "false",
+					"other_lesson_place": "Príma Wellness és Go Active (Gozsdu udvar) tart Spinninget.",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ZL0T3BEIhww&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/MJxAcraJXnE&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/e4A94D-uUQs&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 162,
+				"first_name": "Bence",
+				"last_name": "Szabó",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2012 - Nyugat-magyarországi Egyetem: rekreációszervező és egészségfejlesztő szak&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2014 - Procycling Basic&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Procycling Video Cycling&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A sport és a mozgás szeretete régóta nagy szerepet játszik az életemben. Mindig igyekeztem minél több sportágban kipróbálni magam, hogy megtapasztaljam, melyik áll hozzám a legközelebb. Évekig röplabdáztam és versenyszerűen atletizáltam, de végül a futás és a kerékpározás lett az, ami leginkább magával ragadott. Több félmaraton teljesítése után belekóstoltam a triatlonozásba is, eközben pedig a spinning jelentette számomra a felkészülést és a kikapcsolódást egyaránt. Edzéseimen szeretném átadni ennek a sportnak a lendületét és szeretetét, hogy ezáltal erősebbé és energikusabbá válj!&lt;/div&gt;",
+				"motto": "&quot;Aki törekszik, mindent elér!&quot; (Apáczai Csere János)",
+				"birth_date": null,
+				"email": "bence0612@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Szabó Bence e.v.",
+					"contract_date": "2019-04-15",
+					"other_lesson_place": "Lite Wellness és a Oxygen Wellness Naphegyben tart csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 153,
+				"first_name": "Kata",
+				"last_name": "Lóránth",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségem:&lt;/div&gt;&lt;div&gt;Semmelweis Egyetem TSK – Aerobic instructor&lt;/div&gt;&lt;div&gt;Szinergia Oktatási Központ – Személyi edző&lt;/div&gt;&lt;div&gt;Szinergia Oktatási Központ – Gyermekkori- és Rekreációs mozgásprogram vezető&lt;/div&gt;&lt;div&gt;ZIN – Zumba instructor&lt;/div&gt;&lt;div&gt;Fitness Company – Gymstick trainer&lt;/div&gt;&lt;div&gt;Fitness Akadémia – Sportszervező, sportmanager&lt;/div&gt;&lt;div&gt;Garasport – DBands trainer&lt;/div&gt;&lt;div&gt;TFTI – Aquagym trainer&amp;nbsp;&lt;/div&gt;&lt;div&gt;Samling Legacy &amp;nbsp;– Csapat, csoport, skills és Life coach&lt;/div&gt;&lt;div&gt;Funkcionális fascia tréning tanfolyam&lt;/div&gt;&lt;div&gt;Komplex mozgásszervi állapotfelmérés (testtartás analízis, funkcionális- és izomtesztek, mozgássztereotípiák) -Balance Medical Fitness Akadémia (2018)&lt;/div&gt;&lt;div&gt;PhysioVit - Medical Flossing sportsérülés kezelés&lt;/div&gt;&lt;div&gt;Kinesiology Taping/Sporttaping - Balance Medical Fitness Akadémia, (2019)&lt;/div&gt;&lt;div&gt;Balance Medical Fitness Akadémia - Sportrehabilitációs tréner&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kapcsolatom a sporttal már 5 évesen elkezdődött az úszással, és 10 éves koromig minden nap a vízben voltam. Kicsivel később azonban a bátyám levitt magával a Vasas pályára, és ott nagyon megtetszett a kézilabda. Hosszú és meghatározó évek jöttek. 16 évig játszottam, mint beállós, irányító. Ebben a kemény csapatsportban tanultam meg küzdeni, közösen örülni, nagyokat esni és felállni, ájulásig futni és a fájdalomról nem tudomást venni. Nagyon sokat tanultam az élethez a sportból, a legfontosabb dolgokat.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A legelső aerobic edzők közt tart számon a szakma, közel 27 éve dolgozom edzőként, mondhatni: mióta létezik aerobic itthon. A pályám során sok szép kihívás talált meg a klubvezetéstől a tanításig, nemzetközi rendezvényekig, de soha semmilyen feladat nem tudott eltéríteni attól a küldetésemtől, amire - már kimondhatom - születtem. A tanítás a véremben van, az érzelmi kötődésem a sporthoz nem is kérdés. Edzőként, óra közben vagyok leginkább elememben, amikor ezeknek élek. Nagy &quot;kedvenceim&quot; az új vendégek, akik még soha nem sportoltak és rájuk kell érezni, miből és mennyi okoz akkora sikerélményt, hogy ez az első alkalom egy új életforma kezdete legyen. Én ezt tartom a hivatásom legszebb, küldetés részének.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ha már visszajössz, arra tanítalak, hogyan legyél a testeddel összhangban, mikor, mire figyelj. Arra, hogy a tudatosság az alapja mindennek. Amíg nem figyeled és tanulod magad, nem fogod tudni, hogyan működsz, Neked mi a jó, a Te testednek mire van szüksége valójában. Először megtanítalak a &quot;többet ésszel, mint erővel&quot; testtudatra. Talán hihetetlen, de már a légzés is feladat. A fokozatosság elvével haladunk a képességeid kiaknázásában, a készségeid fejlesztésével. Ez fejben és fizikailag is úgy összerak - nevezhetjük holisztikus óráknak is -, hogy mindig tudni fogod, hol és mennyi a határ, amit majd túl lehet és fogunk lépni. :) Jó hangulat, kemény munka. Szeretettel várlak.&lt;/div&gt;",
+				"motto": "“Akár azt hiszed, hogy képes vagy rá, akár azt, hogy nem, igazad lesz.” (Henry Ford)",
+				"birth_date": null,
+				"email": "kata.loranth@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Lóránth Kata e.v.",
+					"contract_date": "2017-02-01",
+					"other_lesson_place": "Victory Fitnessben tart csoportos órákat."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 252,
+				"first_name": "Barbara",
+				"last_name": "Nagy",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;Fitness Akadémia - sportedző / aerobic /&lt;/div&gt;&lt;div&gt;Kangoo Club Hungary - Kangoo Power&lt;/div&gt;&lt;div&gt;Fitness Company - Kickbox Athletics oktató&lt;/div&gt;&lt;div&gt;Fitness Company - Életmód - tanácsadó wellness trainer&lt;/div&gt;&lt;div&gt;Sifi Jumps - Kangoo Jumps - Advanced&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Nagy Barbara vagyok Aerobic, Kangoo és Kickbox Athletics oktató. A mozgás mindig is jelen volt az életemben, kisebb-nagyobb kihagyásokkal. Majd 19 évesen - megelégelve, hogy mindig súlyproblémákkal küzdöttem - ismerkedtem meg hobbi szinten a kangooval, mint mozgásformával, a fogyás reményében. Később ez indított el az edzői pályámon is.&lt;/div&gt;&lt;div&gt;Tudtam, hogy a jövőben oktatással szeretnék foglalkozni és egy egészséges utat mutatni azoknak akik szintén el akarnak indulni a változás útján.&lt;/div&gt;&lt;div&gt;Így köszöntött be az életembe komolyabban a sport és az egészséges életmód. Igyekszem ezen az úton folyamatosan fejlődni mind a mai napig. :)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Vallom, hogy a sport nem csak testileg erősít meg, hanem lelkileg is.&lt;/div&gt;&lt;div&gt;Kitartóbbá, erősebbé és elszántabbá tesz, amitől megtanulhatod, hogy bármire képes vagy.&lt;/div&gt;&lt;div&gt;Edzéseim során is szeretem inspirálni vendégeimet és arra ösztönözni őket, hogy elérhetik a kitűzött céljaikat.&lt;/div&gt;&lt;div&gt;Ebben igyekszem a segítségükre lenni és úgy felépíteni az óráimat, hogy a gyakorlatokkal később látványos eredményt tudjanak elérni.&lt;/div&gt;&lt;div&gt;Szeretettel várok mindenkit az edzéseimen, hogy segíthessek tovább fejlődni, nálam a lehetetlen nem létezik. :)&lt;/div&gt;",
+				"motto": null,
+				"birth_date": null,
+				"email": "nagybarbara90@gmail.com",
+				"others": {
+					"contract_date": "2020-09-10",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 258,
+				"first_name": "Dóra",
+				"last_name": "Szitkay",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;2016. május: Zumba &amp;nbsp;Instructor&lt;br&gt;&lt;/div&gt;&lt;div&gt;2016. június: Zumba Kids &amp;amp; Zumba Kids Jr.&lt;/div&gt;&lt;div&gt;2017. október: Salsation fitness instructor training&lt;/div&gt;&lt;div&gt;2018. március: Zumba Pro Skills&lt;/div&gt;&lt;div&gt;2018. április: Zumba Kids &amp;amp; Zumba Kids Jr. Boost&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;Jogászként dolgozom, de egész életemben táncoltam. Kislányként népi tánc, illetve társastánc órákra jártam, majd elkezdtem klasszikus- és jazz balettozni. Később a balett mellett egy klasszikus dél-indiai tánccsoport tagja lettem, és belekóstoltam a salsa, a bachata és az argentin tangó világába is. 10 évvel ezelőtt megszületett az első gyermekem, megváltoztak a prioritások, és már nem tudtam annyi időt szánni a táncórákra. Ekkor robbant be az életembe a Zumba®, amelyben a sokféle táncstílus miatt megtaláltam mindent, amire vágytam. 2016. májusában elvégeztem a képzést, és azonnal elkezdtem Zumbát, illetve Zumba kids-et oktatni. 2017-ben beleszerettem a Salsation® fitness nevű, ugyancsak táncos fitnesz programba is, amely nem a salsa, mint zenei- vagy táncstílusból ered, hanem a salsa, mint &quot;szósz&quot; és a sensation (érzés) szavakból. Elvégeztem ezt a képzést is, és elkezdtem személyes, majd online órákat tartani. Mindkét programban folyamatosan képzem magam, hogy egyre jobb oktatóvá váljak. Mondhatjuk, hogy a hobbim, vagy még inkább a szenvedélyem a tánc és az oktatás.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;A Sugár Fitnessben egyelőre Zumba órákon találkozhatunk. Azt gondolom, hogy ahány oktató, annyiféle Zumba létezik és ez így van jól. Az én óráimon a tánc fontos szerepet kap, ezért neveztük el Zumba dance-nek. A Zumba fő táncstílusai a salsa, merengue, a cumbia és a reggaeton, de kiegészítem egyéb izgalmas stílusokkal is, mint például a bhangra, a brazil ritmusok, vagy az afrobeat. Az órához táncos tapasztalatra nincs szükség, mivel ezeknek a táncstílusoknak az alaplépései, valamint variációi könnyen elsajátíthatóak. Bármikor gyakorolhatjuk bármelyik lépést, bármikor kérdezhettek! A Zumba dance úgy mozgatja át hatékonyan a testünket, hogy azt észre sem vesszük, mert akkor, abban az egy órában csak a tánc létezik, minden más gondolatot kikapcsol és ami a legfontosabb: mindenkinek szól!&lt;/div&gt;&lt;/div&gt;",
+				"motto": null,
+				"birth_date": null,
+				"email": "dora.szitkay@gmail.com",
+				"others": {
+					"contract_date": "2021-10-28",
+					"company": "Szitkay Dóra",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 2,
+				"first_name": "Edit",
+				"last_name": "Adamcsek",
+				"position": "Aerobik",
+				"description": "Végzettségeim:&lt;div&gt;2005 - Fitness Company - Aerobik oktató OKJ&lt;/div&gt;&lt;div&gt;2011 - Almásy Csilla Gerinckoncepció - Gerinctréner&lt;/div&gt;&lt;div&gt;2011 - Almásy Csilla Gerinckoncepció - Dinamikus Jógaoktató&lt;/div&gt;&lt;div&gt;2012 - Fitness Akadémia - Személyi edző OKJ&lt;/div&gt;&lt;div&gt;2014 - R-Med Akadémia - Funkcionális tréning a személyi edzésben&lt;/div&gt;&lt;div&gt;2017 - fitnessschool.tv - FREEK Step Fun mastertrainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Számos nemzetközi Step és Dance aerobik workshop&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Egyetemistaként döbbentem rá, hogy ha az addig megszokott életmódot folytatom, hamarosan túlsúllyal kell szembenéznem, hiszen hízásra hajlamos testalkatot, és cukorbetegségre való hajlamot örököltem szüleimtől. Ekkor kezdtem el egészségtudatosabban élni, fokozatosan változtatni az étkezési szokásaimon, és mozgás gyanánt lejártam step aerobik órákra. Magával ragadott a zene, a tánc, a koreográfia. Egy év múlva jelentkeztem a Fitness Company aerobik edző szakára, ahol 2005-ben szereztem bizonyítványt. Azóta folyamatosan tartok különböző edzéseket: kezdetben az egyetem, majd munka mellett. 2011-ben fiókba vágtam a diplomámat, és a fitnesznek szenteltem az életem, az azt követő 6 évben rengeteg dolgot értem el szakmailag.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A Sport Placc csoportos órákkal foglalkozó terem első két évében társulajdonosként és szakmai vezetőként voltam jelen. A Fitness Akadémián a CSFI és Aerobik szakok szakágvezetőjeként dolgoztam, most tanítok ezeken a tanfolyamokon. Rendszeresen fellépek a magyar fitnesz rendezvényeken, elsősorban Step és Dance aerobik óratípusban, hiszen ezeket a stílusokat űzöm nemzetközi szinten. A Gyerünk, anyukám! portálon találkozhattok online tornáimmal. Több ízben szerveztem nemzetközi aerobik eseményt. A fitnessschool.tv tréner csapatát gazdagítom, az Aerobicmania.cz kongresszusokon léptem fel több alkalommal Brnoban, a Freek Step koncepciót képviselem Magyarországon. Felsorolni sem tudom. 2018-tól pedig civil munkám mellett folytatom a szenvedélyemet!&lt;/div&gt;",
+				"motto": null,
+				"birth_date": null,
+				"email": "adamcsek.edit@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"employee_rating": "1",
+					"other_lesson_place": "Fitness Akadémián Freek Steppet oktat",
+					"company": "EDO method Bt.",
+					"contract_date": "2018-10-29"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 214,
+				"first_name": "Roxána",
+				"last_name": "Farkas",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségeim:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - Csoportos Fitness Instruktor - IWI&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - Capoeira Aerobik Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - FitFight Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Már kiskoromban számos sportot kibróbáltam, végül a táncban találtam meg önmagam. Úgy éreztem, hogy ebből tudok erőt meríteni és ez az, ami feltölt. Az akrobatikus rock and roll megalapozta az érdeklődésemet a mozgás iránt. Versenyzői múltam után ösztönös döntés volt, hogy az életemet a sportnak fogom szentelni. Célom, hogy mindenkivel megismertessem azt a bizonyos flow élményt, melynek segítségével átélhetsz egy különleges belülről fakadó motivációt, amit felhasználhatsz a mindennapokban.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Alakformáló óráimon a cardio részt ötvözzül a pörgős dinamikus gyakorlatokkal, aminek eredményeképpen a teljes testi-lelki energetizálódás mellett a bombaforma már csak ráadás. A jó hangulat, és a feltöltődés az óráim szerves részét képezik. Ha te is szeretnél egy hosszú nap után kikapcsolódni vagy csak szimplán jól indítani a napodat, akkor nem kell mást tenned, mint edzőcipőt húznod, és eljönni az órámra. Várok mindenkit szeretettel, legyél akár kezdő vagy haladó, fiú vagy lány, gyere és éljük át együtt a sport örömét.&lt;/div&gt;",
+				"motto": "&quot;Éld át a Flow-t!&quot;",
+				"birth_date": null,
+				"email": "farkas.roxana003@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Farkas Roxána e.v.",
+					"contract_date": "2018-10-22"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 51,
+				"first_name": "Eta",
+				"last_name": "Pakucs",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Gyerekjóga, bodyART és deepWORK oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Preventív gerinctréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A mozgás és a sport gyermekkorom óta az életem szerves része. 17 éves koromig versenyszerűen atletizáltam a Honvéd SE-ben, majd felnőtt fejjel fordultam a fitnesz sportág felé. Többszörös magyar bajnok vagyok, valamint nemzetközi versenyen Európa 7. helyezettet értem el. 2001 óta tartok aerobikot, azóta folyamatosan bővítem az ismereteimet. Szülés után lettem nyitottabb a jóga irányzatokra. Jelenleg testnevelő tanárként dolgozom egy szakközépiskolában, emellett bodyART-ot, deepWORK-öt és gyerekjógát oktatok.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2015-ben elvégeztem egy relaxációs tréninget, amit az egyes óráimon is kamatoztatok.&lt;/div&gt;",
+				"motto": null,
+				"birth_date": "1976-04-15",
+				"email": "eta@pakucs.hu",
+				"others": {
+					"display_gross_price": "true",
+					"company": "Első Állomás 2005 Kft.",
+					"contract_date": "2017-03-01",
+					"other_lesson_place": "BodyArt Mozgásstúdióban tart csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 256,
+				"first_name": "Renáta",
+				"last_name": "Vránics",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségem:&lt;/div&gt;&lt;div&gt;&lt;div&gt;2021. Fitness Instruktor - Fitness Company&lt;/div&gt;&lt;div&gt;2021. SpinRacing oktató - Fitness Company&lt;/div&gt;&lt;/div&gt;&lt;div&gt;Nagyatádi származásom lehetővé tette, hogy már kisgyerekként minden nyáron ott állhattam az elkerítő kordonnál és nézhettem, ahogy a triatlonisták minden fájdalom és nehézség ellenére kitartanak és mennek tovább. Láttam az elszántságot és kitartást az arcukon. Akkor döntöttem el, hogy felnőttként én is közéjük szeretnék tartozni.&lt;br&gt;&lt;/div&gt;&lt;div&gt;A futás, az úszás és az atlétika végigkísért felnőttkoromig, amikor hozzákapcsolódott az országúti kerékpározás. Négy éve triatlonozom a Megathlon Sportegyesületben. A spinning eleinte a téli kerékpározásaimat színesítette, majd szerelem lett. Pedagógusként nem sok idő kellett, míg az edzésekben is megtaláltam az oktatás részének szépségét.&lt;/div&gt;",
+				"motto": "„Tegyél ma valami olyat, amit a jövőben majd megköszönsz magadnak!”",
+				"birth_date": "2000-01-01",
+				"email": "renyus9@gmail.com",
+				"others": {
+					"contract_date": "2021-09-13",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 261,
+				"first_name": "Vivien",
+				"last_name": "Oláh",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;2021. június - Fitness instructor (ART Edzőképzés)&lt;/div&gt;&lt;div&gt;2021. október - Stretching és ellazulási technikák (ART Edzőképzés)&amp;nbsp;&lt;/div&gt;&lt;div&gt;2021. október - Fascia lazítás nem csak hengerrel (ART Edzőképzés)&amp;nbsp;&lt;/div&gt;&lt;div&gt;2021. november Gerinctrening (ART Edzőképzés)&lt;/div&gt;&lt;div&gt;2021. december táplálkozási tanácsadó (ART Edzőképzés)&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;Gyerekkorom óta életem része a sport. Több sportágban megmérettettem magam, végül a fitness világában találtam igazán &quot;önmagamra&quot;.&lt;/div&gt;&lt;div&gt;Sokunkat érinti korunk népbetegsége a hát és derékfájás az ülő munka a mozgásszegény életmód a sérvek mind beárnyékolják a hétköznapokat. &amp;nbsp;&lt;/div&gt;&lt;div&gt;Több éves gyakorlás, illetve a folyamatos tanulás mellett, úgy éreztem, szeretnék a pályára lépni, segíteni az embereknek tudatosabban mozogni, élni.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Szeretettel várlak csoportos óráimra!&amp;nbsp;&lt;/div&gt;&lt;/div&gt;",
+				"motto": null,
+				"birth_date": null,
+				"email": "olah06vivien@gmail.com",
+				"others": {
+					"contract_date": "2022-02-14",
+					"company": "Oláh Vivien E.V",
+					"display_gross_price": "false",
+					"is_new": "1"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 37,
+				"first_name": "Nikolett",
+				"last_name": "Hóbor",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2012 - International Wellnes Institute - aerobic sportedző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2012 - Johnny G. Spinning Instruktor képzés - Spinning oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A mozgás, a sport életem szerves része. Az általános iskola alsó tagozatában atlétaként képviseltem iskolámat, később a kézilabdajátékba is sikerült belekóstolnii, a főiskolán 3 évig fociztam, majd Budapesten szerettem bele a spinningbe és az aerobikba.&lt;/div&gt;",
+				"motto": "&quot;Vedd kezedbe az életed! Mérlegelj, dönts és indulj el a magad által kijelölt úton. Járd az utadat mindaddig, amíg kialakul az a személyiség, aki mindig is akartál lenni!&quot;",
+				"birth_date": null,
+				"email": "hobornikoletta871104@gmail.com",
+				"others": {
+					"contract_date": "2018-10-01",
+					"display_gross_price": "false",
+					"company": "Hóbor Nikoletta e.v.",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/2UdOaaPaALM&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/JwYngwesTB4&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/DQwWhxSY-t0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;",
+					"other_lesson_place": "Az Oxygen Fáyban tart csoportos órát."
+				},
+				"fees": {
+					"am_fee": 530,
+					"pm_fee": 430,
+					"saturday_am_fee": 530,
+					"saturday_pm_fee": 430,
+					"sunday_am_fee": 530,
+					"sunday_pm_fee": 430
+				},
+				"enabled": true
+			},
+			{
+				"id": 59,
+				"first_name": "Sándor",
+				"last_name": "Bikics",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2014 - Fitness Akadémia - Fitness Instructor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;TRX Suspensior Trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Cross Training Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kempo Karate 1. Dan&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kempo Karate Országos Bajnokság, 2. helyezet&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A Fitness Akadémián végeztem mint Fitness Instructor. Több mint 30 év sport van mögöttem, melynek java része küzdősport (kempo) és funkcionális tréning. Az első csoportos óratartási tapasztalatomat a kempoban szereztem, ahol a gyermek és junior korosztály segédedzője voltam. A tapasztalatátadás, a sport szeretete, és a segítségnyújtás motivált, hogy a sportoktatói pályát válasszam. Óráim intenzívek, és felszabadult hangulatúak. Számomra fontos az óra közbeni motiválás. Nagy hangsúlyt fektetek a gyakorlatok pontos és biztonságos kivitelezésére. Várok mindenkit korosztálytól függetlenül, aki a sport által egy teljesebb, boldogabb életre vágyik.&lt;/div&gt;",
+				"motto": "&quot;A kudarc az egyetlen ellenséged. Az egyetlen út előtted van, ezért soha ne süsd le a szemed.&quot; (Katie McGarry)",
+				"birth_date": "1974-01-01",
+				"email": "sanyi7433@freemail.hu",
+				"others": {
+					"company": "Crossfit and More Bt.",
+					"contract_date": "2019-01-04",
+					"display_gross_price": "false",
+					"other_lesson_place": "Máshol nem tart csoportos órát.",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/j86GogZ3FsU&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/ioC-wjdgdik&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/9WiOw3eay3M&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;"
+				},
+				"fees": {
+					"am_fee": 450,
+					"pm_fee": 360
+				},
+				"enabled": true
+			},
+			{
+				"id": 253,
+				"first_name": "Petra",
+				"last_name": "Polányi",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2020 - Csoportos Fitness Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A sport már óvodás korom óta az életem része. Többféle sportágban is kipróbáltam magam, mint például a Gumiasztalos akrobatika és a Falmászás. A csoportos órákra gimnazista koromban találtam rá és ha időm engedte, a tanulás mellett egyet se hagytam ki. Nem csak a csoportos órák keretében sportoltam, amikor lehetőségem volt rá, otthon önállóan is fejleszteni próbáltam magam, új gyakorlatokat és módszereket megismerve. Egy idő után rájöttem, hogy szeretném, ha a sport nem csak hobbi szinten lenne az életem része, hanem hivatásként is. A célom, hogy segítsek egy sportos, aktív és egészséges életmód kialakításában a munka és az egyéb teendők mellett.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Stretching óráimon az egész test izomcsoportjainak nyújtása mellett változatos statikus erősítő és nyújtó hatású gyakorlatokkal találkozhatsz, amelyek a lazítás mellett formálják izomzatunkat. Ha pedig egy pörgős dinamikus egész testet átmozgató órára vágysz, csatlakozz funkcionális köredzés óráimhoz.&lt;/div&gt;",
+				"motto": "&quot;Nagy eredmény kis lépésekben&quot;",
+				"birth_date": "1996-03-01",
+				"email": "polanyi.petra96@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"contract_date": "2020-09-28"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 255,
+				"first_name": "Jessica",
+				"last_name": "Kalmár",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;2020 - Csoportos fitness instructor - IWI Nemzetközi Fitnesziskola&lt;/div&gt;&lt;div&gt;2020 - Funkcionális tréner - IWI Nemzetközi Fitnesziskola&lt;/div&gt;&lt;div&gt;2020 - FREEK STEP FUN instructor - Adamcsek Edit mastertrainer - fitnessschool.tv&amp;nbsp;&lt;/div&gt;&lt;div&gt;2021 - Személyi edző - IWI Nemzetközi Fitnesziskola&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;További kapcsolódó végzettségeim:&lt;/div&gt;&lt;div&gt;2018 - Sporttáplálkozás és táplálékkiegészítés - IWI Nemzetközi Fitnesziskola&lt;/div&gt;&lt;div&gt;2021 - Sporttáplálkozás és táplálékkiegészítés tanácsadói modul - IWI Nemzetközi Fitnesziskola&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Gyerekkorom óta rendszeresen sportolok. Már 8 éve ritmikus gimnasztikáztam, amikor egy sérülés miatt teljesen abba kellett hagynom a sportolást. Egy örökmozgó gyereknek az, hogy másfél évig még a tesi órákról is fel volt mentve, kínzás volt. Kamaszként ez lelkileg is nagyon megterhelő volt, így végül elhatároztam, hogy új sportágat próbálok ki. Ekkor jött a fitness az életembe, és szerencsére a korábbi sérülésem azóta sem okoz gondot. Ekkorra már teljesen biztos voltam benne, hogy edzőként szeretnék tevékenykedni, így egyetemi &amp;nbsp;tanulmányaim után elkezdtem megvalósítani a régóta dédelgetett álmot. Remek oktatóimnak köszönhetően nem csak szakmailag, de emberileg is sokat fejlődtem.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Edzőként célom, hogy megszerettessem a mozgást a lehető legszélesebb réteggel. Hiszek benne, hogy a testmozgás nem csak testileg, de lelkileg is nagy segítség a stresszes mindennapokban. Óráimat lendület, vidámság, odafigyelés jellemzik. Kezdő és haladó vendégek számára egyaránt nyújtok alternatívát, így a fejlődés garantált.&amp;nbsp;&lt;/div&gt;&lt;div&gt;Várok mindenkit szeretettel óráimon, annak végeztével pedig távozzunk elégedetten a teremből azzal a tudattal, hogy azon a napon is tettünk valamit közösen az egészségünkért.&lt;/div&gt;",
+				"motto": "“Ha mindig a tökéletes körülményekre vársz, sosem fogsz belekezdeni semmibe! Kezdd el ma!”",
+				"birth_date": "2000-01-01",
+				"email": "kalmar.jessica@gmail.com",
+				"others": {
+					"contract_date": "2021-09-06",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 107,
+				"first_name": "Tibor",
+				"last_name": "Cseh-Szakál",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2011 - Zumba Instructor, Zumba Fitness&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;24 éve foglalkozom versenytánccal, többszörös országos bajnok vagyok latin-amerikai és standard táncokból. Emellett pedig 10 éven át a küzdősportok világának is aktív tagja voltam, szintén nagy sikereket elérve (kick-box bajnoki címmel is büszkélkedhetek). 4 éve kerültem a fitness világába, zumba- és TRX oktatóként. Sokan a Szombat esti láz című tévéműsorból ismerhetnek. Órám a Party Fitness, mely egy táncos alapokkal rendelkező óratípus: a latin táncok elemein felül megtalálhatóak benne a bokszra és az alakformáló edzésekre jellemző mozdulatok is. Minden korosztályt szívesen látok óráimon!&lt;/div&gt;",
+				"motto": "&quot;Amikor táncolsz, nem az a célod, hogy egy bizonyos pontra megérkezz a táncparketten, hanem, hogy minden lépést élvezz míg odaérsz.&quot; (Wayne Dyer)",
+				"birth_date": "1979-01-01",
+				"email": "cs.sz.t.1979@gmail.com",
+				"others": {
+					"company": "Cseh-Szakál Tibor E.V.",
+					"contract_date": "2021-09-07",
+					"display_gross_price": "false"
+				},
+				"fees": {
+					"am_fee": 490,
+					"pm_fee": 500,
+					"saturday_am_fee": 490,
+					"saturday_pm_fee": 500,
+					"sunday_am_fee": 490,
+					"sunday_pm_fee": 500
+				},
+				"enabled": true
+			},
+			{
+				"id": 197,
+				"first_name": "Dávid",
+				"last_name": "Bajnok",
+				"position": "Aerobik",
+				"description": "Végzettségem:&lt;div style=&quot;text-align: justify;&quot;&gt;HJKI - Alapfokú Művészetoktatási Intézmény (modern tánc és zongora tanszak)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Békés Megyei Dumaszínház - Tánckar&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Fitness-wellness instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Fanatic Jump basic trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A sport és az egészséges életmód elkötelezett híve vagyok. Szeretek másoknak segítséget, motivációt adni a céljaik elérésében. Pár éve még túlsúlyos voltam a sport abbahagyása miatt, de elhatároztam, hogy életmódot váltok. Akkor ennek a komoly elhatározásnak a hatására, egyedül a tanult tudomásomat felhasználva, próbáltam saját magamnak megállapítani egy megfelelő diétát, amivel közel 20 kg-ot fogytam. Azóta is követem ezt az életformát, ami már az életem természetes részévé vált. Ennek sikerességét különböző óratípusok látogatása követte, ahol számos edző óráját kipróbáltam, és ekkor találtam rá olyan óratípusokra, amivel szívesen nyújtanék másoknak segítséget céljaik elérésében, vagy akár abban, hogy csak jól érezzék magukat, és kikapcsolódjanak a hétköznapi mókuskerékből. Szeretném látni, ahogy edzésről edzésre fejlődik valaki, és kihozza magából a maximumot. Én azon dolgozom minden alkalommal, hogy ehhez a megfelelő segítséget megadjam, aki eljön az óráimra.&lt;/div&gt;",
+				"motto": "&quot;Ne másoknál próbálj jobb lenni, hanem annál, aki tegnap voltál!&quot;",
+				"birth_date": null,
+				"email": "bajnok.davidext@gmail.com",
+				"others": {
+					"contract_date": "2018-10-04",
+					"company": "Bajnok Dávid E.V",
+					"display_gross_price": "false",
+					"other_lesson_place": "Nem tart máshol csoportos órát, főállása van."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 150,
+				"first_name": "Mary",
+				"last_name": "Tóth",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2009 - Callanetics oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2009-ben szereztem meg a Callanetics oktatói képesítést, és azóta tartok Callanetics órákat vendégeim részére. A legnagyobb öröm számomra, amikor látom vendégeim egészségi állapotának jelentős javulását a rendszeres Callanetics torna gyakorlásával.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A Callanetics az egyik leghatékonyabb alakformáló és testtartást javító mélyizom torna. Megelőzi és mérsékli a derék-, hát- és térdfájdalmakat, a csontritkulást és meszesedést. A Callanetics torna során elsősorban a mélyen fekvő izmok dolgoznak, mely nagyban segíti a gerinc menti izmok erősödését. Ezáltal megelőzhetőek a derék és hátfájások, illetve mérsékelhetőek a már kialakult fájdalmak. Nagy figyelmet szentel a comb izmainak erősítésére, mellyel enyhíti, illetve megszüntetheti a térdfájdalmakat. A medencefenék izmainak aktivizálásával fokozódik a mélyizmok munkájának hatékonysága, csökkentve ezzel az inkontinenciát és egyéb egészségügyi problémákat. Kitűnő a relaxáló, feszültségoldó hatása.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Azoknak való, akik nem a dinamikus mozgást szeretik, hanem a lassú, kontrollált izommunkán alapuló technikát. Egy olyan speciális testformáló módszer, mellyel rövid idő alatt javíthatunk alakunkon, testtartásunkon, jelentős hatással van közérzetünkre, kondíciónkra. A mozgás során erősítünk olyan izmokat is, melyeket a mindennapi életben alig, vagy egyáltalán nem használunk. A Callanetics torna gyakorlatain túl a Super Callanetics, a New Callanetics és a Combi Callanetics programot is alkalmazom.&lt;/div&gt;",
+				"motto": "&quot;Az egészség nem minden, de nélküle minden semmivé válik életünkben.&quot;",
+				"birth_date": null,
+				"email": "mary@callantorna.hu",
+				"others": {
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 119,
+				"first_name": "Csilla",
+				"last_name": "Kovács",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2000-2001 - Athéné Kéttannyelvű Szakközépiskola, Idegenvezető, hostess&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2002-2006 - Kodolányi János Főiskola, Idegenforgalom és Szálloda szak&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;span style=&quot;caret-color: rgb(0, 0, 0);&quot;&gt;2010-2011 Fitness Company Aerobik Sportedzői Tanfolyam&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2011 - Star Training Oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2011- &amp;nbsp;SpinRacing Kerékpár Fitness oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2014 - Pilates oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2015 - Gerinc tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - Személyi edző - ART edzőképzés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2017 - Hevederes Gravitációs (TRX) tréner&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2019 - Kinesiology taping/sporttaping tanfolyam&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2021 -&amp;nbsp;Sportrehabilitációs tréner - Feövenyessy Medical Fitness Akadémia&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2021 - Triggerpont terápia és fascia lazító technikák tréning&amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Középiskolás éveim alatt már látogattam különböző aerobik órákat. A gyakori részvételnek köszönhetően többször megkértek az oktatók, hogy helyettesítsem őket. Az elején tiltakoztam, hiszen a gyakorlatokat el tudtam végezni pontosan és helyesen, azonban a tanítás az teljesen más terület, át kell tudni adni a vendégnek az információt, és a mozgás örömét. A sport csoporttársaim bátorításának köszönhetően azonban egyre jobban ment, ami lendületet adott ahhoz, hogy szakképzett oktató is legyek a felsőfokú diplomám megszerzése mellett.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Többféle órát tartottam korábban: Tae-bo, Alakformáló, Erősítő, Spinracing, Pilates.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Szívesen várlak Gerinctréning és Spinracing óráimon. A sport többet jelent számomra egyszerű hétköznapi tevékenységnél. A sport különböző változatai a kikapcsolódást, a feltöltődést, a szabadságérzést és egyben a kihívást jelentik az életemben. Csapatmunka, ahol a résztvevők egymást támogatják a változatos, ámbár erőt próbáló feladatok elvégzésében, mindezt ritmusos, hangulatjavító zenékre.&lt;/div&gt;",
+				"motto": "A sport az élet sava-borsa.",
+				"birth_date": null,
+				"email": "csillaorama@gmail.com",
+				"others": {
+					"company": "Kovács Csilla e.v.",
+					"contract_date": "2017-02-01",
+					"display_gross_price": "false",
+					"other_lesson_place": "Nem tart máshol csoportos órát, főállása van."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 149,
+				"first_name": "Viki",
+				"last_name": "Vargha",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2014 - Pilates oktatói diploma, Body'n'Soul Wellness and Pilates Academy&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2017 - Callanetics oktatói képzés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2017 - IWI - Preventív gerinctréning és stretching képzés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018- Callanetics oktatói képzés II. szint&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2019 - Csoportos Fitness Instruktor, Fitness Akadémia&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A PILATES módszerével először 1996-ban találkoztam, amikor barátnőmmel a munkahelyünktől nem messze ellátogattunk egy ilyen órára. Sok évvel később, a klasszikus PILATES egyik hazai meghonosítójánál - a nemzetközileg is elismert és az amerikai Fitnesz Akadémia által is akkreditált képzésen - megszerezetem a PILATES oktatói végzettségemet.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Azóta is tanítom ezt a módszert, és eltökélt szándékom, hogy minél több embernek megmutassam ennek a csodás mozgásformának a jótékony hatásait. Az óráimon &amp;nbsp;arra törekszem, hogy a hozzám fordulóknak segítsek az alakformálásban, a jó közérzet kialakításában és az optimális testsúly elérésében, megtartásában. A PILATESben rengeteg gyakorlat és pozíció létezik, melyeket különböző nehézségi szinten lehetséges megvalósítani, ezért edzettségi szinttől, súlytól és életkortól függetlenül bárkinek ajánlható. Mindemellett szeretek az emberekkel foglalkozni, és a tanítás számomra egyfajta &quot;szerelem és kikapcsolódás&quot;. Szeretem a vendégeimet, és a legjobb érzés az, amikor egy-egy óra után azt hallom tőlük, hogy &quot;de jó, hogy újra érzem a testem…&quot;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sok szeretettel várok minden tornázni vágyó hölgyet korra, súlyra, testfelépítésre való tekintet nélkül az óráimon, hogy együtt tapasztalhassuk meg a PILATES módszer jótékony hatásait!&lt;/div&gt;",
+				"motto": "&quot;Higgy abban, amit teszel, és tedd azt, amiben hiszel!&quot;",
+				"birth_date": null,
+				"email": "vargha.viktoria@gmail.com",
+				"others": {
+					"company": "Vargha Viktória ev.",
+					"contract_date": "2016-09-01",
+					"display_gross_price": "false",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/k4RLosRl25Q&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/9AoMAkQVaSs&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/6K7ZXP7moAg&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 216,
+				"first_name": "Viktória",
+				"last_name": "Kovács",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;IWI - Fitness instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Touch for Health Kineziológus&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;IWI - Jóga oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sarasvati Oktatási Központ - Vinyasa krama és flow oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Reiki 1.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sarasvati Oktatási Központ - Női jóga oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Yin jóga oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Funkcionális táplálkozási tanácsadó&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Vegán táplálkozási tanácsadó&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;3 éve kezdtem el komolyabban érdeklődni a jóga világa iránt. Eleinte a fizikai hatása miatt, majd hamarosan rájöttem, hogy a jóga sokkal több annál, mint hogy különböző pózokba erőltessem a testem a matracon. Rengeteg pozitív változást hozott az életembe a gyakorlás, ezért döntöttem úgy, hogy meg szeretném mutatni másoknak is, hogy mennyi mindent adhat a jóga.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A lényeg az egyensúly megteremtése. Ha feszült az elménk, a testünk is feszült lesz. Ha az elménk kizökken az egyensúlyából, testünk is követni fogja. Úgy gondolom, hogy törekednünk kell arra, hogy néha megálljunk, megpróbáljunk befelé figyelni, lelassítsuk a légzésünket és elvárások nélkül létezzünk. A jóga gyakorlása megszabadít a mindennapok zűrzavarától, segít megtapasztalni, hogy hogyan legyünk jelen a pillanatban a körülményektől függetlenül, és amellett, hogy erősíti és rugalmasabbá teszi testünket, az elménket is képes lecsendesíteni.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Bízom benne, hogy sikerül arra ösztönöznöm téged, hogy megismerkedj a jógában rejlő valamennyi lehetőséggel, és remélem támogathatlak az utadon.&amp;nbsp;&lt;/div&gt;",
+				"motto": "&quot;Lélegezz. Engedj el. Ne feledd, csak erről a pillanatról tudod biztosan, hogy létezik.&quot;",
+				"birth_date": null,
+				"email": "viktoria_kovacs@hotmail.com",
+				"others": {
+					"contract_date": "2018-11-13",
+					"display_gross_price": "false",
+					"company": "Kovács Viktória E.V.",
+					"other_lesson_place": "Nem tart máshol csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 209,
+				"first_name": "Vivien",
+				"last_name": "Sárosi",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018 - Schola Europa Akadémia - Fitness wellnes instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Már gyerekként is egy igazán &quot;hiperaktív&quot; kisgyerek voltam, amikor csak lehetett járt valamim, vagy a lábam, vagy a kezem, mikor meghallottam a zenét máris mozogni kezdtem rá. 15 éves koromban elkezdtem táncolni, hip-hop táncstílust, amit a mai napig űzök kisebb-nagyobb kihagyásokkal. A tánc mellett jártam akrobatikára is, ahol az órák elejét mindig saját testsúlyos edzésekkel kezdtük, amit igazából a legjobban kedveltem az óra során. A tánc órákon sem maradhatott el az óra végi edzés, ez mindig fakultatív volt, aki maradt maradt, aki nem, az nem, én viszont fontosnak tartottam a kondicionális képességek megalapozását és fenntartását. Rájöttem, hogy az edzések után mindig jobban éreztem magam, frissebb voltam, még akkor is, ha igazából elfáradtam, emellett még a külsőm is kezdett formálódni pozitív irányba, amilyennek én elképzeltem. Az óráimon szeretném ezt az érzést átadni a vendégeimnek, amikor elégedetten távoznak az órákról, és időről-időre magukkal szemben is nagyobb elvárásokat szabnak ki fejlődésük érdekében. Kellő motivációt átadva, jó hangulattal teli órákat állítok össze ennek érdekében. Szeretettel várok mindenkit!&lt;/div&gt;",
+				"motto": "Ne csak álmodj róla, valósítsd meg!",
+				"birth_date": null,
+				"email": "sarosi.vivi95@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Sárosi Vivien e.v.",
+					"contract_date": "2018-09-01",
+					"other_lesson_place": "Nem tart máshol csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 168,
+				"first_name": "Petra",
+				"last_name": "Olaj",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;2018 IWI Nemzetközi Fitnesziskola- Csoportos fitness instruktor&lt;/div&gt;&lt;div&gt;2016- &amp;nbsp;BodyART School Hungary - bodyART Basic, Contact, Stretch, Dynamic, Flow1-2, Energy&lt;/div&gt;&lt;div&gt;2018 IFHIAS- deepWORK school Hungary - DeepWORK oktató&lt;/div&gt;&lt;div&gt;2017 Fitness Company - Pilates oktató&lt;/div&gt;&lt;div&gt;2019 IWI Nemzetközi Fitnesziskola - Preventív gerinctréning és stretching oktató&lt;/div&gt;&lt;div&gt;2020 Mymove Fitness School - Személyi edző&lt;/div&gt;&lt;div&gt;2020 Almásy Mozgásakadémia - Pre- és rehabilitációs tréner&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A mozgás szeretete mindig is meghatározta az életemet. 10 évig ritmikus gimnasztikáztam, utána a modern, kortárs tánccal kezdtem el komolyabban foglalkozni, amiben jelenleg is képzem magam. Az intenzív sportolás miatt sérülések jelentkeztek nálam, így egyre jobban elkezdtem érdeklődni a preventívebb mozgásformák és a body&amp;amp;mind típusú órák után. Ezekben megtaláltam ugyanúgy azt az esztétikus, harmonikus mozgást, amit a táncban is szeretek. Ahogy folyamatosan képzem magam, elsősorban preventív, rehabilitációs vonalon, sokkal tudatosabb lettem, megtanultam figyelni magamra, a testem jelzéseire. Ezeket a tapasztalatokat is szeretném átadni vendégeimnek.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Óráimat szeretem gondosan felépíteni, átgondolni. &amp;nbsp;Fontosnak tartom a gyakorlatok pontos kivitelezését, a testtudat fejlesztést, illetve folyamatosan inspirálódva, tanulva törekszem a változatosságra is. Célom, hogy egyfajta flow élményt is adjak át a vendégeknek, hogy nemcsak fizikálisan, szellemileg, de lelkileg is feltöltődjenek energiával az óra végére.&lt;/div&gt;",
+				"motto": "Azt, hogy mit bír ki a test, mindig a lélek ereje határozza meg. (Bear Grylls)",
+				"birth_date": "1994-11-16",
+				"email": "petra0708@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Olaj Petra e.v.",
+					"contract_date": "2019-01-13",
+					"other_lesson_place": "BodyArt Mozgásstúdióban tart csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 109,
+				"first_name": "Petra",
+				"last_name": "Pais",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Fitness Akadémia- Fitness Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Mad Dogg Athletics - Spinning instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A sport születésem óta része az életemnek. A millenáris pályán nőttem fel, mivel Apukám kerékpár versenyző volt, így számomra is egyértelművé vált e sportág szeretete.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Több mozgásformában is kipróbáltam magam, mint például a tánc, atlétika, kézilabda, de a Spinningben találtam meg azt az érzést, ami rávezetett arra, hogy ezzel szeretnék foglalkozni és megismertetni az emberekkel. Óráimon váltakoznak a rövidebb-hosszabb távok, sík és hegymenetek, könnyebb és nehezebb tempóban.&lt;/div&gt;",
+				"motto": "&quot;Ha mindent beleadsz az edzéseken, ha átléped személyes határaidat és túl tudsz lépni a holtponton, akkor nem érdekel, hogy jó adottságaid vannak vagy sem. Csak az számít, hogy milyen keményen edzel: amíg így teszel, tisztelni fognak.&quot;",
+				"birth_date": "1991-03-28",
+				"email": "p.petruss@freemail.hu",
+				"others": {
+					"company": "Pais Péter e.v.",
+					"contract_date": "2021-08-27",
+					"display_gross_price": "false"
+				},
+				"fees": {
+					"am_fee": 530,
+					"pm_fee": 430,
+					"saturday_am_fee": 530,
+					"saturday_pm_fee": 430,
+					"sunday_am_fee": 530,
+					"sunday_pm_fee": 430
+				},
+				"enabled": true
+			},
+			{
+				"id": 155,
+				"first_name": "Ádám",
+				"last_name": "Fehér",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;IWI Fitness Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;TRX Suspension Trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;D-Bands Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;UEFA B, UEFA C, MLSZ D Labdarúgó edzői képesítés&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Coerver Coaching Youth Diploma&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016-Funkcionális Integratív tréner-IWI&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018-NASM Erőnléti tréner-IWI&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2020-UEFA &quot;A&quot; labdarugó edző-MLSZ&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2020-Erőnléti edző-MLSZ&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Közel huszonöt éves sportolói múlttal rendelkezem. Több sportágban is kipróbáltam már magam, a labdarúgást a mai napig versenyszerűen űzöm. Emellett a funkcionális edzések szerelmese vagyok. Edzéseimen nagy hangsúlyt fektetek a prevencióra, szeretem a pörgős és jó hangulatú foglalkozásokat. Célom, hogy vendégeim örömüket leljék a mozgásban, és az így a mindennapjaik részévé váljon. Szeretettel várok minden mozogni és erősödni vágyót az óráimon.&lt;/div&gt;",
+				"motto": "&quot;Ha van cél, vezet oda út is.&quot;",
+				"birth_date": null,
+				"email": "adamfeher83@googlemail.com",
+				"others": {
+					"company": "Fehér Ádám ev.",
+					"contract_date": "2016-11-01",
+					"display_gross_price": "false"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 115,
+				"first_name": "Viktória",
+				"last_name": "Heimer",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségeim:&lt;/div&gt;&lt;div&gt;2020 BodyART School Hungary - bodyART Touch&lt;/div&gt;&lt;div&gt;2020 BodyART School Hungary - bodyART Mobility&lt;/div&gt;&lt;div&gt;2019 FREEK Step Power oktató&lt;/div&gt;&lt;div&gt;2014 BodyART School Hungary - bodyART Basic&lt;/div&gt;&lt;div&gt;2015 BodyART School Hungary - bodyART Contact&amp;nbsp;&lt;/div&gt;&lt;div&gt;2015 BodyART School Hungary - bodyART Pure&lt;/div&gt;&lt;div&gt;2015 BodyART School Hungary - bodyART Dynamic&lt;/div&gt;&lt;div&gt;2014 BodyART School Hungary - deepWORK&lt;/div&gt;&lt;div&gt;2015 BodyART School Hungary - deepWORK Advanced&lt;/div&gt;&lt;div&gt;2011 IWI-International Wellness Institute - Aerobic oktató&lt;/div&gt;&lt;div&gt;IWI-International Wellness Institute - Dance aerobic oktató (folyamatban)&lt;/div&gt;&lt;div&gt;2003 BGF Nemzetközi Kommunikáció-EU szakirány - Közgazdász&lt;/div&gt;&lt;div&gt;2008 Budapesti Divatisklola - Stylist, divattervező&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A legnagyobb öröm számomra, ha az óraim alatt a vendégeknek megszűnik a külvilág és felszabadulnak.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sokáig a modern tánc határozta meg az életemet, majd ikergyermekeim megszületése után szerettem bele az Aerobikba, és a bodyART-ba.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Több éve oktatok és az a legjobb érzés, amikor a vendég egy nehéz nap után azt mondja: &quot;Ez az edzés volt a nap fénypontja&quot;.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kedvencem a deepWORK és a bodyART.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A bodyART-tal több éve foglalkozom intenzíven. Nemcsak a testtel művelt csodát, de a léleknek is nagyon jót tesz. Bátran merem ajánlani mindenkinek kortól, nemtől, edzettségi szinttől függetlenül. Személyesen azt tapasztalom, hogy a deepWORK edzések hatására gyönyörűen formálódik a test, megnő az erőnlét és a koncentráció, javul az egyensúlyérzék és teljesen kikapcsol edzés közben.&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Várlak Titeket szeretettel az órákon!&lt;/div&gt;",
+				"motto": "Sem akadályok, sem nehézségek, sem más emberek nem állíthatnak meg. Csak saját magad állíthatod meg magadat.",
+				"birth_date": "1977-12-29",
+				"email": "viktoria.heimer@gmail.com",
+				"others": {
+					"company": "Heimer Bt.",
+					"contract_date": "2016-02-01",
+					"display_gross_price": "false",
+					"other_lesson_place": "Az Oxygen Fáy és a Légy Fitt Mozgáscentrumban tart csoportos órákat."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 167,
+				"first_name": "Zsófi",
+				"last_name": "Pilisy",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2012 - 2013 Szinergia Szakképző Iskola: Sportedző (szertorna, aerobik)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2013 - Semmelweis Egyetem Testnevelés és Sporttudományi Kar: Rekreáció&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2016 - D.A.S. IRON Hungary: HOT IRON instructor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018- Almásy Mozgásakadémia: Stretching&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2018- Weider Professional: Személyi edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2019- Almásy Mozgásakadémia: Preventív gerincedző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;2019- IWI Nemzetközi Fitnesz iskola: Fitfight&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Legjobb eredményeim:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ferencvárosi Torna Club – Szertorna (Magyar bajnok)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Seinchin Karate SE Pesterzsébet – Karate (Magyar bajnok, világkupa helyezett)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Budapesti Honvéd Sportegyesület – Atlétika&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ferencvárosi Evezős Club – Evezés (Magyar bajnok)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Mint az edzők többségét, az én életemet is gyerekkorom óta végigköveti a sport. 15 év versenyzői múlt után nem volt kérdés, mit szeretnék kezdeni az életemmel. Edző leszek! Számomra a sport egyenlő a kikapcsolódással, feltöltődéssel, legyen szó bármilyen fárasztó edzésről. Ezt a flow élményt szeretném „átragasztani” vendégeimre, hogy ne csak azért járjanak le a terembe edzeni, mert muszáj, hanem megtalálják önmagukat. Megtalálják azt az edzőt, azt az óratípust, ami számukra megfelelő, a szívükhöz közel áll. Célom, hogy kihozzam belőlük a maximumot, lássák, hogy honnan hová fejlődtek. Egy elégedett, visszatérő vendégnél nincs is jobb visszaigazolás.&lt;/div&gt;",
+				"motto": "&quot;Ha könnyű lenne, mindenki megcsinálná.&quot;",
+				"birth_date": "1979-11-13",
+				"email": "p.zsofesz@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Pilisy Zsófia ev.",
+					"contract_date": "2017-06-01",
+					"other_lesson_place": "Suhanj Fitnessben tart csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 251,
+				"first_name": "Noémi",
+				"last_name": "Medvegy",
+				"position": "Aerobik",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségeim:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Fitness Akadémia – Csoportos fitness instruktor&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;R-Med Akadémia – TRX Suspension Trainer&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;SMR Tanfolyam&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Mindenkinek megvan a maga szenvedélye. Én szerencsére elég hamar rájöttem, hogy nekem ez a sport: úsztam, lovagoltam, kézilabdáztam, később 6 évig RG-ztem, és utána még 6 évig versenyszerűen atletizáltam.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A sport nagyon sok pozitív hatást gyakorolt az életemre, megtanított többek között például önuralomra és kitartásra. Rájöttem, ahhoz, hogy jól érezzük magunkat a testünkben, először belül kell megteremtenünk a harmóniát, és ebben a sport lehet a legnagyobb segítségünkre.&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Idővel úgy döntöttem, hogy a mozgás szenvedélyét másoknak is át szeretném adni, így fitness instruktori képesítést szereztem. Ezt követően elvégeztem az SMR henger tanfolyamot, hogy edzéseimen a hengerezés jótékony hatásait is ismertessem, és a TRX edzésmódot szintén elsajátítottam.&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Edzőként azon leszek, hogy akármilyen élethelyzetben is vagy, arra az egy órára kicsit kizárd a külvilágot, a stresszes hétköznapokat, és csak magadra koncentrálj. A csoportos óráimon nagy szerepet kap a gyakorlatok helyes kivitelezése, a prevenció, a sérülések elkerülése és persze, fontosnak tartom, hogy amellett, hogy egy jót edzünk, jól is érezzük magunkat. Igyekszem minden vendégemnek a saját edzettségi és egészségi állapotának megfelelő alternatívákat adni.&lt;br&gt;&lt;/div&gt;",
+				"motto": "„Légy erősebb a kifogásaidnál!”",
+				"birth_date": null,
+				"email": "noemimedvegy@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"contract_date": "2020-09-11"
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 139,
+				"first_name": "Ildikó",
+				"last_name": "Szántó",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Semmelweis Egyetem Testnevelési és Sporttudományi Kar: Rekreáció szervező és egészségfejlesztő (BSc)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Testnevelési Egyetem: Rekreáció irányító (MSc)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;International Wellness Institute: Csoportos Fitnesz Instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;International Wellness Institute: Személyi Edző&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Szívvel-lélekkel végzem a munkámat, hiszen számomra a testedzés, a zene és a tánc örömforrásként szolgálnak, csakúgy, mint a segítségnyújtás embertársaimnak. Szeretném ezt az örömöt mindenkivel megosztani. A testi és lelki egészség csak egymást kiegészítve lehet teljes, ezért a kettő együttes fejlesztése a szemléletem alapja. Az edzéseim hatására a külső megjelenésben végbemenő pozitív változás csupán ráadás. A versenysport terén is számos tapasztalattal gazdagodtam életem során, hiszen 20 éven át versenyszerűen fitneszeztem és táncoltam, de végül az egészség megőrzése és fejlesztése szempontjából előnyösebb szabadidősport felé húzott a szívem. Az ebben rejlő többrétű boldogságot szeretném átadni minden jelenlegi és leendő vendégemnek.&lt;/div&gt;",
+				"motto": "&quot;Élj meg szívből minden pillanatot, és tedd teljessé az életed a mozgás örömével! Hiszen a mozgás önmagában örömforrás, nem csupán egy külső célhoz vezető út.&quot;",
+				"birth_date": "1990-01-01",
+				"email": "szildi90@gmail.com",
+				"others": {
+					"contract_date": "2021-11-01",
+					"display_gross_price": "false",
+					"company": "Szántóné Buza Roxána e.v.",
+					"other_lesson_place": "Nem tart máshol csoportos órát."
+				},
+				"fees": {
+					"am_fee": 530,
+					"pm_fee": 430
+				},
+				"enabled": true
+			},
+			{
+				"id": 11,
+				"first_name": "Gábor",
+				"last_name": "Fischer",
+				"position": "Aerobik",
+				"description": "&lt;div&gt;Végzettségem:&lt;/div&gt;&lt;div&gt;Wellnes Akadémia - Sportoktatói Szak - Sportoktató (Europass Certificate Suplement)&lt;/div&gt;&lt;div&gt;Power Skating oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Spinning oktató&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;GiryaFit koncepció megalkotója&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Ha hetente csak kétszer edz az ember, akkor már egy hónap után is látványos a változás, két hónap alatt viszont gyökeresen meg tud változni a test. Sajnos sokan azt gondolják, hogy ez a sport a súly emeléséről szól és ezért túl férfias, durva és csupa &quot;izomagy&quot; jár oda. Pedig korántsem!&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;A kettlebell-esek vagy mostmár GiryaFit-esek nem testépítők, sőt! Nem izomtömeget építenek, hanem a belső izmokat, a mozgáskoordinációt, az erőnlétet fejlesztik, az ízületi utakat hosszabbítják. Meglepő, hogy a ránézésre átlagos emberek milyen kitartással dolgoznak és bizonyos testépítő &quot;erős&quot; emberek mégis elvéreznek mellettük. Hiszen itt nem a súly számít, itt magunkkal kell megküzdenünk, feszegetjük a saját határainkat, a súly csak egy kellék mindehhez.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Mindenki meg tudja benne találni a számítását: akár azok a férfiak, akik a pocakot és úszógumit akarják eltüntetni, akár azok, akik izmossá akarják a testüket formálni, vagy azok a nők, akik az itt-ott előnytelen testrészeikkel küszködnek, de akár a profi sportolók is, akik az állóképességüket szeretnék növelni.&lt;/div&gt;",
+				"motto": "Ha a cél lebeg a szemed előtt, az akadályok sem ijesztenek el tőle.",
+				"birth_date": null,
+				"email": "fischersystem@gmail.com",
+				"others": {
+					"company": "Fischer Gábor e.v.",
+					"contract_date": "2018-01-01",
+					"display_gross_price": "false",
+					"youtube1": "&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/egJX1Fb6icQ&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/6NnQEtlBlbc&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;\r\n&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Ty-ruou0aAQ&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;",
+					"other_lesson_place": "A Life1 Corvin, Life1 Nyugati és a Benczúr Házban tart csoportos órákat."
+				},
+				"fees": {
+					"am_fee": 560,
+					"pm_fee": 500,
+					"saturday_am_fee": 560,
+					"saturday_pm_fee": 500,
+					"sunday_am_fee": 560,
+					"sunday_pm_fee": 500
+				},
+				"enabled": true
+			},
+			{
+				"id": 171,
+				"first_name": "Richárd",
+				"last_name": "Tóth",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Szinergia – Fitness-Wellness instruktor&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Személyi edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Drum &amp;amp; Ball Trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Outdoor Best Fit Trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Aqua Aerobik Trainer&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Kinesiology Tape Tanfolyam&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sziasztok, Tóth Richárd vagyok csoportos óra tartó és személyi edző. 15 éve sportolok, a sport és a testedzés mindig is szerves részét képezte a mindennapjaimnak, és már nem is tudnám elképzelni az életem nélküle. Sokféle csoportos órát szeretek tartani, olyanokat, ahol minden izomcsoportot megedzünk, de persze a kemény edzés mellett a jó hangulat sem marad el. Szeretem látni, ahogy a vendégeim megdolgoznak a sikerért, és közben jól érzik magukat, majd a nap végén kellemesen elfáradva mennek haza. Oktatóként az a fő célom, hogy a vendégeim örömüket leljék a mozgásban, rendszeresen az életük részét képezze, és ezáltal egészséges életmódot alakítsanak ki. Gyertek bátran, szeretettel várok minden mozogni és erősödni vágyót!&lt;/div&gt;",
+				"motto": "&quot;A sikerhez vezető lift nem működik! Használd a lépcsőt! Lépésről lépésre…&quot;",
+				"birth_date": null,
+				"email": "tothrichardzoltan2017@gmail.com",
+				"others": {
+					"display_gross_price": "false",
+					"company": "Tóth Richárd e.v.",
+					"contract_date": "2018-03-01",
+					"other_lesson_place": "Danubius Hotelben tart csoportos órát."
+				},
+				"fees": [],
+				"enabled": true
+			},
+			{
+				"id": 48,
+				"first_name": "Tamás",
+				"last_name": "Makár",
+				"position": "Aerobik, személyi",
+				"description": "&lt;div style=&quot;text-align: justify;&quot;&gt;Végzettségem:&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Atlétika Sportedző (Semmelweis Egyetem Testnevelési és Sporttudományi Kar)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Start 2-es spinning instruktor (Spinning Clinic, Mad Dogg Athletics)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;TRX oktató (R-med Akadémia)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Személyi edző&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Sportszervező-, menedzser (Testnevelési Egyetem)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;Legjobb eredmények:&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Maraton: 2:31:57 (3,36 perc/km)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Félmaraton: 69:07 (3,16 perc/km)&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Országos Bajnok futó és gyalogló egyéniben és csapatban&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Magyar válogatott kerettag&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Korosztályos országos ranglistavezető maratonon és félmaratonon.&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;- Ironman&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: justify;&quot;&gt;1999-óta foglalkozom közép- és hosszútávfutással, valamint országúti kerékpározással (pályaversenyektől szupermaratonig szinte minden távon kipróbáltam magam). 2001-től Duatlon és Triatlon versenyeken is indultam. Sprinttávú- és dupladuatlont is próbáltam, valamint megcsináltam az Ironmant (20 évesen és 4 naposan) és ezzel én voltam mindenidők egyik legfiatalabb teljesítője hazánkban. 2003-tól a gyalogló szakágat is erősítettem (10-20-35 km-en). 2008-tól pedig a futás mellett amatőr szinten a Thai boxot, az MMA-t, illetve a Krav Magat is űzöm.&lt;/div&gt;",
+				"motto": "LÉGY MEGÁLLÍTHATATLAN!",
+				"birth_date": null,
+				"email": "irontomi84@gmail.com",
+				"others": {
+					"company": "Makár Tamás e.v.",
+					"contract_date": "2017-03-01",
+					"display_gross_price": "true",
+					"other_lesson_place": "Nem tart máshol csoportos órát."
+				},
+				"fees": {
+					"am_fee": 530,
+					"pm_fee": 430,
+					"saturday_am_fee": 530,
+					"saturday_pm_fee": 430,
+					"sunday_am_fee": 530,
+					"sunday_pm_fee": 430
+				},
+				"enabled": true
+			}
+		]
+	},
+	"errors": []
+}

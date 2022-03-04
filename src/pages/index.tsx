@@ -11,8 +11,6 @@ import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 
 const Home: NextPage = () => {
-	const authSession = useSession();
-
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">

@@ -16,12 +16,6 @@ img {
 	display: block;
 }
 
-.main-wrapper {
-	background-image: url('../../public/images/pattern-header.png');
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
-
 .white-textarea {
 	min-height: 200px;
 	background-color: transparent;
@@ -146,10 +140,11 @@ img {
 	.price-row {
 		display: flex;
 		align-items: center;
+		gap: 20px;
 
 		.title {
 			flex-basis: 40%;
-			font-size: 28px;
+			font-size: 22px;
 			font-weight: 600;
 		}
 

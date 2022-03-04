@@ -22,7 +22,15 @@ function BaseFilteredClasses({
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
 
 	const {
-		classFilterState: { view, trainer, startTime, difficulty, location, type },
+		classFilterState: {
+			view,
+			trainer,
+			startTime,
+			difficulty,
+			location,
+			type,
+			startDate,
+		},
 	} = useClassFilter();
 
 	useEffect(() => {
@@ -69,7 +77,7 @@ function BaseFilteredClasses({
 			<div>
 				{view === ViewList.SWIPER && (
 					<FilteredClassesSwiperView
-						key={Math.random()}
+						key={startDate.toString()}
 						sessions={filteredSessions}
 					/>
 				)}

@@ -1,6 +1,7 @@
 import React from 'react';
 import TransformedImage from '../../common/elements/TransformedImage';
-import TestImage from '../../../public/images/preview.jpeg';
+import test1 from '../../../public/images/20201.png';
+import test2 from '../../../public/images/20211.png';
 
 const HeroSection = () => {
 	return (
@@ -9,17 +10,16 @@ const HeroSection = () => {
 				<TransformedImage
 					rotate="vertical"
 					imgAlt="image"
-					imgSrc={TestImage.src}
+					imgSrc={'https://geocdn.fotex.net/static.sugarfitness.hu/files/1809'}
 				/>
 			</div>
+
 			<div className="grid grid-cols-1 sm:grid-cols-2 mt-3 md:-mt-14">
 				<div>
 					<TransformedImage
 						rotate="left-to-right"
 						imgAlt="image"
-						imgSrc={
-							'https://geocdn.fotex.net/static.sugarfitness.hu/files/1709/preview.jpg'
-						}
+						imgSrc={test1.src}
 					/>
 				</div>
 
@@ -27,9 +27,7 @@ const HeroSection = () => {
 					<TransformedImage
 						rotate="right-to-left"
 						imgAlt="image"
-						imgSrc={
-							'https://geocdn.fotex.net/static.sugarfitness.hu/files/1785/preview.jpg'
-						}
+						imgSrc={test2.src}
 					/>
 				</div>
 			</div>

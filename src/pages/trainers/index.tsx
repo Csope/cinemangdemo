@@ -8,20 +8,25 @@ import FiveColSwiper from '../../common/swiper/FiveColSwiper';
 import { useGetTrainers } from '../../queries';
 import { TrainerType } from '../../types';
 import { HttpCodeTypes } from '../../types/ResType';
-// @ts-ignore
 import { unescape } from 'lodash';
+import { GetServerSideProps } from 'next';
+import testTrainersData from '../../static/testTrainersData.json';
 
-const Trainers: NextPage = () => {
-	const { data, error, isLoading } = useGetTrainers();
+type PropTypes = {
+	trainers: TrainerType[];
+};
+
+const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
+	// const { data, error, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<
 		TrainerType | undefined
 	>(undefined);
-
-	useEffect(() => {
-		if (!selectedTrainer && data?.data.trainers) {
-			setSelectedTrainer(data?.data.trainers[2]);
-		}
-	}, [data]);
+	const isLoading = false;
+	// useEffect(() => {
+	// 	if (!selectedTrainer && data?.data.trainers) {
+	// 		setSelectedTrainer(data?.data.trainers[2]);
+	// 	}
+	// }, [data]);
 
 	return (
 		<div className="Trainers_page page">
@@ -39,13 +44,13 @@ const Trainers: NextPage = () => {
 					<FiveColSwiper
 						initialSlide={2}
 						onSlideChange={(swiper: any) => {
-							if (data?.data.trainers) {
-								setSelectedTrainer(data?.data.trainers[swiper.snapIndex]);
+							if (trainers) {
+								setSelectedTrainer(trainers[swiper.snapIndex]);
 							}
 						}}
 						imgSrcs={
-							data?.data.trainers
-								? data?.data.trainers.map(
+							trainers
+								? trainers.map(
 										(trainer) =>
 											'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg'
 								  )
@@ -134,6 +139,17 @@ const Trainers: NextPage = () => {
 			)}
 		</div>
 	);
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	/**
+	 * FIXME: TEST DATA DONT FORGET TO CHANGE BACK
+	 */
+	return {
+		props: {
+			trainers: testTrainersData.data.trainers,
+		},
+	};
 };
 
 export default Trainers;

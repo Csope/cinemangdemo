@@ -4,6 +4,7 @@ export enum DataTypes {
 	SESSIONS = 'sessions',
 	USER = 'user',
 	TOKEN = 'token',
+	PASSES = 'pass_types',
 }
 
 export enum HttpCodeTypes {

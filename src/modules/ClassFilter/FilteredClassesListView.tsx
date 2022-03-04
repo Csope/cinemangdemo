@@ -7,8 +7,8 @@ import ClassDescription from '../../common/site/ClassDescription';
 import { IoClose } from 'react-icons/io5';
 import { SessionType } from '../../types';
 import { format } from 'date-fns';
-// @ts-ignore
 import { isEmpty } from 'lodash';
+import { useRouter } from 'next/router';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -18,9 +18,11 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 	const [showDescription, setShowDescription] = useState<
 		SessionType | undefined
 	>(undefined);
+	const router = useRouter();
 
-	const reservationClick = (e: MouseEvent) => {
+	const reservationClick = (e: MouseEvent, sessionId: number) => {
 		e.stopPropagation();
+		router.push(`/sessions/${sessionId}/reserve`);
 	};
 
 	return (
@@ -79,7 +81,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											<NormalDarkButton
 												isLink={false}
 												text="Foglalás"
-												clickEvent={(e) => reservationClick(e)}
+												clickEvent={(e) => reservationClick(e, session.id)}
 											/>
 										</div>
 									</div>

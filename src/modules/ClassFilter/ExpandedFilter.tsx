@@ -3,7 +3,6 @@ import SimpleButton from '../../common/elements/buttons/SimpleButton';
 import { useClassFilter } from '../../hooks';
 import { SessionType } from '../../types';
 import { DifficultyTypes } from '../../types/ClassFilterTypes';
-// @ts-ignore
 import { includes } from 'lodash';
 
 interface PropTypes {

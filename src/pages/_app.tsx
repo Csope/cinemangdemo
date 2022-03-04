@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 					<QueryClientProvider client={queryClient}>
 						<InitPageLoad>
 							<>
-								<div className="main-wrapper bg-site-1">
+								<div className="main-wrapper bg-site-17">
 									<div className="w-full py-3">
 										<div className="container relative">
 											<HeaderLogo />
