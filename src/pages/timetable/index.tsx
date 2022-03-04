@@ -68,19 +68,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const toDate = format(addDays(new Date(), 7), 'yyyy-MM-dd');
 
 	try {
-		const {
-			data: {
-				data: { sessions },
-			},
-		} = await axios.post<ResType<SessionType[]>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/filtered`,
-			{
-				by_date: {
-					from: fromDate,
-					to: toDate,
-				},
-			}
-		);
+		// const {
+		// 	data: {
+		// 		data: { sessions },
+		// 	},
+		// } = await axios.post<ResType<SessionType[]>>(
+		// 	`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/filtered`,
+		// 	{
+		// 		by_date: {
+		// 			from: fromDate,
+		// 			to: toDate,
+		// 		},
+		// 	}
+		// );
 
 		/**
 		 * FIXME: TEST DATA DONT FORGET TO CHANGE BACK
