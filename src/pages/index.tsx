@@ -1,5 +1,8 @@
+import { motion, useAnimation } from 'framer-motion';
 import type { NextPage } from 'next';
 import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import NormalDarkButton from '../common/elements/buttons/NormalDarkButton';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
 import TriangleDivider from '../common/elements/TriangleDivider';
@@ -11,6 +14,35 @@ import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 
 const Home: NextPage = () => {
+	const firstHeadingControl = useAnimation();
+	const secondHeadingControl = useAnimation();
+	const [fhRef, fhInView] = useInView({
+		threshold: 1,
+		rootMargin: '0px 0px -100px 0px',
+	});
+	const [shRef, shInView] = useInView({
+		threshold: 1,
+		rootMargin: '0px 0px -100px 0px',
+	});
+
+	useEffect(() => {
+		if (fhInView) {
+			firstHeadingControl.start('visible');
+		}
+		if (!fhInView) {
+			firstHeadingControl.start('hidden');
+		}
+	}, [firstHeadingControl, fhInView]);
+
+	useEffect(() => {
+		if (shInView) {
+			secondHeadingControl.start('visible');
+		}
+		if (!shInView) {
+			secondHeadingControl.start('hidden');
+		}
+	}, [secondHeadingControl, shInView]);
+
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
@@ -21,7 +53,22 @@ const Home: NextPage = () => {
 			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
 			<TriangleDividerNextItem bgClass="bg-purple-linear">
 				<div className="mt-10">
-					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
+					<motion.h1
+						className="h1-shadow h1-shadow--white"
+						ref={fhRef}
+						initial="hidden"
+						animate={firstHeadingControl}
+						variants={{
+							hidden: {
+								opacity: 0,
+							},
+							visible: {
+								opacity: 1,
+							},
+						}}
+					>
+						Csoportos órák
+					</motion.h1>
 				</div>
 			</TriangleDividerNextItem>
 			<div className="text-center bg-site-2">
@@ -112,7 +159,22 @@ const Home: NextPage = () => {
 			/>
 			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
 				<div className="mt-10">
-					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
+					<motion.h1
+						className="h1-shadow h1-shadow--cian"
+						ref={shRef}
+						initial="hidden"
+						animate={secondHeadingControl}
+						variants={{
+							hidden: {
+								opacity: 0,
+							},
+							visible: {
+								opacity: 1,
+							},
+						}}
+					>
+						Cardio részleg
+					</motion.h1>
 				</div>
 			</TriangleDividerNextItem>
 			<CardioSection />

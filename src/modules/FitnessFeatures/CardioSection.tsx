@@ -1,5 +1,7 @@
-import React from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect } from 'react';
 import { BsDot } from 'react-icons/bs';
+import { useInView } from 'react-intersection-observer';
 import NormalCianButton from '../../common/elements/buttons/NormalCianButton';
 import CardioBookIcon from '../../common/icons/fitness/CardioBookIcon';
 import CardioBurnIcon from '../../common/icons/fitness/CardioBurnIcon';
@@ -11,14 +13,43 @@ import CardioWatchIcon from '../../common/icons/fitness/CardioWatchIcon';
 import CardioWaterIcon from '../../common/icons/fitness/CardioWaterIcon';
 
 const CardioSection = () => {
+	const controls = useAnimation();
+	const { ref, inView } = useInView({
+		threshold: 0.6,
+	});
+
+	useEffect(() => {
+		if (inView) {
+			controls.start('visible');
+		}
+		if (!inView) {
+			controls.start('hidden');
+		}
+	}, [controls, inView]);
+
 	return (
 		<div
-			className="Homepage-cardio-section bg-site-10 py-10"
+			className="Homepage-cardio-section bg-site-10 pt-4 pb-10"
 			style={{ marginTop: -1 }}
 		>
 			<div className="container">
-				<div className="flex flex-col md:flex-row px-4 items-center gap-10">
-					<div className="w-full md:w-2/5 mb- md:mb-10 leading-7">
+				<motion.div
+					className="flex flex-col md:flex-row px-4 items-center gap-10"
+					ref={ref}
+					initial="hidden"
+					animate={controls}
+					variants={{
+						hidden: {
+							opacity: 0,
+							// y: 100,
+						},
+						visible: {
+							opacity: 1,
+							// y: 0,
+						},
+					}}
+				>
+					<div className="w-full md:w-2/5 md:mb-8 leading-7">
 						<h3 className="h3 text-site-11 text-center md:text-left">
 							Élet, erō, egészség!
 						</h3>
@@ -87,7 +118,7 @@ const CardioSection = () => {
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
-								600 m2
+								270 m2
 							</div>
 							<div className="flex items-center text-lg md:text-2xl mb-5">
 								<CardioGroupIcon
@@ -98,7 +129,7 @@ const CardioSection = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</div>
 		</div>
 	);

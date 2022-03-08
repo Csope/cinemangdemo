@@ -5,13 +5,14 @@ import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import { ResType, PassTypes } from '../../types';
 import { chunk } from 'lodash';
+import testPassTyesData from '../../static/testPassTypesData.json';
 
 type PropTypes = {
 	passTypes: PassTypes[];
 };
 
 const Prices = ({ passTypes }: PropTypes) => {
-	const _passTypes = chunk(passTypes, passTypes.length / 2);
+	const _passTypes = chunk(testPassTyesData, testPassTyesData.length / 2);
 	console.log(_passTypes);
 
 	return (

@@ -2,6 +2,9 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import CardWithImage from '../../common/elements/cards/CardWithImage';
 import Masonry from 'react-masonry-css';
+import TestImg1 from '../../../public/images/cks_kezdoBerlet.jpg';
+import TestImg2 from '../../../public/images/cks_ujraNyitva2.jpg';
+import TestImg3 from '../../../public/images/cks_villam12.jpg';
 
 const SalesAndEvents = () => {
 	return (
@@ -18,7 +21,7 @@ const SalesAndEvents = () => {
 						columnClassName="SalesAndEvents__masonry-grid_column"
 					>
 						<CardWithImage
-							imgSrc="https://geocdn.fotex.net/static.sugarfitness.hu/files/1709/preview.jpg"
+							imgSrc={TestImg1.src}
 							bodyContent={
 								<div>
 									<h1>Vásárold meg bérleted ONLINE!</h1>
@@ -38,7 +41,7 @@ const SalesAndEvents = () => {
 							}
 						/>
 						<CardWithImage
-							imgSrc="https://geocdn.fotex.net/static.sugarfitness.hu/files/1682/preview.jpg"
+							imgSrc={TestImg2.src}
 							bodyContent={
 								<div>
 									<h1>Fontos tájékoztató foglalási rendszerünkről</h1>
@@ -62,7 +65,7 @@ const SalesAndEvents = () => {
 							}
 						/>
 						<CardWithImage
-							imgSrc="https://geocdn.fotex.net/static.sugarfitness.hu/files/1561/preview.jpg"
+							imgSrc={TestImg3.src}
 							bodyContent={
 								<div>
 									<h1>Vásárolj recepciónkon SZÉP-kártyáddal!</h1>

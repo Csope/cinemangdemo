@@ -6,36 +6,7 @@
 		border-radius: $radiusBig;
 		width: 100% !important;
 		max-width: 100% !important;
-		transition: transform 0.2s 0s ease-out;
-
-		&.vertical {
-			transform: rotateX(-5deg) scale(0.95);
-
-			&:hover {
-				transform: scale(1) rotateX(-3deg);
-			}
-		}
-
-		&.left-to-right {
-			transform: rotateY(6deg) rotateX(-9deg) rotateZ(-5deg) scale(0.94)
-				translateX(15px) translateY(4px);
-			position: relative;
-
-			&:hover {
-				transform: scale(1) rotateY(3deg) rotateX(-4deg) rotateZ(-2deg)
-					translateX(10px) translateY(4px);
-			}
-		}
-
-		&.right-to-left {
-			transform: rotateY(-6deg) rotateX(-9deg) rotateZ(5deg) scale(0.94)
-				translateX(-15px) translateY(4px);
-
-			&:hover {
-				transform: scale(1) rotateY(-3deg) rotateX(-4deg) rotateZ(2deg)
-					translateX(-10px) translateY(4px);
-			}
-		}
+		transition: transform 0.05s 0s ease-in-out;
 	}
 }
 

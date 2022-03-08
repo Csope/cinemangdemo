@@ -1,0 +1,422 @@
+[
+	{
+		"id": 57,
+		"external_id": "63",
+		"title": "Csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "23990",
+		"description": "Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 49,
+		"external_id": "55",
+		"title": "Fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "16490",
+		"description": "A cardio és erősítő részre jogosult belépésre kizárólag, csoportos órára nem",
+		"discount": null
+	},
+	{
+		"id": 264,
+		"external_id": "282",
+		"title": "Délelőtti havi korlátlan fitness",
+		"duration": 30,
+		"points": 30,
+		"price": "16990",
+		"description": "Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt. Ez a bérlettípus nem hosszabbítható.",
+		"discount": null
+	},
+	{
+		"id": 599,
+		"external_id": "636",
+		"title": "50% Fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4990",
+		"description": "Teljesárú bérlet 50% kedvezménnyel",
+		"discount": "simple"
+	},
+	{
+		"id": 631,
+		"external_id": "663",
+		"title": "Egyet fizet Kettőt kap Fitness Havi Bérlet",
+		"duration": 30,
+		"points": 30,
+		"price": "9490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 603,
+		"external_id": "639",
+		"title": "50% Csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "11990",
+		"description": "Teljesárú bérlet 50% kedvezménnyel",
+		"discount": "simple"
+	},
+	{
+		"id": 604,
+		"external_id": "640",
+		"title": "50% Csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "5490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel",
+		"discount": "simple"
+	},
+	{
+		"id": 608,
+		"external_id": "644",
+		"title": "50% Délelőtti Fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "7490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt.",
+		"discount": "simple"
+	},
+	{
+		"id": 610,
+		"external_id": "646",
+		"title": "50% Délelőtti Fitness havi bérlet",
+		"duration": 30,
+		"points": 30,
+		"price": "8490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt.",
+		"discount": "simple"
+	},
+	{
+		"id": 615,
+		"external_id": "651",
+		"title": "Egyet fizet Kettőt kap Csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "5490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 633,
+		"external_id": "665",
+		"title": "Egyet fizet Kettőt kap Csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "11990",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 635,
+		"external_id": "667",
+		"title": "Egyet fizet Kettőt kap Délelőtti Csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "8490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 625,
+		"external_id": "657",
+		"title": "Egyet fizet Kettőt kap Délelőtti Csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "9990",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet.",
+		"discount": "2for1"
+	},
+	{
+		"id": 640,
+		"external_id": "672",
+		"title": "Egyet fizet Kettőt kap Fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "8240",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 724,
+		"external_id": "753",
+		"title": "Fantázia név",
+		"duration": 45,
+		"points": 10,
+		"price": "0",
+		"description": "Rövid magyarázat a bérletről",
+		"discount": "simple"
+	},
+	{
+		"id": 753,
+		"external_id": "778",
+		"title": "html test",
+		"duration": 1,
+		"points": 1,
+		"price": "0",
+		"description": "asdfafadsgsadgsdg",
+		"discount": null
+	},
+	{
+		"id": 637,
+		"external_id": "669",
+		"title": "Egyet fizet Kettőt kap Délelőtti Fitness Havi Bérlet",
+		"duration": 30,
+		"points": 30,
+		"price": "8490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 1023,
+		"external_id": "1061",
+		"title": "TESZT BÉRLET",
+		"duration": 1,
+		"points": 1,
+		"price": "1990",
+		"description": "ELSŐ TESZT, MINDEN MŰKÖDIK-E",
+		"discount": null
+	},
+	{
+		"id": 48,
+		"external_id": "54",
+		"title": "Fitness 1 hónap",
+		"duration": 30,
+		"points": 30,
+		"price": "18990",
+		"description": "Kizárólag cardio és erősítő részre jogosít belépésre, csoportos órára nem. Ez a bérlettípus nem hosszabbítható!",
+		"discount": null
+	},
+	{
+		"id": 2,
+		"external_id": "65",
+		"title": "Csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "19990",
+		"description": "Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 3,
+		"external_id": "66",
+		"title": "Csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "10990",
+		"description": "Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 45,
+		"external_id": "51",
+		"title": "Fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "9990",
+		"description": "Kizárólag cardio és erősítő részre való belépésre jogosít, csoportos órára nem használható.",
+		"discount": null
+	},
+	{
+		"id": 262,
+		"external_id": "280",
+		"title": "Délelőtti fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "8990",
+		"description": "Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt.",
+		"discount": null
+	},
+	{
+		"id": 263,
+		"external_id": "281",
+		"title": "Délelőtti fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "14990",
+		"description": "Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt.",
+		"discount": null
+	},
+	{
+		"id": 259,
+		"external_id": "277",
+		"title": "Délelőtti csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "9690",
+		"description": "Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 260,
+		"external_id": "278",
+		"title": "Délelőtti csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "16990",
+		"description": "Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 261,
+		"external_id": "279",
+		"title": "Délelőtti csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "19990",
+		"description": "Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal",
+		"discount": null
+	},
+	{
+		"id": 642,
+		"external_id": "674",
+		"title": "Egyet fizet Kettőt kap Fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4990",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 602,
+		"external_id": "638",
+		"title": " 50% Csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "9990",
+		"description": "Teljesárú bérlet 50% kedvezménnyel",
+		"discount": "simple"
+	},
+	{
+		"id": 526,
+		"external_id": "635",
+		"title": "50% Fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "8240",
+		"description": "Teljesárú bérlet 50% kedvezménnyel",
+		"discount": "simple"
+	},
+	{
+		"id": 600,
+		"external_id": "637",
+		"title": "50% Fitness havi bérlet",
+		"duration": 30,
+		"points": 30,
+		"price": "9490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel, ez a bérlettípus nem hosszabbítható.",
+		"discount": "simple"
+	},
+	{
+		"id": 639,
+		"external_id": "671",
+		"title": "Egyet fizet Kettőt kap Délelőtti Fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 576,
+		"external_id": "611",
+		"title": "Egyet fizet Kettőt kap Délelőtti Fitness 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "7490",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 616,
+		"external_id": "652",
+		"title": "Egyet fizet Kettőt kap Csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "9990",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 622,
+		"external_id": "655",
+		"title": "Egyet fizet Kettőt kap Délelőtti Csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4840",
+		"description": "Egy teljesárú bérlet áráért 2 db egymás után induló bérlet",
+		"discount": "2for1"
+	},
+	{
+		"id": 609,
+		"external_id": "645",
+		"title": "50% Délelőtti Fitness 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Maximum 14:00-ig lehet az erősítő részleg területére belépni, és legkésőbb 16:00-ig el kell hagyni azt.",
+		"discount": "simple"
+	},
+	{
+		"id": 605,
+		"external_id": "641",
+		"title": "50% Délelőtti Csoportos 5 alkalom",
+		"duration": 30,
+		"points": 5,
+		"price": "4840",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal.",
+		"discount": "simple"
+	},
+	{
+		"id": 606,
+		"external_id": "642",
+		"title": "50% Délelőtti Csoportos 10 alkalom",
+		"duration": 45,
+		"points": 10,
+		"price": "8490",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal.",
+		"discount": "simple"
+	},
+	{
+		"id": 607,
+		"external_id": "643",
+		"title": "50% Délelőtti Csoportos 14 alkalom",
+		"duration": 45,
+		"points": 14,
+		"price": "9990",
+		"description": "Teljesárú bérlet 50% kedvezménnyel.&nbsp;Felhasználható a 15:00-ig kezdődő órákon. Az ár az órákon túl alkalmanként 30 perc cardio és erősítő terem használatot is magában foglal.",
+		"discount": "simple"
+	},
+	{
+		"id": 601,
+		"external_id": "1107",
+		"title": "90 alkalmas 90 napos bérlet",
+		"duration": 90,
+		"points": 90,
+		"price": "69000",
+		"description": "90 napig érvényes, 90 alkalmas kombinált bérlet ami 1 alkalommal 10 napra díjmentesen befagyasztható.",
+		"discount": "simple"
+	},
+	{
+		"id": 1008,
+		"external_id": "1109",
+		"title": "14 alkalmas 60 napos bérlet",
+		"duration": 60,
+		"points": 14,
+		"price": "17900",
+		"description": "14 alkalmas 60 napig felhasználható csoportos bérlet.",
+		"discount": "simple"
+	},
+	{
+		"id": 1037,
+		"external_id": "1115",
+		"title": "Last Minute 5 Alkalmas Csoportos",
+		"duration": 1,
+		"points": 5,
+		"price": "3000",
+		"description": "5 alkalmas csoportos bérlet amely január 2.-ig érvényes.",
+		"discount": "simple"
+	}
+]

@@ -10,7 +10,7 @@ interface PropTypes {
 const ParallaxBannerImage = ({ src, customClasses, height }: PropTypes) => {
 	return (
 		<ParallaxBanner
-			layers={[{ image: src, speed: -30 }]}
+			layers={[{ image: src, speed: -10 }]}
 			className={`aspect-[2/1] ${customClasses}`}
 			style={{
 				height,
