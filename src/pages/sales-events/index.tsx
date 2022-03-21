@@ -11,7 +11,7 @@ const SalesAndEvents = () => {
 		<div className="SalesAndEvents page">
 			<div className="container pb-10">
 				<h1 className="text-center h1-shadow h1-shadow--purple mb-12">
-					Akciók / esemémyek
+					Akciók / események
 				</h1>
 
 				<div>

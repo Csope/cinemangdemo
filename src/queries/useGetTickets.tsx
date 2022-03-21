@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { ResType, PassTypes } from '../types';
+import { ResType, PassType } from '../types';
 
 const getTickets = async () => {
-	const { data } = await axios.get<ResType<PassTypes[]>>(
+	const { data } = await axios.get<ResType<PassType[]>>(
 		`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types`
 	);
 

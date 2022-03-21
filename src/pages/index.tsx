@@ -53,22 +53,7 @@ const Home: NextPage = () => {
 			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
 			<TriangleDividerNextItem bgClass="bg-purple-linear">
 				<div className="mt-10">
-					<motion.h1
-						className="h1-shadow h1-shadow--white"
-						ref={fhRef}
-						initial="hidden"
-						animate={firstHeadingControl}
-						variants={{
-							hidden: {
-								opacity: 0,
-							},
-							visible: {
-								opacity: 1,
-							},
-						}}
-					>
-						Csoportos órák
-					</motion.h1>
+					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
 				</div>
 			</TriangleDividerNextItem>
 			<div className="text-center bg-site-2">
@@ -159,22 +144,7 @@ const Home: NextPage = () => {
 			/>
 			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
 				<div className="mt-10">
-					<motion.h1
-						className="h1-shadow h1-shadow--cian"
-						ref={shRef}
-						initial="hidden"
-						animate={secondHeadingControl}
-						variants={{
-							hidden: {
-								opacity: 0,
-							},
-							visible: {
-								opacity: 1,
-							},
-						}}
-					>
-						Cardio részleg
-					</motion.h1>
+					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
 				</div>
 			</TriangleDividerNextItem>
 			<CardioSection />

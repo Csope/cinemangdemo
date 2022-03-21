@@ -5,8 +5,11 @@ import marks from '../../static/startTimeMarks';
 
 function StartTimeFilter() {
 	const [sliderValue, setSliderValue] = useState([0, 14]);
-	const debouncedValue = useDebounce(sliderValue, 1000);
-	const { classFilterDispatch } = useClassFilter();
+	const debouncedValue = useDebounce(sliderValue, 500);
+	const {
+		classFilterDispatch,
+		classFilterState: { startTime },
+	} = useClassFilter();
 
 	useEffect(() => {
 		const [min, max] = debouncedValue;
@@ -16,6 +19,26 @@ function StartTimeFilter() {
 			payload: [marks[min].value, marks[max].value],
 		});
 	}, [debouncedValue]);
+
+	useEffect(() => {
+		if (startTime) {
+			const min = Object.keys(marks).find(
+				(key: any) => marks[key].value === startTime[0]
+			);
+
+			const max = Object.keys(marks).find(
+				(key: any) => marks[key].value === startTime[1]
+			);
+
+			// @ts-ignore
+			if (min == sliderValue[0] && max == sliderValue[1]) {
+				return;
+			}
+
+			// @ts-ignore
+			setSliderValue([min, max]);
+		}
+	}, [startTime]);
 
 	return (
 		<div className="px-4">
@@ -33,7 +56,8 @@ function StartTimeFilter() {
 					marks={marks}
 					step={1}
 					onChange={(val) => setSliderValue(val)}
-					defaultValue={sliderValue}
+					value={sliderValue}
+					allowCross={false}
 					handleStyle={[
 						{
 							width: 17,

@@ -22,8 +22,8 @@ const TwoColClassSection = ({
 }: PropType) => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
-		// triggerOnce: true,
-		threshold: 0.3,
+		triggerOnce: true,
+		threshold: 0.6,
 	});
 
 	useEffect(() => {
@@ -46,6 +46,7 @@ const TwoColClassSection = ({
 				initial="hidden"
 				animate={controls}
 				className="w-full md:w-1/2"
+				transition={{ type: 'spring', bounce: 0 }}
 				variants={{
 					hidden: {
 						opacity: 0,
@@ -72,6 +73,7 @@ const TwoColClassSection = ({
 				initial="hidden"
 				animate={controls}
 				className="w-full md:w-1/2"
+				transition={{ type: 'spring', bounce: 0 }}
 				variants={{
 					hidden: {
 						opacity: 0,

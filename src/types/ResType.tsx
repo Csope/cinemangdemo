@@ -1,10 +1,13 @@
 export enum DataTypes {
 	TRAINER = 'trainer',
 	TRAINERS = 'trainers',
+	SESSION = 'session',
 	SESSIONS = 'sessions',
 	USER = 'user',
 	TOKEN = 'token',
-	PASSES = 'pass_types',
+	OWNEDPASS = 'passes',
+	PASSESTYPES = 'pass_types',
+	RESERVATIONS = 'reservations',
 }
 
 export enum HttpCodeTypes {

@@ -53,7 +53,7 @@ const HeroSection = () => {
 				<TransformedImage
 					imgAlt="image"
 					imgSrc={test1.src}
-					transform={`rotateX(-${4 + degree.first}deg) scale(${
+					transform={`rotateX(-${3 + degree.first * 0.8}deg) scale(${
 						0.95 - degree.first / 300
 					})`}
 				/>
@@ -65,10 +65,10 @@ const HeroSection = () => {
 						imgAlt="image"
 						imgSrc={test2.src}
 						transform={`rotateY(3deg) rotateX(-${
-							9 + degree.first * 2
+							9 + degree.first * 1.2
 						}deg) rotateZ(-${3 + degree.first / 3}deg) scale(${
 							0.94 - degree.first / 100
-						}) translateX(${15 + degree.first * 0.5}px) translateY(${
+						}) translateX(${15 + degree.first * 0.9}px) translateY(${
 							4 + -10 * degree.first
 						}px)`}
 					/>
@@ -79,10 +79,10 @@ const HeroSection = () => {
 						imgAlt="image"
 						imgSrc={test3.src}
 						transform={`rotateY(-3deg) rotateX(-${
-							9 + degree.first * 2
+							9 + degree.first * 1.2
 						}deg) rotateZ(${3 + degree.first / 3}deg) scale(${
 							0.94 - degree.first / 100
-						}) translateX(-${15 + degree.first * 0.5}px) translateY(${
+						}) translateX(-${15 + degree.first * 0.9}px) translateY(${
 							4 + -10 * degree.first
 						}px)`}
 					/>

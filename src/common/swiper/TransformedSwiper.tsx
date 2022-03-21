@@ -28,7 +28,7 @@ const TransformedSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
 			className="TransformedSwiper"
 		>
 			{imgSrcs.map((src) => (
-				<SwiperSlide>
+				<SwiperSlide key={src}>
 					<img src={src} />
 				</SwiperSlide>
 			))}

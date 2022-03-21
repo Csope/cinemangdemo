@@ -7,6 +7,7 @@ import FilteredClassesListView from './FilteredClassesListView';
 import FilteredClassesSwiperView from './FilteredClassesSwiperView';
 import { format, getHours } from 'date-fns';
 import ExpandedFilter from './ExpandedFilter';
+import ActiveFilters from './ActiveFilters';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -73,7 +74,13 @@ function BaseFilteredClasses({
 
 	return (
 		<>
-			<ExpandedFilter show={filterExpanded} sessions={filteredSessions} />
+			<ExpandedFilter
+				show={filterExpanded && view !== ViewList.CALENDAR}
+				sessions={filteredSessions}
+			/>
+
+			{view !== ViewList.CALENDAR && <ActiveFilters />}
+
 			<div>
 				{view === ViewList.SWIPER && (
 					<FilteredClassesSwiperView

@@ -30,6 +30,8 @@ export default NextAuth({
 						}
 					);
 
+					console.log(status, user);
+
 					if (status && user) {
 						return user;
 					} else {

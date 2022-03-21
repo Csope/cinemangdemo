@@ -3,14 +3,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow } from 'swiper';
 import { Swiper as SwiperInstance } from 'swiper/types';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
+import FavoriteMark from '../site/FavoriteMark';
 
 interface PropTypes {
 	initialSlide: number;
 	imgSrcs: string[];
 	onSlideChange: (swiper: any) => void;
+	hasFavorite?: boolean;
 }
 
-const FiveColSwiper = ({ initialSlide, imgSrcs, onSlideChange }: PropTypes) => {
+const FiveColSwiper = ({
+	initialSlide,
+	imgSrcs,
+	onSlideChange,
+	hasFavorite,
+}: PropTypes) => {
 	const [controlledSwiper, setControlledSwiper] =
 		useState<SwiperInstance | null>(null);
 
@@ -49,7 +56,10 @@ const FiveColSwiper = ({ initialSlide, imgSrcs, onSlideChange }: PropTypes) => {
 			>
 				{imgSrcs.map((src, i) => (
 					<SwiperSlide key={i}>
-						<img src={src} className="select-none" />
+						<div className="relative">
+							<img src={src} className="select-none" />
+							{hasFavorite && <FavoriteMark id={src + i} />}
+						</div>
 					</SwiperSlide>
 				))}
 			</Swiper>

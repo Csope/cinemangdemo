@@ -3,17 +3,16 @@ import { FaShoppingCart } from 'react-icons/fa';
 import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import { ResType, PassTypes } from '../../types';
+import { ResType, PassType } from '../../types';
 import { chunk } from 'lodash';
 import testPassTyesData from '../../static/testPassTypesData.json';
 
 type PropTypes = {
-	passTypes: PassTypes[];
+	passTypes: PassType[];
 };
 
 const Prices = ({ passTypes }: PropTypes) => {
 	const _passTypes = chunk(testPassTyesData, testPassTyesData.length / 2);
-	console.log(_passTypes);
 
 	return (
 		<div className="Prices page">
@@ -104,27 +103,32 @@ const Prices = ({ passTypes }: PropTypes) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	try {
-		const {
-			data: {
-				data: { pass_types },
-			},
-		} = await axios.get<ResType<PassTypes[]>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types`
-		);
+	// try {
+	// 	const {
+	// 		data: {
+	// 			data: { pass_types },
+	// 		},
+	// 	} = await axios.get<ResType<PassType[]>>(
+	// 		`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types`
+	// 	);
+	// 	return {
+	// 		props: {
+	// 			passTypes: pass_types || [],
+	// 		},
+	// 	};
+	// } catch (error) {
+	// 	return {
+	// 		props: {
+	// 			passTypes: [],
+	// 		},
+	// 	};
+	// }
 
-		return {
-			props: {
-				passTypes: pass_types || [],
-			},
-		};
-	} catch (error) {
-		return {
-			props: {
-				passTypes: [],
-			},
-		};
-	}
+	return {
+		props: {
+			passTypes: [],
+		},
+	};
 };
 
 export default Prices;

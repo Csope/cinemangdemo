@@ -1,4 +1,4 @@
-export default interface PassTypes {
+export default interface PassType {
 	id: number;
 	title: string;
 	description: string;

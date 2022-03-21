@@ -9,20 +9,22 @@ import { SessionType } from '../../types';
 import { format } from 'date-fns';
 import { isEmpty } from 'lodash';
 import { useRouter } from 'next/router';
+import { useSelectedSession } from '../../hooks';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesListView({ sessions }: PropTypes) {
+	const { selectedSessionDispatch } = useSelectedSession();
 	const [showDescription, setShowDescription] = useState<
 		SessionType | undefined
 	>(undefined);
 	const router = useRouter();
 
-	const reservationClick = (e: MouseEvent, sessionId: number) => {
+	const reservationClick = (e: MouseEvent, session: SessionType) => {
 		e.stopPropagation();
-		router.push(`/sessions/${sessionId}/reserve`);
+		selectedSessionDispatch({ type: 'SET_SELECTED', payload: session });
 	};
 
 	return (
@@ -81,7 +83,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											<NormalDarkButton
 												isLink={false}
 												text="Foglalás"
-												clickEvent={(e) => reservationClick(e, session.id)}
+												clickEvent={(e) => reservationClick(e, session)}
 											/>
 										</div>
 									</div>

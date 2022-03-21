@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import CoupleImage from '../../../public/images/carrier-couple.png';
 import BgImage from '../../../public/images/carrier-bg.jpg';
-import NormalLightButton from '../../common/elements/buttons/NormalLightButton';
-import NormalGrayButton from '../../common/elements/buttons/NormalGrayButton';
 import NormalMagentaButton from '../../common/elements/buttons/NormalMagentaButton';
 import { useParallax } from 'react-scroll-parallax';
 import { useInView } from 'react-intersection-observer';
@@ -15,6 +13,7 @@ const CareerSection = () => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
 		threshold: 0.6,
+		triggerOnce: true,
 	});
 
 	useEffect(() => {
@@ -36,6 +35,7 @@ const CareerSection = () => {
 					className="basis-full gap-10 "
 					ref={ref}
 					initial="hidden"
+					transition={{ type: 'spring', bounce: 0 }}
 					animate={controls}
 					variants={{
 						hidden: {

@@ -8,6 +8,8 @@
 
 body {
 	letter-spacing: 1px;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 img {
@@ -156,6 +158,27 @@ img {
 
 		.price {
 			flex-basis: 30%;
+		}
+	}
+}
+
+.nav-user {
+	&__image {
+		img {
+			max-width: 65px;
+			border-radius: 100%;
+			border: 2px solid white;
+			cursor: pointer;
+		}
+	}
+}
+
+.data-table {
+	tbody {
+		tr {
+			&:not(:last-of-type) {
+				border-bottom: 1px solid $siteColor_6;
+			}
 		}
 	}
 }

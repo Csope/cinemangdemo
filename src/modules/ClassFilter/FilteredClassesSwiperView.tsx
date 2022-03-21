@@ -36,6 +36,7 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 							(session) =>
 								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg'
 						)}
+						hasFavorite={true}
 					/>
 				</div>
 			)}

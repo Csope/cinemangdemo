@@ -1,6 +1,5 @@
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
-import { BsDot } from 'react-icons/bs';
 import { useInView } from 'react-intersection-observer';
 import NormalCianButton from '../../common/elements/buttons/NormalCianButton';
 import CardioBookIcon from '../../common/icons/fitness/CardioBookIcon';
@@ -16,6 +15,7 @@ const CardioSection = () => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
 		threshold: 0.6,
+		triggerOnce: true,
 	});
 
 	useEffect(() => {
@@ -38,14 +38,15 @@ const CardioSection = () => {
 					ref={ref}
 					initial="hidden"
 					animate={controls}
+					transition={{ type: 'spring', bounce: 0 }}
 					variants={{
 						hidden: {
 							opacity: 0,
-							// y: 100,
+							y: 100,
 						},
 						visible: {
 							opacity: 1,
-							// y: 0,
+							y: 0,
 						},
 					}}
 				>

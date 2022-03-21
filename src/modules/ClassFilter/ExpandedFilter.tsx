@@ -4,6 +4,7 @@ import { useClassFilter } from '../../hooks';
 import { SessionType } from '../../types';
 import { DifficultyTypes } from '../../types/ClassFilterTypes';
 import { includes } from 'lodash';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface PropTypes {
 	show: boolean;
@@ -139,20 +140,22 @@ function ExpandedFilter({ show, sessions }: PropTypes) {
 					<div className="uppercase text-sm text-site-4 mb-2 md:mb-0 w-28 select-none">
 						Terem
 					</div>
-					<div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
-						{_locations.map((_location) => (
-							<SimpleButton
-								key={_location}
-								customClasses={
-									_location === location
-										? 'bg-site-2 text-white'
-										: 'bg-white text-black'
-								}
-								text={_location}
-								clickEvent={() => setLocationClick(_location)}
-							/>
-						))}
-					</div>
+					<motion.div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
+						<AnimatePresence>
+							{_locations.map((_location) => (
+								<SimpleButton
+									key={_location}
+									customClasses={
+										_location === location
+											? 'bg-site-2 text-white'
+											: 'bg-white text-black'
+									}
+									text={_location}
+									clickEvent={() => setLocationClick(_location)}
+								/>
+							))}
+						</AnimatePresence>
+					</motion.div>
 				</div>
 			</div>
 			<div className="border-t-2 border-site-6">
@@ -160,20 +163,22 @@ function ExpandedFilter({ show, sessions }: PropTypes) {
 					<div className="uppercase text-sm text-site-4 mb-2 md:mb-0 w-28 select-none">
 						Óratípus
 					</div>
-					<div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
-						{_types.map((_type) => (
-							<SimpleButton
-								key={_type}
-								clickEvent={() => setTypeClick(_type)}
-								customClasses={
-									type === _type
-										? 'bg-site-2 text-white'
-										: 'bg-white text-black '
-								}
-								text={_type}
-							/>
-						))}
-					</div>
+					<motion.div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
+						<AnimatePresence>
+							{_types.map((_type) => (
+								<SimpleButton
+									key={_type}
+									clickEvent={() => setTypeClick(_type)}
+									customClasses={
+										type === _type
+											? 'bg-site-2 text-white'
+											: 'bg-white text-black '
+									}
+									text={_type}
+								/>
+							))}
+						</AnimatePresence>
+					</motion.div>
 				</div>
 			</div>
 			<div className="border-t-2 border-site-6">
@@ -181,20 +186,23 @@ function ExpandedFilter({ show, sessions }: PropTypes) {
 					<div className="uppercase text-sm text-site-4 mb-2 md:mb-0 w-28 select-none">
 						Oktató
 					</div>
-					<div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
-						{_trainers.map((_trainer) => (
-							<SimpleButton
-								key={_trainer}
-								customClasses={`${
-									trainer === _trainer
-										? 'bg-site-2 text-white'
-										: 'bg-white text-black'
-								}`}
-								clickEvent={() => setTrainerClick(_trainer)}
-								text={_trainer}
-							/>
-						))}
-					</div>
+
+					<motion.div className="flex justify-center md:justify-start md:flex-1 flex-wrap gap-2">
+						<AnimatePresence>
+							{_trainers.map((_trainer) => (
+								<SimpleButton
+									key={_trainer}
+									customClasses={`${
+										trainer === _trainer
+											? 'bg-site-2 text-white'
+											: 'bg-white text-black'
+									}`}
+									clickEvent={() => setTrainerClick(_trainer)}
+									text={_trainer}
+								/>
+							))}
+						</AnimatePresence>
+					</motion.div>
 				</div>
 			</div>
 		</div>

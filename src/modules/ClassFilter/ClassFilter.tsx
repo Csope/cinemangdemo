@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useClassFilter, useDebounce } from '../../hooks';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
-import ExpandedFilter from './ExpandedFilter';
 import FavoritesFilter from './FavoritesFilter';
 import OtherFilter from './OtherFilter';
 import SearchFilter from './SearchFilter';
@@ -28,6 +27,8 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	 * FIlter by date, category
 	 */
 	useEffect(() => {
+		console.log(sessions);
+
 		const fSessions = sessions.filter((session) => {
 			const sDate = format(new Date(session.start), 'yyyy-MM-dd');
 			const filDate = format(startDate, 'yyyy-MM-dd');
@@ -46,6 +47,14 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 
 		setFilteredSessions(fSessions);
 	}, [startDate, category]);
+
+	/**
+	 * Close expended filter on view change
+	 */
+	useEffect(() => {
+		console.log('view changed');
+		setFilterExpanded(false);
+	}, [view]);
 
 	return (
 		<div className="ClassFilter">

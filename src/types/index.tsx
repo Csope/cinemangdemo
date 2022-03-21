@@ -5,7 +5,9 @@ import ClassType from './ClassType';
 import TrainerType from './TrainerType';
 import SessionType from './SessionType';
 import LocationType from './LocationType';
-import PassTypes from './PassTypes';
+import PassType from './PassType';
+import ReservationType from './ReservationType';
+import OwnedPassType from './OwnedPassType';
 
 export type {
 	UserType,
@@ -15,5 +17,7 @@ export type {
 	TrainerType,
 	SessionType,
 	LocationType,
-	PassTypes,
+	PassType,
+	ReservationType,
+	OwnedPassType,
 };
