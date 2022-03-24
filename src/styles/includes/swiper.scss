@@ -1,6 +1,5 @@
 .TransformedSwiper {
 	img {
-		min-height: 300px;
 		width: 200px;
 		object-fit: cover;
 		border-radius: $radiusSmall;
@@ -17,11 +16,10 @@
 	}
 	.swiper-slide-active {
 		transform: scale(1.13) !important;
-		transform-origin: bottom !important;
+		transform-origin: center !important;
 	}
 
 	img {
-		min-height: 300px;
 		object-fit: cover;
 		border-radius: $radiusSmall;
 	}

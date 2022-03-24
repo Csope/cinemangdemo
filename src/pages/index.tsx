@@ -1,9 +1,8 @@
-import { motion, useAnimation } from 'framer-motion';
+import { useAnimation } from 'framer-motion';
 import type { NextPage } from 'next';
-import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import NormalDarkButton from '../common/elements/buttons/NormalDarkButton';
+import LinkBtn from '../common/elements/buttons/LinkBtn';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
 import TriangleDivider from '../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../common/elements/TriangleDividerNextItem';
@@ -57,11 +56,10 @@ const Home: NextPage = () => {
 				</div>
 			</TriangleDividerNextItem>
 			<div className="text-center bg-site-2">
-				<NormalDarkButton
+				<LinkBtn
 					text="Összes óratípus"
-					isLink={true}
-					linkHref="/"
-					customClasses="mt-5 md:mt-0"
+					customClasses="btn-dark mx-auto mt-3"
+					href="/text"
 				/>
 			</div>
 			<div className="w-full">

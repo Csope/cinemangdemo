@@ -30,8 +30,6 @@ export default NextAuth({
 						}
 					);
 
-					console.log(status, user);
-
 					if (status && user) {
 						return user;
 					} else {
@@ -48,7 +46,6 @@ export default NextAuth({
 
 	callbacks: {
 		async jwt({ token, account, user }) {
-			console.log(user);
 			if (account) {
 				token.user = user;
 				token.authToken = 'THIS-IS-MY-TOKEN';
@@ -61,7 +58,6 @@ export default NextAuth({
 			// @ts-ignore
 			session.user = { ...token.user };
 			session.authToken = token.authToken as string;
-
 			return session;
 		},
 	},

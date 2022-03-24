@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ContentLoader from '../../common/elements/ContentLoader';
 import { useUser } from '../../hooks';
-import useGetOwnedPasses from '../../queries/useGetOwnedPasses';
+import { useGetOwnedPasses } from '../../queries';
 import { OwnedPassType } from '../../types';
 
 const ProfilePasses = () => {
@@ -10,7 +10,7 @@ const ProfilePasses = () => {
 	const passes = data?.data.passes || [];
 
 	return (
-		<div className="bg-site-1 pt-7 rounded-xl mb-8">
+		<div className="bg-site-1 pt-7 pb-7 rounded-xl mb-8">
 			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
 				Bérletek
 			</h1>
@@ -39,9 +39,9 @@ const ProfilePasses = () => {
 											{i + 1}
 										</div>
 									</td>
-									<td className="py-6 pr-10 font-bold">{pass.title}</td>
+									<td className="py-6 pr-10 font-bold">{pass.type.title}</td>
 									<td className="py-6 text-center">
-										{pass.remaining_points} / FIXME:
+										{pass.used_points} / {pass.max_points}
 									</td>
 									<td className="py-6 text-center">{pass.start}</td>
 									<td className="py-6 text-center">{pass.end}</td>

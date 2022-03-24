@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import CoupleImage from '../../../public/images/carrier-couple.png';
 import BgImage from '../../../public/images/carrier-bg.jpg';
-import NormalMagentaButton from '../../common/elements/buttons/NormalMagentaButton';
 import { useParallax } from 'react-scroll-parallax';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import LinkBtn from '../../common/elements/buttons/LinkBtn';
 
 const CareerSection = () => {
 	const imgRef = useParallax<HTMLImageElement>({
@@ -61,10 +61,10 @@ const CareerSection = () => {
 						vendégeink számára.
 					</div>
 					<div className="mt-10 mb-10 md:mb-0 text-center md:text-left md:pb-14">
-						<NormalMagentaButton
-							text={'Jelentkezés!'}
-							isLink={true}
-							linkHref={'/'}
+						<LinkBtn
+							text={'Jelentkezem!'}
+							href="FIXME:"
+							customClasses="btn-magenta"
 						/>
 					</div>
 				</motion.div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
-import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import { ResType, PassType } from '../../types';
 import { chunk } from 'lodash';
 import testPassTyesData from '../../static/testPassTypesData.json';
+import Btn from '../../common/elements/buttons/Btn';
 
 type PropTypes = {
 	passTypes: PassType[];
@@ -35,11 +35,11 @@ const Prices = ({ passTypes }: PropTypes) => {
 								<div className="title">{pass.title}</div>
 								<div className="desc">Nem hosszabítható</div>
 								<div className="price">
-									<NormalDarkButton
+									<Btn
 										text={(pass.price as unknown as string) + ' Ft'}
-										isLink={false}
-										customClasses="flex items-center justify-center ml-auto"
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
+										clickEvent={() => console.log('asdasd')}
+										customClasses="btn-dark flex items-center ml-auto"
 									/>
 								</div>
 							</div>
@@ -60,11 +60,11 @@ const Prices = ({ passTypes }: PropTypes) => {
 								<div className="title">{pass.title}</div>
 								<div className="desc">Nem hosszabítható</div>
 								<div className="price">
-									<NormalDarkButton
+									<Btn
 										text={(pass.price as unknown as string) + ' Ft'}
-										isLink={false}
-										customClasses="flex items-center justify-center ml-auto"
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
+										clickEvent={() => console.log('asdasd')}
+										customClasses="btn-dark flex items-center ml-auto"
 									/>
 								</div>
 							</div>

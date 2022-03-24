@@ -1,6 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import NormalLightButton from '../../common/elements/buttons/NormalLightButton';
 import TransformedSwiper from '../../common/swiper/TransformedSwiper';
 import { ButtonPropType } from '../../types';
@@ -61,11 +62,10 @@ const TwoColClassSection = ({
 				<h3 className="h3 mb-4">{classTitle}</h3>
 				<div className="mb-10 text-white leading-7">{classDescription}</div>
 				<div className="text-center md:text-right">
-					<NormalLightButton
+					<LinkBtn
 						text={buttonInfo.text}
-						isLink={buttonInfo.isLink}
-						linkHref={buttonInfo.linkHref}
-						customClasses="mb-14 md:mb-0"
+						href="FIXME:"
+						customClasses="btn-light"
 					/>
 				</div>
 			</motion.div>

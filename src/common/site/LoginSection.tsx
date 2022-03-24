@@ -9,6 +9,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
+import Btn from '../elements/buttons/Btn';
 interface PropTypes {
 	showLogin: boolean;
 	hideLogin: () => void;
@@ -164,13 +165,11 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<Link href="#">Elfelejtetted a jelszavadat?</Link>
 								</div>
 								<div className="mb-8">
-									<motion.button
-										whileTap={{ scale: 0.95 }}
-										type="submit"
-										className={` transition-colors bg-site-4 text-white relative cursor-pointer uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest`}
-									>
-										Belépés e-mail címmel
-									</motion.button>
+									<Btn
+										text="Belépés e-mail címmel"
+										customClasses="btn-dark w-full"
+										clickEvent={() => console.log('credentiols login')}
+									/>
 								</div>
 								<div className="relative mb-8">
 									<div className=" w-full h-px bg-black"></div>

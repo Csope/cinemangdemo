@@ -4,10 +4,21 @@ import HeaderUser from './HeaderUser';
 import { RiMenu5Line } from 'react-icons/ri';
 import { Transition } from '@headlessui/react';
 import { useUser } from '../../hooks';
+import { useRouter } from 'next/router';
+
+const menu = [
+	{ title: 'Órák', path: '/' },
+	{ title: 'Árak', path: '/prices' },
+	{ title: 'Akciók/Események', path: '/sales-events' },
+	{ title: 'Oktatók', path: '/trainers' },
+	{ title: 'Órarend', path: '/timetable' },
+];
 
 const MainNavbar = (): JSX.Element => {
 	const [menuOpen, setMenuOpen] = useState<boolean>(false);
+	const router = useRouter();
 	const { status } = useUser();
+
 	return (
 		<>
 			<div className="relative">
@@ -44,11 +55,17 @@ const MainNavbar = (): JSX.Element => {
 				<div className="hidden md:block">
 					<div className="flex flex-col top-full left-0 right-0 z-50 ">
 						<nav className="w-full text-center flex flex-row justify-center gap-8 uppercase p-6 md:p-2  text-md text-site-4">
-							<Link href={'/'}>Órák</Link>
-							<Link href={'/prices'}>Árak</Link>
-							<Link href={'/sales-events'}>Akciók/Események</Link>
-							<Link href={'/trainers'}>Oktatók</Link>
-							<Link href={'/timetable'}>Órarend</Link>
+							{menu.map((item, i) => (
+								<Link key={i} href={item.path}>
+									<a
+										className={
+											router.pathname === item.path ? 'font-black' : ''
+										}
+									>
+										{item.title}
+									</a>
+								</Link>
+							))}
 						</nav>
 					</div>
 				</div>

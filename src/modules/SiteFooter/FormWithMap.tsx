@@ -1,7 +1,6 @@
 import React from 'react';
-import NormalLightButton from '../../common/elements/buttons/NormalLightButton';
 import MapBg from '../../../public/images/map-bg.png';
-import NormalGrayButton from '../../common/elements/buttons/NormalGrayButton';
+import LinkBtn from '../../common/elements/buttons/LinkBtn';
 
 const FormWithMap = () => {
 	return (
@@ -28,7 +27,7 @@ const FormWithMap = () => {
 						<textarea className="white-textarea" placeholder="Üzenet szövege" />
 					</div>
 					<div className="text-center md:text-right">
-						<NormalGrayButton text="Küldés" customClasses="" isLink={false} />
+						<LinkBtn text="Küldés" customClasses="btn-gray" href="FIXME:" />
 					</div>
 				</div>
 			</div>

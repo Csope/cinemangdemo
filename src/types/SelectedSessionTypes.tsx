@@ -1,10 +1,15 @@
 import { SessionType } from '.';
+import ReservabilityType from './ReservabilityType';
 
 export type SelectedSessionStateType = {
 	selectedSession: SessionType | null;
-	test: number | null;
 };
 
-export type SelectedSessionActions =
-	| { type: 'SET_SELECTED'; payload: SessionType | null }
-	| { type: 'SET_TEST2'; payload: number };
+export type SelectedSessionActions = {
+	type: 'SET_SELECTED';
+	payload: SessionType | null;
+};
+
+// export type SelectedSessionActions =
+// 	| { type: 'SET_SELECTED'; payload: SessionType | null }
+// 	| { type: 'SET_RESERVABILITY'; payload: number };

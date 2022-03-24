@@ -27,8 +27,6 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	 * FIlter by date, category
 	 */
 	useEffect(() => {
-		console.log(sessions);
-
 		const fSessions = sessions.filter((session) => {
 			const sDate = format(new Date(session.start), 'yyyy-MM-dd');
 			const filDate = format(startDate, 'yyyy-MM-dd');
@@ -52,7 +50,6 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	 * Close expended filter on view change
 	 */
 	useEffect(() => {
-		console.log('view changed');
 		setFilterExpanded(false);
 	}, [view]);
 

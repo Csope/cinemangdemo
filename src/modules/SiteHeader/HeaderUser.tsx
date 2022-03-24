@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { UserIcon } from '@heroicons/react/solid';
 import LoginSection from '../../common/site/LoginSection';
 import { useSession } from 'next-auth/react';
-import { useUser } from '../../hooks';
+import { useSiteStates, useUser } from '../../hooks';
 import UserImage from '../../../public/images/woman.jpg';
 import { Menu, Transition } from '@headlessui/react';
 import { IoTriangle } from 'react-icons/io5';
 import Link from 'next/link';
 
 const HeaderUser = (): JSX.Element => {
-	const [showLogin, setShowLogin] = useState(false);
+	// const [showLogin, setShowLogin] = useState(false);
+	const { showLogin, doShowLogin, doHideLogin } = useSiteStates();
 	const { status } = useSession();
 	const { doSignOut, user } = useUser();
 
@@ -17,7 +18,7 @@ const HeaderUser = (): JSX.Element => {
 		if (status === 'loading') return;
 
 		if (status === 'unauthenticated') {
-			setShowLogin(true);
+			doShowLogin();
 		}
 	};
 
@@ -84,10 +85,7 @@ const HeaderUser = (): JSX.Element => {
 					</div>
 				</div>
 			)}
-			<LoginSection
-				showLogin={showLogin}
-				hideLogin={() => setShowLogin(false)}
-			/>
+			<LoginSection showLogin={showLogin} hideLogin={() => doHideLogin()} />
 		</>
 	);
 };

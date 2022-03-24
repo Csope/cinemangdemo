@@ -1,7 +1,6 @@
 import React, { useState, MouseEvent } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
-import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
 import { Dialog } from '@headlessui/react';
 import ClassDescription from '../../common/site/ClassDescription';
 import { IoClose } from 'react-icons/io5';
@@ -9,13 +8,16 @@ import { SessionType } from '../../types';
 import { format } from 'date-fns';
 import { isEmpty } from 'lodash';
 import { useRouter } from 'next/router';
-import { useSelectedSession } from '../../hooks';
+import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
+import Btn from '../../common/elements/buttons/Btn';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesListView({ sessions }: PropTypes) {
+	const { status } = useUser();
+	const { doShowLogin } = useSiteStates();
 	const { selectedSessionDispatch } = useSelectedSession();
 	const [showDescription, setShowDescription] = useState<
 		SessionType | undefined
@@ -24,6 +26,14 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 
 	const reservationClick = (e: MouseEvent, session: SessionType) => {
 		e.stopPropagation();
+
+		if (status === 'loading') return;
+
+		if (status === 'unauthenticated') {
+			doShowLogin();
+			return;
+		}
+
 		selectedSessionDispatch({ type: 'SET_SELECTED', payload: session });
 	};
 
@@ -80,9 +90,9 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											hely
 										</div>
 										<div className="md:basis-2/12 md:text-right">
-											<NormalDarkButton
-												isLink={false}
+											<Btn
 												text="Foglalás"
+												customClasses="btn-dark"
 												clickEvent={(e) => reservationClick(e, session)}
 											/>
 										</div>

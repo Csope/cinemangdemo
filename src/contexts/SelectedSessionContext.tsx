@@ -8,7 +8,6 @@ import { SessionType } from '../types';
 
 const initState: SelectedSessionStateType = {
 	selectedSession: null,
-	test: null,
 };
 
 const SelectedSessionContext = createContext<{
@@ -16,7 +15,7 @@ const SelectedSessionContext = createContext<{
 	selectedSessionDispatch: React.Dispatch<SelectedSessionActions>;
 }>({ selectedSessionState: initState, selectedSessionDispatch: () => null });
 
-const ClassFilterReducer = (
+const SelectedSessionReducer = (
 	state: SelectedSessionStateType,
 	action: SelectedSessionActions
 ): SelectedSessionStateType => {
@@ -35,7 +34,7 @@ interface PropTypes {
 
 const SelectedSessionProvider = ({ children }: PropTypes): JSX.Element => {
 	const [selectedSessionState, selectedSessionDispatch] = useReducer(
-		ClassFilterReducer,
+		SelectedSessionReducer,
 		initState
 	);
 

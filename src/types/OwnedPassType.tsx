@@ -1,7 +1,11 @@
+import PassType from "./PassType";
+
 export default interface OwnedPassType {
 	id: number;
-	title: string;
-	remaining_points: number;
+	active: string;
+	max_points: number;
+	used_points: number;
 	start: number;
 	end: number;
+	type: PassType
 }

@@ -8,6 +8,7 @@ declare module 'next-auth' {
 	interface Session {
 		user: UserType & DefaultSession['user'];
 		authToken?: string;
+		error?: string;
 	}
 
 	interface User extends UserType {}

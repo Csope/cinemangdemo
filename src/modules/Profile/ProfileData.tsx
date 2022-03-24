@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Btn from '../../common/elements/buttons/Btn';
 import { useUser } from '../../hooks';
 import ProfileAvatar from './ProfileAvatar';
 
@@ -11,7 +12,8 @@ const ProfileData = () => {
 		register,
 		handleSubmit,
 		getValues,
-		formState: { errors },
+		setError,
+		formState: { errors, isDirty, dirtyFields },
 	} = useForm({
 		defaultValues: {
 			lastname: user?.last_name,
@@ -24,8 +26,52 @@ const ProfileData = () => {
 
 	const [onAttempt, setOnAttempt] = useState(false);
 
-	const onSubmit = () => {
-		console.log('submit');
+	const onSubmit = async () => {
+		if (!isDirty) return;
+
+		// setError('passwordConfirm', {
+		// 	type: 'manual',
+		// 	message: 'A két jelszó nem egyezik',
+		// });
+		// if()
+		let pwDirty = false;
+
+		if (
+			dirtyFields.currentPassword ||
+			dirtyFields.newPassword ||
+			dirtyFields.confirmPassword
+		) {
+			pwDirty = true;
+
+			let pwStageOneFailed = false;
+
+			if (!dirtyFields.confirmPassword) {
+				setError('confirmPassword', {
+					type: 'manual',
+					message: 'Mező megadása kötelező',
+				});
+
+				pwStageOneFailed = true;
+			}
+			if (!dirtyFields.confirmPassword) {
+				setError('confirmPassword', {
+					type: 'manual',
+					message: 'Mező megadása kötelező',
+				});
+
+				pwStageOneFailed = true;
+			}
+			if (!dirtyFields.confirmPassword) {
+				setError('confirmPassword', {
+					type: 'manual',
+					message: 'Mező megadása kötelező',
+				});
+
+				pwStageOneFailed = true;
+			}
+		}
+
+		console.log(pwDirty);
 	};
 
 	const onError = () => {
@@ -48,7 +94,7 @@ const ProfileData = () => {
 							id="lastname"
 							type="text"
 							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
-							{...register('lastname', { required: true })}
+							{...register('lastname', { required: 'Mező megadása kötelező' })}
 						/>
 						{errors.lastname && (
 							<motion.div
@@ -56,7 +102,7 @@ const ProfileData = () => {
 								animate={{ y: 0 }}
 								initial={{ y: 10 }}
 							>
-								REQUIRED
+								{errors.lastname.message}
 							</motion.div>
 						)}
 					</div>
@@ -68,7 +114,7 @@ const ProfileData = () => {
 							id="firstname"
 							type="text"
 							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
-							{...register('firstname', { required: true })}
+							{...register('firstname', { required: 'Mező megadása kötelező' })}
 						/>
 						{errors.firstname && (
 							<motion.div
@@ -76,13 +122,13 @@ const ProfileData = () => {
 								animate={{ y: 0 }}
 								initial={{ y: 10 }}
 							>
-								REQUIRED
+								{errors.firstname.message}
 							</motion.div>
 						)}
 					</div>
 					<div className="mb-5">
 						<label htmlFor="currentPassword" className="ml-1 mb-1 block">
-							Jelenlegi jelszó*
+							Jelenlegi jelszó
 						</label>
 						<input
 							id="currentPassword"
@@ -96,13 +142,13 @@ const ProfileData = () => {
 								animate={{ y: 0 }}
 								initial={{ y: 10 }}
 							>
-								REQUIRED
+								{errors.currentPassword.message}
 							</motion.div>
 						)}
 					</div>
 					<div className="mb-5">
 						<label htmlFor="newPassword" className="ml-1 mb-1 block">
-							Új jelszó*
+							Új jelszó
 						</label>
 						<input
 							id="newPassword"
@@ -116,18 +162,18 @@ const ProfileData = () => {
 								animate={{ y: 0 }}
 								initial={{ y: 10 }}
 							>
-								REQUIRED
+								{errors.newPassword.message}
 							</motion.div>
 						)}
 					</div>
 					<div className="mb-10">
 						<label htmlFor="confirmPassword" className="ml-1 mb-1 block">
-							Új jelszó megerősítése*
+							Új jelszó megerősítése
 						</label>
 						<input
 							id="confirmPassword"
 							type="password"
-							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+							className=" w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
 							{...register('confirmPassword')}
 						/>
 						{errors.confirmPassword && (
@@ -136,21 +182,17 @@ const ProfileData = () => {
 								animate={{ y: 0 }}
 								initial={{ y: 10 }}
 							>
-								REQUIRED
+								{errors.confirmPassword.message}
 							</motion.div>
 						)}
 					</div>
 					<div>
-						<motion.button
-							whileTap={{ scale: 0.95 }}
-							disabled={onAttempt}
-							type="submit"
-							className={` transition-colors bg-site-4 text-white relative cursor-pointer uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest  ${
-								onAttempt ? ' opacity-60 ' : ' opacity-100'
-							}`}
-						>
-							Mentés
-						</motion.button>
+						<Btn
+							disabled={!isDirty}
+							text="Mentés"
+							clickEvent={() => console.log('update use')}
+							customClasses={`btn-dark w-full ${!isDirty ? 'opacity-70' : ''}`}
+						/>
 					</div>
 				</form>
 			</div>

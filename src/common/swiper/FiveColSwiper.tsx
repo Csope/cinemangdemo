@@ -57,7 +57,7 @@ const FiveColSwiper = ({
 				{imgSrcs.map((src, i) => (
 					<SwiperSlide key={i}>
 						<div className="relative">
-							<img src={src} className="select-none" />
+							<img src={src} className="select-none cursor-pointer" />
 							{hasFavorite && <FavoriteMark id={src + i} />}
 						</div>
 					</SwiperSlide>

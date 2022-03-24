@@ -67,36 +67,35 @@ const Timetable: NextPage<PropTypes> = ({ sessions }: PropTypes) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	// const fromDate = format(new Date(), 'yyyy-MM-dd');
-	// const toDate = format(addDays(new Date(), 0), 'yyyy-MM-dd');
+	const fromDate = format(new Date(), 'yyyy-MM-dd');
+	const toDate = format(addDays(new Date(), 6), 'yyyy-MM-dd');
 
 	try {
-		// 	const {
-		// 		data: {
-		// 			data: { sessions },
-		// 		},
-		// 	} = await axios.post<ResType<SessionType[]>>(
-		// 		`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/filtered`,
-		// 		{
-		// 			by_date: {
-		// 				from: fromDate,
-		// 				to: toDate,
-		// 			},
-		// 		}
-		// 	);
+		const {
+			data: {
+				data: { sessions },
+			},
+		} = await axios.post<ResType<SessionType[]>>(
+			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/filtered`,
+			{
+				by_date: {
+					from: fromDate,
+					to: toDate,
+				},
+			}
+		);
 
-		/**
-		 * FIXME: TEST DATA DONT FORGET TO CHANGE BACK
-		 */
 		return {
 			props: {
-				sessions: testSessionData.data.sessions,
+				sessions: sessions || [],
 			},
 		};
 	} catch (error) {
+		console.log(error);
+
 		return {
 			props: {
-				sessions: testSessionData.data.sessions,
+				sessions: [],
 			},
 		};
 	}

@@ -1,32 +1,31 @@
 import type { NextPage } from 'next';
 import { useEffect, useState } from 'react';
-import NormalDarkButton from '../../common/elements/buttons/NormalDarkButton';
 import ContentLoader from '../../common/elements/ContentLoader';
 import TriangleDivider from '../../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../../common/elements/TriangleDividerNextItem';
 import FiveColSwiper from '../../common/swiper/FiveColSwiper';
 import { useGetTrainers } from '../../queries';
 import { TrainerType } from '../../types';
-import { HttpCodeTypes } from '../../types/ResType';
 import { unescape } from 'lodash';
-import { GetServerSideProps } from 'next';
-import testTrainersData from '../../static/testTrainersData.json';
+import LinkBtn from '../../common/elements/buttons/LinkBtn';
+import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
 
 type PropTypes = {
 	trainers: TrainerType[];
 };
 
-const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
-	// const { data, error, isLoading } = useGetTrainers();
+const Trainers: NextPage<PropTypes> = () => {
+	const { data, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<
 		TrainerType | undefined
 	>(undefined);
-	const isLoading = false;
-	// useEffect(() => {
-	// 	if (!selectedTrainer && data?.data.trainers) {
-	// 		setSelectedTrainer(data?.data.trainers[2]);
-	// 	}
-	// }, [data]);
+	const trainers = data?.data.trainers || [];
+
+	useEffect(() => {
+		if (!selectedTrainer && data?.data.trainers) {
+			setSelectedTrainer(data?.data.trainers[2]);
+		}
+	}, [data]);
 
 	return (
 		<div className="Trainers_page page">
@@ -48,14 +47,11 @@ const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
 								setSelectedTrainer(trainers[swiper.snapIndex]);
 							}
 						}}
-						imgSrcs={
-							trainers
-								? trainers.map(
-										(trainer) =>
-											'https://geocdn.fotex.net/static.sugarfitness.hu/images/default_employee.jpg'
-								  )
-								: []
-						}
+						imgSrcs={trainers.map((trainer) =>
+							trainer.preview_url
+								? `${process.env.NEXT_PUBLIC_ASSETS_ROUTE}/${trainer.preview_url}`
+								: DefaultEmployeeImg.src
+						)}
 					/>
 				)}
 			</div>
@@ -69,6 +65,7 @@ const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
 					</h1>
 				</div>
 			</TriangleDividerNextItem>
+
 			{selectedTrainer && (
 				<>
 					<div className="bg-site-2 pb-16">
@@ -82,20 +79,20 @@ const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
 								{selectedTrainer.position}
 							</div>
 							<div className="flex gap-6 justify-center mb-14">
-								<NormalDarkButton
+								<LinkBtn
 									text="Összes óratípus"
-									isLink={true}
-									linkHref="/trainers"
+									href="/timetable"
+									customClasses="btn-dark"
 								/>
-								<NormalDarkButton
+								<LinkBtn
 									text="Bodyart"
-									isLink={true}
-									linkHref="/trainers"
+									href="/timetable"
+									customClasses="btn-dark"
 								/>
-								<NormalDarkButton
+								<LinkBtn
 									text="Deepwork"
-									isLink={true}
-									linkHref="/trainers"
+									href="/timetable"
+									customClasses="btn-dark"
 								/>
 							</div>
 
@@ -139,17 +136,6 @@ const Trainers: NextPage<PropTypes> = ({ trainers }: PropTypes) => {
 			)}
 		</div>
 	);
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	/**
-	 * FIXME: TEST DATA DONT FORGET TO CHANGE BACK
-	 */
-	return {
-		props: {
-			trainers: testTrainersData.data.trainers,
-		},
-	};
 };
 
 export default Trainers;

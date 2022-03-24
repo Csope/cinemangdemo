@@ -6,5 +6,5 @@ export default interface UserType {
 	birth_date: string;
 	gender: string;
 	barcode: string;
-	password_changed: boolean;
+	avatar: string;
 }

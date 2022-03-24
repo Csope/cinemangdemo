@@ -1,7 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import NormalCianButton from '../../common/elements/buttons/NormalCianButton';
+import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import CardioBookIcon from '../../common/icons/fitness/CardioBookIcon';
 import CardioBurnIcon from '../../common/icons/fitness/CardioBurnIcon';
 import CardioGroupIcon from '../../common/icons/fitness/CardioGroupIcon';
@@ -34,7 +34,7 @@ const CardioSection = () => {
 		>
 			<div className="container">
 				<motion.div
-					className="flex flex-col md:flex-row px-4 items-center gap-10"
+					className="flex flex-col md:flex-row px-4 md:px-0 items-center gap-10"
 					ref={ref}
 					initial="hidden"
 					animate={controls}
@@ -61,10 +61,10 @@ const CardioSection = () => {
 							így a hölgyek is kényelmesen tudják használni őket.
 						</div>
 						<div className="mt-10 text-center md:text-left">
-							<NormalCianButton
+							<LinkBtn
 								text={'Vásárlás'}
-								isLink={true}
-								linkHref={'/'}
+								href="FIXME:"
+								customClasses="btn-cian"
 							/>
 						</div>
 					</div>

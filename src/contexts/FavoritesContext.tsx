@@ -20,7 +20,7 @@ const FavoritesContext = createContext<{
 	favoritesDispatch: React.Dispatch<FavoritesActions>;
 }>({ favoritesState: initState, favoritesDispatch: () => null });
 
-const ClassFilterReducer = (
+const FavoritesReducer = (
 	state: FavoritesStateType,
 	action: FavoritesActions
 ): FavoritesStateType => {
@@ -61,7 +61,7 @@ interface PropTypes {
 
 const FavoritesProvider = ({ children }: PropTypes): JSX.Element => {
 	const [favoritesState, favoritesDispatch] = useReducer(
-		ClassFilterReducer,
+		FavoritesReducer,
 		initState
 	);
 

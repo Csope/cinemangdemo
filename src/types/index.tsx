@@ -8,6 +8,8 @@ import LocationType from './LocationType';
 import PassType from './PassType';
 import ReservationType from './ReservationType';
 import OwnedPassType from './OwnedPassType';
+import ReservabilityType from './ReservabilityType';
+import CreateReservationType from './CreateReservationType';
 
 export type {
 	UserType,
@@ -20,4 +22,6 @@ export type {
 	PassType,
 	ReservationType,
 	OwnedPassType,
+	ReservabilityType,
+	CreateReservationType,
 };

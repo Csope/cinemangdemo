@@ -8,6 +8,7 @@ export enum DataTypes {
 	OWNEDPASS = 'passes',
 	PASSESTYPES = 'pass_types',
 	RESERVATIONS = 'reservations',
+	RESERVABILITY = 'reservability',
 }
 
 export enum HttpCodeTypes {

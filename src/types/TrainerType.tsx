@@ -4,4 +4,5 @@ export default interface TrainerType {
 	description: string;
 	motto: string;
 	position: string;
+	preview_url: string;
 }
