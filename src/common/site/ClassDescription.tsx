@@ -5,15 +5,35 @@ import { unescape } from 'lodash';
 import { format } from 'date-fns';
 import Btn from '../elements/buttons/Btn';
 import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
+import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
 
 type PropTypes = {
 	session: SessionType | undefined;
+	hideParentPopup?: () => void;
 };
 
-function ClassDescription({ session }: PropTypes) {
+function ClassDescription({ session, hideParentPopup }: PropTypes) {
+	const { status } = useUser();
+	const { doShowLogin } = useSiteStates();
+	const { selectedSessionDispatch } = useSelectedSession();
 	const trainerImage = session?.trainer.preview_url
 		? `${process.env.NEXT_PUBLIC_ASSETS_ROUTE}/${session?.trainer.preview_url}`
 		: DefaultEmployeeImg.src;
+
+	const reservationClick = (e: MouseEvent, session: SessionType) => {
+		e.stopPropagation();
+
+		if (status === 'loading') return;
+
+		if (hideParentPopup) hideParentPopup();
+
+		if (status === 'unauthenticated') {
+			doShowLogin();
+			return;
+		}
+
+		selectedSessionDispatch({ type: 'SET_SELECTED', payload: session });
+	};
 
 	return (
 		<div className="flex flex-col-reverse px-4 flex-wrap md:flex-row-reverse md:items-start lg:flex-row lg:flex-nowrap lg:gap-8">
@@ -75,7 +95,8 @@ function ClassDescription({ session }: PropTypes) {
 					<Btn
 						text="Foglalás"
 						customClasses="w-full btn-dark"
-						clickEvent={() => console.log('reserve')}
+						// @ts-ignore
+						clickEvent={(e) => reservationClick(e, session)}
 					/>
 				</div>
 			</div>

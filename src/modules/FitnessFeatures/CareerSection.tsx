@@ -27,7 +27,7 @@ const CareerSection = () => {
 
 	return (
 		<div
-			className="pt-8 md:pt-0"
+			className="pt-14 md:pt-0"
 			style={{ backgroundImage: `url(${BgImage.src})` }}
 		>
 			<div className="container flex flex-col md:flex-row items-center px-4 md:px-0">
@@ -51,7 +51,7 @@ const CareerSection = () => {
 					<h1 className="h1-shadow h1-shadow--gray mb-4 text-center md:text-left md:pt-8">
 						Karrier
 					</h1>
-					<div className="text-gray-800 leading-7 w-full md:w-3/4 text-center md:text-left">
+					<div className="text-gray-800 leading-7 w-full md:w-3/4 text-justify md:text-left">
 						A főváros jól megközelíthető pontján, a Sugár Üzletközpontban,
 						modern környezetben és felszereltséggel, több mint negyven különböző
 						óratípussal várja vendégeit a Sugár Fitness! Hatvan szakképzett,
@@ -60,11 +60,11 @@ const CareerSection = () => {
 						lehetőséget biztosítunk a személyi edzést előnyben részesítő
 						vendégeink számára.
 					</div>
-					<div className="mt-10 mb-10 md:mb-0 text-center md:text-left md:pb-14">
+					<div className="mt-12 md:mt-10 mb-2 md:mb-0 text-center md:text-left md:pb-14">
 						<LinkBtn
 							text={'Jelentkezem!'}
 							href="FIXME:"
-							customClasses="btn-magenta"
+							customClasses="btn-magenta w-full md:w-auto"
 						/>
 					</div>
 				</motion.div>

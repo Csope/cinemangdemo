@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { FieldValues, SubmitErrorHandler, useForm } from 'react-hook-form';
+import { SubmitErrorHandler, useForm } from 'react-hook-form';
 import { useToasts, useUser } from '../../hooks';
 import { motion } from 'framer-motion';
 import { validateEmail } from '../../utils';
+import { RadioGroup, Switch } from '@headlessui/react';
+import RadioOption from '../elements/form/RadioOption';
+import Link from 'next/link';
+import DatePicker from 'react-datepicker';
+import { RegisterUserType } from '../../types/UserType';
+import { format } from 'date-fns';
+import ContentLoader from '../elements/ContentLoader';
 
 type FormValues = {
 	email: string;
@@ -13,8 +20,21 @@ type FormValues = {
 };
 
 const RegisterSection = () => {
-	const [onAttempt, setOnAttempt] = useState(false);
-	const { doSignInCredentials } = useUser();
+	const [onAttempt, setAttempt] = useState<boolean>(false);
+	const [gender, setGender] = useState<'F' | 'M' | 'X' | undefined>(undefined);
+	const [gdprChecked, setGdprChecked] = useState<boolean>(false);
+	const [newsletterChecked, setNewsletterChecked] = useState<boolean>(false);
+	const [birthdate, setBirthdate] = useState<Date | undefined>(undefined);
+	const [valErrors, setValErrors] = useState<{
+		gender: string | null;
+		birthdate: string | null;
+		gdpr: string | null;
+	}>({
+		gender: null,
+		birthdate: null,
+		gdpr: null,
+	});
+	const { doRegister, doSignInCredentials } = useUser();
 	const { notify } = useToasts();
 	const {
 		register,
@@ -28,14 +48,48 @@ const RegisterSection = () => {
 		const email = getValues('email');
 		const password = getValues('password');
 		const passwordConfirm = getValues('passwordConfirm');
+		const firstname = getValues('firstname');
+		const lastname = getValues('lastname');
+		let valFlag = false;
+
+		if (!birthdate) {
+			setValErrors((prevVal) => ({
+				...prevVal,
+				birthdate: 'Mező megadása kötelező',
+			}));
+
+			valFlag = true;
+		} else {
+			setValErrors((prevVal) => ({ ...prevVal, birthdate: null }));
+		}
+
+		if (!gender) {
+			setValErrors((prevVal) => ({
+				...prevVal,
+				gender: 'Mező megadása kötelező',
+			}));
+
+			valFlag = true;
+		} else {
+			setValErrors((prevVal) => ({ ...prevVal, gender: null }));
+		}
+
+		if (!gdprChecked) {
+			setValErrors((prevVal) => ({
+				...prevVal,
+				gdpr: 'Mező megadása kötelező',
+			}));
+			valFlag = true;
+		} else {
+			setValErrors((prevVal) => ({ ...prevVal, gdpr: null }));
+		}
 
 		if (!validateEmail(email)) {
 			setError('email', {
 				type: 'manual',
 				message: 'Hibás e-mail cím formátum',
 			});
-
-			return false;
+			valFlag = true;
 		}
 
 		if (password !== passwordConfirm) {
@@ -43,11 +97,44 @@ const RegisterSection = () => {
 				type: 'manual',
 				message: 'A két jelszó nem egyezik',
 			});
-
-			return false;
+			valFlag = true;
 		}
 
-		console.log('REGISTER');
+		if (valFlag) return;
+
+		const userData: RegisterUserType = {
+			first_name: firstname,
+			last_name: lastname,
+			email: email,
+			password: password,
+			gender: gender || 'X',
+			birth_date: format(birthdate as Date, 'yyyy-MM-dd'),
+			newslatter: newsletterChecked,
+		};
+
+		setAttempt(true);
+
+		const registerAttempt = await doRegister(userData);
+
+		setAttempt(false);
+
+		if (registerAttempt.status) {
+			await doSignInCredentials(email, password);
+			notify('SUCCESS', 'Sikeres regisztráció');
+		} else {
+			notify('ERROR', registerAttempt.message);
+			registerAttempt.errors.map((err) => {
+				if (err.field === 'first_name')
+					setError('firstname', { message: err.message });
+				if (err.field === 'last_name')
+					setError('lastname', { message: err.message });
+				if (err.field === 'email') setError('email', { message: err.message });
+				if (err.field == 'password')
+					setError('password', { message: err.message });
+				if (err.field === 'first_name')
+					setError('firstname', { message: err.message });
+			});
+		}
 	};
 
 	const onError: SubmitErrorHandler<FormValues> = (err) => {
@@ -55,11 +142,8 @@ const RegisterSection = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center">
-			<div
-				className="relative lg:w-6/12 bg-site-1 p-8 rounded-xl"
-				style={{ maxWidth: 600 }}
-			>
+		<div className="flex items-center justify-center relative">
+			<div className="relative w-full bg-site-20 p-8 rounded-xl">
 				<div>
 					<div>
 						<form onSubmit={handleSubmit(onSubmit, onError)}>
@@ -71,7 +155,7 @@ const RegisterSection = () => {
 									<input
 										id="lastname"
 										type="text"
-										className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+										className="white-input"
 										{...register('lastname', {
 											required: 'Mező megadása kötelező',
 										})}
@@ -93,7 +177,7 @@ const RegisterSection = () => {
 									<input
 										id="firstname"
 										type="firstname"
-										className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+										className="white-input"
 										{...register('firstname', {
 											required: 'Mező megadása kötelező',
 										})}
@@ -110,6 +194,84 @@ const RegisterSection = () => {
 								</div>
 							</div>
 
+							<div className="grid grid-cols-2 gap-5 mb-5">
+								<div>
+									<label htmlFor="lastname" className="ml-1 mb-1 block">
+										Születési idő*
+									</label>
+									<DatePicker
+										className="white-input"
+										selected={birthdate}
+										onChange={(date: Date) => setBirthdate(date)}
+										dateFormat="yyyy-MM-dd"
+										required
+										showMonthDropdown
+										showYearDropdown
+										dropdownMode="select"
+									/>
+									{valErrors.birthdate && (
+										<motion.div
+											animate={{ y: 0 }}
+											initial={{ y: 10 }}
+											className="mt-2 text-rose-700"
+										>
+											{valErrors.birthdate}
+										</motion.div>
+									)}
+								</div>
+							</div>
+
+							<div className="mb-5">
+								<RadioGroup value={gender} onChange={setGender}>
+									<RadioGroup.Label className="mb-1 block">
+										Nem
+									</RadioGroup.Label>
+
+									<div className="flex">
+										<RadioGroup.Option className="mr-14" value="F">
+											{({ checked }) => (
+												<RadioOption
+													text="Nő"
+													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													activeClasses="bg-site-19 border-4 border-white"
+													checked={checked}
+												/>
+											)}
+										</RadioGroup.Option>
+										<RadioGroup.Option className="mr-14" value="M">
+											{({ checked }) => (
+												<RadioOption
+													text="Férfi"
+													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													activeClasses="bg-site-19 border-4 border-white"
+													checked={checked}
+												/>
+											)}
+										</RadioGroup.Option>
+										<RadioGroup.Option value="X">
+											{({ checked }) => (
+												<RadioOption
+													text="Nem nyilatkozom"
+													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													activeClasses="bg-site-19 border-4 border-white"
+													checked={checked}
+												/>
+											)}
+										</RadioGroup.Option>
+									</div>
+								</RadioGroup>
+
+								{valErrors.gender && (
+									<motion.div
+										animate={{ y: 0 }}
+										initial={{ y: 10 }}
+										className="mt-2 text-rose-700"
+									>
+										{valErrors.gender}
+									</motion.div>
+								)}
+							</div>
+
 							<div className="mb-5">
 								<label htmlFor="email" className="ml-1 mb-1 block">
 									E-mail*
@@ -117,7 +279,7 @@ const RegisterSection = () => {
 								<input
 									id="email"
 									type="email"
-									className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+									className="white-input"
 									{...register('email', { required: 'Mező megadása kötelező' })}
 								/>
 								{errors.email && (
@@ -138,7 +300,7 @@ const RegisterSection = () => {
 								<input
 									id="password"
 									type="password"
-									className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+									className="white-input"
 									{...register('password', {
 										required: 'Mező megadása kötelező',
 										pattern: {
@@ -159,14 +321,14 @@ const RegisterSection = () => {
 								)}
 							</div>
 
-							<div className="mb-10">
+							<div className="mb-8">
 								<label htmlFor="password-confirm" className="ml-1 mb-1 block">
 									Jelszó megerősítése*
 								</label>
 								<input
 									id="password-confirm"
 									type="password"
-									className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+									className="white-input"
 									{...register('passwordConfirm', {
 										required: 'Mező megadása kötelező',
 									})}
@@ -182,14 +344,55 @@ const RegisterSection = () => {
 								)}
 							</div>
 
+							<div className="mb-3">
+								<div className="flex">
+									<div className="mr-4">
+										<Switch
+											checked={gdprChecked}
+											onChange={setGdprChecked}
+											className={`${
+												gdprChecked ? 'bg-site-19' : 'bg-white'
+											}  h-5 w-5 rounded border-white border-4`}
+										/>
+									</div>
+									<div>
+										Elolvastam és elfogadom a{' '}
+										<Link href="#">
+											<a className="text-site-19 underline">
+												Sugár Fitness adatvédelmi tájékoztatóját
+											</a>
+										</Link>
+									</div>
+								</div>
+								{valErrors.gdpr && (
+									<motion.div
+										animate={{ y: 0 }}
+										initial={{ y: 10 }}
+										className="mt-2 text-rose-700"
+									>
+										{valErrors.gdpr}
+									</motion.div>
+								)}
+							</div>
+
+							<div className="mb-8 flex">
+								<div className="mr-4">
+									<Switch
+										checked={newsletterChecked}
+										onChange={setNewsletterChecked}
+										className={`${
+											newsletterChecked ? 'bg-site-19' : 'bg-white'
+										}  h-5 w-5 rounded border-white border-4`}
+									/>
+								</div>
+								<div>Feliratkozom a hírlevélre</div>
+							</div>
+
 							<div>
 								<motion.button
 									whileTap={{ scale: 0.95 }}
-									disabled={onAttempt}
 									type="submit"
-									className={` transition-colors bg-site-4 text-white relative cursor-pointer uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest  ${
-										onAttempt ? ' opacity-60 ' : ' opacity-100'
-									}`}
+									className={` transition-colors bg-site-19 text-white relative cursor-pointer uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest `}
 								>
 									Regisztráció
 								</motion.button>
@@ -198,6 +401,12 @@ const RegisterSection = () => {
 					</div>
 				</div>
 			</div>
+
+			{onAttempt && (
+				<div className="absolute inset-0 bg-site-20 bg-opacity-60 flex items-center justify-center rounded-xl">
+					<ContentLoader spinnerColor="border-site-19" />
+				</div>
+			)}
 		</div>
 	);
 };

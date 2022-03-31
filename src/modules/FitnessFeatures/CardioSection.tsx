@@ -54,44 +54,44 @@ const CardioSection = () => {
 						<h3 className="h3 text-site-11 text-center md:text-left">
 							Élet, erō, egészség!
 						</h3>
-						<div className="text-center md:text-left">
+						<div className="text-justify md:text-left">
 							Fitness termünkben új modern Mátrix géppark várja az edzeni
 							vágyókat. Erősítő részlegünkön nem kifejezetten a nagy izom
 							növelésére inkább a test formálására alkalmas súlyok találhatók
 							így a hölgyek is kényelmesen tudják használni őket.
 						</div>
-						<div className="mt-10 text-center md:text-left">
+						<div className="mt-12 text-center md:text-left">
 							<LinkBtn
 								text={'Vásárlás'}
 								href="FIXME:"
-								customClasses="btn-cian"
+								customClasses="btn-cian w-full md:w-auto"
 							/>
 						</div>
 					</div>
-					<div className="md:pl-10 w-full md:w-3/5 flex gap-4">
-						<div className=" w-1/2">
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+					<div className="md:pl-10 w-full md:w-3/5 flex flex-col md:flex-row md:gap-4">
+						<div className=" w-full md:w-1/2">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioWatchIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								modern géppark
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioBurnIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								szauna
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioTreadmillIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								futópad
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioWaterIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
@@ -99,29 +99,29 @@ const CardioSection = () => {
 								büfé
 							</div>
 						</div>
-						<div className=" w-1/2">
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+						<div className="w-full md:w-1/2">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioHeartIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								cardio részleg
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioMuscleIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								erősítő részleg
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-5">
 								<CardioBookIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"
 								/>
 								270 m2
 							</div>
-							<div className="flex items-center text-lg md:text-2xl mb-5">
+							<div className="flex w-full justify-center md:justify-start items-center text-lg md:text-2xl mb-3">
 								<CardioGroupIcon
 									customClasses="w-8 h-8 mr-4"
 									fillColor="#028d9a"

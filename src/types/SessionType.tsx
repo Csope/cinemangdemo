@@ -1,20 +1,12 @@
 import { ClassType, LocationType, TrainerType } from '.';
 export default interface SessionType {
-	start: string;
-	end: string;
+	id: number;
 	date: string;
-	class: ClassType;
-	trainer: TrainerType;
-	open_day: boolean;
+	start: string;
 	max_headcount: number;
 	current_headcount: number;
+	end: string;
+	class: ClassType;
 	location: LocationType;
-	id: number;
-	frequented_type: any;
-	frequented: boolean;
-
-	// employeeName: string;
-	// location: number;
-	// sessionId: number;
-	// sessionName: string;
+	trainer: TrainerType;
 }

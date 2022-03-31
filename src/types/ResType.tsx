@@ -9,10 +9,8 @@ export enum DataTypes {
 	PASSESTYPES = 'pass_types',
 	RESERVATIONS = 'reservations',
 	RESERVABILITY = 'reservability',
-}
-
-export enum HttpCodeTypes {
-	_200 = 200,
+	FRONTPAGE = 'frontpage',
+	ORDER = 'order',
 }
 
 export default interface ResType<T> {
@@ -22,5 +20,5 @@ export default interface ResType<T> {
 	data: {
 		[k in DataTypes]?: T;
 	};
-	// errors?: object[];
+	errors?: object[];
 }

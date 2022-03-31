@@ -5,19 +5,23 @@ import ClassFilter from '../../modules/ClassFilter/ClassFilter';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import { addDays, format } from 'date-fns';
-import { ResType, SessionType } from '../../types';
+import { ResType, SessionType, OrderType } from '../../types';
 import type { NextPage } from 'next';
 import { ViewList } from '../../types/ClassFilterTypes';
-import { useClassFilter } from '../../hooks';
-import testSessionData from '../../static/testSessionData.json';
+import { useClassFilter, useSiteStates } from '../../hooks';
 import { useEffect } from 'react';
-import ReservationDialog from '../../modules/Session/Reservation/ReservationDialog';
+import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
+import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
 
 type PropTypes = {
 	sessions: SessionType[];
+	inPurchase: OrderType | false;
 };
 
-const Timetable: NextPage<PropTypes> = ({ sessions }: PropTypes) => {
+const Timetable: NextPage<PropTypes> = ({
+	sessions,
+	inPurchase,
+}: PropTypes) => {
 	const {
 		classFilterState: { view, startDate },
 		classFilterDispatch,
@@ -26,6 +30,14 @@ const Timetable: NextPage<PropTypes> = ({ sessions }: PropTypes) => {
 	const filterClick = (type: ViewList): void => {
 		classFilterDispatch({ type: 'SET_VIEW', payload: type });
 	};
+	const { doShowReservationPurchaseResponse } = useSiteStates();
+
+	useEffect(() => {
+		if (inPurchase) {
+			console.log('asdasd');
+			doShowReservationPurchaseResponse(inPurchase);
+		}
+	}, []);
 
 	return (
 		<div className="Timetable_page page ">
@@ -62,11 +74,41 @@ const Timetable: NextPage<PropTypes> = ({ sessions }: PropTypes) => {
 			</div>
 			<ClassFilter sessions={sessions} />
 			<ReservationDialog />
+			<ReservationResponse />
 		</div>
 	);
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+	let inPurchase: OrderType | false = false;
+	const { hash } = context.query;
+
+	if (hash && hash !== '') {
+		try {
+			const { data } = await axios.get<ResType<OrderType>>(
+				`${process.env.NEXT_PUBLIC_ORDER_SERVICE_ROUTE}/orders/by_hash/${hash}`
+			);
+
+			if (data.status) {
+				inPurchase = data.data.order || false;
+			} else {
+				return {
+					redirect: {
+						permanent: false,
+						destination: '/404',
+					},
+				};
+			}
+		} catch (error) {
+			return {
+				redirect: {
+					permanent: false,
+					destination: '/404',
+				},
+			};
+		}
+	}
+
 	const fromDate = format(new Date(), 'yyyy-MM-dd');
 	const toDate = format(addDays(new Date(), 6), 'yyyy-MM-dd');
 
@@ -88,6 +130,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		return {
 			props: {
 				sessions: sessions || [],
+				inPurchase,
 			},
 		};
 	} catch (error) {

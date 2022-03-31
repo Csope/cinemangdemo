@@ -6,16 +6,27 @@ import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Btn from '../../../common/elements/buttons/Btn';
 import ContentLoader from '../../../common/elements/ContentLoader';
-import { useActions, useSelectedSession, useUser } from '../../../hooks';
+import {
+	useActions,
+	useSelectedSession,
+	useToasts,
+	useUser,
+} from '../../../hooks';
 import { useCheckReservability } from '../../../queries';
-import { ReservabilityType } from '../../../types';
+import { ReservabilityType, SessionType } from '../../../types';
+import { FaShoppingCart, FaRegSmile } from 'react-icons/fa';
+import Link from 'next/link';
 
 const ReservationDialog = () => {
+	const { notify } = useToasts();
+	const [onAttempt, setOnAttempt] = useState<boolean>(false);
+	const [hasReservationResponse, setHasReservationResponse] =
+		useState<boolean>(false);
 	const [reservability, setReservability] = useState<
 		ReservabilityType | undefined
 	>(undefined);
 	const { user } = useUser();
-	const { doCreateReservation } = useActions();
+	const { doCreateReservation, doPurchaseTicket } = useActions();
 	const {
 		selectedSessionDispatch,
 		selectedSessionState: { selectedSession },
@@ -29,22 +40,52 @@ const ReservationDialog = () => {
 		selectedSessionDispatch({ type: 'SET_SELECTED', payload: null });
 	};
 
-	const buyTicket = () => {
-		console.log('buy ticket');
+	const purchaseTicket = async (session: SessionType) => {
+		setOnAttempt(true);
+
+		const res = await doPurchaseTicket(session);
+
+		if (res.status && res.paymentUrl) {
+			window.location.assign(res.paymentUrl);
+		} else {
+			setOnAttempt(false);
+			notify('ERROR', res.message);
+		}
 	};
 
 	const createReservation = async () => {
 		if (selectedSession) {
+			setOnAttempt(true);
+
 			const res = await doCreateReservation(selectedSession?.id);
+
+			setOnAttempt(false);
+
+			if (res.status) {
+				setHasReservationResponse(true);
+			} else {
+				notify('ERROR', res.message);
+			}
 		}
 	};
 
 	const renderButtons = () => {
 		if (!reservability) return null;
 
+		if (hasReservationResponse) {
+			return (
+				<div className="bg-site-22 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+					<div className="text-5xl mb-3">
+						<FaRegSmile />
+					</div>
+					<div className="text-xl">Sikeres foglalás!</div>
+				</div>
+			);
+		}
+
 		if (reservability.session_full) {
 			return (
-				<div>
+				<div className="pb-8">
 					<div>Session is full</div>
 				</div>
 			);
@@ -52,38 +93,51 @@ const ReservationDialog = () => {
 
 		if (reservability.has_reservation) {
 			return (
-				<div>
+				<div className="pb-8">
 					<div>You already have reservation</div>
 				</div>
 			);
 		}
 
 		return (
-			<>
+			<div className="pb-10 px-8">
 				<div className="mb-4">
 					<Btn
-						clickEvent={buyTicket}
-						text="Jegyvásárlás"
-						customClasses="btn-dark w-full"
-						appendAfter={
-							<div className="absolute top-1/2 -translate-y-1/2 right-4">
-								Simple
-							</div>
+						clickEvent={() => purchaseTicket(selectedSession as SessionType)}
+						text={
+							<>
+								<FaShoppingCart className="mr-4" />{' '}
+								<span className="">2.490 Ft</span>
+							</>
 						}
+						customClasses="btn-dark w-full flex justify-center items-center"
 					/>
 				</div>
 				{reservability.missing_pass ? (
-					<div>Berlet vasarlas</div>
+					<div>
+						<Btn
+							clickEvent={(e) => e.preventDefault()}
+							text="Foglalás bérlettel"
+							customClasses="btn-gray-2 w-full"
+							disabled
+						/>
+						<div className="mt-1">
+							Nincs érvényes bérleted.{' '}
+							<Link href="/prices">
+								<a className="text-site-19 underline">Bérlet vásárlás</a>
+							</Link>
+						</div>
+					</div>
 				) : (
 					<div>
 						<Btn
 							clickEvent={createReservation}
 							text="Foglalás bérlettel"
-							customClasses="btn-gray-2 w-full"
+							customClasses="btn-dark w-full"
 						/>
 					</div>
 				)}
-			</>
+			</div>
 		);
 	};
 
@@ -95,6 +149,16 @@ const ReservationDialog = () => {
 		}
 	}, [data]);
 
+	/**
+	 * Clean up
+	 */
+	useEffect(() => {
+		if (!selectedSession) {
+			setOnAttempt(false);
+			setHasReservationResponse(false);
+		}
+	}, [selectedSession]);
+
 	if (!selectedSession) {
 		return null;
 	}
@@ -105,11 +169,11 @@ const ReservationDialog = () => {
 			onClose={clearSelectedSession}
 			className="fixed z-10 inset-0 overflow-y-auto"
 		>
-			<div className="flex items-center justify-center min-h-screen">
+			<div className="flex items-center justify-center min-h-screen  relative">
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple p-8 rounded-xl"
+					className="relative lg:w-6/12 bg-site-1 bg-glow-purple rounded-xl pt-8"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -124,12 +188,12 @@ const ReservationDialog = () => {
 					</h1>
 
 					{isLoading ? (
-						<div className="flex items-center justify-center py-6">
+						<div className="flex items-center justify-center pt-6 pb-10">
 							<ContentLoader />
 						</div>
 					) : (
 						<>
-							<div className="rounded-xl px-4 pt-3 pb-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
+							<div className="rounded-xl pt-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
 								<div className="mb-4">
 									<div className="text-site-4 uppercase text-lg">Oktató</div>
 									<div className="text-2xl">
@@ -177,6 +241,11 @@ const ReservationDialog = () => {
 								{reservability && renderButtons()}
 							</div>
 						</>
+					)}
+					{onAttempt && (
+						<div className="absolute inset-0 bg-site-1 bg-opacity-70 flex items-center justify-center py-6">
+							<ContentLoader />
+						</div>
 					)}
 				</div>
 			</div>

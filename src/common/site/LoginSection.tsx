@@ -83,7 +83,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple p-8 rounded-xl"
+					className="relative pt-12 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -97,7 +97,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 						Bejelentkezés
 					</h1>
 
-					<div className="text-center mb-4">
+					<div className="text-center mb-2 md:mb-4">
 						Nincs még fiókod?
 						<Link href="register">
 							<a className="text-site-4 ml-1">Regisztrálj most</a>
@@ -124,7 +124,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<input
 										id="email"
 										type="email"
-										className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+										className="white-input"
 										{...register('email', {
 											required: 'Mező megadása kötelező',
 										})}
@@ -146,7 +146,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<input
 										id="password"
 										type="password"
-										className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+										className="white-input"
 										{...register('password', {
 											required: 'Mező megadása kötelező',
 										})}
@@ -179,29 +179,35 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 								</div>
 							</form>
 							<div className="mb-4">
-								<motion.button
-									whileTap={{ scale: 0.95 }}
-									className="relative uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest bg-white text-black"
-								>
-									<div
-										className="absolute left-5 top-1/2 -translate-y-1/2 text-xl"
-										style={{ color: '#485a94' }}
-									>
-										<GrFacebook />
-									</div>
-									Belépés facebook fiókkal
-								</motion.button>
+								<Btn
+									customClasses="btn-light text-black w-full"
+									clickEvent={() => console.log('login fb')}
+									text={
+										<>
+											<div
+												className="absolute left-5 top-1/2 -translate-y-1/2 text-xl"
+												style={{ color: '#485a94' }}
+											>
+												<GrFacebook />
+											</div>
+											Belépés facebook fiókkal
+										</>
+									}
+								/>
 							</div>
 							<div>
-								<motion.button
-									whileTap={{ scale: 0.95 }}
-									className="relative uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest bg-white text-black"
-								>
-									<div className="absolute left-5 top-1/2 -translate-y-1/2 text-xl">
-										<FcGoogle />
-									</div>
-									Belépés google fiókkal
-								</motion.button>
+								<Btn
+									customClasses="btn-light text-black w-full"
+									clickEvent={() => console.log('login fb')}
+									text={
+										<>
+											<div className="absolute left-5 top-1/2 -translate-y-1/2 text-xl">
+												<FcGoogle />
+											</div>
+											Belépés google fiókkal
+										</>
+									}
+								/>
 							</div>
 						</div>
 					</div>

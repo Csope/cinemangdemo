@@ -130,7 +130,10 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 						</div>
 						<div className="bg-site-1 py-8">
 							<div className="container">
-								<ClassDescription session={showDescription} />
+								<ClassDescription
+									session={showDescription}
+									hideParentPopup={() => setShowDescription(undefined)}
+								/>
 							</div>
 						</div>
 					</div>

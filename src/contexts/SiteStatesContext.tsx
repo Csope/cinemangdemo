@@ -4,6 +4,9 @@ import { SiteStatesTypes, SiteStatesActions } from '../types/SiteStateTypes';
 
 const initState: SiteStatesTypes = {
 	showLogin: false,
+	selectedPass: null,
+	reservationPurchaseInProgress: false,
+	passPurchaseInProgress: false,
 };
 
 const SiteStatesContext = createContext<{
@@ -18,6 +21,15 @@ const SiteStatesReducer = (
 	switch (action.type) {
 		case 'SHOW_LOGIN':
 			return { ...state, showLogin: action.payload };
+
+		case 'SET_SELECTED_PASS':
+			return { ...state, selectedPass: action.payload };
+
+		case 'SET_RESERVATION_PROGRESS':
+			return { ...state, reservationPurchaseInProgress: action.payload };
+
+		case 'SET_PASS_PROGRESS':
+			return { ...state, passPurchaseInProgress: action.payload };
 
 		default:
 			return state;

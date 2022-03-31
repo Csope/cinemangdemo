@@ -1,5 +1,5 @@
 import React from 'react';
-import ListCloseIcon from '../../common/elements/icons/ListCloseIcon';
+import ListCloseIcon from '../../common/icons/ListCloseIcon';
 
 interface PropTypes {
 	show: boolean;

@@ -1,5 +1,6 @@
+import axios from 'axios';
 import { useAnimation } from 'framer-motion';
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../common/elements/buttons/LinkBtn';
@@ -11,8 +12,22 @@ import CareerSection from '../modules/FitnessFeatures/CareerSection';
 import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
 import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
+import { ClassType, FrontPageResponseType, ResType } from '../types';
 
-const Home: NextPage = () => {
+type PropTypes = {
+	events: {
+		id: number;
+		title: string;
+		description: string;
+		sort: number;
+		preview_url: string;
+	}[];
+	classTypes:
+		| []
+		| { cardio: ClassType[]; mobility: ClassType[]; aplifier: ClassType[] };
+};
+
+const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
 	const [fhRef, fhInView] = useInView({
@@ -46,24 +61,29 @@ const Home: NextPage = () => {
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
 				<div className="container ">
-					<HeroSection />
+					<HeroSection events={events} />
 				</div>
 			</div>
 			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
 			<TriangleDividerNextItem bgClass="bg-purple-linear">
-				<div className="mt-10">
+				<div className="mt-10 hidden md:block ">
 					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
 				</div>
 			</TriangleDividerNextItem>
-			<div className="text-center bg-site-2">
+			<div className="bg-site-2 md:hidden pb-3" style={{ marginBottom: -2 }}>
+				<h1 className="h1-shadow text-center h1-shadow--white">
+					Csoportos órák
+				</h1>
+			</div>
+			<div className="text-center bg-site-2 px-4 md:px-0">
 				<LinkBtn
 					text="Összes óratípus"
-					customClasses="btn-dark mx-auto mt-3"
+					customClasses="btn-dark mx-auto mt-3 w-full md:w-auto"
 					href="/text"
 				/>
 			</div>
-			<div className="w-full">
-				<div className="bg-site-2 pt-10 md:pt-16 pb-12">
+			<div className="w-full" style={{ marginBottom: -2 }}>
+				<div className="bg-site-2 pt-14 pb-14 md:pt-16 md:pb-12">
 					<div className="container">
 						<TwoColClassSection
 							direction="text-img"
@@ -84,7 +104,7 @@ const Home: NextPage = () => {
 						/>
 					</div>
 				</div>
-				<div className="pt-12 pb-12 bg-site-9">
+				<div className="pt-14 pb-14 md:pt-12 md:pb-12 bg-site-9">
 					<div className="container">
 						<TwoColClassSection
 							classTitle={'Erősítő'}
@@ -130,7 +150,7 @@ const Home: NextPage = () => {
 			</div>
 			<div className="bg-site-2 w-full">
 				<ParallaxBannerImage
-					height="500px"
+					height="400px"
 					customClasses="parallax-banner-homepage"
 					src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 				/>
@@ -141,15 +161,48 @@ const Home: NextPage = () => {
 				customClasses="TriangleDivider--parallax"
 			/>
 			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
-				<div className="mt-10">
+				<div className="mt-10 hidden md:block">
 					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
 				</div>
 			</TriangleDividerNextItem>
+			<div className="bg-site-10 md:hidden pb-3">
+				<h1 className="h1-shadow text-center h1-shadow--cian">
+					Cardio részleg
+				</h1>
+			</div>
 			<CardioSection />
 			<CareerSection />
 			<FormWithMap />
 		</div>
 	);
+};
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	try {
+		const {
+			data: {
+				data: { frontpage },
+			},
+		} = await axios.get<ResType<FrontPageResponseType>>(
+			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/frontpage`
+		);
+		console.log(frontpage?.events);
+
+		return {
+			props: {
+				events: frontpage?.events || [],
+				classTypes: frontpage?.class_types || [],
+			},
+		};
+	} catch (error) {
+		console.log(error);
+
+		return {
+			props: {
+				events: [],
+				classTypes: [],
+			},
+		};
+	}
 };
 
 export default Home;

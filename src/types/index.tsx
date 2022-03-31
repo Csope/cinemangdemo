@@ -10,6 +10,11 @@ import ReservationType from './ReservationType';
 import OwnedPassType from './OwnedPassType';
 import ReservabilityType from './ReservabilityType';
 import CreateReservationType from './CreateReservationType';
+import PurchaseReservationType from './PurchaseReservationType';
+import PurchaseReservationResponse from './PurchaseReservationResponse';
+import PurchasePassType from './PurchasePassType';
+import FrontPageResponseType from './FrontPageResponseType';
+import OrderType from './OrderTypes';
 
 export type {
 	UserType,
@@ -24,4 +29,9 @@ export type {
 	OwnedPassType,
 	ReservabilityType,
 	CreateReservationType,
+	PurchaseReservationType,
+	PurchaseReservationResponse,
+	FrontPageResponseType,
+	PurchasePassType,
+	OrderType,
 };

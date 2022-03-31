@@ -3,10 +3,10 @@ import { UserIcon } from '@heroicons/react/solid';
 import LoginSection from '../../common/site/LoginSection';
 import { useSession } from 'next-auth/react';
 import { useSiteStates, useUser } from '../../hooks';
-import UserImage from '../../../public/images/woman.jpg';
 import { Menu, Transition } from '@headlessui/react';
 import { IoTriangle } from 'react-icons/io5';
 import Link from 'next/link';
+import * as Avatars from '../../common/icons/avatars/Avatars';
 
 const HeaderUser = (): JSX.Element => {
 	// const [showLogin, setShowLogin] = useState(false);
@@ -22,8 +22,8 @@ const HeaderUser = (): JSX.Element => {
 		}
 	};
 
-	const doLogout = async () => {
-		const attempt = await doSignOut();
+	const doLogout = () => {
+		doSignOut();
 	};
 
 	return (
@@ -32,9 +32,19 @@ const HeaderUser = (): JSX.Element => {
 				<div className="nav-user__image">
 					<Menu as="div" className="relative">
 						<Menu.Button as="div">
-							<img src={UserImage.src} className=" bg-glow-purple" />
+							{user?.avatar ? (
+								<img
+									// @ts-ignore
+									src={Avatars[user.avatar].src}
+									className=" bg-glow-purple"
+								/>
+							) : (
+								<div className="h-16 w-16 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
+									<UserIcon className="p-4 text-site-4" />
+								</div>
+							)}
 							<div className="text-site-4 uppercase text-sm mt-2 cursor-pointer absolute top-full left-1/2 -translate-x-1/2">
-								{user?.first_name}
+								{user?.first_name || 'Vendég'}
 							</div>
 						</Menu.Button>
 						<Transition
@@ -78,7 +88,6 @@ const HeaderUser = (): JSX.Element => {
 					onClick={toggleLogin}
 					className="h-16 w-16 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative"
 				>
-					{/* asdasd */}
 					<UserIcon className="p-4 text-site-4" />
 					<div className="text-site-4 uppercase text-sm mt-2 cursor-pointer -tracking-tight absolute top-full left-1/2 -translate-x-1/2">
 						Bejelentkezés

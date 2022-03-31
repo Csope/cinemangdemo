@@ -1,7 +1,5 @@
 .TransformedSwiper {
 	img {
-		width: 200px;
-		object-fit: cover;
 		border-radius: $radiusSmall;
 	}
 }
@@ -37,5 +35,16 @@
 		top: 50%;
 		left: 0;
 		font-size: 40px;
+	}
+}
+
+.HeroSwiper {
+	padding-bottom: 30px;
+
+	.swiper-pagination {
+		bottom: 0px !important;
+	}
+	.swiper-pagination-bullet-active {
+		@apply bg-site-3;
 	}
 }

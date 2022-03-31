@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer components {
+	.btn {
+		font-size: 15px;
+		@media only screen and (min-width: 768px) {
+			font-size: 17px;
+		}
+	}
 	.btn-light {
 		// box-shadow: 1px 3px 8px 0px rgb(142 94 165);
 		@apply bg-white text-site-4;
@@ -17,7 +23,8 @@
 	}
 	.btn-gray {
 		// box-shadow: 1px 3px 8px 0px #252626;
-		@apply bg-site-5 text-gray-800;
+		background-color: #cccdd2;
+		@apply text-gray-900;
 	}
 	.btn-magenta {
 		// box-shadow: 1px 3px 8px 0px #252626;
@@ -25,15 +32,15 @@
 	}
 	.btn-gray-2 {
 		// box-shadow: 1px 3px 8px 0px #252626;
-		background-color: #a6a6a6;
-		@apply text-white;
+		// background-color: #a6a6a6;
+		@apply text-white bg-site-21;
 	}
 
 	.h3 {
-		@apply mb-4 text-site-4 uppercase font-extrabold tracking-wide italic text-lg font-montserrat;
+		@apply mb-4 text-site-4 uppercase font-extrabold tracking-wide italic text-xl font-montserrat;
 
 		@media only screen and (min-width: 576px) {
-			@apply text-lg;
+			@apply text-xl;
 		}
 		@media only screen and (min-width: 768px) {
 			@apply text-xl;
@@ -67,7 +74,7 @@
 			@apply text-3xl;
 		}
 		@media only screen and (min-width: 992px) {
-			@apply text-4xl;
+			font-size: 32px;
 		}
 
 		&--white {
@@ -93,6 +100,11 @@
 		&--gray {
 			color: #353849;
 			text-shadow: 2px 2px white;
+		}
+
+		&--blue {
+			color: #015287;
+			text-shadow: 2px 2px #b4d1e3;
 		}
 	}
 

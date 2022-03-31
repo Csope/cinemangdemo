@@ -27,7 +27,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 	const locations: string[] = [];
 
-	const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
 	let _sessions = [...Array(next7days.length)].map((e) => Array(hours.length));
 
@@ -51,11 +51,13 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 			if (isSameDay(start, d)) {
 				const dayIndex = i;
 				const hourIndex = hours.indexOf(startHour);
-
+				console.log(session);
 				_sessions[dayIndex][hourIndex] = session;
 			}
 		});
 	});
+
+	console.log(_sessions);
 
 	useEffect(() => {
 		setSelectedLocation(locations[0]);
@@ -154,6 +156,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 										</div>
 									);
 								} else {
+									console.log(s?.location?.title);
 									return <div key={i}></div>;
 								}
 							})}
@@ -166,7 +169,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 	return (
 		<>
-			<div className="mt-8 pb-12 bg-site-1">
+			<div className="mt-8 bg-site-1">
 				<div className="bg-site-6">
 					<div className="filtered-classes__calendar-locations container">
 						{generateLocations()}
@@ -177,7 +180,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						{generateDates()}
 					</div>
 				</div>
-				<div className="bg-site-1 pt-12">
+				<div className="bg-site-1">
 					<div className="filtered-classes__calendar container">
 						{generateCalendar()}
 					</div>
@@ -210,7 +213,10 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						</div>
 						<div className="bg-site-1 py-8">
 							<div className="container">
-								<ClassDescription session={showDescription} />
+								<ClassDescription
+									session={showDescription}
+									hideParentPopup={() => setShowDescription(undefined)}
+								/>
 							</div>
 						</div>
 					</div>

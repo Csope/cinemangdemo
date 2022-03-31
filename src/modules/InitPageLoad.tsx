@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ContentLoader from '../common/elements/ContentLoader';
 import { useUser } from '../hooks';
 import { removeAuthToken, setAuthToken } from '../utils';
 
 const InitPageLoad = ({ children }: any) => {
-	const { status, user, data } = useUser();
-
-	console.log(data);
+	const { status, user, data, doSetUserState } = useUser();
 
 	if (status === 'loading') {
 		return (
@@ -16,9 +14,9 @@ const InitPageLoad = ({ children }: any) => {
 		);
 	}
 
-	if (status === 'authenticated' && user && data?.authToken) {
+	if (status === 'authenticated' && data?.authToken) {
 		setAuthToken(data.authToken);
-	} else {
+	} else if (status === 'unauthenticated') {
 		removeAuthToken();
 	}
 

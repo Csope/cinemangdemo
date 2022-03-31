@@ -1,18 +1,22 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useToast } from 'react-toastify';
 import Btn from '../../common/elements/buttons/Btn';
-import { useUser } from '../../hooks';
+import { useUser, useToasts } from '../../hooks';
+import { UpdateUserType } from '../../types/UserType';
 import ProfileAvatar from './ProfileAvatar';
+import ContentLoader from '../../common/elements/ContentLoader';
 
 const ProfileData = () => {
-	const { user } = useUser();
-
+	const { user, doUpdateUserData, doSetUserState } = useUser();
+	const { notify } = useToasts();
 	const {
 		register,
 		handleSubmit,
 		getValues,
 		setError,
+		reset,
 		formState: { errors, isDirty, dirtyFields },
 	} = useForm({
 		defaultValues: {
@@ -29,11 +33,6 @@ const ProfileData = () => {
 	const onSubmit = async () => {
 		if (!isDirty) return;
 
-		// setError('passwordConfirm', {
-		// 	type: 'manual',
-		// 	message: 'A két jelszó nem egyezik',
-		// });
-		// if()
 		let pwDirty = false;
 
 		if (
@@ -45,8 +44,16 @@ const ProfileData = () => {
 
 			let pwStageOneFailed = false;
 
-			if (!dirtyFields.confirmPassword) {
-				setError('confirmPassword', {
+			if (!dirtyFields.currentPassword) {
+				setError('currentPassword', {
+					type: 'manual',
+					message: 'Mező megadása kötelező',
+				});
+
+				pwStageOneFailed = true;
+			}
+			if (!dirtyFields.newPassword) {
+				setError('newPassword', {
 					type: 'manual',
 					message: 'Mező megadása kötelező',
 				});
@@ -61,17 +68,64 @@ const ProfileData = () => {
 
 				pwStageOneFailed = true;
 			}
-			if (!dirtyFields.confirmPassword) {
+
+			if (pwStageOneFailed) return;
+
+			if (getValues('newPassword') !== getValues('confirmPassword')) {
 				setError('confirmPassword', {
 					type: 'manual',
-					message: 'Mező megadása kötelező',
+					message: 'A két jelszó nem egyezik',
 				});
 
 				pwStageOneFailed = true;
 			}
+
+			if (pwStageOneFailed) return;
 		}
 
-		console.log(pwDirty);
+		const _firstname = getValues('firstname') as string;
+		const _lastname = getValues('lastname') as string;
+
+		const newData: UpdateUserType = pwDirty
+			? {
+					last_name: _lastname,
+					first_name: _firstname,
+					birth_date: '1993-12-29' as string,
+					gender: 'F',
+					password: getValues('currentPassword') as string,
+					new_password: getValues('newPassword') as string,
+			  }
+			: {
+					last_name: _lastname,
+					first_name: _firstname,
+					birth_date: '1993-12-29' as string,
+					gender: 'F',
+			  };
+
+		setOnAttempt(true);
+		const updateRes = await doUpdateUserData(newData);
+		setOnAttempt(false);
+
+		if (updateRes.status) {
+			notify('SUCCESS', updateRes.message);
+			reset({
+				lastname: _lastname,
+				firstname: _firstname,
+				newPassword: '',
+				currentPassword: '',
+				confirmPassword: '',
+			});
+			// @ts-ignore
+			doSetUserState((prevUserData) => {
+				return {
+					...prevUserData,
+					last_name: _lastname,
+					first_name: _firstname,
+				};
+			});
+		} else {
+			notify('ERROR', updateRes.message);
+		}
 	};
 
 	const onError = () => {
@@ -80,7 +134,7 @@ const ProfileData = () => {
 
 	return (
 		<div className="grid grid-cols-2 gap-10">
-			<div className="bg-site-1 py-7 px-6 rounded-xl mb-8">
+			<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 relative">
 				<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-3">
 					Adatok
 				</h1>
@@ -191,10 +245,15 @@ const ProfileData = () => {
 							disabled={!isDirty}
 							text="Mentés"
 							clickEvent={() => console.log('update use')}
-							customClasses={`btn-dark w-full ${!isDirty ? 'opacity-70' : ''}`}
+							customClasses={` w-full ${!isDirty ? 'btn-gray-2' : 'btn-dark'}`}
 						/>
 					</div>
 				</form>
+				{onAttempt && (
+					<div className="absolute inset-0 flex justify-center items-center bg-site-1 bg-opacity-60 rounded-xl">
+						<ContentLoader />
+					</div>
+				)}
 			</div>
 			<ProfileAvatar />
 		</div>

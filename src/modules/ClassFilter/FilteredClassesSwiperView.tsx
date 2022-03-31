@@ -20,8 +20,6 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 		setSelectedSession(sessions[0]);
 	}, [sessions]);
 
-	console.log(sessions);
-
 	return (
 		<div className="FilteredClassesSwiperView bg-site-1">
 			{isEmpty(sessions) ? (

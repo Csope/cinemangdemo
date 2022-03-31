@@ -1,18 +1,40 @@
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { useToast } from 'react-toastify';
+import Btn from '../../common/elements/buttons/Btn';
 import ContentLoader from '../../common/elements/ContentLoader';
-import { useUser } from '../../hooks';
+import ConfirmationPopup from '../../common/site/ConfirmationPopup';
+import { useActions, useToasts, useUser } from '../../hooks';
 import { useGetReservations } from '../../queries';
 
 const ProfileReservations = () => {
+	const [showConfirm, setShowConfirm] = useState<false | number>(false);
 	const { status, user } = useUser();
-	const { data, isFetching } = useGetReservations(user?.id as number);
+	const { data, isFetching, refetch } = useGetReservations(user?.id as number);
 	const reservations = data?.data.reservations || [];
 	const [onAttempt, setOnAttempt] = useState(false);
+	const { doResignReservation } = useActions();
+	const { notify } = useToasts();
+
+	const resignReservation = async (reservationId: number) => {
+		setShowConfirm(false);
+		setOnAttempt(true);
+		const resignResponse = await doResignReservation(reservationId);
+		setOnAttempt(false);
+
+		if (resignResponse.status) {
+			refetch();
+			notify('SUCCESS', resignResponse.message);
+		} else {
+			notify('ERROR', resignResponse.message);
+		}
+	};
+
+	console.log(reservations);
 
 	return (
-		<div className="bg-site-1 py-7 px-6 rounded-xl mb-8">
+		<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 relative">
 			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
 				Foglalásaim
 			</h1>
@@ -25,15 +47,12 @@ const ProfileReservations = () => {
 				<div className="grid grid-cols-2 gap-10">
 					{reservations.map((reservation) => {
 						const startHour = format(
-							new Date(reservation.details.session.start),
+							new Date(reservation.session.start),
 							'HH:mm'
 						);
-						const endHour = format(
-							new Date(reservation.details.session.end),
-							'HH:mm'
-						);
+						const endHour = format(new Date(reservation.session.end), 'HH:mm');
 						const date = format(
-							new Date(reservation.details.session.date),
+							new Date(reservation.session.date),
 							'yyyy-MM-dd'
 						);
 
@@ -42,7 +61,10 @@ const ProfileReservations = () => {
 								<div className="grid grid-cols-2 mb-5">
 									<div>
 										<img
-											src="https://geocdn.fotex.net/static.sugarfitness.hu/files/996/preview.jpg"
+											src={`${
+												process.env.NEXT_PUBLIC_ASSETS_ROUTE +
+												reservation.session.class.preview_url
+											}`}
 											alt="class image"
 											className="rounded-xl w-9/12"
 										/>
@@ -53,8 +75,8 @@ const ProfileReservations = () => {
 												Oktató
 											</div>
 											<div className="text-white text-2xl">
-												{reservation.details.trainer.last_name}{' '}
-												{reservation.details.trainer.first_name}
+												{reservation.session.trainer.last_name}{' '}
+												{reservation.session.trainer.first_name}
 											</div>
 										</div>
 										<div className="mb-4">
@@ -76,30 +98,17 @@ const ProfileReservations = () => {
 												Helyszín
 											</div>
 											<div className="text-white text-2xl">
-												{reservation.details.location.title}
+												{reservation.session.location.title}
 											</div>
 										</div>
-										{/* <div className="mb-4">
-												<div className="text-site-4 uppercase text-lg">
-													Férőhelyek
-												</div>
-												<div className="text-white text-2xl">
-													{reservation.details}
-												</div>
-											</div> */}
 									</div>
 								</div>
 								<div>
-									<motion.button
-										whileTap={{ scale: 0.95 }}
-										disabled={onAttempt}
-										type="submit"
-										className={` transition-colors bg-site-4 text-white relative cursor-pointer uppercase text-center w-full block px-7 py-2 rounded-3xl font-bold tracking-widest  ${
-											onAttempt ? ' opacity-60 ' : ' opacity-100'
-										}`}
-									>
-										Lemondás
-									</motion.button>
+									<Btn
+										clickEvent={() => setShowConfirm(reservation.id)}
+										text="Lemondás"
+										customClasses="bg-site-4 text-white w-full"
+									/>
 								</div>
 							</div>
 						);
@@ -107,6 +116,22 @@ const ProfileReservations = () => {
 				</div>
 			) : (
 				<div className="text-center">Jelenleg nincs foglalásom!</div>
+			)}
+
+			<ConfirmationPopup
+				show={showConfirm ? true : false}
+				cancelAction={() => setShowConfirm(false)}
+				confirmAction={() => resignReservation(showConfirm as number)}
+				title="Megerősítés"
+				text="Biztos, hogy le szeretnéd mondani a foglalásod?"
+				cancelText="Mégsem"
+				confirmText="Lemondás"
+			/>
+
+			{onAttempt && (
+				<div className="absolute inset-0 flex justify-center items-center bg-site-1 rounded-xl bg-opacity-70">
+					<ContentLoader />
+				</div>
 			)}
 		</div>
 	);

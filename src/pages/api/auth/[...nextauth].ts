@@ -20,7 +20,7 @@ export default NextAuth({
 					const {
 						data: {
 							status,
-							data: { user },
+							data: { user, token },
 						},
 					} = await axios.post<ResType<UserType>>(
 						`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/login`,
@@ -31,12 +31,15 @@ export default NextAuth({
 					);
 
 					if (status && user) {
-						return user;
+						return {
+							...user,
+							token,
+						};
 					} else {
 						return null;
 					}
 				} catch (error) {
-					console.log(error);
+					// console.log(error);
 					//TODO: handle error
 					return null;
 				}
@@ -47,18 +50,38 @@ export default NextAuth({
 	callbacks: {
 		async jwt({ token, account, user }) {
 			if (account) {
-				token.user = user;
-				token.authToken = 'THIS-IS-MY-TOKEN';
+				token.id = user?.id;
+				token.authToken = user?.token;
 			}
 
 			return token;
 		},
 
 		async session({ session, token }) {
-			// @ts-ignore
-			session.user = { ...token.user };
-			session.authToken = token.authToken as string;
-			return session;
+			try {
+				const { data } = await axios.get(
+					`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/me`,
+					{
+						headers: {
+							// @ts-ignore
+							Authorization: 'Bearer ' + token.authToken,
+						},
+					}
+				);
+
+				if (!data.status) {
+					session.error = true;
+				}
+
+				// @ts-ignore
+				session.user = data?.data?.user;
+				session.authToken = token.authToken as string;
+
+				return session;
+			} catch (error) {
+				session.error = true;
+				return session;
+			}
 		},
 	},
 

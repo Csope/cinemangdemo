@@ -5,5 +5,6 @@ export default interface PassType {
 	duration: number;
 	points: number;
 	price: number;
+	type: string;
 	discount?: string;
 }

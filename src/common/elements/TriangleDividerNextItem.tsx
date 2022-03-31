@@ -13,7 +13,7 @@ const TriangleDividerNextItem = ({
 }: PropTypes) => {
 	return (
 		<div
-			className={`TriangleDividerNextItem ${
+			className={`TriangleDividerNextItem  ${
 				bgClass ? bgClass : 'bg-site-2'
 			} flex items-center justify-center`}
 			style={{

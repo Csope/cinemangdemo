@@ -15,7 +15,6 @@ const TransformedImage = ({
 	return (
 		<div className={`w-full transformed-image-container`}>
 			<img src={imgSrc} alt={imgAlt} style={{ transform }} />
-			<div className="image-shadow"></div>
 		</div>
 	);
 };

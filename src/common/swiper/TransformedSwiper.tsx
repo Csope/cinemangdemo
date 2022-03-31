@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow } from 'swiper';
-import TestImage from '../../../public/images/test.png';
+import { Swiper as SwiperInstance } from 'swiper/types';
+
+import { EffectCards, Autoplay } from 'swiper';
 
 interface PropTypes {
 	initialSlide: number;
@@ -9,22 +10,36 @@ interface PropTypes {
 }
 
 const TransformedSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
+	const [controlledSwiper, setControlledSwiper] =
+		useState<SwiperInstance | null>(null);
+
 	return (
 		<Swiper
-			effect={'coverflow'}
-			grabCursor={true}
+			effect={'cards'}
+			grabCursor={false}
 			initialSlide={initialSlide || 0}
-			centeredSlides={true}
-			slidesPerView={3}
-			coverflowEffect={{
-				rotate: 45,
-				stretch: 60,
-				depth: 70,
-				modifier: 1,
+			onSwiper={(swiperInstance) => setControlledSwiper(swiperInstance)}
+			// centeredSlides={true}
+			// slidesPerView={3}
+			// coverflowEffect={{
+			// 	rotate: 45,
+			// 	stretch: 60,
+			// 	depth: 70,
+			// 	modifier: 1,
+			// 	slideShadows: false,
+			// }}
+			// loop={true}
+			// loopFillGroupWithBlank={true}
+			preventClicks={true}
+			allowTouchMove={false}
+			cardsEffect={{
 				slideShadows: false,
 			}}
-			pagination={true}
-			modules={[EffectCoverflow]}
+			autoplay={{
+				delay: 4000,
+				disableOnInteraction: false,
+			}}
+			modules={[EffectCards, Autoplay]}
 			className="TransformedSwiper"
 		>
 			{imgSrcs.map((src) => (
