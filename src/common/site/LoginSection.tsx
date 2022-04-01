@@ -198,7 +198,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 							<div>
 								<Btn
 									customClasses="btn-light text-black w-full"
-									clickEvent={() => console.log('login fb')}
+									clickEvent={() => console.log('login google')}
 									text={
 										<>
 											<div className="absolute left-5 top-1/2 -translate-y-1/2 text-xl">

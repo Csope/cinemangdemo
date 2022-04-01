@@ -31,8 +31,6 @@ const ProfileReservations = () => {
 		}
 	};
 
-	console.log(reservations);
-
 	return (
 		<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 relative">
 			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">

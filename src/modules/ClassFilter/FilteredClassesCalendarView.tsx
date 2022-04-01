@@ -51,13 +51,11 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 			if (isSameDay(start, d)) {
 				const dayIndex = i;
 				const hourIndex = hours.indexOf(startHour);
-				console.log(session);
+
 				_sessions[dayIndex][hourIndex] = session;
 			}
 		});
 	});
-
-	console.log(_sessions);
 
 	useEffect(() => {
 		setSelectedLocation(locations[0]);
@@ -156,7 +154,6 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 										</div>
 									);
 								} else {
-									console.log(s?.location?.title);
 									return <div key={i}></div>;
 								}
 							})}

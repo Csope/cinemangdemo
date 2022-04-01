@@ -4,12 +4,14 @@ import { EffectCoverflow } from 'swiper';
 import { Swiper as SwiperInstance } from 'swiper/types';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import FavoriteMark from '../site/FavoriteMark';
+import { useFavorites } from '../../hooks';
 
 interface PropTypes {
 	initialSlide: number;
 	imgSrcs: string[];
 	onSlideChange: (swiper: any) => void;
-	hasFavorite?: boolean;
+	hasFavorite?: string[] | undefined;
+	hasInfo?: string[] | undefined;
 }
 
 const FiveColSwiper = ({
@@ -17,9 +19,21 @@ const FiveColSwiper = ({
 	imgSrcs,
 	onSlideChange,
 	hasFavorite,
+	hasInfo,
 }: PropTypes) => {
 	const [controlledSwiper, setControlledSwiper] =
 		useState<SwiperInstance | null>(null);
+	const { favorites } = useFavorites();
+
+	const genFavorite = (favId: string) => {
+		if (favorites.includes(favId)) {
+			return (
+				<div>
+					<FavoriteMark id={favId} customClasses="absolute bottom-2 right-2" />
+				</div>
+			);
+		}
+	};
 
 	return (
 		<div className="px-10 relative">
@@ -37,7 +51,6 @@ const FiveColSwiper = ({
 				onSwiper={(swiperInstance) => setControlledSwiper(swiperInstance)}
 				initialSlide={initialSlide || 0}
 				centeredSlides={true}
-				// slidesPerView={2}
 				coverflowEffect={{
 					rotate: 20,
 					stretch: -40,
@@ -46,11 +59,8 @@ const FiveColSwiper = ({
 					slideShadows: false,
 				}}
 				onSlideChangeTransitionEnd={onSlideChange}
-				// loop={true}
-				// pagination={true}
 				modules={[EffectCoverflow]}
 				className="FiveColSwiper"
-				// preventClicks={false}
 				allowTouchMove={false}
 				slideToClickedSlide={true}
 			>
@@ -58,7 +68,12 @@ const FiveColSwiper = ({
 					<SwiperSlide key={i}>
 						<div className="relative">
 							<img src={src} className="select-none cursor-pointer" />
-							{hasFavorite && <FavoriteMark id={src + i} />}
+							{hasFavorite && genFavorite(hasFavorite[i])}
+							{hasInfo && (
+								<div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black text-white bg-opacity-70 text-sm italic font-light px-5 py-1 rounded">
+									{hasInfo[i]}
+								</div>
+							)}
 						</div>
 					</SwiperSlide>
 				))}

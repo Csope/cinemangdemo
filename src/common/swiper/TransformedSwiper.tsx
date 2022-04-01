@@ -7,9 +7,14 @@ import { EffectCards, Autoplay } from 'swiper';
 interface PropTypes {
 	initialSlide: number;
 	imgSrcs: string[];
+	delay: number;
 }
 
-const TransformedSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
+const TransformedSwiper = ({
+	initialSlide,
+	imgSrcs,
+	delay = 4000,
+}: PropTypes) => {
 	const [controlledSwiper, setControlledSwiper] =
 		useState<SwiperInstance | null>(null);
 
@@ -19,26 +24,16 @@ const TransformedSwiper = ({ initialSlide, imgSrcs }: PropTypes) => {
 			grabCursor={false}
 			initialSlide={initialSlide || 0}
 			onSwiper={(swiperInstance) => setControlledSwiper(swiperInstance)}
-			// centeredSlides={true}
-			// slidesPerView={3}
-			// coverflowEffect={{
-			// 	rotate: 45,
-			// 	stretch: 60,
-			// 	depth: 70,
-			// 	modifier: 1,
-			// 	slideShadows: false,
-			// }}
-			// loop={true}
-			// loopFillGroupWithBlank={true}
 			preventClicks={true}
 			allowTouchMove={false}
 			cardsEffect={{
 				slideShadows: false,
 			}}
 			autoplay={{
-				delay: 4000,
+				delay,
 				disableOnInteraction: false,
 			}}
+			speed={700}
 			modules={[EffectCards, Autoplay]}
 			className="TransformedSwiper"
 		>

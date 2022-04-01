@@ -5,4 +5,8 @@ export default interface TrainerType {
 	motto: string;
 	position: string;
 	preview_url: string;
+	related_class_types: object;
+	others?: {
+		videos?: string[];
+	};
 }

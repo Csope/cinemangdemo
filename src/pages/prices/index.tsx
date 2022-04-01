@@ -7,7 +7,7 @@ import { chunk } from 'lodash';
 import testPassTyesData from '../../static/testPassTypesData.json';
 import Btn from '../../common/elements/buttons/Btn';
 import PassPurchaseDialog from '../../modules/Actions/Pass/PassPurchaseDialog';
-import { useSiteStates } from '../../hooks';
+import { useSiteStates, useUser } from '../../hooks';
 import { getHufFormat } from '../../utils';
 import PassPurchaseResponse from '../../modules/Actions/Pass/PassPurchaseResponse';
 
@@ -17,6 +17,8 @@ type PropTypes = {
 };
 
 const Prices = ({ passTypes, inPurchase }: PropTypes) => {
+	const { status } = useUser();
+	const { doShowLogin } = useSiteStates();
 	const { selectedPass, doSetSelectedPass, doShowPassPurchaseResponse } =
 		useSiteStates();
 	const groupType: PassType[] = [];
@@ -28,10 +30,15 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 	});
 
 	const passPurchaseClick = (passType: PassType) => {
+		if (status === 'loading') return;
+
+		if (status === 'unauthenticated') {
+			doShowLogin();
+			return;
+		}
+
 		doSetSelectedPass(passType);
 	};
-
-	console.log(inPurchase);
 
 	useEffect(() => {
 		if (inPurchase) {
@@ -54,7 +61,7 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 						A, fuga.
 					</p>
 
-					<div className="divide-y divide-site-6">
+					<div className="divide-y  divide-site-6">
 						{groupType.map((pass) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title">{pass.title}</div>
@@ -64,7 +71,7 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex items-center ml-auto normal-case"
+										customClasses="btn-dark flex ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>
@@ -89,7 +96,7 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex items-center ml-auto normal-case"
+										customClasses="btn-dark flex ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>

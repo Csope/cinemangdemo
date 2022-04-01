@@ -6,6 +6,8 @@ import ClassDescription from '../../common/site/ClassDescription';
 import { SessionType } from '../../types';
 import { isEmpty } from 'lodash';
 import { motion, AnimatePresence } from 'framer-motion';
+import { format } from 'date-fns';
+import FavoriteMark from '../../common/site/FavoriteMark';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -15,6 +17,12 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 	const [selectedSession, setSelectedSession] = useState<
 		SessionType | undefined
 	>(undefined);
+
+	const swiperData = sessions.map((session) => ({
+		src: session.class.preview_url,
+		favoriteId: session.class.title,
+		info: format(new Date(session.start), 'HH:mm'),
+	}));
 
 	useEffect(() => {
 		setSelectedSession(sessions[0]);
@@ -31,11 +39,9 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 							setSelectedSession(sessions[swiper.snapIndex])
 						}
 						initialSlide={0}
-						imgSrcs={sessions.map(
-							(session) =>
-								`${process.env.NEXT_PUBLIC_ASSETS_ROUTE}/${session.class.preview_url}`
-						)}
-						hasFavorite={true}
+						imgSrcs={swiperData.map((data) => `${data.src}`)}
+						hasFavorite={swiperData.map((data) => data.favoriteId)}
+						hasInfo={swiperData.map((data) => data.info)}
 					/>
 				</div>
 			)}
@@ -43,17 +49,19 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 			<TriangleDivider bgClass="bg-site-3" mTop={-20} />
 			<TriangleDividerNextItem>
 				{!isEmpty(sessions) && (
-					<AnimatePresence>
-						<motion.h1
-							initial={{ x: -100, opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
-							// exit={{ x: 200, opacity: 0 }}
-							className="h1-shadow h1-shadow--white mt-4"
-							key={selectedSession?.class.id}
-						>
-							{selectedSession?.class.title}
-						</motion.h1>
-					</AnimatePresence>
+					<motion.h1
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						// exit={{ x: 200, opacity: 0 }}
+						className="h1-shadow h1-shadow--white mt-4 flex"
+						key={selectedSession?.class.id}
+					>
+						{selectedSession?.class.title}
+						<FavoriteMark
+							id={selectedSession?.class.title as string}
+							customClasses="ml-4 text-3xl"
+						/>
+					</motion.h1>
 				)}
 			</TriangleDividerNextItem>
 

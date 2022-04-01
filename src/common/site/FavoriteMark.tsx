@@ -1,12 +1,13 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { useFavorites } from '../../hooks';
 import { BsFillStarFill } from 'react-icons/bs';
-
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 interface PropTypes {
 	id: string;
+	customClasses: string;
 }
 
-const FavoriteMark = ({ id }: PropTypes) => {
+const FavoriteMark = ({ id, customClasses }: PropTypes) => {
 	const [isFavorite, setIsFavorite] = useState(false);
 	const { favorites, addItemToFavorites, removeItemFromFavorites } =
 		useFavorites();
@@ -29,14 +30,12 @@ const FavoriteMark = ({ id }: PropTypes) => {
 	}, [favorites]);
 
 	return (
-		<div className="absolute bottom-3 right-4">
-			<button
-				onClick={markOnClick}
-				className={`${isFavorite ? 'text-yellow-300' : 'text-white'} text-2xl`}
-			>
-				<BsFillStarFill />
-			</button>
-		</div>
+		<button
+			onClick={markOnClick}
+			className={`text-white text-2xl ${customClasses}`}
+		>
+			{isFavorite ? <AiFillStar /> : <AiOutlineStar />}
+		</button>
 	);
 };
 

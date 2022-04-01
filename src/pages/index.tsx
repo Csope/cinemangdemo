@@ -86,6 +86,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 				<div className="bg-site-2 pt-14 pb-14 md:pt-16 md:pb-12">
 					<div className="container">
 						<TwoColClassSection
+							delay={4000}
 							direction="text-img"
 							classTitle={'Cardio'}
 							classDescription={
@@ -107,6 +108,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 				<div className="pt-14 pb-14 md:pt-12 md:pb-12 bg-site-9">
 					<div className="container">
 						<TwoColClassSection
+							delay={5000}
 							classTitle={'Erősítő'}
 							direction="img-text"
 							classDescription={
@@ -129,6 +131,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 				<div className="bg-site-2 pt-12 pb-12">
 					<div className="container">
 						<TwoColClassSection
+							delay={4500}
 							direction="text-img"
 							classTitle={'Mobilitás'}
 							classDescription={
@@ -185,7 +188,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		} = await axios.get<ResType<FrontPageResponseType>>(
 			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/frontpage`
 		);
-		console.log(frontpage?.events);
 
 		return {
 			props: {

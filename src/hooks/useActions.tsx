@@ -173,8 +173,6 @@ const useActions = () => {
 				reqData
 			);
 
-			console.log(data);
-
 			if (data.status) {
 				returnData.status = data.status;
 				// @ts-ignore

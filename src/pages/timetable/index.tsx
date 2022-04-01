@@ -34,7 +34,6 @@ const Timetable: NextPage<PropTypes> = ({
 
 	useEffect(() => {
 		if (inPurchase) {
-			console.log('asdasd');
 			doShowReservationPurchaseResponse(inPurchase);
 		}
 	}, []);

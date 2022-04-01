@@ -9,6 +9,7 @@ import { TrainerType } from '../../types';
 import { unescape } from 'lodash';
 import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
+import { motion } from 'framer-motion';
 
 type PropTypes = {
 	trainers: TrainerType[];
@@ -49,7 +50,7 @@ const Trainers: NextPage<PropTypes> = () => {
 						}}
 						imgSrcs={trainers.map((trainer) =>
 							trainer.preview_url
-								? `${process.env.NEXT_PUBLIC_ASSETS_ROUTE}/${trainer.preview_url}`
+								? `${trainer.preview_url}`
 								: DefaultEmployeeImg.src
 						)}
 					/>
@@ -67,72 +68,65 @@ const Trainers: NextPage<PropTypes> = () => {
 			</TriangleDividerNextItem>
 
 			{selectedTrainer && (
-				<>
-					<div className="bg-site-2 pb-16">
-						<div className="container">
-							<div className="text-center p-quote p-quote--white">
-								{/* &quot; */}
-								{unescape(selectedTrainer.motto)}
-								{/* &quot; */}
-							</div>
-							<div className="text-center font-montserrat italic text-white py-10">
-								{selectedTrainer.position}
-							</div>
-							<div className="flex gap-6 justify-center mb-14">
-								<LinkBtn
-									text="Összes óratípus"
-									href="/timetable"
-									customClasses="btn-dark"
-								/>
-								<LinkBtn
-									text="Bodyart"
-									href="/timetable"
-									customClasses="btn-dark"
-								/>
-								<LinkBtn
-									text="Deepwork"
-									href="/timetable"
-									customClasses="btn-dark"
-								/>
-							</div>
-
-							<div className="text-white mb-10">
-								<div
-									dangerouslySetInnerHTML={{
-										__html: unescape(selectedTrainer.description),
-									}}
-								></div>
-							</div>
-
-							<div className="flex gap-10">
-								<div className="w-1/2">
-									<iframe
-										style={{ borderRadius: '14px' }}
-										width="100%"
-										height="350px"
-										src={`https://www.youtube.com/embed/48w9kcBfrVA`}
-										frameBorder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowFullScreen
-										title="Embedded youtube"
-									/>
-								</div>
-								<div className="w-1/2">
-									<iframe
-										style={{ borderRadius: '14px' }}
-										width="100%"
-										height="350px"
-										src={`https://www.youtube.com/embed?v=KCrXgy8qtjM`}
-										frameBorder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowFullScreen
-										title="Embedded youtube"
-									/>
-								</div>
-							</div>
+				<div className="bg-site-2 pb-16">
+					<motion.div
+						animate={{ opacity: 1, scale: 1 }}
+						initial={{ opacity: 0.3, scale: 0.95 }}
+						className="container"
+						key={selectedTrainer.first_name + selectedTrainer.last_name}
+					>
+						<div className="text-center p-quote p-quote--white">
+							{unescape(selectedTrainer.motto)}
 						</div>
-					</div>
-				</>
+						<div className="text-center font-montserrat italic text-white py-10">
+							{selectedTrainer.position}
+						</div>
+						<div className="flex gap-6 justify-center mb-14 flex-wrap">
+							<LinkBtn
+								text="Összes óratípus"
+								href="/timetable"
+								customClasses="btn-dark"
+							/>
+							{Object.keys(selectedTrainer.related_class_types).map((key) => (
+								<LinkBtn
+									// @ts-ignore
+									key={selectedTrainer.related_class_types[key].title}
+									// @ts-ignore
+									text={selectedTrainer.related_class_types[key].title}
+									href="/timetable"
+									customClasses="btn-dark"
+								/>
+							))}
+						</div>
+
+						<div className="text-white mb-10">
+							<div
+								dangerouslySetInnerHTML={{
+									__html: unescape(selectedTrainer.description),
+								}}
+							></div>
+						</div>
+
+						<div className="grid grid-cols-2 gap-10 flex-wrap">
+							{selectedTrainer?.others?.videos?.map((video) => (
+								// @ts-ignore
+								<div key={video.link}>
+									<iframe
+										style={{ borderRadius: '14px' }}
+										width="100%"
+										height="350px"
+										// @ts-ignore
+										src={video.link}
+										frameBorder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+										title="Embedded youtube"
+									/>
+								</div>
+							))}
+						</div>
+					</motion.div>
+				</div>
 			)}
 		</div>
 	);

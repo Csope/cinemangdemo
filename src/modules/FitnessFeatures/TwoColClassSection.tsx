@@ -11,6 +11,7 @@ interface PropType {
 	imgSrcs: string[];
 	buttonInfo: ButtonPropType;
 	direction: 'text-img' | 'img-text';
+	delay: number;
 }
 
 const TwoColClassSection = ({
@@ -19,6 +20,7 @@ const TwoColClassSection = ({
 	imgSrcs,
 	buttonInfo,
 	direction,
+	delay,
 }: PropType) => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
@@ -89,7 +91,7 @@ const TwoColClassSection = ({
 				}}
 			>
 				<div className=" md:w-56 md:mr-10 md:ml-10">
-					<TransformedSwiper initialSlide={1} imgSrcs={imgSrcs} />
+					<TransformedSwiper initialSlide={1} imgSrcs={imgSrcs} delay={delay} />
 				</div>
 			</motion.div>
 		</div>

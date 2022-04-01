@@ -33,8 +33,6 @@ const PassPurchaseDialog = () => {
 	};
 
 	const passPurchaseClick = async (pass: PassType) => {
-		console.log(startDate);
-
 		if (!startDate) {
 			setStartDateErr('Mező megadása kötelező');
 			return false;

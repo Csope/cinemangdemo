@@ -89,8 +89,6 @@ const useUser = () => {
 				newUserData
 			);
 
-			console.log(data);
-
 			returnData.status = data.status;
 			returnData.message = data.message || '';
 			returnData.errors = data.errors || [];

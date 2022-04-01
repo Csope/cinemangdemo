@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import Btn from '../elements/buttons/Btn';
 import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
 import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
+import { DifficultyTypes } from '../../types/ClassFilterTypes';
 
 type PropTypes = {
 	session: SessionType | undefined;
@@ -17,7 +18,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 	const { doShowLogin } = useSiteStates();
 	const { selectedSessionDispatch } = useSelectedSession();
 	const trainerImage = session?.trainer.preview_url
-		? `${process.env.NEXT_PUBLIC_ASSETS_ROUTE}/${session?.trainer.preview_url}`
+		? session?.trainer.preview_url
 		: DefaultEmployeeImg.src;
 
 	const reservationClick = (e: MouseEvent, session: SessionType) => {
@@ -55,10 +56,30 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					</div>
 				</div>
 				<div className="mb-8 md:mb-0 text-center">
-					<div className="inline-block bg-rose-500 rounded-full px">
-						<FiAlertCircle className="mx-auto w-14 h-14" />
-					</div>
-					<div className="text-site-4 text-xl uppercase">Haladó</div>
+					{session?.class?.difficulty === DifficultyTypes.NORMAL && (
+						<>
+							<div className="inline-block bg-rose-500 rounded-full px">
+								<FiAlertCircle className="mx-auto w-14 h-14" />
+							</div>
+							<div className="text-site-4 text-xl uppercase">Normál</div>
+						</>
+					)}
+					{session?.class?.difficulty === DifficultyTypes.BEGINNER && (
+						<>
+							<div className="inline-block bg-rose-500 rounded-full px">
+								<FiAlertCircle className="mx-auto w-14 h-14" />
+							</div>
+							<div className="text-site-4 text-xl uppercase">KEZDŐ</div>
+						</>
+					)}
+					{session?.class?.difficulty === DifficultyTypes.ADVENCED && (
+						<>
+							<div className="inline-block bg-rose-500 rounded-full px">
+								<FiAlertCircle className="mx-auto w-14 h-14" />
+							</div>
+							<div className="text-site-4 text-xl uppercase">Haladó</div>
+						</>
+					)}
 				</div>
 			</div>
 			<div className="bg-site-8 rounded-xl px-4 pt-7 pb-8 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
