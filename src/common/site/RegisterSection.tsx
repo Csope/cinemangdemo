@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker';
 import { RegisterUserType } from '../../types/UserType';
 import { format } from 'date-fns';
 import ContentLoader from '../elements/ContentLoader';
+import { useRouter } from 'next/router';
 
 type FormValues = {
 	email: string;
@@ -25,6 +26,7 @@ const RegisterSection = () => {
 	const [gdprChecked, setGdprChecked] = useState<boolean>(false);
 	const [newsletterChecked, setNewsletterChecked] = useState<boolean>(false);
 	const [birthdate, setBirthdate] = useState<Date | undefined>(undefined);
+	const router = useRouter();
 	const [valErrors, setValErrors] = useState<{
 		gender: string | null;
 		birthdate: string | null;
@@ -34,7 +36,7 @@ const RegisterSection = () => {
 		birthdate: null,
 		gdpr: null,
 	});
-	const { doRegister, doSignInCredentials } = useUser();
+	const { doRegister } = useUser();
 	const { notify } = useToasts();
 	const {
 		register,
@@ -119,8 +121,8 @@ const RegisterSection = () => {
 		setAttempt(false);
 
 		if (registerAttempt.status) {
-			await doSignInCredentials(email, password);
 			notify('SUCCESS', 'Sikeres regisztráció');
+			router.push('/');
 		} else {
 			notify('ERROR', registerAttempt.message);
 			registerAttempt.errors.map((err) => {

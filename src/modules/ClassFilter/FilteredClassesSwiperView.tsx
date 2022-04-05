@@ -8,6 +8,7 @@ import { isEmpty } from 'lodash';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format } from 'date-fns';
 import FavoriteMark from '../../common/site/FavoriteMark';
+import DefaultClass from '../../../public/images/defaults/oratipus_default.jpg';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -19,7 +20,9 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 	>(undefined);
 
 	const swiperData = sessions.map((session) => ({
-		src: session.class.preview_url,
+		src: session.class.preview_url
+			? session.class.preview_url
+			: DefaultClass.src,
 		favoriteId: session.class.title,
 		info: format(new Date(session.start), 'HH:mm'),
 	}));

@@ -36,9 +36,22 @@ const useUser = () => {
 				email,
 			});
 
-			return response;
+			if (response?.error === 'not_verified') {
+				return {
+					status: false,
+					notVerified: true,
+				};
+			}
+
+			if (response?.error) throw new Error(response?.error);
+
+			return {
+				status: true,
+			};
 		} catch (error) {
-			return false;
+			return {
+				status: false,
+			};
 		}
 	};
 
@@ -115,6 +128,87 @@ const useUser = () => {
 		}
 	};
 
+	const doResendVerifyEmail = async (email: string) => {
+		try {
+			const { data } = await axios.post<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/resend-verify`,
+				{
+					email,
+				}
+			);
+
+			return data.status;
+		} catch (error) {
+			return false;
+		}
+	};
+
+	const doVerifyEmail = async (hash: string) => {
+		try {
+			const { data } = await axios.post<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/email-verify/${hash}`
+			);
+
+			return {
+				status: data.status,
+				message: data.message || '',
+			};
+		} catch (error) {
+			return {
+				status: false,
+				message: 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		}
+	};
+
+	const doSendLostPassword = async (email: string) => {
+		try {
+			const { data } = await axios.post<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/forgotten-password`,
+				{
+					email,
+				}
+			);
+
+			return {
+				status: data.status,
+				message: data.message,
+			};
+		} catch (error) {
+			return {
+				status: false,
+				message: 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		}
+	};
+
+	const doChangePassword = async (
+		password: string,
+		pwConfirm: string,
+		hash: string
+	) => {
+		try {
+			const { data } = await axios.post<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/reset-password`,
+				{
+					password,
+					password_confirmation: pwConfirm,
+					hash,
+				}
+			);
+
+			return {
+				status: data.status,
+				message: data.message,
+			};
+		} catch (error) {
+			return {
+				status: false,
+				message: 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		}
+	};
+
 	return {
 		data,
 		status,
@@ -125,6 +219,10 @@ const useUser = () => {
 		doUpdateAvatar,
 		doSetUserState: setUserState,
 		doRegister,
+		doResendVerifyEmail,
+		doSendLostPassword,
+		doChangePassword,
+		doVerifyEmail,
 	};
 };
 

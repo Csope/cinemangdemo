@@ -188,15 +188,12 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 				onClose={() => setShowDescription(undefined)}
 				className="fixed z-10 inset-0 overflow-y-auto"
 			>
-				<div className="flex items-center justify-center min-h-screen">
-					<Dialog.Overlay
-						className="fixed inset-0 opacity-60"
-						style={{ backgroundColor: '#2e152e' }}
-					/>
+				<div className="flex items-center justify-center min-h-screen rounded-2xl">
+					<Dialog.Overlay className="fixed inset-0 opacity-70 bg-white" />
 
-					<div className="relative w-full">
-						<div className="px-4 bg-site-8 py-3">
-							<div className="container relative">
+					<div className="relative container md:bg-glow-purple  rounded-2xl">
+						<div className="px-4 bg-site-8 py-3 rounded-tl-2xl rounded-tr-2xl ">
+							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">
 									{showDescription?.class.title}
 								</h1>
@@ -208,8 +205,8 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 								</div>
 							</div>
 						</div>
-						<div className="bg-site-1 py-8">
-							<div className="container">
+						<div className="bg-site-1 py-8 rounded-bl-2xl rounded-br-2xl">
+							<div>
 								<ClassDescription
 									session={showDescription}
 									hideParentPopup={() => setShowDescription(undefined)}

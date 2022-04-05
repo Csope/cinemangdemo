@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 interface PropTypes {
-	text: string;
+	text: string | JSX.Element;
 	customClasses?: string;
 	clickEvent?: () => void;
 	appendBefore?: JSX.Element;
@@ -18,7 +18,6 @@ function SimpleButton({
 }: PropTypes) {
 	return (
 		<motion.button
-			key={text}
 			onClick={clickEvent}
 			className={`flex items-center justify-center text-center rounded-2xl py-1 px-4 text-sm uppercase tracking-wider ${customClasses}`}
 		>

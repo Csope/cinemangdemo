@@ -1,5 +1,4 @@
 import React from 'react';
-import SiteLogo from '../../../public/images/logo.svg';
 
 type PropTypes = {
 	fillColor: string;

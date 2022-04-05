@@ -15,7 +15,7 @@ const SiteFooter = () => {
 							<tbody>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
-										Hetfo
+										Hetfő
 									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
@@ -33,13 +33,13 @@ const SiteFooter = () => {
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
-										Csutortok
+										Csütörtök
 									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
-										Pentek
+										Péntek
 									</td>
 									<td>8:00 - 21:00</td>
 								</tr>
@@ -51,7 +51,7 @@ const SiteFooter = () => {
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
-										Vasarnap
+										Vasárnap
 									</td>
 									<td>8:00 - 21:00</td>
 								</tr>

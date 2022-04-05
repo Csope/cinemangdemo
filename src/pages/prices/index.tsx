@@ -3,8 +3,6 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
 import { ResType, PassType, OrderType } from '../../types';
-import { chunk } from 'lodash';
-import testPassTyesData from '../../static/testPassTypesData.json';
 import Btn from '../../common/elements/buttons/Btn';
 import PassPurchaseDialog from '../../modules/Actions/Pass/PassPurchaseDialog';
 import { useSiteStates, useUser } from '../../hooks';
@@ -55,17 +53,15 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 					</h1>
 
 					<p className="mb-2">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
-						nulla ad facere autem voluptatem ullam. Aperiam molestias possimus
-						odit nobis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						A, fuga.
+						Az ár az órákon túl alkalmanként 30 perc kardió és erősítő rész
+						használatot is magában foglal. A délelőtt bérlet kizárólag a
+						15:00-ig elkezdődő órákon használható.
 					</p>
 
 					<div className="divide-y  divide-site-6">
 						{groupType.map((pass) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title">{pass.title}</div>
-								<div className="desc">Nem hosszabítható</div>
 								<div className="price">
 									<Btn
 										text={getHufFormat(pass.price)}
@@ -82,9 +78,10 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 				<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
 					<h1 className="h1-shadow h1-shadow--purple mb-6">Fitness Bérletek</h1>
 					<p className="mb-2">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
-						nulla ad facere autem voluptatem ullam. Aperiam molestias possimus
-						odit nobis.
+						Egy belépéssel 2 óra edzésidő áll rendelkezésre, ennek túllépése
+						esetén még egy alkalom levonódik a bérletről. A délelőtti bérlettel
+						maximum 14:00-ig lehet a kardió és erősítő részleg területére
+						belépni, és azt legkésőbb 16:00-ig el kell hagyni.
 					</p>
 					<div className="divide-y divide-site-6">
 						{fitnessType.map((pass) => (
@@ -105,29 +102,31 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 				</div>
 
 				<div className="leading-8 text-justify">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. A nesciunt
-					nemo ab? Quia, odio. Nemo, cum architecto consectetur optio id tenetur
-					amet ducimus dicta veniam autem ullam qui nulla maxime, sequi
-					molestiae, exercitationem cupiditate placeat non inventore
-					consequuntur! Nesciunt alias iste tempora praesentium doloremque
-					reiciendis dolor veniam quo blanditiis ipsum qui iusto asperiores
-					placeat fugiat sunt rerum doloribus accusantium cumque ex non natus, a
-					possimus? Repellat cumque voluptas iste, quia tempora dicta
-					exercitationem pariatur deleniti blanditiis quidem beatae eum
-					perferendis necessitatibus at dolor nihil nesciunt commodi facere
-					itaque fugiat accusantium, incidunt ipsam corrupti illum? Ullam
-					voluptates laboriosam, eos nisi corporis nihil quos in illum ratione,
-					perspiciatis ea deserunt natus ipsum? Quam placeat atque porro quod
-					nobis beatae non magnam accusantium maiores labore debitis aut, iste
-					consequuntur nostrum, odio, blanditiis voluptatum deleniti provident
-					in natus quis nemo. Libero est adipisci repudiandae itaque dolorum ab
-					recusandae quas sunt hic! Sunt adipisci pariatur atque, nemo
-					repellendus vel provident ipsa, quia ea neque non suscipit eveniet
-					consequuntur sed necessitatibus quaerat, facere labore perferendis
-					veniam fugiat nam! Quod dolor inventore veritatis, rem nam beatae
-					atque, commodi illo obcaecati tenetur error pariatur mollitia ratione
-					itaque provident! Ipsum quaerat dignissimos sit repellat iure dicta,
-					in libero aut?
+					Az 5 alkalmas bérletek 30 napig, a 10, illetve 14 alkalmas bérletek 45
+					napig érvényesek. A bérletek meghosszabbítására kiegészítő díj (2 990
+					Ft) megfizetése ellenében van lehetőség, amely 2 hét meghosszabbítást
+					jelent az aktuális bérleten. Az aktuális bérlet meghosszabbítására egy
+					alkalommal van lehetőség! A cardio és erősítő részleg használatakor
+					&quot;1 alkalom&quot; maximum 120 perc ott tartózkodásra jogosít. A
+					csoportos órákra váltott jegyekkel, illetve a csoportos bérletekből
+					felhasznált alkalmakkal az órákon felül vendégeink még 30 percig
+					használhatják fitnessünk cardio és erősítő részlegét. Délelőtti
+					csoportos bérlettel a legkésőbb 15:00-kor kezdődő órákon lehet részt
+					venni, a délelőtti cardio- és erősítő bérlettel maximum 14:00-ig lehet
+					a Fitness területére belépni, és legkésőbb 16:00-ig el kell hagyni
+					azt. Délelőtti bérlettel rendelkezők 1 290 Ft kiegészítő díj ellenében
+					részt vehetnek délutáni órákon is. A nyugdíjas- és diákbérleteinket a
+					lenti jegy- és bérletárakhoz képest 15%-kal olcsóbban válthatják meg
+					az arra jogosult látogatóink. Pénztárainknál az alábbi kártyákat
+					fogadjuk el: All You Can Move kártya, SZÉP Kártya (OTP, K&H, MKB).
+					Zugló kártyával 30% kedvezménnyel lehet megváltani cardio- és erősítő
+					jegyeinket és bérleteinket. A kártya által biztosított 30%-os
+					kedvezmény más kedvezményekkel nem vonható össze! ISIC (International
+					Student Identity Card) és ITIC (International Teacher Identity Card)
+					nemzetközi igazolvánnyal rendelkező vendégeink saját maguk számára
+					mindenkori árainkhoz képest 15% kedvezménnyel válthatják meg jegyüket,
+					illetve bérletüket a Sugár Fitnessbe, a kedvezményre jogosító okirat
+					bemutatásával.
 				</div>
 			</div>
 
@@ -175,6 +174,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		} = await axios.get<ResType<PassType[]>>(
 			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types/tradeables`
 		);
+
+		console.log(pass_types);
+
 		return {
 			props: {
 				passTypes: pass_types || [],
@@ -182,6 +184,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 			},
 		};
 	} catch (error) {
+		console.log(error);
+
 		return {
 			props: {
 				passTypes: [],

@@ -10,6 +10,7 @@ const useSiteStates = () => {
 			selectedPass,
 			reservationPurchaseInProgress,
 			passPurchaseInProgress,
+			showLostPassword,
 		},
 		siteStatesDispatch,
 	} = useContext(SiteStatesContext);
@@ -20,6 +21,13 @@ const useSiteStates = () => {
 
 	const doShowLogin = () => {
 		siteStatesDispatch({ type: 'SHOW_LOGIN', payload: true });
+	};
+
+	const doShowLostPassword = () => {
+		siteStatesDispatch({ type: 'SET_SHOW_LOST_PASSWORD', payload: true });
+	};
+	const doHideLostPassword = () => {
+		siteStatesDispatch({ type: 'SET_SHOW_LOST_PASSWORD', payload: false });
 	};
 
 	const doSetSelectedPass = (passType: PassType | null) => {
@@ -55,6 +63,9 @@ const useSiteStates = () => {
 		passPurchaseInProgress,
 		doShowPassPurchaseResponse,
 		doHidePassPurchaseResponse,
+		showLostPassword,
+		doShowLostPassword,
+		doHideLostPassword,
 	};
 };
 

@@ -1,6 +1,5 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { useFavorites } from '../../hooks';
-import { BsFillStarFill } from 'react-icons/bs';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 interface PropTypes {
 	id: string;

@@ -3,6 +3,7 @@ import SimpleButton from '../../common/elements/buttons/SimpleButton';
 import { useClassFilter } from '../../hooks';
 import { IoClose } from 'react-icons/io5';
 import { getRealDifficultyName } from '../../utils';
+import { AiFillStar } from 'react-icons/ai';
 
 const ActiveFilters = () => {
 	const {
@@ -13,6 +14,7 @@ const ActiveFilters = () => {
 			location,
 			type,
 			trainer,
+			favorites,
 		},
 		classFilterDispatch,
 	} = useClassFilter();
@@ -23,9 +25,12 @@ const ActiveFilters = () => {
 		difficulty ||
 		location ||
 		type ||
-		trainer;
+		trainer ||
+		favorites;
 
 	if (!show) return null;
+
+	console.log();
 
 	return (
 		<div className="bg-site-6">
@@ -86,6 +91,17 @@ const ActiveFilters = () => {
 						customClasses="bg-white text-site-4"
 						clickEvent={() =>
 							classFilterDispatch({ type: 'SET_START_TIME', payload: [6, 20] })
+						}
+						appendAfter={<IoClose className="ml-2 text-lg" />}
+					/>
+				)}
+
+				{favorites && (
+					<SimpleButton
+						text={<AiFillStar className="text-site-4 text-lg" />}
+						customClasses="bg-white text-site-4"
+						clickEvent={() =>
+							classFilterDispatch({ type: 'SET_FAVORITES', payload: false })
 						}
 						appendAfter={<IoClose className="ml-2 text-lg" />}
 					/>

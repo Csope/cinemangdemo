@@ -63,7 +63,7 @@ const CardioSection = () => {
 						<div className="mt-12 text-center md:text-left">
 							<LinkBtn
 								text={'Vásárlás'}
-								href="FIXME:"
+								href="/prices"
 								customClasses="btn-cian w-full md:w-auto"
 							/>
 						</div>

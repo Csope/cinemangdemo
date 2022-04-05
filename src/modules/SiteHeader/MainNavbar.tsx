@@ -7,7 +7,7 @@ import { useUser } from '../../hooks';
 import { useRouter } from 'next/router';
 
 const menu = [
-	{ title: 'Órák', path: '/' },
+	{ title: 'Kezdőlap', path: '/' },
 	{ title: 'Árak', path: '/prices' },
 	{ title: 'Akciók/Események', path: '/sales-events' },
 	{ title: 'Oktatók', path: '/trainers' },
@@ -41,7 +41,7 @@ const MainNavbar = (): JSX.Element => {
 						</div>
 					</div>
 				</div>
-				<div className="hidden md:block text-center absolute right-4 top-1/2 -translate-y-1/2 nav-user z-10">
+				<div className="hidden md:block text-center absolute right-4 md:right-0 top-1/2 -translate-y-1/2 nav-user z-10">
 					<HeaderUser />
 				</div>
 			</div>

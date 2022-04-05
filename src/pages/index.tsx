@@ -13,6 +13,7 @@ import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
 import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 import { ClassType, FrontPageResponseType, ResType } from '../types';
+import { CategoryTypes } from '../types/ClassFilterTypes';
 
 type PropTypes = {
 	events: {
@@ -79,7 +80,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 				<LinkBtn
 					text="Összes óratípus"
 					customClasses="btn-dark mx-auto mt-3 w-full md:w-auto"
-					href="/text"
+					href="/timetable"
 				/>
 			</div>
 			<div className="w-full" style={{ marginBottom: -2 }}>
@@ -102,6 +103,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 								linkHref: '/',
 								text: 'Cardió órák',
 							}}
+							linkHref={`/timetable?s=category&v=${CategoryTypes.CARDIO}`}
 						/>
 					</div>
 				</div>
@@ -124,6 +126,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 								linkHref: '/',
 								text: 'Erősítő órák',
 							}}
+							linkHref={`/timetable?s=category&v=${CategoryTypes.AMPLIFIER}`}
 						/>
 					</div>
 				</div>
@@ -147,6 +150,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 								linkHref: '/',
 								text: 'Mobilitás órák',
 							}}
+							linkHref={`/timetable?s=category&v=${CategoryTypes.MOBILITY}`}
 						/>
 					</div>
 				</div>

@@ -7,6 +7,9 @@ import Btn from '../elements/buttons/Btn';
 import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
 import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
 import { DifficultyTypes } from '../../types/ClassFilterTypes';
+import DifficultyTwo from '../icons/difficulties/DifficultyTwo';
+import DifficultyOne from '../icons/difficulties/DifficultyOne';
+import DifficultyThree from '../icons/difficulties/DifficultyThree';
 
 type PropTypes = {
 	session: SessionType | undefined;
@@ -38,7 +41,10 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 
 	return (
 		<div className="flex flex-col-reverse px-4 flex-wrap md:flex-row-reverse md:items-start lg:flex-row lg:flex-nowrap lg:gap-8">
-			<div className="text-center lg:text-left mb-8 lg:basis-5/12 ">
+			<div
+				className="text-center lg:text-left mb-8 lg:basis-5/12 overflow-auto custom-scrollbar--light pr-5"
+				style={{ maxHeight: 430 }}
+			>
 				<div
 					dangerouslySetInnerHTML={{
 						__html: unescape(session?.class.description),
@@ -58,26 +64,32 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 				<div className="mb-8 md:mb-0 text-center">
 					{session?.class?.difficulty === DifficultyTypes.NORMAL && (
 						<>
-							<div className="inline-block bg-rose-500 rounded-full px">
-								<FiAlertCircle className="mx-auto w-14 h-14" />
+							<div className="inline-block w-12">
+								<DifficultyTwo fillColor="#466ed8" />
 							</div>
-							<div className="text-site-4 text-xl uppercase">Normál</div>
+							<div style={{ color: '#466ed8 ' }} className="text-xl uppercase">
+								Normál
+							</div>
 						</>
 					)}
 					{session?.class?.difficulty === DifficultyTypes.BEGINNER && (
 						<>
-							<div className="inline-block bg-rose-500 rounded-full px">
-								<FiAlertCircle className="mx-auto w-14 h-14" />
+							<div className="inline-block w-12">
+								<DifficultyOne fillColor="#0c860c" />
 							</div>
-							<div className="text-site-4 text-xl uppercase">KEZDŐ</div>
+							<div style={{ color: '#0c860c ' }} className="text-xl uppercase">
+								KEZDŐ
+							</div>
 						</>
 					)}
 					{session?.class?.difficulty === DifficultyTypes.ADVENCED && (
 						<>
-							<div className="inline-block bg-rose-500 rounded-full px">
-								<FiAlertCircle className="mx-auto w-14 h-14" />
+							<div className="inline-block w-12">
+								<DifficultyThree fillColor="#ef3f3f" />
 							</div>
-							<div className="text-site-4 text-xl uppercase">Haladó</div>
+							<div style={{ color: '#ef3f3f ' }} className="text-xl uppercase">
+								Haladó
+							</div>
 						</>
 					)}
 				</div>

@@ -4,6 +4,7 @@ import { SiteStatesTypes, SiteStatesActions } from '../types/SiteStateTypes';
 
 const initState: SiteStatesTypes = {
 	showLogin: false,
+	showLostPassword: false,
 	selectedPass: null,
 	reservationPurchaseInProgress: false,
 	passPurchaseInProgress: false,
@@ -30,6 +31,9 @@ const SiteStatesReducer = (
 
 		case 'SET_PASS_PROGRESS':
 			return { ...state, passPurchaseInProgress: action.payload };
+
+		case 'SET_SHOW_LOST_PASSWORD':
+			return { ...state, showLostPassword: action.payload };
 
 		default:
 			return state;

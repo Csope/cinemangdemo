@@ -61,9 +61,14 @@ const Trainers: NextPage<PropTypes> = () => {
 
 			<TriangleDividerNextItem>
 				<div className="bg-site-2 mt-10">
-					<h1 className="h1-shadow h1-shadow--white">
+					<motion.h1
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						className="h1-shadow h1-shadow--white"
+						key={selectedTrainer?.last_name || '' + selectedTrainer?.first_name}
+					>
 						{selectedTrainer?.last_name} {selectedTrainer?.first_name}
-					</h1>
+					</motion.h1>
 				</div>
 			</TriangleDividerNextItem>
 
@@ -84,7 +89,7 @@ const Trainers: NextPage<PropTypes> = () => {
 						<div className="flex gap-6 justify-center mb-14 flex-wrap">
 							<LinkBtn
 								text="Összes óratípus"
-								href="/timetable"
+								href={`/timetable?s=trainer&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
 								customClasses="btn-dark"
 							/>
 							{Object.keys(selectedTrainer.related_class_types).map((key) => (
@@ -93,7 +98,8 @@ const Trainers: NextPage<PropTypes> = () => {
 									key={selectedTrainer.related_class_types[key].title}
 									// @ts-ignore
 									text={selectedTrainer.related_class_types[key].title}
-									href="/timetable"
+									// @ts-ignore
+									href={`/timetable?s=type&v=${selectedTrainer.related_class_types[key].title}&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
 									customClasses="btn-dark"
 								/>
 							))}

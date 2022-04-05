@@ -114,6 +114,30 @@ img {
 	}
 }
 
+.custom-scrollbar--light {
+	/* width */
+	&::-webkit-scrollbar {
+		width: 3px;
+		height: 5px;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		background: $siteColor_2;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		background: $siteColor_6;
+		border-radius: 3px;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		background: $siteColor_7;
+	}
+}
+
 .site-footer {
 	background-image: url('../../public//images//pattern-footer.png');
 	background-size: 100%;
@@ -168,7 +192,7 @@ img {
 			cursor: pointer;
 
 			@media only screen and (min-width: 768px) {
-				max-width: 65px;
+				max-width: 56px;
 			}
 		}
 	}

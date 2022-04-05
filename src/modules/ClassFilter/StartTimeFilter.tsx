@@ -57,7 +57,7 @@ function StartTimeFilter() {
 					step={1}
 					onChange={(val) => setSliderValue(val)}
 					value={sliderValue}
-					allowCross={false}
+					// allowCross={false}
 					handleStyle={[
 						{
 							width: 17,

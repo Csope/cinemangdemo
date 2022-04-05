@@ -7,10 +7,17 @@ import { Menu, Transition } from '@headlessui/react';
 import { IoTriangle } from 'react-icons/io5';
 import Link from 'next/link';
 import * as Avatars from '../../common/icons/avatars/Avatars';
+import LostPasswordSection from '../../common/site/LostPasswordSection';
 
 const HeaderUser = (): JSX.Element => {
 	// const [showLogin, setShowLogin] = useState(false);
-	const { showLogin, doShowLogin, doHideLogin } = useSiteStates();
+	const {
+		showLogin,
+		doShowLogin,
+		doHideLogin,
+		showLostPassword,
+		doHideLostPassword,
+	} = useSiteStates();
 	const { status } = useSession();
 	const { doSignOut, user } = useUser();
 
@@ -31,7 +38,7 @@ const HeaderUser = (): JSX.Element => {
 			{status === 'authenticated' ? (
 				<div className="nav-user__image">
 					<Menu as="div" className="relative">
-						<Menu.Button as="div">
+						<Menu.Button as="div" className="flex flex-col items-center">
 							{user?.avatar ? (
 								<img
 									// @ts-ignore
@@ -39,11 +46,11 @@ const HeaderUser = (): JSX.Element => {
 									className=" bg-glow-purple"
 								/>
 							) : (
-								<div className="h-16 w-16 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
+								<div className="h-14 w-14 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
 									<UserIcon className="p-4 text-site-4" />
 								</div>
 							)}
-							<div className="text-site-4 uppercase text-sm mt-2 cursor-pointer absolute top-full left-1/2 -translate-x-1/2">
+							<div className="text-site-4 uppercase text-xs mt-2 cursor-pointer">
 								{user?.first_name || 'Vendég'}
 							</div>
 						</Menu.Button>
@@ -58,7 +65,7 @@ const HeaderUser = (): JSX.Element => {
 							<Menu.Items className="absolute top-full right-0 bg-white rounded-xl py-3 px-4 z-40 outline-0">
 								<div
 									className="absolute"
-									style={{ bottom: 'calc(100% - 3px)', right: 28 }}
+									style={{ bottom: 'calc(100% - 3px)', right: 18 }}
 								>
 									<IoTriangle fill="white" className=" text-xl" />
 								</div>
@@ -84,17 +91,23 @@ const HeaderUser = (): JSX.Element => {
 					</Menu>
 				</div>
 			) : (
-				<div
-					onClick={toggleLogin}
-					className="h-16 w-16 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative"
-				>
-					<UserIcon className="p-4 text-site-4" />
-					<div className="text-site-4 uppercase text-sm mt-2 cursor-pointer -tracking-tight absolute top-full left-1/2 -translate-x-1/2">
+				<div className="flex flex-col items-center">
+					<div
+						onClick={toggleLogin}
+						className="h-14 w-14 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative"
+					>
+						<UserIcon className="p-4 text-site-4" />
+					</div>
+					<div className="text-site-4 uppercase text-xs mt-2 cursor-pointer -tracking-tight">
 						Bejelentkezés
 					</div>
 				</div>
 			)}
-			<LoginSection showLogin={showLogin} hideLogin={() => doHideLogin()} />
+			<LoginSection showLogin={showLogin} hideLogin={doHideLogin} />
+			<LostPasswordSection
+				showForm={showLostPassword}
+				hideForm={doHideLostPassword}
+			/>
 		</>
 	);
 };

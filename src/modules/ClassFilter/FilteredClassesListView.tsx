@@ -10,6 +10,10 @@ import { isEmpty } from 'lodash';
 import { useRouter } from 'next/router';
 import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
 import Btn from '../../common/elements/buttons/Btn';
+import { CategoryTypes, DifficultyTypes } from '../../types/ClassFilterTypes';
+import DifficultyOne from '../../common/icons/difficulties/DifficultyOne';
+import DifficultyTwo from '../../common/icons/difficulties/DifficultyTwo';
+import DifficultyThree from '../../common/icons/difficulties/DifficultyThree';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -23,6 +27,43 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 		SessionType | undefined
 	>(undefined);
 	const router = useRouter();
+
+	const generateCategoryName = (cat: CategoryTypes) => {
+		switch (cat) {
+			case CategoryTypes.AMPLIFIER:
+				return 'Erősítő';
+				break;
+			case CategoryTypes.CARDIO:
+				return 'Cardio';
+				break;
+			case CategoryTypes.MOBILITY:
+				return 'Mobilitás';
+				break;
+
+			default:
+				console.log(cat);
+				break;
+		}
+	};
+
+	const generateDifficulty = (diffType: DifficultyTypes) => {
+		switch (diffType) {
+			case DifficultyTypes.ADVENCED:
+				return <DifficultyThree fillColor="#ef3f3f" />;
+				break;
+
+			case DifficultyTypes.BEGINNER:
+				return <DifficultyOne fillColor="#0c860c" />;
+				break;
+
+			case DifficultyTypes.NORMAL:
+				return <DifficultyTwo fillColor="#466ed8" />;
+				break;
+
+			default:
+				break;
+		}
+	};
 
 	const reservationClick = (e: MouseEvent, session: SessionType) => {
 		e.stopPropagation();
@@ -61,8 +102,8 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											{start} - {end}
 										</div>
 										<div className="mb-1 md:mb-0 md:basis-1/12">
-											<div className="inline-block bg-rose-500 text-white rounded-full">
-												<FiAlertCircle className="mx-auto w-10 h-10" />
+											<div className="inline-block text-white rounded-full w-12">
+												{generateDifficulty(session.class.difficulty)}
 											</div>
 										</div>
 										<div className="mb-2 md:mb-0 md:basis-5/12">
@@ -71,7 +112,9 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											</div>
 
 											<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
-												<div>Cardio</div>
+												<div>
+													{generateCategoryName(session.class.category)}
+												</div>
 												<div>
 													<BsDot />
 												</div>
@@ -108,15 +151,12 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 				onClose={() => setShowDescription(undefined)}
 				className="fixed z-10 inset-0 overflow-y-auto"
 			>
-				<div className="flex items-center justify-center min-h-screen">
-					<Dialog.Overlay
-						className="fixed inset-0 opacity-60"
-						style={{ backgroundColor: '#280935' }}
-					/>
+				<div className="flex items-center justify-center min-h-screen rounded-2xl">
+					<Dialog.Overlay className="fixed inset-0 opacity-70 bg-white" />
 
-					<div className="relative w-full">
-						<div className="px-4 bg-site-8 py-3">
-							<div className="container relative">
+					<div className="relative container md:bg-glow-purple  rounded-2xl">
+						<div className="px-4 bg-site-8 py-3 rounded-tl-2xl rounded-tr-2xl ">
+							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">
 									{showDescription?.class.title}
 								</h1>
@@ -128,7 +168,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 								</div>
 							</div>
 						</div>
-						<div className="bg-site-1 py-8">
+						<div className="bg-site-1 py-8 rounded-bl-2xl rounded-br-2xl">
 							<div className="container">
 								<ClassDescription
 									session={showDescription}

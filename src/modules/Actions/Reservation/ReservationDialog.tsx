@@ -16,6 +16,7 @@ import { useCheckReservability } from '../../../queries';
 import { ReservabilityType, SessionType } from '../../../types';
 import { FaShoppingCart, FaRegSmile } from 'react-icons/fa';
 import Link from 'next/link';
+import SimpleLogo from '../../../../public/images/simple.png';
 
 const ReservationDialog = () => {
 	const { notify } = useToasts();
@@ -101,7 +102,7 @@ const ReservationDialog = () => {
 
 		return (
 			<div className="pb-10 px-8">
-				<div className="mb-4">
+				<div className="mb-2">
 					<Btn
 						clickEvent={() => purchaseTicket(selectedSession as SessionType)}
 						text={
@@ -111,6 +112,13 @@ const ReservationDialog = () => {
 							</>
 						}
 						customClasses="btn-dark w-full flex justify-center items-center"
+					/>
+				</div>
+				<div>
+					<img
+						src={SimpleLogo.src}
+						className="mx-auto mb-4"
+						style={{ maxWidth: 250 }}
 					/>
 				</div>
 				{reservability.missing_pass ? (

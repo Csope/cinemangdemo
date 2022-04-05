@@ -16,31 +16,28 @@ export default NextAuth({
 				const email = credentials?.email;
 				const password = credentials?.password;
 
-				try {
-					const {
-						data: {
-							status,
-							data: { user, token },
-						},
-					} = await axios.post<ResType<UserType>>(
-						`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/login`,
-						{
-							email,
-							password,
-						}
-					);
-
-					if (status && user) {
-						return {
-							...user,
-							token,
-						};
-					} else {
-						return null;
+				const {
+					data: {
+						status,
+						// @ts-ignore
+						data: { user, token, reason },
+					},
+				} = await axios.post<ResType<UserType>>(
+					`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/login`,
+					{
+						email,
+						password,
 					}
-				} catch (error) {
-					console.log(error);
-					//TODO: handle error
+				);
+
+				if (reason === 'not_verified') throw new Error('not_verified');
+
+				if (status && user) {
+					return {
+						...user,
+						token,
+					};
+				} else {
 					return null;
 				}
 			},

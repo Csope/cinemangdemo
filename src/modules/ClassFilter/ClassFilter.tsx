@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useClassFilter, useDebounce } from '../../hooks';
+import { useClassFilter, useDebounce, useFavorites } from '../../hooks';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 import FavoritesFilter from './FavoritesFilter';
@@ -8,28 +8,35 @@ import SearchFilter from './SearchFilter';
 import StartTimeFilter from './StartTimeFilter';
 import BaseFilteredClasses from './BaseFilteredClasses';
 import { SessionType } from '../../types';
-import { ViewList } from '../../types/ClassFilterTypes';
+import { CategoryTypes, ViewList } from '../../types/ClassFilterTypes';
 import { format } from 'date-fns';
+import { useRouter } from 'next/router';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function ClassFilter({ sessions }: PropTypes): JSX.Element {
+	const _f = useFavorites();
 	const [filterExpanded, setFilterExpanded] = useState(false);
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
+	const router = useRouter();
+	const { s, v } = router.query;
 	const {
 		classFilterState: { favorites, view, startDate, category },
 		classFilterDispatch,
 	} = useClassFilter();
 
 	/**
-	 * FIlter by date, category
+	 * FIlter by date, category, current time (do not show old classes)
 	 */
 	useEffect(() => {
 		const fSessions = sessions.filter((session) => {
 			const sDate = format(new Date(session.start), 'yyyy-MM-dd');
 			const filDate = format(startDate, 'yyyy-MM-dd');
+
+			if (favorites && !_f.favorites.includes(session.class.title))
+				return false;
 
 			if (sDate !== filDate) {
 				return false;
@@ -37,14 +44,15 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 
 			if (category && category !== session.class.category) {
 				return false;
-			} else {
 			}
+
+			if (new Date(session.start) <= new Date()) return false;
 
 			return true;
 		});
 
 		setFilteredSessions(fSessions);
-	}, [startDate, category]);
+	}, [startDate, category, favorites]);
 
 	/**
 	 * Close expended filter on view change
@@ -52,6 +60,57 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	useEffect(() => {
 		setFilterExpanded(false);
 	}, [view]);
+
+	/**
+	 * First mount effect
+	 */
+	useEffect(() => {
+		if (s && v) {
+			classFilterDispatch({
+				type: 'SET_VIEW',
+				payload: ViewList.SWIPER,
+			});
+
+			if (s === 'category') {
+				switch (v) {
+					case CategoryTypes.AMPLIFIER:
+						console.log('v');
+						classFilterDispatch({
+							type: 'SET_CATEGORY',
+							payload: CategoryTypes.AMPLIFIER,
+						});
+						break;
+
+					case CategoryTypes.CARDIO:
+						classFilterDispatch({
+							type: 'SET_CATEGORY',
+							payload: CategoryTypes.CARDIO,
+						});
+						break;
+
+					case CategoryTypes.MOBILITY:
+						classFilterDispatch({
+							type: 'SET_CATEGORY',
+							payload: CategoryTypes.MOBILITY,
+						});
+						break;
+
+					default:
+						break;
+				}
+			}
+
+			if (s === 'type') {
+				classFilterDispatch({ type: 'SET_TYPE', payload: v[0] as string });
+				classFilterDispatch({ type: 'SET_TRAINER', payload: v[1] as string });
+			}
+
+			if (s === 'trainer') {
+				classFilterDispatch({ type: 'SET_TRAINER', payload: v as string });
+			}
+		}
+		console.log('asd');
+	}, []);
 
 	return (
 		<div className="ClassFilter">

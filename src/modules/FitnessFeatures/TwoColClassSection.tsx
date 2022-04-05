@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import TransformedSwiper from '../../common/swiper/TransformedSwiper';
 import { ButtonPropType } from '../../types';
+import { CategoryTypes } from '../../types/ClassFilterTypes';
 
 interface PropType {
 	classTitle: string;
@@ -12,6 +13,7 @@ interface PropType {
 	buttonInfo: ButtonPropType;
 	direction: 'text-img' | 'img-text';
 	delay: number;
+	linkHref: string;
 }
 
 const TwoColClassSection = ({
@@ -21,6 +23,7 @@ const TwoColClassSection = ({
 	buttonInfo,
 	direction,
 	delay,
+	linkHref,
 }: PropType) => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
@@ -67,7 +70,7 @@ const TwoColClassSection = ({
 				<div className="text-center md:text-right mb-14 md:mb-0">
 					<LinkBtn
 						text={buttonInfo.text}
-						href="FIXME:"
+						href={linkHref}
 						customClasses="btn-light w-full md:w-auto"
 					/>
 				</div>

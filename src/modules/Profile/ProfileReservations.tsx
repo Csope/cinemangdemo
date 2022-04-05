@@ -59,10 +59,7 @@ const ProfileReservations = () => {
 								<div className="grid grid-cols-2 mb-5">
 									<div>
 										<img
-											src={`${
-												process.env.NEXT_PUBLIC_ASSETS_ROUTE +
-												reservation.session.class.preview_url
-											}`}
+											src={`${reservation.session.class.preview_url}`}
 											alt="class image"
 											className="rounded-xl w-9/12"
 										/>

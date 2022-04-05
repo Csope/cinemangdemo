@@ -1,5 +1,5 @@
 import React from 'react';
-import { BsFillStarFill } from 'react-icons/bs';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 interface PropTypes {
 	active: boolean;
@@ -12,12 +12,12 @@ function FavoritesFilter({ active, clickEvent }: PropTypes) {
 			<div className="text-site-4 uppercase text-sm text-center mb-4 select-none">
 				Kedvencek
 			</div>
-			<div
-				className={`text-3xl cursor-pointer ${
-					active ? 'text-yellow-300' : ' text-white'
-				}`}
-			>
-				<BsFillStarFill className="mx-auto" onClick={clickEvent} />
+			<div className={`text-3xl cursor-pointer text-white`}>
+				{active ? (
+					<AiFillStar className="mx-auto" onClick={clickEvent} />
+				) : (
+					<AiOutlineStar className="mx-auto" onClick={clickEvent} />
+				)}
 			</div>
 		</div>
 	);

@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, MouseEvent } from 'react';
 import { SubmitErrorHandler, useForm } from 'react-hook-form';
-import { useToasts, useUser } from '../../hooks';
+import { useSiteStates, useToasts, useUser } from '../../hooks';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { GrFacebook } from 'react-icons/gr';
@@ -21,11 +21,11 @@ type FormValues = {
 };
 
 const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
-	// const [onAttempt, setOnAttempt] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
-	const [errorMsg, setErrorMsg] = useState<string | null>(null);
+	const [errorMsg, setErrorMsg] = useState<string | JSX.Element | null>(null);
 	const router = useRouter();
-	const { doSignInCredentials } = useUser();
+	const { doShowLostPassword, doHideLogin } = useSiteStates();
+	const { doSignInCredentials, doResendVerifyEmail } = useUser();
 	const { notify } = useToasts();
 	const {
 		register,
@@ -40,6 +40,22 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 		},
 	});
 
+	const resendVerifyEmail = async (email: string) => {
+		setLoading(true);
+
+		const res = await doResendVerifyEmail(email);
+
+		setLoading(false);
+
+		setErrorMsg(null);
+
+		if (res) {
+			notify('SUCCESS', 'A megerősítő e-mailt kiküldtük a megadott címre');
+		} else {
+			notify('ERROR', 'Belső kiszolgálóhiba, próbáld újra később');
+		}
+	};
+
 	const onSubmit = async () => {
 		setErrorMsg(null);
 		setLoading(true);
@@ -49,7 +65,22 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 		setLoading(false);
 
-		if (attempt && attempt.status === 200) {
+		if (attempt.notVerified) {
+			setErrorMsg(
+				<div>
+					E-mail címed nincs megerősítve.{' '}
+					<span
+						onClick={() => resendVerifyEmail(email)}
+						className=" underline cursor-pointer"
+					>
+						Új megerősítő e-mail küldése!
+					</span>
+				</div>
+			);
+			return;
+		}
+
+		if (attempt.status) {
 			notify('SUCCESS', 'Sikeres bejelentkezés');
 			hideLogin();
 		} else {
@@ -57,10 +88,15 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 		}
 	};
 
-	const onError: SubmitErrorHandler<FormValues> = (err) => {};
-
 	const routeChange = () => {
 		hideLogin();
+	};
+
+	const showLostPassword = (e: MouseEvent<HTMLButtonElement>) => {
+		console.log('asasd');
+		e.preventDefault();
+		doHideLogin();
+		doShowLostPassword();
 	};
 
 	useEffect(() => {
@@ -116,7 +152,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 					<div>
 						<div className="p-4">
-							<form onSubmit={handleSubmit(onSubmit, onError)}>
+							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="mb-5">
 									<label htmlFor="email" className="ml-1 mb-1 block">
 										E-mail*
@@ -162,7 +198,9 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									)}
 								</div>
 								<div className="text-center text-site-4 mb-4">
-									<Link href="#">Elfelejtetted a jelszavadat?</Link>
+									<button onClick={showLostPassword} className="tracking-wide">
+										Elfelejtetted a jelszavadat?
+									</button>
 								</div>
 								<div className="mb-8">
 									<Btn
