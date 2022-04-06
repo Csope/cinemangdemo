@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { FaShoppingCart } from 'react-icons/fa';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
-import { ResType, PassType, OrderType } from '../../types';
+import { ResType, PassType, OrderType, PriceType } from '../../types';
 import Btn from '../../common/elements/buttons/Btn';
 import PassPurchaseDialog from '../../modules/Actions/Pass/PassPurchaseDialog';
 import { useSiteStates, useUser } from '../../hooks';
@@ -10,22 +10,19 @@ import { getHufFormat } from '../../utils';
 import PassPurchaseResponse from '../../modules/Actions/Pass/PassPurchaseResponse';
 
 type PropTypes = {
-	passTypes: PassType[];
+	passTypes: any;
 	inPurchase: OrderType | false;
+	prices: PriceType[];
 };
 
-const Prices = ({ passTypes, inPurchase }: PropTypes) => {
+const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 	const { status } = useUser();
 	const { doShowLogin } = useSiteStates();
 	const { selectedPass, doSetSelectedPass, doShowPassPurchaseResponse } =
 		useSiteStates();
-	const groupType: PassType[] = [];
-	const fitnessType: PassType[] = [];
 
-	passTypes.forEach((passType) => {
-		if (passType.type === 'fitness') fitnessType.push(passType);
-		if (passType.type === 'group') groupType.push(passType);
-	});
+	const groupType = passTypes?.non_discounted?.group || [];
+	const fitnessType = passTypes?.non_discounted?.fitness || [];
 
 	const passPurchaseClick = (passType: PassType) => {
 		if (status === 'loading') return;
@@ -59,7 +56,7 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 					</p>
 
 					<div className="divide-y  divide-site-6">
-						{groupType.map((pass) => (
+						{groupType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title">{pass.title}</div>
 								<div className="price">
@@ -84,10 +81,9 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 						belépni, és azt legkésőbb 16:00-ig el kell hagyni.
 					</p>
 					<div className="divide-y divide-site-6">
-						{fitnessType.map((pass) => (
+						{fitnessType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title">{pass.title}</div>
-								<div className="desc">Nem hosszabítható</div>
 								<div className="price">
 									<Btn
 										text={getHufFormat(pass.price)}
@@ -100,6 +96,27 @@ const Prices = ({ passTypes, inPurchase }: PropTypes) => {
 						))}
 					</div>
 				</div>
+
+				{prices.map((price) => (
+					<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
+						<h1 className="h1-shadow h1-shadow--purple mb-6">
+							{price?.title || 'Egyéb'}
+						</h1>
+						<div className="divide-y divide-site-6">
+							{price?.prices.map((price) => (
+								<div className="price-row py-6" key={price.id}>
+									<div
+										className="title"
+										dangerouslySetInnerHTML={{ __html: price.title }}
+									></div>
+									<div className="price text-xl">
+										{getHufFormat(parseInt(price.price))}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				))}
 
 				<div className="leading-8 text-justify">
 					Az 5 alkalmas bérletek 30 napig, a 10, illetve 14 alkalmas bérletek 45
@@ -166,29 +183,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		}
 	}
 
+	//FIXME: use proper res type
 	try {
 		const {
 			data: {
-				data: { pass_types },
+				// @ts-ignore
+				data: { pass_types, prices },
 			},
-		} = await axios.get<ResType<PassType[]>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/pass_types/tradeables`
+			// @ts-ignore
+		} = await axios.get<ResType<{ pass_types }>>(
+			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/tradeables`
 		);
-
-		console.log(pass_types);
 
 		return {
 			props: {
 				passTypes: pass_types || [],
+				prices: prices || [],
 				inPurchase,
 			},
 		};
 	} catch (error) {
-		console.log(error);
-
 		return {
 			props: {
 				passTypes: [],
+				prices: [],
+
 				inPurchase,
 			},
 		};

@@ -15,6 +15,7 @@ import PurchaseReservationResponse from './PurchaseReservationResponse';
 import PurchasePassType from './PurchasePassType';
 import FrontPageResponseType from './FrontPageResponseType';
 import OrderType from './OrderTypes';
+import PriceType from './PriceTypes';
 
 export type {
 	UserType,
@@ -34,4 +35,5 @@ export type {
 	FrontPageResponseType,
 	PurchasePassType,
 	OrderType,
+	PriceType,
 };
