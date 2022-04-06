@@ -14,7 +14,12 @@ const TransformedImage = ({
 }: TransformedImageProps) => {
 	return (
 		<div className={`w-full transformed-image-container`}>
-			<img src={imgSrc} alt={imgAlt} style={{ transform }} />
+			<img
+				src={imgSrc}
+				alt={imgAlt}
+				style={{ transform }}
+				className="cursor-pointer"
+			/>
 		</div>
 	);
 };

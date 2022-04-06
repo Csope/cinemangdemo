@@ -194,11 +194,39 @@ const useActions = () => {
 		}
 	};
 
+	const doSendContactMessage = async (
+		name: string,
+		email: string,
+		message: string
+	) => {
+		try {
+			const { data } = await axios.post<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/contacts`,
+				{
+					name,
+					email,
+					message,
+				}
+			);
+
+			return {
+				status: data.status,
+				message: data.message || '',
+			};
+		} catch (error) {
+			return {
+				status: false,
+				message: 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		}
+	};
+
 	return {
 		doCreateReservation,
 		doPurchaseTicket,
 		doResignReservation,
 		doPurchasePass,
+		doSendContactMessage,
 	};
 };
 

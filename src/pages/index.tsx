@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useAnimation } from 'framer-motion';
 import type { GetServerSideProps, NextPage } from 'next';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../common/elements/buttons/LinkBtn';
@@ -23,12 +24,16 @@ type PropTypes = {
 		sort: number;
 		preview_url: string;
 	}[];
-	classTypes:
-		| []
-		| { cardio: ClassType[]; mobility: ClassType[]; aplifier: ClassType[] };
+	classTypes: {
+		cardio: ClassType[];
+		mobility: ClassType[];
+		amplifier: ClassType[];
+	};
 };
 
 const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
+	console.log(classTypes);
+
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
 	const [fhRef, fhInView] = useInView({
@@ -61,9 +66,11 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
-				<div className="container ">
-					<HeroSection events={events} />
-				</div>
+				<Link href="/sales-events">
+					<div className="container ">
+						<HeroSection events={events} />
+					</div>
+				</Link>
 			</div>
 			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
 			<TriangleDividerNextItem bgClass="bg-purple-linear">
@@ -93,11 +100,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
 							}
-							imgSrcs={[
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/996/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-							]}
+							imgSrcs={classTypes.cardio.map((_class) => _class.preview_url)}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
@@ -116,11 +119,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
 							}
-							imgSrcs={[
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1476/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
-							]}
+							imgSrcs={classTypes.amplifier.map((_class) => _class.preview_url)}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
@@ -140,11 +139,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
 							}
-							imgSrcs={[
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/993/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/996/preview.jpg',
-								'https://geocdn.fotex.net/static.sugarfitness.hu/files/1603/preview.jpg',
-							]}
+							imgSrcs={classTypes.mobility.map((_class) => _class.preview_url)}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
@@ -157,7 +152,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 			</div>
 			<div className="bg-site-2 w-full">
 				<ParallaxBannerImage
-					height="400px"
+					height="600px"
 					customClasses="parallax-banner-homepage"
 					src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 				/>

@@ -52,7 +52,7 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 		});
 
 		setFilteredSessions(fSessions);
-	}, [startDate, category, favorites]);
+	}, [startDate, category, favorites, _f.favorites]);
 
 	/**
 	 * Close expended filter on view change

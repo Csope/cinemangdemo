@@ -8,7 +8,7 @@ import { useActions, useSiteStates, useToasts } from '../../../hooks';
 import SimpleLogo from '../../../../public/images/simple.png';
 import { getHufFormat } from '../../../utils';
 import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
+import { addMonths, format } from 'date-fns';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { motion, MotionConfig } from 'framer-motion';
 import { PassType } from '../../../types';
@@ -129,6 +129,7 @@ const PassPurchaseDialog = () => {
 														onChange={handleStartDateChange}
 														inline
 														minDate={new Date()}
+														maxDate={addMonths(new Date(), 1)}
 													/>
 												</div>
 											)}

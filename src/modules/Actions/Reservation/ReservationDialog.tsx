@@ -95,7 +95,7 @@ const ReservationDialog = () => {
 		if (reservability.has_reservation) {
 			return (
 				<div className="pb-8">
-					<div>You already have reservation</div>
+					<div>Már van élő foglalásod az órára</div>
 				</div>
 			);
 		}
