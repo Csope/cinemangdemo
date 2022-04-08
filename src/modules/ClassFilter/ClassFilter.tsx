@@ -74,7 +74,6 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 			if (s === 'category') {
 				switch (v) {
 					case CategoryTypes.AMPLIFIER:
-						console.log('v');
 						classFilterDispatch({
 							type: 'SET_CATEGORY',
 							payload: CategoryTypes.AMPLIFIER,
@@ -109,7 +108,6 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 				classFilterDispatch({ type: 'SET_TRAINER', payload: v as string });
 			}
 		}
-		console.log('asd');
 	}, []);
 
 	return (

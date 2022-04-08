@@ -7,9 +7,17 @@ import { useUser, useToasts } from '../../hooks';
 import { UpdateUserType } from '../../types/UserType';
 import ProfileAvatar from './ProfileAvatar';
 import ContentLoader from '../../common/elements/ContentLoader';
+import DatePicker from 'react-datepicker';
+import { format, isEqual } from 'date-fns';
+import { RadioGroup } from '@headlessui/react';
+import RadioOption from '../../common/elements/form/RadioOption';
 
 const ProfileData = () => {
 	const { user, doUpdateUserData, doSetUserState } = useUser();
+	const [gender, setGender] = useState<'F' | 'M' | 'X'>(user?.gender || 'X');
+	const [birthdate, setBirthdate] = useState(
+		user?.birth_date ? new Date(user.birth_date) : new Date()
+	);
 	const { notify } = useToasts();
 	const {
 		register,
@@ -25,13 +33,24 @@ const ProfileData = () => {
 			currentPassword: '',
 			newPassword: '',
 			confirmPassword: '',
+			birthdate: user?.birth_date,
 		},
 	});
 
 	const [onAttempt, setOnAttempt] = useState(false);
 
 	const onSubmit = async () => {
-		if (!isDirty) return;
+		console.log(gender);
+
+		if (
+			!isDirty &&
+			isEqual(
+				birthdate,
+				user?.birth_date ? new Date(user?.birth_date) : new Date()
+			) &&
+			user?.gender === gender
+		)
+			return;
 
 		let pwDirty = false;
 
@@ -85,21 +104,22 @@ const ProfileData = () => {
 
 		const _firstname = getValues('firstname') as string;
 		const _lastname = getValues('lastname') as string;
+		const _birthdate = format(birthdate, 'yyyy-MM-dd');
 
 		const newData: UpdateUserType = pwDirty
 			? {
 					last_name: _lastname,
 					first_name: _firstname,
-					birth_date: '1993-12-29' as string,
-					gender: 'F',
+					birth_date: _birthdate,
+					gender: gender,
 					password: getValues('currentPassword') as string,
 					new_password: getValues('newPassword') as string,
 			  }
 			: {
 					last_name: _lastname,
 					first_name: _firstname,
-					birth_date: '1993-12-29' as string,
-					gender: 'F',
+					birth_date: _birthdate,
+					gender: gender,
 			  };
 
 		setOnAttempt(true);
@@ -121,6 +141,8 @@ const ProfileData = () => {
 					...prevUserData,
 					last_name: _lastname,
 					first_name: _firstname,
+					birth_date: birthdate,
+					gender,
 				};
 			});
 		} else {
@@ -179,6 +201,71 @@ const ProfileData = () => {
 								{errors.firstname.message}
 							</motion.div>
 						)}
+					</div>
+					<div className="grid grid-cols-2 gap-5 mb-5">
+						<div>
+							<label htmlFor="lastname" className="ml-1 mb-1 block">
+								Születési idő*
+							</label>
+							<DatePicker
+								className="white-input"
+								selected={birthdate}
+								onChange={(date: Date) => setBirthdate(date)}
+								dateFormat="yyyy-MM-dd"
+								required
+								showMonthDropdown
+								showYearDropdown
+								dropdownMode="select"
+								maxDate={new Date()}
+							/>
+							{/* {valErrors.birthdate && (
+								<motion.div
+									animate={{ y: 0 }}
+									initial={{ y: 10 }}
+									className="mt-2 text-rose-700"
+								>
+									{valErrors.birthdate}
+								</motion.div>
+							)} */}
+						</div>
+					</div>
+					<div className="mb-5  ml-1">
+						<RadioGroup value={gender} onChange={setGender}>
+							<RadioGroup.Label className="mb-1 block">Nem</RadioGroup.Label>
+
+							<div className="flex">
+								<RadioGroup.Option className="mr-6" value="F">
+									{({ checked }) => (
+										<RadioOption
+											text="Nő"
+											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											activeClasses="bg-site-19 border-4 border-white"
+											checked={checked}
+										/>
+									)}
+								</RadioGroup.Option>
+								<RadioGroup.Option className="mr-6" value="M">
+									{({ checked }) => (
+										<RadioOption
+											text="Férfi"
+											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											activeClasses="bg-site-19 border-4 border-white"
+											checked={checked}
+										/>
+									)}
+								</RadioGroup.Option>
+								<RadioGroup.Option value="X">
+									{({ checked }) => (
+										<RadioOption
+											text="Nem nyilatkozom"
+											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											activeClasses="bg-site-19 border-4 border-white"
+											checked={checked}
+										/>
+									)}
+								</RadioGroup.Option>
+							</div>
+						</RadioGroup>
 					</div>
 					<div className="mb-5">
 						<label htmlFor="currentPassword" className="ml-1 mb-1 block">
@@ -242,10 +329,26 @@ const ProfileData = () => {
 					</div>
 					<div>
 						<Btn
-							disabled={!isDirty}
+							disabled={
+								!isDirty &&
+								isEqual(
+									birthdate,
+									user?.birth_date ? new Date(user?.birth_date) : new Date()
+								) &&
+								user?.gender === gender
+							}
 							text="Mentés"
-							clickEvent={() => console.log('update use')}
-							customClasses={` w-full ${!isDirty ? 'btn-gray-2' : 'btn-dark'}`}
+							clickEvent={() => true}
+							customClasses={` w-full ${
+								!isDirty &&
+								user?.gender === gender &&
+								isEqual(
+									birthdate,
+									user?.birth_date ? new Date(user?.birth_date) : new Date()
+								)
+									? 'btn-gray-2'
+									: 'btn-dark'
+							}`}
 						/>
 					</div>
 				</form>

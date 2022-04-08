@@ -7,6 +7,10 @@ export default interface OrderType {
 	request: Request;
 	payload: Payload;
 	progress?: string[] | null;
+	purchase_details: {
+		transaction_number: string;
+		message: string;
+	};
 }
 
 export interface Request {

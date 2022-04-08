@@ -32,8 +32,6 @@ type PropTypes = {
 };
 
 const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
-	console.log(classTypes);
-
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
 	const [fhRef, fhInView] = useInView({

@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 												</div>
 
 												<SiteFooter />
-												<NextNProgress color="#680b65" />
+												<NextNProgress color="#680b65" showOnShallow={false} />
 											</>
 										</InitPageLoad>
 										<ToastContainer />

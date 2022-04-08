@@ -17,7 +17,6 @@ import { HiOutlineEmojiSad } from 'react-icons/hi';
 const PassPurchaseResponse = () => {
 	const { passPurchaseInProgress, doHidePassPurchaseResponse } =
 		useSiteStates();
-	// const { passPurchaseInProgress } = useActions();
 
 	const hidePopup = () => {
 		doHidePassPurchaseResponse();
@@ -27,6 +26,7 @@ const PassPurchaseResponse = () => {
 
 	// @ts-ignore
 	const pass: PassType = passPurchaseInProgress.request.page_data?.pass;
+	console.log(passPurchaseInProgress);
 
 	return (
 		<Dialog
@@ -56,7 +56,7 @@ const PassPurchaseResponse = () => {
 							Tranzakció azonosító
 						</div>
 						<div className="text-2xl">
-							{passPurchaseInProgress.payload.completed_purchase.transaction_id}
+							{passPurchaseInProgress?.purchase_details?.transaction_number}
 						</div>
 					</div>
 					<div className="rounded-xl px-4 pt-3 pb-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">

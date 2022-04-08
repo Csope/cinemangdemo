@@ -4,60 +4,133 @@ import { BsDot } from 'react-icons/bs';
 import { Dialog } from '@headlessui/react';
 import ClassDescription from '../../common/site/ClassDescription';
 import { IoClose } from 'react-icons/io5';
-import { SessionType } from '../../types';
+import { ReservationType, SessionType } from '../../types';
 import { format } from 'date-fns';
 import { isEmpty } from 'lodash';
 import { useRouter } from 'next/router';
-import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
+import {
+	useActions,
+	useSelectedSession,
+	useSiteStates,
+	useToasts,
+	useUser,
+} from '../../hooks';
 import Btn from '../../common/elements/buttons/Btn';
 import { CategoryTypes, DifficultyTypes } from '../../types/ClassFilterTypes';
 import DifficultyOne from '../../common/icons/difficulties/DifficultyOne';
 import DifficultyTwo from '../../common/icons/difficulties/DifficultyTwo';
 import DifficultyThree from '../../common/icons/difficulties/DifficultyThree';
+import { useGetReservations } from '../../queries';
+import ContentLoader from '../../common/elements/ContentLoader';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesListView({ sessions }: PropTypes) {
+	const [onAttempt, setOnAttempt] = useState<boolean | number>(false);
+	const { notify } = useToasts();
 	const { status } = useUser();
+	const { doResignReservation } = useActions();
 	const { doShowLogin } = useSiteStates();
+	const { reservations, isFetchingReservations, refetchReservations } =
+		useGetReservations();
 	const { selectedSessionDispatch } = useSelectedSession();
 	const [showDescription, setShowDescription] = useState<
 		SessionType | undefined
 	>(undefined);
-	const router = useRouter();
 
 	const generateCategoryName = (cat: CategoryTypes) => {
 		switch (cat) {
 			case CategoryTypes.AMPLIFIER:
 				return 'Erősítő';
-				break;
+
 			case CategoryTypes.CARDIO:
 				return 'Cardio';
-				break;
+
 			case CategoryTypes.MOBILITY:
 				return 'Mobilitás';
-				break;
 
 			default:
-				console.log(cat);
 				break;
 		}
+	};
+
+	const generateButton = (session: SessionType) => {
+		const hasReservation: ReservationType | undefined = reservations.find(
+			(reservation: ReservationType) => session?.id === reservation.session.id
+		);
+
+		if (isFetchingReservations) {
+			return (
+				<Btn
+					text={
+						<ContentLoader
+							width="w-7"
+							height="h-7"
+							spinnerColor="border-white"
+						/>
+					}
+					customClasses="w-full btn-dark flex justify-center"
+					// @ts-ignore
+					clickEvent={(e) => false}
+				/>
+			);
+		}
+
+		if (hasReservation) {
+			return (
+				<Btn
+					text="Lemondás"
+					customClasses="w-full btn-dark"
+					// @ts-ignore
+					clickEvent={(e) => resignReservation(e, hasReservation)}
+				/>
+			);
+		} else {
+			return (
+				<Btn
+					text="Foglalás"
+					customClasses="w-full btn-dark"
+					// @ts-ignore
+					clickEvent={(e) => reservationClick(e, session)}
+				/>
+			);
+		}
+	};
+
+	const resignReservation = async (
+		e: MouseEvent,
+		reservation: ReservationType
+	) => {
+		e.stopPropagation();
+
+		setOnAttempt(reservation.session.id);
+
+		const res = await doResignReservation(reservation.id);
+
+		if (res.status) {
+			notify('SUCCESS', res.message);
+			refetchReservations();
+		} else {
+			notify('ERROR', res.message);
+		}
+
+		setOnAttempt(false);
 	};
 
 	const generateDifficulty = (diffType: DifficultyTypes) => {
 		switch (diffType) {
 			case DifficultyTypes.ADVENCED:
-				return <DifficultyThree fillColor="#ef3f3f" />;
+				return <DifficultyThree />;
 				break;
 
 			case DifficultyTypes.BEGINNER:
-				return <DifficultyOne fillColor="#0c860c" />;
+				return <DifficultyOne />;
 				break;
 
 			case DifficultyTypes.NORMAL:
-				return <DifficultyTwo fillColor="#466ed8" />;
+				return <DifficultyTwo />;
 				break;
 
 			default:
@@ -83,8 +156,8 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 			<div className="FilteredClassesListView bg-white">
 				<div className="divide-y divide-site-2 border-t border-b border-site-2 ">
 					{isEmpty(sessions) ? (
-						<div className="text-center my-20">
-							Nincs találat TODO: new message
+						<div className="text-center py-20 text-xl h1-shadow h1-shadow--purple">
+							Sajnos nincs találat!
 						</div>
 					) : (
 						sessions.map((session) => {
@@ -95,7 +168,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 								<div
 									key={session.id}
 									onClick={() => setShowDescription(session)}
-									className="hover:bg-site-5 cursor-pointer"
+									className="hover:bg-site-5 cursor-pointer relative"
 								>
 									<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
 										<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
@@ -133,13 +206,15 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 											hely
 										</div>
 										<div className="md:basis-2/12 md:text-right">
-											<Btn
-												text="Foglalás"
-												customClasses="btn-dark"
-												clickEvent={(e) => reservationClick(e, session)}
-											/>
+											{generateButton(session)}
 										</div>
 									</div>
+
+									{onAttempt === session.id && (
+										<div className="absolute inset-0 flex justify-center items-center bg-site-1 bg-opacity-60 rounded-xl">
+											<ContentLoader />
+										</div>
+									)}
 								</div>
 							);
 						})

@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import React, { useState } from 'react';
 import ContentLoader from '../../common/elements/ContentLoader';
 import { useUser } from '../../hooks';
@@ -43,8 +44,12 @@ const ProfilePasses = () => {
 									<td className="py-6 text-center">
 										{pass.used_points} / {pass.max_points}
 									</td>
-									<td className="py-6 text-center">{pass.start}</td>
-									<td className="py-6 text-center">{pass.end}</td>
+									<td className="py-6 text-center">
+										{format(new Date(pass.start), 'yyyy.MM.dd - HH:mm')}
+									</td>
+									<td className="py-6 text-center">
+										{format(new Date(pass.end), 'yyyy.MM.dd - HH:mm')}
+									</td>
 								</tr>
 							))}
 						</tbody>

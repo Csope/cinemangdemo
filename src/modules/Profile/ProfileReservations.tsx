@@ -7,12 +7,12 @@ import ContentLoader from '../../common/elements/ContentLoader';
 import ConfirmationPopup from '../../common/site/ConfirmationPopup';
 import { useActions, useToasts, useUser } from '../../hooks';
 import { useGetReservations } from '../../queries';
+import { ReservationType } from '../../types';
 
 const ProfileReservations = () => {
 	const [showConfirm, setShowConfirm] = useState<false | number>(false);
-	const { status, user } = useUser();
-	const { data, isFetching, refetch } = useGetReservations(user?.id as number);
-	const reservations = data?.data.reservations || [];
+	const { reservations, isFetchingReservations, refetchReservations } =
+		useGetReservations();
 	const [onAttempt, setOnAttempt] = useState(false);
 	const { doResignReservation } = useActions();
 	const { notify } = useToasts();
@@ -24,7 +24,7 @@ const ProfileReservations = () => {
 		setOnAttempt(false);
 
 		if (resignResponse.status) {
-			refetch();
+			refetchReservations();
 			notify('SUCCESS', resignResponse.message);
 		} else {
 			notify('ERROR', resignResponse.message);
@@ -37,13 +37,13 @@ const ProfileReservations = () => {
 				Foglalásaim
 			</h1>
 
-			{isFetching ? (
+			{isFetchingReservations ? (
 				<div className="flex items-center justify-center pt-4 pb-10">
 					<ContentLoader />
 				</div>
 			) : reservations.length > 0 ? (
 				<div className="grid grid-cols-2 gap-10">
-					{reservations.map((reservation) => {
+					{reservations.map((reservation: ReservationType, i) => {
 						const startHour = format(
 							new Date(reservation.session.start),
 							'HH:mm'
@@ -55,9 +55,15 @@ const ProfileReservations = () => {
 						);
 
 						return (
-							<div className="bg-site-6 rounded-xl p-8" key={reservation.id}>
+							<div
+								className="bg-site-6 rounded-xl p-8 pt-12 relative"
+								key={reservation.id}
+							>
+								<div className="absolute top-4 left-4 rounded-full bg-site-8 text-sm w-7 h-7 flex justify-center items-center text-site-4">
+									{i + 1}
+								</div>
 								<div className="grid grid-cols-2 mb-5">
-									<div>
+									<div className="pt-3">
 										<img
 											src={`${reservation.session.class.preview_url}`}
 											alt="class image"

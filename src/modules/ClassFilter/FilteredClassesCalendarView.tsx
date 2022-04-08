@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { getNextDates } from '../../utils';
 import { Dialog } from '@headlessui/react';
 import {
@@ -13,12 +13,15 @@ import { SessionType } from '../../types';
 import { includes } from 'lodash';
 import { IoClose } from 'react-icons/io5';
 import ClassDescription from '../../common/site/ClassDescription';
+import { BsCaretRightFill, BsCaretLeftFill } from 'react-icons/bs';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesCalendarView({ sessions }: PropTypes) {
+	const calendarbox = useRef(null);
+	const [indicatorTopPosition, setIndicatorTopPosition] = useState<number>(0);
 	const [showDescription, setShowDescription] = useState<
 		SessionType | undefined
 	>(undefined);
@@ -57,8 +60,46 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 		});
 	});
 
+	const calculateTopPosition = () => {
+		// setIndicatorTopPosition((oldVal) => oldVal + 30);
+
+		const todayDateAt6 = new Date();
+		todayDateAt6.setHours(6);
+		todayDateAt6.setMinutes(0);
+		todayDateAt6.setSeconds(0);
+
+		// 16 cols, each height: 70 px
+		const totalHeight = 16 * 70;
+
+		// 16 cols, 1 col = 1 hour
+		const _totalHeight = 16 * 60;
+
+		const diffInMin = differenceInMinutes(new Date(), todayDateAt6);
+
+		if (diffInMin < 0) return setIndicatorTopPosition(0);
+		if (diffInMin >= _totalHeight) return setIndicatorTopPosition(0);
+
+		const correctionPx = 2;
+
+		const ratioDiffWith70Px =
+			(totalHeight * diffInMin) / _totalHeight - correctionPx;
+
+		const topValue = (ratioDiffWith70Px / totalHeight) * 100;
+
+		setIndicatorTopPosition(topValue);
+	};
+
 	useEffect(() => {
 		setSelectedLocation(locations[0]);
+		calculateTopPosition();
+
+		const indicatorInterval = setInterval(() => {
+			calculateTopPosition();
+		}, 60000);
+
+		return () => {
+			clearInterval(indicatorInterval);
+		};
 	}, []);
 
 	const generateLocations = () => {
@@ -78,6 +119,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 			</div>
 		);
 	};
+
 	const generateDates = () => {
 		return (
 			<>
@@ -133,20 +175,24 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 									const height = Math.round(diffInMinutes / unit) - 6;
 									const top = (minutes / 60) * 100;
 
+									const available = start >= new Date();
+
 									return (
 										<div
-											className="data-col"
-											onClick={() => setShowDescription(s)}
+											className={`data-col ${
+												!available ? 'not-available' : ''
+											}`}
 											key={i}
 										>
 											<div
+												onClick={() => available && setShowDescription(s)}
 												className="data-item"
 												style={{ height, top: `${top}%` }}
 											>
 												<div className="time">
 													{startFormat}-{endFormat}
 												</div>
-												<div className="title">{s.class.short_title}</div>
+												<div className="title">{s.class.title}</div>
 												<div className="trainer">
 													{s.trainer.last_name} {s.trainer.first_name}
 												</div>
@@ -178,7 +224,25 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 					</div>
 				</div>
 				<div className="bg-site-1">
-					<div className="filtered-classes__calendar container">
+					<div
+						className="filtered-classes__calendar container"
+						ref={calendarbox}
+					>
+						{indicatorTopPosition > 0 && (
+							<div
+								className="current-time-indicator"
+								style={{
+									top: `${indicatorTopPosition}%`,
+								}}
+							>
+								<div className="icon-left">
+									<BsCaretRightFill />
+								</div>
+								<div className="icon-right">
+									<BsCaretLeftFill />
+								</div>
+							</div>
+						)}
 						{generateCalendar()}
 					</div>
 				</div>

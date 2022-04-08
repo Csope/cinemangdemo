@@ -163,10 +163,21 @@ const PassPurchaseDialog = () => {
 									/>
 								</div>
 
-								<div>
+								<div className="mt-3">
+									<div className="text-center text-sm mb-1">
+										Lorem ipsum dolor sit amet consectetur adipisicing elit.
+										Temporibus, vitae!
+										<a
+											className="text-site-4 underline ml-2"
+											target={'_blank'}
+											href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
+										>
+											További információ
+										</a>
+									</div>
 									<img
 										src={SimpleLogo.src}
-										className="mx-auto mt-3"
+										className="mx-auto "
 										style={{ maxWidth: 250 }}
 									/>
 								</div>

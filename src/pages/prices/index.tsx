@@ -97,18 +97,34 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				</div>
 
-				{prices.map((price) => (
-					<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
+				{prices.map((price, i) => (
+					<div
+						className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10"
+						key={i}
+					>
 						<h1 className="h1-shadow h1-shadow--purple mb-6">
 							{price?.title || 'Egyéb'}
 						</h1>
 						<div className="divide-y divide-site-6">
 							{price?.prices.map((price) => (
 								<div className="price-row py-6" key={price.id}>
-									<div
-										className="title"
-										dangerouslySetInnerHTML={{ __html: price.title }}
-									></div>
+									<div className="title">
+										<div className="flex items-center">
+											<div
+												dangerouslySetInnerHTML={{ __html: price.title }}
+											></div>
+											{price.quantity && (
+												<div className="font-normal ml-4 text-lg text-gray-800">
+													{price.quantity}
+												</div>
+											)}
+										</div>
+										{price.description && (
+											<div className="text-base font-normal mt-2">
+												{price.description}
+											</div>
+										)}
+									</div>
 									<div className="price text-xl">
 										{getHufFormat(parseInt(price.price))}
 									</div>

@@ -22,7 +22,7 @@ function CategoryFilter() {
 			<div className="text-site-4 uppercase text-sm text-center mb-4 select-none">
 				Kategória
 			</div>
-			<div className="flex justify-center xl:justify-around gap-4 flex-wrap">
+			<div className="flex justify-center xl:justify-around gap-3 flex-wrap">
 				<SimpleButton
 					text="Cardio"
 					customClasses={`${

@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { SessionType } from '../../types';
 import { unescape } from 'lodash';
 import { format } from 'date-fns';
 import Btn from '../elements/buttons/Btn';
 import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
-import { useSelectedSession, useSiteStates, useUser } from '../../hooks';
+import {
+	useActions,
+	useSelectedSession,
+	useSiteStates,
+	useToasts,
+	useUser,
+} from '../../hooks';
 import { DifficultyTypes } from '../../types/ClassFilterTypes';
 import DifficultyTwo from '../icons/difficulties/DifficultyTwo';
 import DifficultyOne from '../icons/difficulties/DifficultyOne';
 import DifficultyThree from '../icons/difficulties/DifficultyThree';
+import { useGetReservations } from '../../queries';
+import { ReservationType } from '../../types';
+import ContentLoader from '../elements/ContentLoader';
 
 type PropTypes = {
 	session: SessionType | undefined;
@@ -17,15 +26,48 @@ type PropTypes = {
 };
 
 function ClassDescription({ session, hideParentPopup }: PropTypes) {
+	const { notify } = useToasts();
 	const { status } = useUser();
+	const [onAttempt, setOnAttempt] = useState(false);
 	const { doShowLogin } = useSiteStates();
+	const { doResignReservation } = useActions();
 	const { selectedSessionDispatch } = useSelectedSession();
+	const { reservations, isFetchingReservations, refetchReservations } =
+		useGetReservations();
 	const trainerImage = session?.trainer.preview_url
 		? session?.trainer.preview_url
 		: DefaultEmployeeImg.src;
 
+	const resignReservation = async (
+		e: MouseEvent,
+		reservation: ReservationType
+	) => {
+		e.stopPropagation();
+
+		setOnAttempt(true);
+
+		const res = await doResignReservation(reservation.id);
+
+		if (res.status) {
+			notify('SUCCESS', res.message);
+			refetchReservations();
+		} else {
+			notify('ERROR', res.message);
+		}
+
+		setOnAttempt(false);
+	};
+
 	const reservationClick = (e: MouseEvent, session: SessionType) => {
 		e.stopPropagation();
+
+		if (new Date(session.start) <= new Date()) {
+			notify(
+				'ERROR',
+				'Sajnáljuk, erre az órára online foglalás/vásárlás már nem lehetséges'
+			);
+			return false;
+		}
 
 		if (status === 'loading') return;
 
@@ -37,6 +79,49 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 		}
 
 		selectedSessionDispatch({ type: 'SET_SELECTED', payload: session });
+	};
+
+	const generateButton = () => {
+		const hasReservation: ReservationType | undefined = reservations.find(
+			(reservation: ReservationType) => session?.id === reservation.session.id
+		);
+
+		if (isFetchingReservations) {
+			return (
+				<Btn
+					text={
+						<ContentLoader
+							width="w-7"
+							height="h-7"
+							spinnerColor="border-white"
+						/>
+					}
+					customClasses="w-full btn-dark flex justify-center"
+					// @ts-ignore
+					clickEvent={(e) => false}
+				/>
+			);
+		}
+
+		if (hasReservation) {
+			return (
+				<Btn
+					text="Lemondás"
+					customClasses="w-full btn-dark"
+					// @ts-ignore
+					clickEvent={(e) => resignReservation(e, hasReservation)}
+				/>
+			);
+		} else {
+			return (
+				<Btn
+					text="Foglalás"
+					customClasses="w-full btn-dark"
+					// @ts-ignore
+					clickEvent={(e) => reservationClick(e, session)}
+				/>
+			);
+		}
 	};
 
 	return (
@@ -65,9 +150,9 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					{session?.class?.difficulty === DifficultyTypes.NORMAL && (
 						<>
 							<div className="inline-block w-12">
-								<DifficultyTwo fillColor="#466ed8" />
+								<DifficultyTwo />
 							</div>
-							<div style={{ color: '#466ed8 ' }} className="text-xl uppercase">
+							<div style={{ color: '#ffe546' }} className="text-xl uppercase">
 								Normál
 							</div>
 						</>
@@ -75,9 +160,9 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					{session?.class?.difficulty === DifficultyTypes.BEGINNER && (
 						<>
 							<div className="inline-block w-12">
-								<DifficultyOne fillColor="#0c860c" />
+								<DifficultyOne />
 							</div>
-							<div style={{ color: '#0c860c ' }} className="text-xl uppercase">
+							<div style={{ color: '#81e13f' }} className="text-xl uppercase">
 								KEZDŐ
 							</div>
 						</>
@@ -85,16 +170,16 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					{session?.class?.difficulty === DifficultyTypes.ADVENCED && (
 						<>
 							<div className="inline-block w-12">
-								<DifficultyThree fillColor="#ef3f3f" />
+								<DifficultyThree />
 							</div>
-							<div style={{ color: '#ef3f3f ' }} className="text-xl uppercase">
+							<div style={{ color: '#fe3825' }} className="text-xl uppercase">
 								Haladó
 							</div>
 						</>
 					)}
 				</div>
 			</div>
-			<div className="bg-site-8 rounded-xl px-4 pt-7 pb-8 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
+			<div className="bg-site-8 rounded-xl px-4 pt-7 pb-8 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 relative">
 				<div className="mb-4">
 					<div className="text-site-4 uppercase">Oktató</div>
 					<div className="text-white text-xl">
@@ -124,14 +209,13 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 						{session?.current_headcount}/{session?.max_headcount}
 					</div>
 				</div>
-				<div className="w-10/12 mx-auto">
-					<Btn
-						text="Foglalás"
-						customClasses="w-full btn-dark"
-						// @ts-ignore
-						clickEvent={(e) => reservationClick(e, session)}
-					/>
-				</div>
+				<div className="w-10/12 mx-auto">{generateButton()}</div>
+
+				{onAttempt && (
+					<div className="absolute inset-0 flex justify-center items-center bg-site-1 bg-opacity-60 rounded-xl">
+						<ContentLoader />
+					</div>
+				)}
 			</div>
 		</div>
 	);

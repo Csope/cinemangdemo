@@ -31,6 +31,7 @@ function BaseFilteredClasses({
 			location,
 			type,
 			startDate,
+			search,
 		},
 	} = useClassFilter();
 
@@ -66,11 +67,25 @@ function BaseFilteredClasses({
 				}
 			}
 
+			if (search) {
+				const trainerFullname =
+					session.trainer.first_name + ' ' + session.trainer.last_name;
+				const className = session.class.title;
+				console.log(className);
+
+				if (
+					!trainerFullname.toLowerCase().includes(search.toLowerCase()) &&
+					!className.toLowerCase().includes(search.toLowerCase())
+				) {
+					return false;
+				}
+			}
+
 			return true;
 		});
 
 		setFilteredSessions(filtered);
-	}, [trainer, startTime, difficulty, location, type, sessions]);
+	}, [trainer, startTime, difficulty, location, type, search, sessions]);
 
 	return (
 		<>

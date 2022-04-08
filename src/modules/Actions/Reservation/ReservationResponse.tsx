@@ -54,8 +54,8 @@ const ReservationResponse = () => {
 							</div>
 							<div className="text-2xl">
 								{
-									reservationPurchaseInProgress.payload.completed_purchase
-										.transaction_id
+									reservationPurchaseInProgress?.purchase_details
+										?.transaction_number
 								}
 							</div>
 						</div>

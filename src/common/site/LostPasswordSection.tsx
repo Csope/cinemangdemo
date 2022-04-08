@@ -95,9 +95,9 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 					</h1>
 
 					<div className="text-center mb-2 md:mb-4">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio
-						impedit aut officia repellendus, esse soluta necessitatibus rerum
-						animi dolor. Doloribus.
+						Amennyiben már rendelkezel felhasználói fiókkal, kérjük add meg az
+						e-mail címedet! Erre az e-mail címre küldjük ki az új jelszó
+						megadásához szükséges linket!
 					</div>
 
 					{errorMsg && (

@@ -4,12 +4,19 @@ import { useClassFilter, useDebounce } from '../../hooks';
 
 export default function SearchFilter() {
 	const [searchValue, setSearchValue] = useState('');
-	const debouncedSearchValue = useDebounce(searchValue, 2000);
-	const { classFilterDispatch } = useClassFilter();
+	const debouncedSearchValue = useDebounce(searchValue, 600);
+	const {
+		classFilterDispatch,
+		classFilterState: { search },
+	} = useClassFilter();
 
 	useEffect(() => {
 		classFilterDispatch({ type: 'SET_SEARCH', payload: debouncedSearchValue });
 	}, [debouncedSearchValue]);
+
+	useEffect(() => {
+		if (searchValue !== search) setSearchValue(search);
+	}, [search]);
 
 	return (
 		<div>

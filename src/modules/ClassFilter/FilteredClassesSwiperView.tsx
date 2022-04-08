@@ -34,7 +34,9 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 	return (
 		<div className="FilteredClassesSwiperView bg-site-1">
 			{isEmpty(sessions) ? (
-				<div className="text-center py-20">Nincs találat TODO: new message</div>
+				<div className="text-center py-20 text-xl h1-shadow h1-shadow--purple">
+					Sajnos nincs találat!
+				</div>
 			) : (
 				<div className="container pt-6">
 					<FiveColSwiper

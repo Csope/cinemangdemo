@@ -121,10 +121,10 @@ const RegisterSection = () => {
 		setAttempt(false);
 
 		if (registerAttempt.status) {
-			notify('SUCCESS', 'Sikeres regisztráció');
+			notify('INFO', 'Sikeres regisztráció, erősítsd meg az e-mail címedet');
 			router.push('/');
 		} else {
-			notify('ERROR', registerAttempt.message);
+			// notify('ERROR', registerAttempt.message);
 			registerAttempt.errors.map((err) => {
 				if (err.field === 'first_name')
 					setError('firstname', { message: err.message });
@@ -210,6 +210,7 @@ const RegisterSection = () => {
 										showMonthDropdown
 										showYearDropdown
 										dropdownMode="select"
+										maxDate={new Date()}
 									/>
 									{valErrors.birthdate && (
 										<motion.div

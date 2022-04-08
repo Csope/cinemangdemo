@@ -2,14 +2,20 @@ import React from 'react';
 
 type PropType = {
 	spinnerColor?: string;
+	width?: string;
+	height?: string;
 };
 
-const ContentLoader = ({ spinnerColor }: PropType) => {
+const ContentLoader = ({
+	spinnerColor,
+	width = 'w-16',
+	height = 'h-16',
+}: PropType) => {
 	return (
 		<div>
 			<div
 				style={{ borderTopColor: 'transparent' }}
-				className={`w-16 h-16 border-4  border-double rounded-full animate-spin ${
+				className={`${width} ${height} border-4  border-double rounded-full animate-spin ${
 					spinnerColor ? spinnerColor : 'border-site-4'
 				}`}
 			></div>

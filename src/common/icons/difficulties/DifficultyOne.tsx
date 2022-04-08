@@ -1,13 +1,8 @@
 import React from 'react';
-import DiffOneImg from '../../../../public/images/difficulties/nehezseg-1.svg';
 
-type PropTypes = {
-	fillColor: string;
-};
-
-const DifficultyOne = ({ fillColor }: PropTypes) => {
+const DifficultyOne = () => {
 	return (
-		<div>
+		<div className="rounded-full p-1" style={{ backgroundColor: '#81e13f' }}>
 			<svg
 				className="w-full"
 				version="1.1"
@@ -15,7 +10,7 @@ const DifficultyOne = ({ fillColor }: PropTypes) => {
 				y="0px"
 				height=""
 				viewBox="0 0 335.6 335.6"
-				fill={fillColor}
+				fill="white"
 			>
 				<path
 					d="M167.8,335.6C75.3,335.6,0,260.3,0,167.8S75.3,0,167.8,0s167.8,75.3,167.8,167.8S260.3,335.6,167.8,335.6z M167.8,17

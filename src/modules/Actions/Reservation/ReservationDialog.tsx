@@ -12,7 +12,7 @@ import {
 	useToasts,
 	useUser,
 } from '../../../hooks';
-import { useCheckReservability } from '../../../queries';
+import { useCheckReservability, useGetReservations } from '../../../queries';
 import { ReservabilityType, SessionType } from '../../../types';
 import { FaShoppingCart, FaRegSmile } from 'react-icons/fa';
 import Link from 'next/link';
@@ -21,6 +21,7 @@ import SimpleLogo from '../../../../public/images/simple.png';
 const ReservationDialog = () => {
 	const { notify } = useToasts();
 	const [onAttempt, setOnAttempt] = useState<boolean>(false);
+	const { refetchReservations } = useGetReservations();
 	const [hasReservationResponse, setHasReservationResponse] =
 		useState<boolean>(false);
 	const [reservability, setReservability] = useState<
@@ -64,6 +65,7 @@ const ReservationDialog = () => {
 
 			if (res.status) {
 				setHasReservationResponse(true);
+				refetchReservations();
 			} else {
 				notify('ERROR', res.message);
 			}
@@ -115,6 +117,17 @@ const ReservationDialog = () => {
 					/>
 				</div>
 				<div>
+					<div className="text-center text-sm mb-1">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
+						vitae!
+						<a
+							className="text-site-4 underline ml-2"
+							target={'_blank'}
+							href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
+						>
+							További információ
+						</a>
+					</div>
 					<img
 						src={SimpleLogo.src}
 						className="mx-auto mb-4"

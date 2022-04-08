@@ -138,7 +138,7 @@ const ForgottenPasword = ({ hash }: PropTypes) => {
 						<Btn
 							text="Jelszó megváltoztatása"
 							customClasses="btn-dark w-full"
-							clickEvent={() => console.log('credentiols login')}
+							clickEvent={() => console.log('credentials login')}
 						/>
 					</form>
 

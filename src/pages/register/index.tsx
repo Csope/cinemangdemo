@@ -13,7 +13,6 @@ const Register = () => {
 		router.push('/');
 		return null;
 	}
-	console.log(BgImage.src);
 
 	return (
 		<div className="Register_page page">

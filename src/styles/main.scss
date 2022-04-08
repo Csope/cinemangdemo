@@ -27,6 +27,12 @@ img {
 	display: block;
 }
 
+* {
+	&:focus {
+		outline:none;
+	}
+}
+
 .white-textarea {
 	@apply w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-5;
 
@@ -165,21 +171,17 @@ img {
 	.price-row {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		gap: 20px;
 
 		.title {
-			flex-basis: 40%;
+			// flex-basis: 40%;
 			font-size: 22px;
 			font-weight: 600;
 		}
 
-		// .desc {
-		// 	flex-basis: 30%;
-		// 	text-align: center;
-		// }
-
 		.price {
-			flex-basis: 60%;
+			// flex-basis: 60%;
 			text-align: right;
 		}
 	}

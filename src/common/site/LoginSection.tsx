@@ -93,7 +93,6 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 	};
 
 	const showLostPassword = (e: MouseEvent<HTMLButtonElement>) => {
-		console.log('asasd');
 		e.preventDefault();
 		doHideLogin();
 		doShowLostPassword();
@@ -198,7 +197,10 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									)}
 								</div>
 								<div className="text-center text-site-4 mb-4">
-									<button onClick={showLostPassword} className="tracking-wide">
+									<button
+										onClick={showLostPassword}
+										className=" tracking-wider"
+									>
 										Elfelejtetted a jelszavadat?
 									</button>
 								</div>

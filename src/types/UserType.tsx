@@ -11,7 +11,7 @@ export interface UpdateUserType {
 	last_name: string;
 	first_name: string;
 	birth_date: string;
-	gender: 'F' | 'M';
+	gender: 'F' | 'M' | 'X';
 	password?: string;
 	new_password?: string;
 }
@@ -21,7 +21,7 @@ export default interface UserType {
 	first_name: string;
 	email: string;
 	birth_date: string;
-	gender: 'F' | 'M';
+	gender: 'F' | 'M' | 'X';
 	barcode: string;
 	avatar: string;
 }

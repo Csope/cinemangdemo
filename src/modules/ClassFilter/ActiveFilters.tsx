@@ -4,6 +4,7 @@ import { useClassFilter } from '../../hooks';
 import { IoClose } from 'react-icons/io5';
 import { getRealDifficultyName } from '../../utils';
 import { AiFillStar } from 'react-icons/ai';
+import { CategoryTypes } from '../../types/ClassFilterTypes';
 
 const ActiveFilters = () => {
 	const {
@@ -15,6 +16,7 @@ const ActiveFilters = () => {
 			type,
 			trainer,
 			favorites,
+			search,
 		},
 		classFilterDispatch,
 	} = useClassFilter();
@@ -26,18 +28,45 @@ const ActiveFilters = () => {
 		location ||
 		type ||
 		trainer ||
+		search ||
 		favorites;
 
 	if (!show) return null;
 
-	console.log();
+	const generateType = (category: CategoryTypes) => {
+		switch (category) {
+			case CategoryTypes.AMPLIFIER:
+				return 'Erősítő';
+
+			case CategoryTypes.CARDIO:
+				return 'Cardio';
+
+			case CategoryTypes.MOBILITY:
+				return 'Mobilitás';
+
+			default:
+				break;
+		}
+	};
 
 	return (
 		<div className="bg-site-6">
 			<div className="container flex justify-center gap-3 py-4 px-4">
+				{search && (
+					<SimpleButton
+						// @ts-ignore
+						text={`"${search}"`}
+						clickEvent={() =>
+							classFilterDispatch({ type: 'SET_SEARCH', payload: '' })
+						}
+						customClasses="bg-white text-site-4"
+						appendAfter={<IoClose className="ml-2 text-lg" />}
+					/>
+				)}
 				{category && (
 					<SimpleButton
-						text={category}
+						// @ts-ignore
+						text={generateType(category as CategoryTypes)}
 						clickEvent={() =>
 							classFilterDispatch({ type: 'SET_CATEGORY', payload: null })
 						}
