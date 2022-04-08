@@ -98,7 +98,9 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
 							}
-							imgSrcs={classTypes.cardio.map((_class) => _class.preview_url)}
+							imgSrcs={
+								classTypes?.cardio?.map((_class) => _class.preview_url) || []
+							}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
@@ -117,7 +119,9 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
 							}
-							imgSrcs={classTypes.amplifier.map((_class) => _class.preview_url)}
+							imgSrcs={
+								classTypes?.amplifier?.map((_class) => _class.preview_url) || []
+							}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
@@ -137,7 +141,9 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 							classDescription={
 								'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
 							}
-							imgSrcs={classTypes.mobility.map((_class) => _class.preview_url)}
+							imgSrcs={
+								classTypes?.mobility?.map((_class) => _class.preview_url) || []
+							}
 							buttonInfo={{
 								isLink: true,
 								linkHref: '/',
