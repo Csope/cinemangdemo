@@ -8,6 +8,7 @@ const initState: SiteStatesTypes = {
 	selectedPass: null,
 	reservationPurchaseInProgress: false,
 	passPurchaseInProgress: false,
+	showCareerForm: false,
 };
 
 const SiteStatesContext = createContext<{
@@ -34,6 +35,9 @@ const SiteStatesReducer = (
 
 		case 'SET_SHOW_LOST_PASSWORD':
 			return { ...state, showLostPassword: action.payload };
+
+		case 'SET_SHOW_CAREER_FORM':
+			return { ...state, showCareerForm: action.payload };
 
 		default:
 			return state;

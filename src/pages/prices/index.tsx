@@ -44,27 +44,27 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 	return (
 		<div className="Prices page">
 			<div className="container pb-10">
-				<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
-					<h1 className="h1-shadow h1-shadow--purple mb-6">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10">
+					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Csoportos bérletek
 					</h1>
 
-					<p className="mb-2">
+					<p className="mb-2 text-justify md:text-left">
 						Az ár az órákon túl alkalmanként 30 perc kardió és erősítő rész
 						használatot is magában foglal. A délelőtt bérlet kizárólag a
 						15:00-ig elkezdődő órákon használható.
 					</p>
 
-					<div className="divide-y  divide-site-6">
+					<div className="md:divide-y md:divide-site-6">
 						{groupType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
-								<div className="title">{pass.title}</div>
-								<div className="price">
+								<div className="title mb-4 md:mb-0">{pass.title}</div>
+								<div className="price w-full md:w-auto">
 									<Btn
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex ml-auto normal-case min-w-custom-1 justify-center items-center"
+										customClasses="btn-dark flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>
@@ -72,24 +72,26 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				</div>
 
-				<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
-					<h1 className="h1-shadow h1-shadow--purple mb-6">Fitness Bérletek</h1>
-					<p className="mb-2">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10">
+					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
+						Fitness Bérletek
+					</h1>
+					<p className="mb-2 text-justify md:text-left">
 						Egy belépéssel 2 óra edzésidő áll rendelkezésre, ennek túllépése
 						esetén még egy alkalom levonódik a bérletről. A délelőtti bérlettel
 						maximum 14:00-ig lehet a kardió és erősítő részleg területére
 						belépni, és azt legkésőbb 16:00-ig el kell hagyni.
 					</p>
-					<div className="divide-y divide-site-6">
+					<div className="md:divide-y md:divide-site-6">
 						{fitnessType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
-								<div className="title">{pass.title}</div>
-								<div className="price">
+								<div className="title mb-4 md:mb-0">{pass.title}</div>
+								<div className="price w-full md:w-auto">
 									<Btn
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex ml-auto normal-case min-w-custom-1 justify-center items-center"
+										customClasses="btn-dark flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>
@@ -99,18 +101,19 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 
 				{prices.map((price, i) => (
 					<div
-						className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10"
+						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10"
 						key={i}
 					>
-						<h1 className="h1-shadow h1-shadow--purple mb-6">
+						<h1 className="h1-shadow h1-shadow--purple mb-0 md:mb-6 text-center md:text-left">
 							{price?.title || 'Egyéb'}
 						</h1>
-						<div className="divide-y divide-site-6">
+						<div className="md:divide-y md:divide-site-6">
 							{price?.prices.map((price) => (
 								<div className="price-row py-6" key={price.id}>
 									<div className="title">
-										<div className="flex items-center">
+										<div className="flex items-center justify-center md:justify-start">
 											<div
+												className="text-center md:text-left"
 												dangerouslySetInnerHTML={{ __html: price.title }}
 											></div>
 											{price.quantity && (
@@ -120,12 +123,12 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 											)}
 										</div>
 										{price.description && (
-											<div className="text-base font-normal mt-2">
+											<div className="text-base font-normal mt-2 text-justify md:text-left">
 												{price.description}
 											</div>
 										)}
 									</div>
-									<div className="price text-xl">
+									<div className="price text-xl mt-4 md:mt-0">
 										{getHufFormat(parseInt(price.price))}
 									</div>
 								</div>
@@ -134,7 +137,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				))}
 
-				<div className="leading-8 text-justify">
+				<div className="leading-8 text-justify p-4 md:p-0">
 					Az 5 alkalmas bérletek 30 napig, a 10, illetve 14 alkalmas bérletek 45
 					napig érvényesek. A bérletek meghosszabbítására kiegészítő díj (2 990
 					Ft) megfizetése ellenében van lehetőség, amely 2 hét meghosszabbítást

@@ -7,6 +7,7 @@ export type SiteStatesTypes = {
 	selectedPass: PassType | null;
 	reservationPurchaseInProgress: OrderType | false;
 	passPurchaseInProgress: OrderType | false;
+	showCareerForm: boolean;
 };
 
 export type SiteStatesActions =
@@ -28,5 +29,9 @@ export type SiteStatesActions =
 	  }
 	| {
 			type: 'SET_SHOW_LOST_PASSWORD';
+			payload: boolean;
+	  }
+	| {
+			type: 'SET_SHOW_CAREER_FORM';
 			payload: boolean;
 	  };

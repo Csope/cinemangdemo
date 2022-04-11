@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import MapBg from '../../../public/images/map-bg.png';
 import Btn from '../../common/elements/buttons/Btn';
-import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import ContentLoader from '../../common/elements/ContentLoader';
 import { useActions, useToasts } from '../../hooks';
 import { validateEmail } from '../../utils';
+import { Wrapper, Status } from '@googlemaps/react-wrapper';
+import Map from './GoogleMap';
+import GoogleMap from './GoogleMap';
 
 type FormValues = {
 	email: string;
@@ -48,11 +50,19 @@ const FormWithMap = () => {
 		}
 	};
 
+	const render = (status: Status) => {
+		return <h1>{status}</h1>;
+	};
+
 	return (
 		<div className="bg-site-14 FormWithMap px-4">
-			<div className="container w-full flex flex-col-reverse md:flex-row gap-10 md:gap-28 items-center">
+			<div className="container w-full flex flex-col-reverse md:flex-row gap-10 md:gap-28 items-strech">
 				<div className="basis-full">
-					<img src={MapBg.src} className="FormWithMap__map-img " />
+					<div className="gmap-wrapper">
+						<div className="gmap">
+							<GoogleMap />
+						</div>
+					</div>
 				</div>
 				<div className="w-full md:basis-full py-6 md:py-14">
 					<form onSubmit={handleSubmit(onSubmit)} className="relative">

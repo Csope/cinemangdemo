@@ -361,7 +361,11 @@ const RegisterSection = () => {
 									<div>
 										Elolvastam és elfogadom a{' '}
 										<Link href="#">
-											<a className="text-site-19 underline">
+											<a
+												href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
+												target={'_blank'}
+												className="text-site-19 underline"
+											>
 												Sugár Fitness adatvédelmi tájékoztatóját
 											</a>
 										</Link>

@@ -64,7 +64,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
-				<Link href="/sales-events">
+				<Link href="/sales-events" passHref>
 					<div className="container ">
 						<HeroSection events={events} />
 					</div>
@@ -88,7 +88,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 					href="/timetable"
 				/>
 			</div>
-			<div className="w-full" style={{ marginBottom: -2 }}>
+			<div className="w-full">
 				<div className="bg-site-2 pt-14 pb-14 md:pt-16 md:pb-12">
 					<div className="container">
 						<TwoColClassSection

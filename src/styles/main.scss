@@ -29,7 +29,7 @@ img {
 
 * {
 	&:focus {
-		outline:none;
+		outline: none;
 	}
 }
 
@@ -49,14 +49,22 @@ img {
 }
 
 .FormWithMap {
-	&__map-img {
-		box-shadow: 5px 7px 32px -3px #151515bf;
-		// transform: rotate(355deg) translateY(-21px) scale(1.05);
+	.gmap-wrapper {
+		height: 100%;
+		padding: 20px 0;
 
-		@media only screen and (min-width: 768px) {
-			transform: rotate(356deg) translateY(-21px) scale(1.2);
-			font-size: 17px;
+		.gmap {
+			height: 100%;
+			box-shadow: 5px 7px 32px -3px #151515bf;
+
+			@media only screen and (min-width: 768px) {
+				transform: rotate(356deg) translateY(-21px) scale(1.08);
+			}
 		}
+	}
+
+	&__map-img {
+		// transform: rotate(355deg) translateY(-21px) scale(1.05);
 	}
 }
 
@@ -170,9 +178,9 @@ img {
 .Prices {
 	.price-row {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-content: space-between;
-		gap: 20px;
+		justify-content: center;
 
 		.title {
 			// flex-basis: 40%;
@@ -183,6 +191,13 @@ img {
 		.price {
 			// flex-basis: 60%;
 			text-align: right;
+		}
+
+		@media only screen and (min-width: 768px) {
+			align-items: center;
+			justify-content: space-between;
+			flex-direction: row;
+			gap: 20px;
 		}
 	}
 }
