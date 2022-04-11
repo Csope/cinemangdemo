@@ -28,7 +28,15 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 	const [selectedLocation, setSelectedLocation] = useState('');
 	const next7days = useMemo(() => getNextDates(7, true), []);
 
-	const locations: string[] = [];
+	const locations: string[] = [
+		'Performance',
+		'Aerobic',
+		'Club Royal',
+		'Spinning',
+		'Balance',
+		'Impulse',
+		'Move',
+	];
 
 	const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
@@ -45,10 +53,6 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 	sessions.forEach((session) => {
 		const start = new Date(session.start);
 		const startHour = getHours(start);
-
-		if (!includes(locations, session.location.title)) {
-			locations.push(session.location.title);
-		}
 
 		next7days.forEach((d, i) => {
 			if (isSameDay(start, d)) {

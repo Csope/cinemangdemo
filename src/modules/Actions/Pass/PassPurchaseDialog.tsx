@@ -71,7 +71,7 @@ const PassPurchaseDialog = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple p-8 rounded-xl"
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto bg-site-1 bg-glow-purple p-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div

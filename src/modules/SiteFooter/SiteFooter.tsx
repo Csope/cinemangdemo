@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi';
 import BrandLogo from '../../common/site/BrandLogo';
@@ -66,7 +67,9 @@ const SiteFooter = () => {
 					<div className="mb-8 md:mb-6 text-center md:text-left">
 						<div>1148. Budapest, Örs vezér tere 24.</div>
 						<div>Sugár Üzletközpont (bejárat az Üzletközpont 2. emeletén)</div>
-						<div className="text-site-16">info@sugarfitness.hu</div>
+						<div className="text-site-16">
+							<a href="mailto:info@sugarfitness.hu">info@sugarfitness.hu</a>
+						</div>
 					</div>
 					<div className=" font-bold mb-4 md:mb-6 text-center md:text-left">
 						Megközelítés
@@ -120,24 +123,50 @@ const SiteFooter = () => {
 				</div>
 				<div className="w-full md:w-3/12 mb-4 text-center md:text-right text-site-16 font-bold">
 					<div className="flex flex-col gap-1 mb-6">
-						<a href="#">Sugár Mozi</a>
-						<a href="#">Sugár Bowling & Pub</a>
-						<a href="#">Sugár Játszóház</a>
+						<a href="https://sugarmozi.hu/" target={'_blank'}>
+							Sugár Mozi
+						</a>
+						<a href="https://www.sugarbowling.hu/" target={'_blank'}>
+							Sugár Bowling & Pub
+						</a>
+						<a href="https://www.sugarjatszohaz.hu/" target={'_blank'}>
+							Sugár Játszóház
+						</a>
 					</div>
 					<div className="flex flex-col gap-1 mb-6">
-						<a href="#">Házirend</a>
-						<a href="#">Gyik</a>
-						<a href="#">Cardio</a>
+						<Link href={'/hazirend'}>
+							<a>Házirend</a>
+						</Link>
+
+						<Link href={'/gyik'}>
+							<a>GYIK</a>
+						</Link>
+
+						<Link href={'/cardio'}>
+							<a>Cardio</a>
+						</Link>
 					</div>
 					<div className="flex text-right gap-3 text-2xl justify-center md:justify-end">
 						<div>
-							<FiInstagram />
+							<a
+								href="https://www.instagram.com/sugar_fitnessbp/"
+								target={'_blank'}
+							>
+								<FiInstagram />
+							</a>
 						</div>
 						<div>
-							<FiFacebook />
+							<a
+								href="https://www.facebook.com/sugarfitness/"
+								target={'_blank'}
+							>
+								<FiFacebook />
+							</a>
 						</div>
 						<div>
-							<FiTwitter />
+							<a href="https://twitter.com/sugarfitnessbp" target={'_blank'}>
+								<FiTwitter />
+							</a>
 						</div>
 					</div>
 				</div>
@@ -147,7 +176,7 @@ const SiteFooter = () => {
 			</div>
 			<div className="container flex flex-col-reverse md:flex-row py-10 px-4">
 				<div className="w-full text-gray-300 md:w-1/3 text-center md:text-left">
-					Fotexnet Kft. 2022 © Minden jog fenntartva.
+					Fotexnet Kft. {new Date().getFullYear()} © Minden jog fenntartva.
 				</div>
 				<div className="w-full md:w-1/3 mb-8 md:mb-0">
 					<div className="mx-auto" style={{ maxWidth: '200px' }}>
@@ -155,7 +184,12 @@ const SiteFooter = () => {
 					</div>
 				</div>
 				<div className="w-full md:w-1/3 mb-8 md:mb-0 text-center md:text-right font-bold text-site-16">
-					<a href="#">Adatvédelmi szabályzat</a>
+					<a
+						href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
+						target={'_blank'}
+					>
+						Adatvédelmi szabályzat
+					</a>
 				</div>
 			</div>
 		</div>

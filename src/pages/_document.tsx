@@ -14,6 +14,46 @@ export default function Document() {
 			<body className="font-roboto">
 				<Main />
 				<NextScript />
+
+				{/* <script
+					type="text/javascript"
+					src="//maps.googleapis.com/maps/api/js?key=AIzaSyBRWYQbcLQ6_k1BZBZLoMJe2GcIOOgj3GE"
+				></script>
+
+				<script
+					type="text/javascript"
+					dangerouslySetInnerHTML={{
+						__html: ` console.log('asdasd'); setTimeout(()=> { var b = new google.maps.LatLng(47.5042638,19.1382757);
+    var marker;
+    var map;
+
+    function initialize() {
+      var mapOptions = {
+        zoom: 16,
+        center: b,
+        mapTypeId:google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+      marker = new google.maps.Marker({
+        map: map,
+        position: b,
+        icon: '/images/mapbadge.png'
+      });
+      google.maps.event.addListener(marker, 'click', toggleBounce);
+    }
+
+    function toggleBounce() {
+
+      if (marker.getAnimation() != null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize); }, 5000);`,
+					}}
+				></script> */}
 			</body>
 		</Html>
 	);

@@ -11,6 +11,7 @@ const useSiteStates = () => {
 			reservationPurchaseInProgress,
 			passPurchaseInProgress,
 			showLostPassword,
+			showCareerForm,
 		},
 		siteStatesDispatch,
 	} = useContext(SiteStatesContext);
@@ -50,6 +51,14 @@ const useSiteStates = () => {
 		siteStatesDispatch({ type: 'SET_PASS_PROGRESS', payload: false });
 	};
 
+	const doShowCareerForm = () => {
+		siteStatesDispatch({ type: 'SET_SHOW_CAREER_FORM', payload: true });
+	};
+
+	const doHideCareerForm = () => {
+		siteStatesDispatch({ type: 'SET_SHOW_CAREER_FORM', payload: false });
+	};
+
 	return {
 		siteStatesDispatch,
 		doHideLogin,
@@ -66,6 +75,9 @@ const useSiteStates = () => {
 		showLostPassword,
 		doShowLostPassword,
 		doHideLostPassword,
+		showCareerForm,
+		doShowCareerForm,
+		doHideCareerForm,
 	};
 };
 

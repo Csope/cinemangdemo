@@ -5,8 +5,12 @@ import { useParallax } from 'react-scroll-parallax';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
 import LinkBtn from '../../common/elements/buttons/LinkBtn';
+import Btn from '../../common/elements/buttons/Btn';
+import CareerFormDialog from '../Actions/Career/CareerFormDialog';
+import { useSiteStates } from '../../hooks';
 
 const CareerSection = () => {
+	const { doShowCareerForm } = useSiteStates();
 	const imgRef = useParallax<HTMLImageElement>({
 		scale: [1, 1.35, 'easeInQuad'],
 	});
@@ -61,9 +65,9 @@ const CareerSection = () => {
 						vendégeink számára.
 					</div>
 					<div className="mt-12 md:mt-10 mb-2 md:mb-0 text-center md:text-left md:pb-14">
-						<LinkBtn
+						<Btn
 							text={'Jelentkezem!'}
-							href="FIXME:"
+							clickEvent={() => doShowCareerForm()}
 							customClasses="btn-magenta w-full md:w-auto"
 						/>
 					</div>
@@ -77,6 +81,8 @@ const CareerSection = () => {
 					/>
 				</div>
 			</div>
+
+			<CareerFormDialog />
 		</div>
 	);
 };
