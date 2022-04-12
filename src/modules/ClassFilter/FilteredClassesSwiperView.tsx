@@ -58,7 +58,7 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						// exit={{ x: 200, opacity: 0 }}
-						className="h1-shadow h1-shadow--white mt-4 flex"
+						className="h1-shadow h1-shadow--white mt-4 hidden md:flex"
 						key={selectedSession?.class.id}
 					>
 						{selectedSession?.class.title}
@@ -78,6 +78,16 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 						className="container"
 						key={selectedSession?.id}
 					>
+						<h1
+							className="h1-shadow h1-shadow--white justify-center px-4 md:hidden flex flex-col items-center text-center"
+							key={selectedSession?.class.id}
+						>
+							{selectedSession?.class.title}
+							<FavoriteMark
+								id={selectedSession?.class.title as string}
+								customClasses="mt-3 text-3xl"
+							/>
+						</h1>
 						<ClassDescription session={selectedSession} />
 					</motion.div>
 				</div>

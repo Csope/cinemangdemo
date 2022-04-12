@@ -155,8 +155,8 @@ const ProfileData = () => {
 	};
 
 	return (
-		<div className="grid grid-cols-2 gap-10">
-			<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 relative">
+		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+			<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl md:mb-8 relative">
 				<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-3">
 					Adatok
 				</h1>

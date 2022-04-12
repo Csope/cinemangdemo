@@ -60,7 +60,7 @@ const Trainers: NextPage<PropTypes> = () => {
 			<TriangleDivider bgClass="bg-site-3" mTop={-20} />
 
 			<TriangleDividerNextItem>
-				<div className="bg-site-2 mt-10">
+				<div className="bg-site-2 mt-10 hidden md:block">
 					<motion.h1
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
@@ -73,25 +73,36 @@ const Trainers: NextPage<PropTypes> = () => {
 			</TriangleDividerNextItem>
 
 			{selectedTrainer && (
-				<div className="bg-site-2 pb-16">
+				<div className="bg-site-2 pb-0 md:pb-16">
 					<motion.div
 						animate={{ opacity: 1, scale: 1 }}
 						initial={{ opacity: 0.3, scale: 0.95 }}
-						className="container"
+						className="container px-4 md:px-0"
 						key={selectedTrainer.first_name + selectedTrainer.last_name}
 					>
+						<div>
+							<h1
+								className="h1-shadow text-center mb-4 h1-shadow--white md:hidden"
+								key={
+									selectedTrainer?.last_name || '' + selectedTrainer?.first_name
+								}
+							>
+								{selectedTrainer?.last_name} {selectedTrainer?.first_name}
+							</h1>
+						</div>
 						<div className="text-center p-quote p-quote--white">
 							{unescape(selectedTrainer.motto)}
 						</div>
-						<div className="text-center font-montserrat italic text-white py-10">
+						<div className="text-center font-montserrat italic text-white py-6 md:py-10">
 							{selectedTrainer.position}
 						</div>
-						<div className="flex gap-6 justify-center mb-14 flex-wrap">
+						<div className="flex gap-6 justify-center mb-10 md:mb-14 flex-wrap">
 							<LinkBtn
 								text="Összes óratípus"
 								href={`/timetable?s=trainer&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
-								customClasses="btn-dark"
+								customClasses="btn-dark w-full md:w-auto"
 							/>
+
 							{Object.keys(selectedTrainer.related_class_types).map((key) => (
 								<LinkBtn
 									// @ts-ignore
@@ -100,7 +111,7 @@ const Trainers: NextPage<PropTypes> = () => {
 									text={selectedTrainer.related_class_types[key].title}
 									// @ts-ignore
 									href={`/timetable?s=type&v=${selectedTrainer.related_class_types[key].title}&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
-									customClasses="btn-dark"
+									customClasses="btn-dark w-full md:w-auto"
 								/>
 							))}
 						</div>

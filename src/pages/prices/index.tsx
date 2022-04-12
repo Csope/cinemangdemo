@@ -8,6 +8,7 @@ import PassPurchaseDialog from '../../modules/Actions/Pass/PassPurchaseDialog';
 import { useSiteStates, useUser } from '../../hooks';
 import { getHufFormat } from '../../utils';
 import PassPurchaseResponse from '../../modules/Actions/Pass/PassPurchaseResponse';
+import { unescape } from 'lodash';
 
 type PropTypes = {
 	passTypes: any;
@@ -44,7 +45,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 	return (
 		<div className="Prices page">
 			<div className="container pb-10">
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Csoportos bérletek
 					</h1>
@@ -55,7 +56,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 						15:00-ig elkezdődő órákon használható.
 					</p>
 
-					<div className="md:divide-y md:divide-site-6">
+					<div className="divide-y divide-site-6">
 						{groupType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title mb-4 md:mb-0">{pass.title}</div>
@@ -64,7 +65,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
+										customClasses="btn-dark mb-2 md:mb-0 flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>
@@ -72,7 +73,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				</div>
 
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Fitness Bérletek
 					</h1>
@@ -82,7 +83,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 						maximum 14:00-ig lehet a kardió és erősítő részleg területére
 						belépni, és azt legkésőbb 16:00-ig el kell hagyni.
 					</p>
-					<div className="md:divide-y md:divide-site-6">
+					<div className="divide-y divide-site-6">
 						{fitnessType.map((pass: any) => (
 							<div className="price-row py-6" key={pass.id}>
 								<div className="title mb-4 md:mb-0">{pass.title}</div>
@@ -91,7 +92,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 										text={getHufFormat(pass.price)}
 										appendBefore={<FaShoppingCart className="mr-4 text-lg" />}
 										clickEvent={() => passPurchaseClick(pass)}
-										customClasses="btn-dark flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
+										customClasses="btn-dark mb-2 md:mb-0 flex w-full md:w-auto ml-auto normal-case min-w-custom-1 justify-center items-center"
 									/>
 								</div>
 							</div>
@@ -101,13 +102,13 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 
 				{prices.map((price, i) => (
 					<div
-						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md md:mb-10"
+						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10"
 						key={i}
 					>
 						<h1 className="h1-shadow h1-shadow--purple mb-0 md:mb-6 text-center md:text-left">
 							{price?.title || 'Egyéb'}
 						</h1>
-						<div className="md:divide-y md:divide-site-6">
+						<div className="divide-y divide-site-6">
 							{price?.prices.map((price) => (
 								<div className="price-row py-6" key={price.id}>
 									<div className="title">
@@ -117,15 +118,18 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 												dangerouslySetInnerHTML={{ __html: price.title }}
 											></div>
 											{price.quantity && (
-												<div className="font-normal ml-4 text-lg text-gray-800">
+												<div className="font-normal ml-4 text-lg text-gray-800 whitespace-nowrap">
 													{price.quantity}
 												</div>
 											)}
 										</div>
 										{price.description && (
-											<div className="text-base font-normal mt-2 text-justify md:text-left">
-												{price.description}
-											</div>
+											<div
+												className="text-base font-normal mt-2 text-center md:text-left"
+												dangerouslySetInnerHTML={{
+													__html: unescape(price.description),
+												}}
+											></div>
 										)}
 									</div>
 									<div className="price text-xl mt-4 md:mt-0">

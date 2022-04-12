@@ -74,7 +74,7 @@ const CareerSection = () => {
 				</motion.div>
 				<div className="basis-full mt-10 md:mt-0">
 					<img
-						className="ml-0 md:ml-10"
+						className="ml-0 md:ml-10 career-image"
 						src={CoupleImage.src}
 						style={{ transformOrigin: 'bottom' }}
 						ref={imgRef.ref}

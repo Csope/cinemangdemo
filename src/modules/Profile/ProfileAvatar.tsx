@@ -17,13 +17,13 @@ const ProfileAvatar = () => {
 
 	return (
 		<div className="relative">
-			<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 flex flex-col ">
+			<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl mb-8 flex flex-col ">
 				<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-3">
 					Avatar
 				</h1>
 
 				<div>
-					<div className="grid grid-cols-5 w-full justify-center items-center px-10 py-4 gap-3">
+					<div className="grid grid-cols-5 w-full justify-center items-center md:px-10 py-4 gap-3">
 						{Object.keys(Avatars).map((key) => {
 							return (
 								<img

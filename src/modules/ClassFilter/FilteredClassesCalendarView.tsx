@@ -222,32 +222,36 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						{generateLocations()}
 					</div>
 				</div>
-				<div className="bg-site-7">
-					<div className="filtered-classes__calendar-dates container">
-						{generateDates()}
-					</div>
-				</div>
-				<div className="bg-site-1">
-					<div
-						className="filtered-classes__calendar container"
-						ref={calendarbox}
-					>
-						{indicatorTopPosition > 0 && (
-							<div
-								className="current-time-indicator"
-								style={{
-									top: `${indicatorTopPosition}%`,
-								}}
-							>
-								<div className="icon-left">
-									<BsCaretRightFill />
-								</div>
-								<div className="icon-right">
-									<BsCaretLeftFill />
-								</div>
+				<div className="overflow-x-auto">
+					<div style={{ minWidth: 1140 }}>
+						<div className="bg-site-7">
+							<div className="filtered-classes__calendar-dates container">
+								{generateDates()}
 							</div>
-						)}
-						{generateCalendar()}
+						</div>
+						<div className="bg-site-1">
+							<div
+								className="filtered-classes__calendar container"
+								ref={calendarbox}
+							>
+								{indicatorTopPosition > 0 && (
+									<div
+										className="current-time-indicator"
+										style={{
+											top: `${indicatorTopPosition}%`,
+										}}
+									>
+										<div className="icon-left">
+											<BsCaretRightFill />
+										</div>
+										<div className="icon-right">
+											<BsCaretLeftFill />
+										</div>
+									</div>
+								)}
+								{generateCalendar()}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

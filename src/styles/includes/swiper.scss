@@ -5,7 +5,6 @@
 }
 
 .FiveColSwiper {
-	padding-top: 50px;
 	padding-bottom: 50px;
 	margin-bottom: -50px;
 
@@ -13,8 +12,10 @@
 		transition: transform 0.3s ease-in-out !important;
 	}
 	.swiper-slide-active {
-		transform: scale(1.13) !important;
-		transform-origin: center !important;
+		@media only screen and (min-width: 768px) {
+			transform: scale(1.13) !important;
+			transform-origin: center !important;
+		}
 	}
 
 	img {
@@ -35,6 +36,10 @@
 		top: 50%;
 		left: 0;
 		font-size: 40px;
+	}
+
+	@media only screen and (min-width: 768px) {
+		padding-top: 50px;
 	}
 }
 

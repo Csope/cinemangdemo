@@ -11,7 +11,7 @@ const ProfilePasses = () => {
 	const passes = data?.data.passes || [];
 
 	return (
-		<div className="bg-site-1 pt-7 pb-7 rounded-xl mb-8">
+		<div className="bg-site-1 py-7  md:rounded-xl mb-8">
 			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
 				Bérletek
 			</h1>
@@ -21,12 +21,14 @@ const ProfilePasses = () => {
 					<ContentLoader />
 				</div>
 			) : passes.length > 0 ? (
-				<div className="">
+				<div className="w-full overflow-x-auto">
 					<table className="w-full text-site-4 data-table">
 						<thead className="bg-site-6 text-xs">
 							<tr>
 								<th></th>
-								<th className="py-2 uppercase pr-10 text-left">Megnevezés</th>
+								<th className="py-2 uppercase pr-10 text-left  px-4 md:px-0">
+									Megnevezés
+								</th>
 								<th className="py-2 uppercase">Alkalmak</th>
 								<th className="py-2 uppercase">Érvényesség kezdete</th>
 								<th className="py-2 uppercase">Érvényesség vége</th>
@@ -40,14 +42,16 @@ const ProfilePasses = () => {
 											{i + 1}
 										</div>
 									</td>
-									<td className="py-6 pr-10 font-bold">{pass.type.title}</td>
+									<td className="py-6 pr-10 font-bold whitespace-nowrap px-4 md:px-0">
+										{pass.type.title}
+									</td>
 									<td className="py-6 text-center">
 										{pass.used_points} / {pass.max_points}
 									</td>
-									<td className="py-6 text-center">
+									<td className="py-6 text-center whitespace-nowrap px-4 md:px-0">
 										{format(new Date(pass.start), 'yyyy.MM.dd - HH:mm')}
 									</td>
-									<td className="py-6 text-center">
+									<td className="py-6 text-center whitespace-nowrap px-4 md:px-0">
 										{format(new Date(pass.end), 'yyyy.MM.dd - HH:mm')}
 									</td>
 								</tr>

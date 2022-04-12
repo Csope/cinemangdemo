@@ -156,7 +156,6 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 			</div>
 			<div className="bg-site-2 w-full">
 				<ParallaxBannerImage
-					height="600px"
 					customClasses="parallax-banner-homepage"
 					src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
 				/>
