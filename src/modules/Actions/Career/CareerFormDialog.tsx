@@ -96,7 +96,7 @@ const CareerFormDialog = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple p-8 rounded-xl"
+					className="relative h-screen overflow-y-auto md:h-auto lg:w-6/12 bg-site-1 bg-glow-purple px-4 md:px-8 py-8 md:rounded-xl"
 					style={{ maxWidth: 800 }}
 				>
 					<div
@@ -111,7 +111,7 @@ const CareerFormDialog = () => {
 					</h1>
 
 					<div>
-						<div className="p-4">
+						<div className="md:p-4">
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="mb-5">
 									<label htmlFor="name" className="ml-1 mb-1 block">
@@ -182,7 +182,7 @@ const CareerFormDialog = () => {
 									)}
 								</div>
 
-								<div className="grid grid-cols-3 gap-2 mb-5">
+								<div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-5">
 									{classesData.map((_class) => (
 										<div className="flex flex-row" key={_class}>
 											<Switch

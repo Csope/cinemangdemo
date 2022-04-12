@@ -32,7 +32,7 @@ const ProfileReservations = () => {
 	};
 
 	return (
-		<div className="bg-site-1 py-7 px-6 rounded-xl mb-8 relative">
+		<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl mb-8 relative">
 			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
 				Foglalásaim
 			</h1>
@@ -42,7 +42,7 @@ const ProfileReservations = () => {
 					<ContentLoader />
 				</div>
 			) : reservations.length > 0 ? (
-				<div className="grid grid-cols-2 gap-10">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 					{reservations.map((reservation: ReservationType, i) => {
 						const startHour = format(
 							new Date(reservation.session.start),
@@ -62,7 +62,7 @@ const ProfileReservations = () => {
 								<div className="absolute top-4 left-4 rounded-full bg-site-8 text-sm w-7 h-7 flex justify-center items-center text-site-4">
 									{i + 1}
 								</div>
-								<div className="grid grid-cols-2 mb-5">
+								<div className="grid grid-cols-1 gap-10 md:gap-0 md:grid-cols-2 mb-5">
 									<div className="pt-3">
 										<img
 											src={`${reservation.session.class.preview_url}`}

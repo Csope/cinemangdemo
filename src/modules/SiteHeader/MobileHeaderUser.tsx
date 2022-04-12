@@ -64,6 +64,7 @@ const MobileHeaderUser = () => {
 			<motion.div
 				animate={isOpen && status === 'authenticated' ? 'open' : 'closed'}
 				transition={{ type: 'spring', bounce: 0 }}
+				initial={{ x: '100%' }}
 				variants={variants}
 				className="fixed h-screen w-screen bg-site-1 top-0 left-0 z-40 p-8 flex items-center justify-center"
 			>

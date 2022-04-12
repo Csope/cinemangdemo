@@ -32,7 +32,7 @@ const ConfirmationPopup = ({
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple p-8 rounded-xl"
+					className="relative lg:w-6/12 bg-site-1 bg-glow-purple py-8 px-4 md:px-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -48,7 +48,7 @@ const ConfirmationPopup = ({
 
 					<div className="text-center px-6 text-lg mb-6">{text}</div>
 
-					<div className="grid grid-cols-2 gap-10">
+					<div className="grid grid-cols-1 reverse md:grid-cols-2 gap-4 md:gap-10">
 						<div>
 							<Btn
 								text={cancelText}

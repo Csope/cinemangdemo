@@ -10,13 +10,16 @@ const SalesAndEvents = () => {
 	return (
 		<div className="SalesAndEvents page">
 			<div className="container pb-10">
-				<h1 className="text-center h1-shadow h1-shadow--purple mb-12">
+				<h1 className="text-center h1-shadow h1-shadow--purple mb-8 md:mb-12">
 					Akciók / események
 				</h1>
 
 				<div>
 					<Masonry
-						breakpointCols={2}
+						breakpointCols={{
+							default: 2,
+							768: 1,
+						}}
 						className="SalesAndEvents__masonry-grid"
 						columnClassName="SalesAndEvents__masonry-grid_column"
 					>
@@ -25,7 +28,7 @@ const SalesAndEvents = () => {
 							bodyContent={
 								<div>
 									<h1>Vásárold meg bérleted ONLINE!</h1>
-									<div className="content">
+									<div className="content text-justify md:text-left">
 										Örömmel értesítünk, hogy 2021. szeptember 6-tól elindítjuk
 										az online bérletvásárlás lehetőségét a Sugár Fitness
 										honlapján!🤩 Ezentúl minden az Áraink menüpont alatt

@@ -56,7 +56,7 @@ const FormWithMap = () => {
 
 	return (
 		<div className="bg-site-14 FormWithMap px-4">
-			<div className="container w-full flex flex-col-reverse md:flex-row gap-10 md:gap-28 items-strech">
+			<div className="container w-full flex flex-col-reverse md:flex-row gap-0 md:gap-28 items-strech">
 				<div className="basis-full">
 					<div className="gmap-wrapper">
 						<div className="gmap">

@@ -38,7 +38,7 @@ const PassPurchaseResponse = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple pt-8  rounded-xl"
+					className="relative h-screen overflow-y-auto md:h-auto lg:w-6/12 bg-site-1 bg-glow-purple pt-10 md:pt-8  rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -48,7 +48,7 @@ const PassPurchaseResponse = () => {
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-3">
+					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-5">
 						Vásárlás
 					</h1>
 					<div>
@@ -59,7 +59,7 @@ const PassPurchaseResponse = () => {
 							{passPurchaseInProgress?.purchase_details?.transaction_number}
 						</div>
 					</div>
-					<div className="rounded-xl px-4 pt-3 pb-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
+					<div className="rounded-xl px-4 pt-3 pb-3 text-center mt-0 md:mr-8 mb-3 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
 						<div className="mb-3">
 							<div className="text-site-4 uppercase text-lg">Bérlet típusa</div>
 							<div className="text-2xl font-medium">{pass?.title}</div>
@@ -82,7 +82,7 @@ const PassPurchaseResponse = () => {
 						</div>
 					</div>
 					{passPurchaseInProgress.status === 'COMPLETED' && (
-						<div className="bg-site-22 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+						<div className="bg-site-22 py-6 mx-4 md:mx-0 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl rounded-tr-xl md:rounded-tr-none rounded-tl-xl md:rounded-tl-none">
 							<div className="text-5xl mb-3">
 								<FaRegSmile />
 							</div>
@@ -91,7 +91,7 @@ const PassPurchaseResponse = () => {
 					)}
 
 					{passPurchaseInProgress.status === 'FAILED' && (
-						<div className=" bg-red-500 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+						<div className=" bg-red-500 py-6 mx-4 md:mx-0 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl rounded-tr-xl md:rounded-tr-none rounded-tl-xl md:rounded-tl-none">
 							<div className="text-5xl mb-3">
 								<HiOutlineEmojiSad />
 							</div>

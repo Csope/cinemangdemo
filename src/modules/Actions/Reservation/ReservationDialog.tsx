@@ -77,7 +77,7 @@ const ReservationDialog = () => {
 
 		if (hasReservationResponse) {
 			return (
-				<div className="bg-site-22 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+				<div className="bg-site-22 mx-4 md:mx-0 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl rounded-tr-xl md:rounded-tr-none rounded-tl-xl md:rounded-tl-none">
 					<div className="text-5xl mb-3">
 						<FaRegSmile />
 					</div>
@@ -103,7 +103,7 @@ const ReservationDialog = () => {
 		}
 
 		return (
-			<div className="pb-10 px-8">
+			<div className="px-4 md:pb-10 md:px-8">
 				<div className="mb-2">
 					<Btn
 						clickEvent={() => purchaseTicket(selectedSession as SessionType)}
@@ -194,7 +194,7 @@ const ReservationDialog = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple rounded-xl pt-8"
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8"
 					style={{ maxWidth: 500 }}
 				>
 					<div

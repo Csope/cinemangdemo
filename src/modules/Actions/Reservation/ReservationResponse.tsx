@@ -33,7 +33,7 @@ const ReservationResponse = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 bg-site-1 bg-glow-purple rounded-xl pt-8"
+					className="relative h-screen overflow-y-auto md:h-auto md:w-auto w-full lg:w-6/12 bg-site-1 bg-glow-purple md:rounded-xl pt-8"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -87,7 +87,7 @@ const ReservationResponse = () => {
 						</div>
 
 						{reservationPurchaseInProgress.status === 'COMPLETED' && (
-							<div className="bg-site-22 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+							<div className="bg-site-22 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl rounded-tr-xl md:rounded-tr-none rounded-tl-xl md:rounded-tl-none mx-4 md:mx-0">
 								<div className="text-5xl mb-3">
 									<FaRegSmile />
 								</div>
@@ -96,7 +96,7 @@ const ReservationResponse = () => {
 						)}
 
 						{reservationPurchaseInProgress.status === 'FAILED' && (
-							<div className=" bg-red-500 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl">
+							<div className=" bg-red-500 py-6 text-white flex justify-center items-center flex-col rounded-br-xl rounded-bl-xl rounded-tr-xl md:rounded-tr-none rounded-tl-xl md:rounded-tl-none mx-4 md:mx-0">
 								<div className="text-5xl mb-3">
 									<HiOutlineEmojiSad />
 								</div>

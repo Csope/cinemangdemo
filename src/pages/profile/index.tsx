@@ -14,7 +14,7 @@ const Profile = () => {
 
 	return (
 		<div className="Profile page">
-			<div className="container pb-10">
+			<div className="container md:pb-10">
 				<div>
 					<h1 className="h1-shadow h1-shadow--purple text-center mb-8">
 						Profil

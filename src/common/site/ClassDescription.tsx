@@ -209,7 +209,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 						{session?.current_headcount}/{session?.max_headcount}
 					</div>
 				</div>
-				<div className="w-10/12 mx-auto">{generateButton()}</div>
+				<div className="w-full md:w-10/12 mx-auto">{generateButton()}</div>
 
 				{onAttempt && (
 					<div className="absolute inset-0 flex justify-center items-center bg-site-1 bg-opacity-60 rounded-xl">
