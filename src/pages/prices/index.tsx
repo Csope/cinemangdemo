@@ -45,7 +45,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 	return (
 		<div className="Prices page">
 			<div className="container pb-10">
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Csoportos bérletek
 					</h1>
@@ -73,7 +73,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				</div>
 
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Fitness Bérletek
 					</h1>
@@ -102,7 +102,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 
 				{prices.map((price, i) => (
 					<div
-						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-4 md:mb-10"
+						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10"
 						key={i}
 					>
 						<h1 className="h1-shadow h1-shadow--purple mb-0 md:mb-6 text-center md:text-left">
@@ -112,13 +112,13 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 							{price?.prices.map((price) => (
 								<div className="price-row py-6" key={price.id}>
 									<div className="title">
-										<div className="flex items-center justify-center md:justify-start">
+										<div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
 											<div
 												className="text-center md:text-left"
 												dangerouslySetInnerHTML={{ __html: price.title }}
 											></div>
 											{price.quantity && (
-												<div className="font-normal ml-4 text-lg text-gray-800 whitespace-nowrap">
+												<div className="font-normal md:ml-4 text-lg text-gray-800 whitespace-nowrap">
 													{price.quantity}
 												</div>
 											)}
