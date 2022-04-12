@@ -16,6 +16,7 @@ import { ToastContainer } from 'react-toastify';
 import InitPageLoad from '../modules/InitPageLoad';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { hu } from 'date-fns/locale';
+import CookieConsent from "react-cookie-consent";
 registerLocale('hu', hu);
 setDefaultLocale('hu');
 
@@ -61,6 +62,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 														</div>
 													</div>
 													<Component {...pageProps} />
+													<CookieConsent 
+														debug={true}
+														style={{ background: "#a768b3", alignItems: "center" }}
+														buttonStyle={{ color: 'white', background: 'purple', borderRadius: '7px', padding: '7px 40px' }}
+														buttonText="Elfogadom"
+													>
+														Ez a weboldal a biztonságos böngészés és a felhasználói élmény fokozása érdekében &quot;cookie-kat&quot;(&quot;sütiket&quot;) használ. 
+														Az &quot;Elfogadom&quot; gomb megnyomásával hozzájárulsz a sütik alkalmazásához. 
+														Részletes Cookie (&quot;süti&quot;) szabályzatunkat <a href='http://fx.fotexnet.hu/docs/cookie.pdf' className='cookie-link' target='_blank' rel="noreferrer">itt találod</a>
+													</CookieConsent>
 												</div>
 
 												<SiteFooter />
