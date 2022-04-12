@@ -145,11 +145,11 @@ const RegisterSection = () => {
 
 	return (
 		<div className="flex items-center justify-center relative">
-			<div className="relative w-full bg-site-20 p-8 rounded-xl">
+			<div className="relative w-full bg-site-20 px-4 py-8 md:px-8 md:rounded-xl">
 				<div>
 					<div>
 						<form onSubmit={handleSubmit(onSubmit, onError)}>
-							<div className="grid grid-cols-2 gap-5 mb-5">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
 								<div>
 									<label htmlFor="lastname" className="ml-1 mb-1 block">
 										Vezetéknév*
