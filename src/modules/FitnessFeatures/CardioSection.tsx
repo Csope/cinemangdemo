@@ -14,7 +14,7 @@ import CardioWaterIcon from '../../common/icons/fitness/CardioWaterIcon';
 const CardioSection = () => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
-		threshold: 0.6,
+		threshold: 0.4,
 		triggerOnce: true,
 	});
 
