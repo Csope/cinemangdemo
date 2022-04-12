@@ -115,10 +115,10 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 			className="fixed z-10 inset-0 overflow-y-auto"
 		>
 			<div className="flex items-center justify-center min-h-screen">
-				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
+				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative pt-12 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="fixed inset-0 overflow-y-auto md:relative pb-8 md:pb-0 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -135,7 +135,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 					<div className="text-center mb-2 md:mb-4">
 						Nincs még fiókod?
 						<Link href="register">
-							<a className="text-site-4 ml-1">Regisztrálj most</a>
+							<a className="text-site-4 ml-1" onKeyDown={(e) => e.preventDefault()}>Regisztrálj most</a>
 						</Link>
 					</div>
 
@@ -197,12 +197,13 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									)}
 								</div>
 								<div className="text-center text-site-4 mb-4">
-									<button
+									<span
 										onClick={showLostPassword}
 										className=" tracking-wider"
+										onKeyDown={(e) => e.preventDefault()}
 									>
 										Elfelejtetted a jelszavadat?
-									</button>
+									</span>
 								</div>
 								<div className="mb-8">
 									<Btn

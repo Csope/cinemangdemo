@@ -17,7 +17,7 @@ const Register = () => {
 	return (
 		<div className="Register_page page">
 			<div
-				className="py-14 relative"
+				className="md:py-14 relative"
 				style={{
 					backgroundImage: `url(${BgImage.src})`,
 					backgroundRepeat: 'no-repeat',
@@ -25,9 +25,9 @@ const Register = () => {
 				}}
 			>
 				<div className="container">
-					<div className="flex">
-						<div className="w-5/12">
-							<h1 className="h1-shadow h1-shadow--blue text-center">
+					<div className="flex flex-col md:flex-row">
+						<div className="w-full md:w-5/12">
+							<h1 className="h1-shadow h1-shadow--blue py-8 md:py-0 text-center">
 								Csatlakozz <br></br>
 								hozzánk!
 							</h1>
@@ -35,11 +35,11 @@ const Register = () => {
 								<img
 									src={ClimbersImg.src}
 									alt="climbers"
-									className="absolute w-2/5 left-0 bottom-0"
+									className="hidden md:block absolute w-2/5 left-0 bottom-0"
 								/>
 							</div>
 						</div>
-						<div className="w-7/12">
+						<div className="w-full md:w-7/12">
 							<RegisterSection />
 						</div>
 					</div>

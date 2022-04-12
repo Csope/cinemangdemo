@@ -77,10 +77,10 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 			className="fixed z-10 inset-0 overflow-y-auto"
 		>
 			<div className="flex items-center justify-center min-h-screen">
-				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
+				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative pt-12 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="fixed inset-0 overflow-y-auto md:relative pt-12 px-4 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -111,7 +111,7 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 					)}
 
 					<div>
-						<div className="p-4">
+						<div className="py-4">
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="mb-7">
 									<label htmlFor="email" className="ml-1 mb-1 block">
