@@ -57,7 +57,7 @@ function DateFilter(): JSX.Element {
 
 	return (
 		<div className="w-full bg-site-6 mt-8">
-			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center custom-scrollbar">
+			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center ">
 				{generateDates()}
 			</div>
 		</div>

@@ -17,7 +17,7 @@ import { ToastContainer } from 'react-toastify';
 import InitPageLoad from '../modules/InitPageLoad';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { hu } from 'date-fns/locale';
-import CookieConsent from "react-cookie-consent";
+import CookieConsent from 'react-cookie-consent';
 registerLocale('hu', hu);
 setDefaultLocale('hu');
 
@@ -35,6 +35,7 @@ import '../styles/main.scss';
 import type { AppProps } from 'next/app';
 import MobileNavbar from '../modules/SiteHeader/MobileNavbar';
 import MobileHeaderUser from '../modules/SiteHeader/MobileHeaderUser';
+import Head from 'next/head';
 
 // React query client
 const queryClient = new QueryClient();
@@ -51,6 +52,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 									<QueryClientProvider client={queryClient}>
 										<InitPageLoad>
 											<>
+												<Head>
+													<meta
+														name="viewport"
+														content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
+													/>
+												</Head>
 												<div className="main-wrapper bg-site-17">
 													<div className="w-full py-3">
 														<div className="container relative">
@@ -66,7 +73,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 												</div>
 												<CookieManager />
 												<SiteFooter />
-												<NextNProgress color="#680b65" showOnShallow={false} />
+												<NextNProgress
+													color="#680b65"
+													options={{ showSpinner: false }}
+												/>
 											</>
 										</InitPageLoad>
 										<ToastContainer />

@@ -135,7 +135,12 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 					<div className="text-center mb-2 md:mb-4">
 						Nincs még fiókod?
 						<Link href="register">
-							<a className="text-site-4 ml-1" onKeyDown={(e) => e.preventDefault()}>Regisztrálj most</a>
+							<a
+								className="text-site-4 ml-1"
+								onKeyDown={(e) => e.preventDefault()}
+							>
+								Regisztrálj most
+							</a>
 						</Link>
 					</div>
 
@@ -199,7 +204,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 								<div className="text-center text-site-4 mb-4">
 									<span
 										onClick={showLostPassword}
-										className=" tracking-wider"
+										className="cursor-pointer tracking-wider"
 										onKeyDown={(e) => e.preventDefault()}
 									>
 										Elfelejtetted a jelszavadat?

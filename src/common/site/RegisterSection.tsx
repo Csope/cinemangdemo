@@ -121,7 +121,10 @@ const RegisterSection = () => {
 		setAttempt(false);
 
 		if (registerAttempt.status) {
-			notify('INFO', 'Sikeres regisztráció, erősítsd meg az e-mail címedet');
+			notify(
+				'INFO',
+				'Sikeres regisztráció, kérlek erősítsd meg az e-mail címedet'
+			);
 			router.push('/');
 		} else {
 			// notify('ERROR', registerAttempt.message);

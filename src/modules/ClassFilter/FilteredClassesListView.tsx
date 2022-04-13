@@ -226,11 +226,11 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 				onClose={() => setShowDescription(undefined)}
 				className="fixed z-10 inset-0 overflow-y-auto"
 			>
-				<div className="flex items-center justify-center min-h-screen rounded-2xl">
-					<Dialog.Overlay className="fixed inset-0 opacity-70 bg-white" />
+				<div className="flex items-center justify-center min-h-screen md:rounded-2xl">
+					<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-70 bg-white" />
 
-					<div className="relative container md:bg-glow-purple  rounded-2xl">
-						<div className="px-4 bg-site-8 py-3 rounded-tl-2xl rounded-tr-2xl ">
+					<div className="fixed inset-0 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl">
+						<div className="px-4 bg-site-8 py-3 md:rounded-tl-2xl md:rounded-tr-2xl ">
 							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">
 									{showDescription?.class.title}
@@ -243,7 +243,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 								</div>
 							</div>
 						</div>
-						<div className="bg-site-1 py-8 rounded-bl-2xl rounded-br-2xl">
+						<div className="bg-site-1 py-8 md:rounded-bl-2xl md:rounded-br-2xl">
 							<div className="container">
 								<ClassDescription
 									session={showDescription}
