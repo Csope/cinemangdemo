@@ -236,7 +236,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 				<div className="flex items-center justify-center min-h-screen md:rounded-2xl">
 					<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-70 bg-white" />
 
-					<div className="fixed inset-0 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl">
+					<div className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl">
 						<div className="px-4 bg-site-8 py-3 md:rounded-tl-2xl md:rounded-tr-2xl ">
 							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">
