@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react';
-import { useUser, useSiteStates } from '../../hooks';
+import React, { useEffect, useRef, useState } from 'react';
+import { useUser, useSiteStates, useActions } from '../../hooks';
 import { UserIcon } from '@heroicons/react/solid';
 import { IoTriangle } from 'react-icons/io5';
 import Link from 'next/link';
@@ -18,10 +18,12 @@ const variants = {
 const menu = [{ title: 'Profil', path: '/profile' }];
 
 const MobileHeaderUser = () => {
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const { doSignOut, user } = useUser();
 	const [isOpen, setIsOpen] = useState(false);
 	const { showLogin, doShowLogin, doHideLogin } = useSiteStates();
 	const { status } = useSession();
+	const popupContent = useRef(null);
 
 	const toggleLogin = () => {
 		if (status === 'loading') return;
@@ -37,13 +39,11 @@ const MobileHeaderUser = () => {
 
 	useEffect(() => {
 		if (isOpen) {
-			document.body.style.overflowY = 'hidden';
-			document.body.style.height = '100vh';
-			document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		} else {
-			document.body.style.overflowY = 'auto';
-			document.body.style.height = 'auto';
-			document.getElementsByTagName('html')[0].style.overflow = 'auto';
+			doEnableScroll();
 		}
 	}, [isOpen]);
 
@@ -74,6 +74,7 @@ const MobileHeaderUser = () => {
 			)}
 
 			<motion.div
+				ref={popupContent}
 				animate={isOpen && status === 'authenticated' ? 'open' : 'closed'}
 				transition={{ type: 'spring', bounce: 0 }}
 				initial={{ x: '100%' }}

@@ -14,12 +14,15 @@ import { includes } from 'lodash';
 import { IoClose } from 'react-icons/io5';
 import ClassDescription from '../../common/site/ClassDescription';
 import { BsCaretRightFill, BsCaretLeftFill } from 'react-icons/bs';
+import { useActions } from '../../hooks';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesCalendarView({ sessions }: PropTypes) {
+	const popupContent = useRef(null);
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const calendarbox = useRef(null);
 	const [indicatorTopPosition, setIndicatorTopPosition] = useState<number>(0);
 	const [showDescription, setShowDescription] = useState<
@@ -92,19 +95,6 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 		setIndicatorTopPosition(topValue);
 	};
-
-	useEffect(() => {
-		setSelectedLocation(locations[0]);
-		calculateTopPosition();
-
-		const indicatorInterval = setInterval(() => {
-			calculateTopPosition();
-		}, 60000);
-
-		return () => {
-			clearInterval(indicatorInterval);
-		};
-	}, []);
 
 	const generateLocations = () => {
 		return (
@@ -214,6 +204,29 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 		);
 	};
 
+	useEffect(() => {
+		setSelectedLocation(locations[0]);
+		calculateTopPosition();
+
+		const indicatorInterval = setInterval(() => {
+			calculateTopPosition();
+		}, 60000);
+
+		return () => {
+			clearInterval(indicatorInterval);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (showDescription) {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		} else {
+			doEnableScroll();
+		}
+	}, [showDescription]);
+
 	return (
 		<>
 			<div className="mt-8 bg-site-1">
@@ -264,7 +277,10 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 				<div className="flex items-center justify-center min-h-screen rounded-2xl">
 					<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-70 bg-white" />
 
-					<div className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple md:rounded-2xl">
+					<div
+						ref={popupContent}
+						className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple md:rounded-2xl"
+					>
 						<div className="px-4 bg-site-8 py-3 md:rounded-tl-2xl md:rounded-tr-2xl ">
 							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">

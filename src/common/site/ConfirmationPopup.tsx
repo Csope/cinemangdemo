@@ -1,6 +1,7 @@
 import { Dialog } from '@headlessui/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { useActions } from '../../hooks';
 import Btn from '../elements/buttons/Btn';
 
 type PropTypes = {
@@ -22,13 +23,16 @@ const ConfirmationPopup = ({
 	cancelText,
 	confirmText,
 }: PropTypes) => {
+	const popupContent = useRef(null);
+	const { doDisableScroll, doEnableScroll } = useActions();
+
 	useEffect(() => {
 		if (show) {
-			document.body.style.overflowY = 'hidden';
-			document.body.style.height = '100vh';
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		} else {
-			document.body.style.overflowY = 'auto';
-			document.body.style.height = 'auto';
+			doEnableScroll();
 		}
 	}, [show]);
 
@@ -42,6 +46,7 @@ const ConfirmationPopup = ({
 				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
+					ref={popupContent}
 					className="fixed inset-0 flex items-center justify-center flex-col md:block md:relative lg:w-6/12 bg-site-1 bg-glow-purple py-8 px-4 md:px-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>

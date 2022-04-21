@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useActions } from '../../hooks';
 
 const variants = {
 	open: { x: 0 },
@@ -19,18 +20,18 @@ const menu = [
 ];
 
 const MobileNavbar = () => {
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const [isOpen, setIsOpen] = useState(false);
 	const router = useRouter();
+	const popupContent = useRef(null);
 
 	useEffect(() => {
 		if (isOpen) {
-			document.body.style.overflowY = 'hidden';
-			document.body.style.height = '100vh';
-			document.getElementsByTagName('html')[0].style.overflow = 'hidden';
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		} else {
-			document.body.style.overflowY = 'auto';
-			document.body.style.height = 'auto';
-			document.getElementsByTagName('html')[0].style.overflow = 'auto';
+			doEnableScroll();
 		}
 	}, [isOpen]);
 
@@ -40,6 +41,7 @@ const MobileNavbar = () => {
 				<FiMenu />
 			</div>
 			<motion.div
+				ref={popupContent}
 				animate={isOpen ? 'open' : 'closed'}
 				transition={{ type: 'spring', bounce: 0 }}
 				variants={variants}

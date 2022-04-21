@@ -17,16 +17,10 @@ const useSiteStates = () => {
 	} = useContext(SiteStatesContext);
 
 	const doHideLogin = () => {
-		document.body.style.overflowY = 'auto';
-		document.body.style.height = 'auto';
-
 		siteStatesDispatch({ type: 'SHOW_LOGIN', payload: false });
 	};
 
 	const doShowLogin = () => {
-		document.body.style.overflowY = 'hidden';
-		document.body.style.height = '100vh';
-
 		siteStatesDispatch({ type: 'SHOW_LOGIN', payload: true });
 	};
 

@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, useRef, useEffect } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 import { BsDot } from 'react-icons/bs';
 import { Dialog } from '@headlessui/react';
@@ -29,6 +29,8 @@ type PropTypes = {
 };
 
 function FilteredClassesListView({ sessions }: PropTypes) {
+	const popupContent = useRef(null);
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const [showConfirm, setShowConfirm] = useState<ReservationType | false>(
 		false
 	);
@@ -154,6 +156,16 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 		selectedSessionDispatch({ type: 'SET_SELECTED', payload: session });
 	};
 
+	useEffect(() => {
+		if (showDescription) {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		} else {
+			doEnableScroll();
+		}
+	}, [showDescription]);
+
 	return (
 		<>
 			<div className="FilteredClassesListView bg-white">
@@ -236,7 +248,10 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 				<div className="flex items-center justify-center min-h-screen md:rounded-2xl">
 					<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-70 bg-white" />
 
-					<div className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl">
+					<div
+						ref={popupContent}
+						className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl"
+					>
 						<div className="px-4 bg-site-8 py-3 md:rounded-tl-2xl md:rounded-tr-2xl ">
 							<div className="relative ">
 								<h1 className="h1-shadow h1-shadow--white text-center ">
