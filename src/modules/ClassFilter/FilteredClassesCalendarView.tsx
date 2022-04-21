@@ -108,7 +108,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 	const generateLocations = () => {
 		return (
-			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center custom-scrollbar">
+			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center custom-scrollbar--dark">
 				{locations.map((location, i) => (
 					<div
 						key={i}
@@ -222,7 +222,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						{generateLocations()}
 					</div>
 				</div>
-				<div className="overflow-x-auto">
+				<div className="overflow-x-auto custom-scrollbar--dark">
 					<div style={{ minWidth: 1140 }}>
 						<div className="bg-site-7">
 							<div className="filtered-classes__calendar-dates container">
@@ -271,7 +271,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 								</h1>
 								<div
 									onClick={() => setShowDescription(undefined)}
-									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-2 cursor-pointer text-lg"
+									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-1 cursor-pointer text-lg"
 								>
 									<IoClose />
 								</div>

@@ -14,7 +14,7 @@ type PropTypes = {
 
 const CardWithImage = ({ imgSrc, bodyContent }: PropTypes) => {
 	return (
-		<div className="CardWithImage drop-shadow-md drop">
+		<div className="CardWithImage drop-shadow-md rounded-xl md:rounded-none">
 			<div>
 				<div className="CardWithImage__header">
 					<img src={imgSrc} alt="card-image" />

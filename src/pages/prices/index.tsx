@@ -45,7 +45,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 	return (
 		<div className="Prices page">
 			<div className="container pb-10">
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10 mx-4 md:mx-0 rounded-xl">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Csoportos bérletek
 					</h1>
@@ -73,7 +73,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				</div>
 
-				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10">
+				<div className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10 mx-4 md:mx-0 rounded-xl">
 					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Fitness Bérletek
 					</h1>
@@ -102,7 +102,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 
 				{prices.map((price, i) => (
 					<div
-						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10"
+						className="bg-white md:rounded-3xl px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-8 md:mb-10 mx-4 md:mx-0 rounded-xl"
 						key={i}
 					>
 						<h1 className="h1-shadow h1-shadow--purple mb-0 md:mb-6 text-center md:text-left">
@@ -118,21 +118,21 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 												dangerouslySetInnerHTML={{ __html: price.title }}
 											></div>
 											{price.quantity && (
-												<div className="font-normal md:ml-4 text-lg text-gray-800 whitespace-nowrap">
+												<div className="font-normal md:ml-4 text-base md:text-lg text-gray-800 whitespace-nowrap">
 													{price.quantity}
 												</div>
 											)}
 										</div>
 										{price.description && (
 											<div
-												className="text-base font-normal mt-2 text-center md:text-left"
+												className="text-sm md:text-base font-normal mt-2 text-center md:text-left"
 												dangerouslySetInnerHTML={{
 													__html: unescape(price.description),
 												}}
 											></div>
 										)}
 									</div>
-									<div className="price text-xl mt-4 md:mt-0">
+									<div className="price text-lg md:text-xl mt-4 md:mt-0 font-bold text-site-4">
 										{getHufFormat(parseInt(price.price))}
 									</div>
 								</div>

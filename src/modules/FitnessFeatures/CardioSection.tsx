@@ -29,13 +29,12 @@ const CardioSection = () => {
 
 	return (
 		<div
-			className="Homepage-cardio-section bg-site-10 pt-4 pb-10"
+			className="Homepage-cardio-section bg-site-10 pt-4 pb-8"
 			style={{ marginTop: -1 }}
 		>
 			<div className="container">
 				<motion.div
 					className="flex flex-col md:flex-row px-4 md:px-0 items-center gap-10"
-					ref={ref}
 					initial="hidden"
 					animate={controls}
 					transition={{ type: 'spring', bounce: 0 }}
@@ -54,7 +53,7 @@ const CardioSection = () => {
 						<h3 className="h3 text-site-11 text-center md:text-left">
 							Élet, erō, egészség!
 						</h3>
-						<div className="text-justify md:text-left">
+						<div className="text-justify md:text-left" ref={ref}>
 							Fitness termünkben új modern Mátrix géppark várja az edzeni
 							vágyókat. Erősítő részlegünkön nem kifejezetten a nagy izom
 							növelésére inkább a test formálására alkalmas súlyok találhatók

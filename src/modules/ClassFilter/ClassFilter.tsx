@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useClassFilter, useDebounce, useFavorites } from '../../hooks';
+import { useClassFilter, useFavorites } from '../../hooks';
 import CategoryFilter from './CategoryFilter';
 import DateFilter from './DateFilter';
 import FavoritesFilter from './FavoritesFilter';

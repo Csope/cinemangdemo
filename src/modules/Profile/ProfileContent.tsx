@@ -5,11 +5,11 @@ import ProfileReservations from './ProfileReservations';
 
 const ProfileContent = () => {
 	return (
-		<>
+		<div className="mx-4 md:mx-0">
 			<ProfileData />
 			<ProfileReservations />
 			<ProfilePasses />
-		</>
+		</div>
 	);
 };
 

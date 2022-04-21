@@ -9,12 +9,12 @@ import TestImg3 from '../../../public/images/cks_villam12.jpg';
 const SalesAndEvents = () => {
 	return (
 		<div className="SalesAndEvents page">
-			<div className="container pb-10">
-				<h1 className="text-center h1-shadow h1-shadow--purple mb-8 md:mb-12">
+			<div className="container pb-6 md:pb-10">
+				<h1 className="text-center h1-shadow h1-shadow--purple mb-8 md:mb-12 hidden md:block">
 					Akciók / események
 				</h1>
 
-				<div>
+				<div className="mx-4 md:mx-0">
 					<Masonry
 						breakpointCols={{
 							default: 2,

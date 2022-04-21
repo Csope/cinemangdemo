@@ -55,8 +55,8 @@ const FormWithMap = () => {
 	};
 
 	return (
-		<div className="bg-site-14 FormWithMap px-4">
-			<div className="container w-full flex flex-col-reverse md:flex-row gap-0 md:gap-28 items-strech">
+		<div className="bg-site-14 FormWithMap">
+			<div className="md:container w-full flex flex-col-reverse md:flex-row gap-0 md:gap-28 items-strech">
 				<div className="basis-full">
 					<div className="gmap-wrapper">
 						<div className="gmap">
@@ -64,9 +64,9 @@ const FormWithMap = () => {
 						</div>
 					</div>
 				</div>
-				<div className="w-full md:basis-full py-6 md:py-14">
+				<div className="w-full md:basis-full py-6 md:py-14 px-4">
 					<form onSubmit={handleSubmit(onSubmit)} className="relative">
-						<h1 className=" h1-shadow h1-shadow--white-2 mb-5 text-center md:text-left pt-6 md:pt-0">
+						<h1 className=" h1-shadow h1-shadow--white-2 mb-5 text-center md:text-left pt-3 md:pt-0">
 							Kapcsolat
 						</h1>
 						<div className="mb-5">

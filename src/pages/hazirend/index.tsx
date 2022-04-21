@@ -5,10 +5,12 @@ const HazirendIndex = () => {
 	return (
 		<div className="page">
 			<div className="container">
-				<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
-					<h1 className="h1-shadow h1-shadow--purple mb-6">Házirend</h1>
+				<div className="bg-white rounded-xl md:rounded-3xl mx-4 md:mx-0 px-4 md:px-10 pb-6 pt-10 drop-shadow-md mb-10">
+					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
+						Házirend
+					</h1>
 
-					<div>
+					<div className="text-justify md:text-left">
 						<div className="mb-4">
 							A Sugár Fitness üzemeltetője: Fotexnet Kft. (1025 Budapest,
 							Palatinus utca 1.)

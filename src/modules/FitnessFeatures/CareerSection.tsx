@@ -31,13 +31,12 @@ const CareerSection = () => {
 
 	return (
 		<div
-			className="pt-14 md:pt-0"
+			className="pt-10 md:pt-0"
 			style={{ backgroundImage: `url(${BgImage.src})` }}
 		>
-			<div className="container flex flex-col md:flex-row items-center px-4 md:px-0">
+			<div className="container flex flex-col md:flex-row items-end px-4 md:px-0">
 				<motion.div
 					className="basis-full gap-10 "
-					ref={ref}
 					initial="hidden"
 					transition={{ type: 'spring', bounce: 0 }}
 					animate={controls}
@@ -52,7 +51,10 @@ const CareerSection = () => {
 						},
 					}}
 				>
-					<h1 className="h1-shadow h1-shadow--gray mb-4 text-center md:text-left md:pt-8">
+					<h1
+						className="h1-shadow h1-shadow--gray mb-4 text-center md:text-left md:pt-8"
+						ref={ref}
+					>
 						Karrier
 					</h1>
 					<div className="text-gray-800 leading-7 w-full md:w-3/4 text-justify md:text-left">
@@ -74,7 +76,7 @@ const CareerSection = () => {
 				</motion.div>
 				<div className="basis-full mt-10 md:mt-0">
 					<img
-						className="ml-0 md:ml-10 career-image"
+						className="ml-0 md:ml-10 career-image w-11/12"
 						src={CoupleImage.src}
 						style={{ transformOrigin: 'bottom' }}
 						ref={imgRef.ref}

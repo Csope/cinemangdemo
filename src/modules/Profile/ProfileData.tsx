@@ -156,8 +156,8 @@ const ProfileData = () => {
 
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-			<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl md:mb-8 relative">
-				<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-3">
+			<div className="bg-site-1 py-7 px-4 md:px-6 rounded-xl md:mb-8 relative">
+				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
 					Adatok
 				</h1>
 
@@ -234,21 +234,21 @@ const ProfileData = () => {
 							<RadioGroup.Label className="mb-1 block">Nem</RadioGroup.Label>
 
 							<div className="flex">
-								<RadioGroup.Option className="mr-6" value="F">
+								<RadioGroup.Option className="mr-4" value="F">
 									{({ checked }) => (
 										<RadioOption
 											text="Nő"
-											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 											activeClasses="bg-site-19 border-4 border-white"
 											checked={checked}
 										/>
 									)}
 								</RadioGroup.Option>
-								<RadioGroup.Option className="mr-6" value="M">
+								<RadioGroup.Option className="mr-4" value="M">
 									{({ checked }) => (
 										<RadioOption
 											text="Férfi"
-											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 											activeClasses="bg-site-19 border-4 border-white"
 											checked={checked}
 										/>
@@ -258,7 +258,7 @@ const ProfileData = () => {
 									{({ checked }) => (
 										<RadioOption
 											text="Nem nyilatkozom"
-											defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+											defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 											activeClasses="bg-site-19 border-4 border-white"
 											checked={checked}
 										/>

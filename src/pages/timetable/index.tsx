@@ -1,6 +1,9 @@
 import { BsViewList } from 'react-icons/bs';
 import { GoCalendar } from 'react-icons/go';
 import { HiMap } from 'react-icons/hi';
+import IconList from '../../common/icons/IconList';
+import IconCard from '../../common/icons/IconCard';
+import IconCal from '../../common/icons/IconCal';
 import ClassFilter from '../../modules/ClassFilter/ClassFilter';
 import { GetServerSideProps } from 'next';
 import axios from 'axios';
@@ -8,10 +11,11 @@ import { addDays, format } from 'date-fns';
 import { ResType, SessionType, OrderType } from '../../types';
 import type { NextPage } from 'next';
 import { ViewList } from '../../types/ClassFilterTypes';
-import { useClassFilter, useSiteStates } from '../../hooks';
+import { useClassFilter, useSelectedSession, useSiteStates } from '../../hooks';
 import { useEffect } from 'react';
 import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
 import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
+import ReactTooltip from 'react-tooltip';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -22,6 +26,7 @@ const Timetable: NextPage<PropTypes> = ({
 	sessions,
 	inPurchase,
 }: PropTypes) => {
+	const { selectedSessionDispatch } = useSelectedSession();
 	const {
 		classFilterState: { view, startDate },
 		classFilterDispatch,
@@ -36,6 +41,10 @@ const Timetable: NextPage<PropTypes> = ({
 		if (inPurchase) {
 			doShowReservationPurchaseResponse(inPurchase);
 		}
+
+		return () => {
+			selectedSessionDispatch({ type: 'SET_SELECTED', payload: null });
+		};
 	}, []);
 
 	return (
@@ -50,30 +59,34 @@ const Timetable: NextPage<PropTypes> = ({
 							view === ViewList.SWIPER ? 'bg-site-4' : 'bg-site-6'
 						} `}
 						onClick={() => filterClick(ViewList.SWIPER)}
+						data-tip="Kártyanézet"
 					>
-						<HiMap />
+						<IconCard fillColor="#e3d5ec" />
 					</div>
 					<div
-						className={`px-3 py-2 border-l-site-1 border-l border-r border-r-site-1 cursor-pointer ${
+						className={`p-2 border-l-site-1 border-l border-r border-r-site-1 cursor-pointer ${
 							view === ViewList.CALENDAR ? 'bg-site-4' : 'bg-site-6'
 						}`}
 						onClick={() => filterClick(ViewList.CALENDAR)}
+						data-tip="Naptár nézet"
 					>
-						<GoCalendar />
+						<IconCal fillColor="#e3d5ec" />
 					</div>
 					<div
 						className={`pl-2 pr-3 py-2 rounded-tr-2xl rounded-br-2xl cursor-pointer ${
 							view === ViewList.LIST ? 'bg-site-4' : 'bg-site-6'
 						}`}
 						onClick={() => filterClick(ViewList.LIST)}
+						data-tip="Listanézet"
 					>
-						<BsViewList />
+						<IconList fillColor="#e3d5ec" />
 					</div>
 				</div>
 			</div>
 			<ClassFilter sessions={sessions} />
 			<ReservationDialog />
 			<ReservationResponse />
+			<ReactTooltip place="top" effect="solid" />
 		</div>
 	);
 };

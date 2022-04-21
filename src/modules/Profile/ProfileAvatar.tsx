@@ -17,8 +17,8 @@ const ProfileAvatar = () => {
 
 	return (
 		<div className="relative">
-			<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl mb-8 flex flex-col ">
-				<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-3">
+			<div className="bg-site-1 py-7 px-4 md:px-6 rounded-xl mb-8 flex flex-col ">
+				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
 					Avatar
 				</h1>
 

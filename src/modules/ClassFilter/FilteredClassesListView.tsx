@@ -22,12 +22,16 @@ import DifficultyTwo from '../../common/icons/difficulties/DifficultyTwo';
 import DifficultyThree from '../../common/icons/difficulties/DifficultyThree';
 import { useGetReservations } from '../../queries';
 import ContentLoader from '../../common/elements/ContentLoader';
+import ConfirmationPopup from '../../common/site/ConfirmationPopup';
 
 type PropTypes = {
 	sessions: SessionType[];
 };
 
 function FilteredClassesListView({ sessions }: PropTypes) {
+	const [showConfirm, setShowConfirm] = useState<ReservationType | false>(
+		false
+	);
 	const [onAttempt, setOnAttempt] = useState<boolean | number>(false);
 	const { notify } = useToasts();
 	const { status } = useUser();
@@ -66,8 +70,8 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 				<Btn
 					text={
 						<ContentLoader
-							width="w-7"
-							height="h-7"
+							width="w-5"
+							height="h-5"
 							spinnerColor="border-white"
 						/>
 					}
@@ -84,7 +88,10 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 					text="Lemondás"
 					customClasses="w-full btn-dark"
 					// @ts-ignore
-					clickEvent={(e) => resignReservation(e, hasReservation)}
+					clickEvent={(e) => {
+						e.stopPropagation();
+						setShowConfirm(hasReservation);
+					}}
 				/>
 			);
 		} else {
@@ -99,12 +106,8 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 		}
 	};
 
-	const resignReservation = async (
-		e: MouseEvent,
-		reservation: ReservationType
-	) => {
-		e.stopPropagation();
-
+	const resignReservation = async (reservation: ReservationType) => {
+		setShowConfirm(false);
 		setOnAttempt(reservation.session.id);
 
 		const res = await doResignReservation(reservation.id);
@@ -171,17 +174,21 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 									className="hover:bg-site-5 cursor-pointer relative"
 								>
 									<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
-										<div className="text-lg mb-1 md:mb-0 md:basis-2/12 md:text-xl">
+										<div className="mb-1 md:mb-0 md:basis-2/12 md:text-xl">
 											{start} - {end}
 										</div>
-										<div className="mb-1 md:mb-0 md:basis-1/12">
-											<div className="inline-block text-white rounded-full w-12">
+										<div className="mb-1 md:mb-0 md:basis-1/12 hidden md:block">
+											<div className="inline-block text-white rounded-full w-8 md:w-12">
 												{generateDifficulty(session.class.difficulty)}
 											</div>
 										</div>
 										<div className="mb-2 md:mb-0 md:basis-5/12">
-											<div className="text-site-4 text-2xl mb-2 ">
+											<div className="text-site-4 text-xl md:text-2xl mb-2 ">
 												{session.class.title}
+											</div>
+
+											<div className="inline-block text-white rounded-full w-8 md:w-12 md:hidden">
+												{generateDifficulty(session.class.difficulty)}
 											</div>
 
 											<div className="flex flex-row flex-wrap justify-center items-center md:justify-start md:text-lg">
@@ -237,7 +244,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 								</h1>
 								<div
 									onClick={() => setShowDescription(undefined)}
-									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-2 cursor-pointer text-lg"
+									className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-site-4 text-white p-1 cursor-pointer text-lg"
 								>
 									<IoClose />
 								</div>
@@ -254,6 +261,16 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 					</div>
 				</div>
 			</Dialog>
+
+			<ConfirmationPopup
+				show={showConfirm ? true : false}
+				cancelAction={() => setShowConfirm(false)}
+				confirmAction={() => resignReservation(showConfirm as ReservationType)}
+				title="Megerősítés"
+				text="Biztos, hogy le szeretnéd mondani a foglalásod?"
+				cancelText="Mégsem"
+				confirmText="Lemondás"
+			/>
 		</>
 	);
 }
