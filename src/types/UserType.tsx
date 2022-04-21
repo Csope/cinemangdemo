@@ -5,7 +5,7 @@ export interface RegisterUserType {
 	password: string;
 	gender: 'F' | 'M' | 'X';
 	birth_date: string;
-	newslatter: boolean;
+	newsletter: boolean;
 }
 export interface UpdateUserType {
 	last_name: string;

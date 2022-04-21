@@ -6,12 +6,23 @@
 @import './includes/class-filter';
 @import './includes/cards';
 
+html {
+	overflow-x: hidden;
+	max-width: 100vw;
+}
+
 body {
 	letter-spacing: 1px;
 	width: 100%;
 	overflow-x: hidden;
+	font-size: 14px;
 	max-width: 100vw;
+	// height: 100vh;
 	@apply bg-site-17;
+
+	@media only screen and (min-width: 768px) {
+		font-size: 16px;
+	}
 }
 
 img {
@@ -44,7 +55,7 @@ img {
 .FormWithMap {
 	.gmap-wrapper {
 		height: 100%;
-		padding: 20px 0;
+		padding: 20px 0 0 0;
 
 		.gmap {
 			height: 300px;
@@ -52,8 +63,12 @@ img {
 
 			@media only screen and (min-width: 768px) {
 				height: 100%;
-				transform: rotate(356deg) translateY(-21px) scale(1.08);
+				transform: rotate(356deg) translateY(-21px) scale(1.06);
 			}
+		}
+
+		@media only screen and (min-width: 768px) {
+			padding: 20px 0;
 		}
 	}
 
@@ -111,23 +126,23 @@ img {
 
 	/* Track */
 	&::-webkit-scrollbar-track {
-		background: $siteColor_7;
+		background: $siteColor_5;
 	}
 
 	/* Handle */
 	&::-webkit-scrollbar-thumb {
-		background: $siteColor_8;
+		background: $siteColor_17;
 		border-radius: 16px;
-		border: 1px solid $siteColor_2;
+		border: 1px solid $siteColor_20;
 	}
 
 	/* Handle on hover */
 	&::-webkit-scrollbar-thumb:hover {
-		background: $siteColor_3;
+		background: $siteColor_8;
 	}
 }
 
-.custom-scrollbar--light {
+.custom-scrollbar--dark {
 	/* width */
 	&::-webkit-scrollbar {
 		width: 3px;
@@ -136,13 +151,14 @@ img {
 
 	/* Track */
 	&::-webkit-scrollbar-track {
-		background: $siteColor_2;
+		background: $siteColor_6;
 	}
 
 	/* Handle */
 	&::-webkit-scrollbar-thumb {
-		background: $siteColor_6;
+		background: $siteColor_8;
 		border-radius: 3px;
+		border: 1px solid $siteColor_8;
 	}
 
 	/* Handle on hover */
@@ -183,8 +199,12 @@ img {
 
 		.title {
 			// flex-basis: 40%;
-			font-size: 22px;
+			font-size: 18px;
 			font-weight: 600;
+
+			@media only screen and (min-width: 768px) {
+				font-size: 22px;
+			}
 		}
 
 		.price {
@@ -235,6 +255,14 @@ img {
 
 .min-w-custom-1 {
 	min-width: 230px;
+}
+
+.trainer-youtube {
+	height: 200px;
+
+	@media only screen and (min-width: 768px) {
+		height: 300px;
+	}
 }
 
 @media only screen and (max-width: 768px) {

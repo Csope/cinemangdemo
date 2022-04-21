@@ -4,9 +4,7 @@
 
 @layer components {
 	.btn {
-		font-size: 15px;
 		@media only screen and (min-width: 768px) {
-			font-size: 17px;
 		}
 	}
 	.btn-light {
@@ -51,7 +49,7 @@
 	}
 
 	.p-quote {
-		@apply font-montserrat text-xl italic;
+		@apply font-montserrat text-lg md:text-xl italic;
 
 		&--white {
 			@apply text-white;
@@ -65,7 +63,7 @@
 	}
 
 	.h1-shadow {
-		@apply uppercase font-extrabold italic text-2xl font-montserrat;
+		@apply uppercase font-extrabold italic text-xl font-montserrat;
 
 		@media only screen and (min-width: 576px) {
 			@apply text-2xl;

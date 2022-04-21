@@ -11,6 +11,7 @@ import { RegisterUserType } from '../../types/UserType';
 import { format } from 'date-fns';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
+import Btn from '../elements/buttons/Btn';
 
 type FormValues = {
 	email: string;
@@ -111,7 +112,7 @@ const RegisterSection = () => {
 			password: password,
 			gender: gender || 'X',
 			birth_date: format(birthdate as Date, 'yyyy-MM-dd'),
-			newslatter: newsletterChecked,
+			newsletter: newsletterChecked,
 		};
 
 		setAttempt(true);
@@ -147,8 +148,8 @@ const RegisterSection = () => {
 	};
 
 	return (
-		<div className="flex items-center justify-center relative">
-			<div className="relative w-full bg-site-20 px-4 py-8 md:px-8 md:rounded-xl">
+		<div className="flex items-center justify-center relative mx-4 md:mx-0 ">
+			<div className="relative w-full bg-site-20 px-4 py-8 md:px-8 mb-4 md:mb-0 rounded-xl">
 				<div>
 					<div>
 						<form onSubmit={handleSubmit(onSubmit, onError)}>
@@ -234,21 +235,21 @@ const RegisterSection = () => {
 									</RadioGroup.Label>
 
 									<div className="flex">
-										<RadioGroup.Option className="mr-14" value="F">
+										<RadioGroup.Option className="mr-4 md:mr-14" value="F">
 											{({ checked }) => (
 												<RadioOption
 													text="Nő"
-													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 													activeClasses="bg-site-19 border-4 border-white"
 													checked={checked}
 												/>
 											)}
 										</RadioGroup.Option>
-										<RadioGroup.Option className="mr-14" value="M">
+										<RadioGroup.Option className="mr-4 md:mr-14" value="M">
 											{({ checked }) => (
 												<RadioOption
 													text="Férfi"
-													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 													activeClasses="bg-site-19 border-4 border-white"
 													checked={checked}
 												/>
@@ -258,7 +259,7 @@ const RegisterSection = () => {
 											{({ checked }) => (
 												<RadioOption
 													text="Nem nyilatkozom"
-													defaultClasses="w-5 h-5 mr-4 rounded-full bg-white"
+													defaultClasses="w-5 h-5 mr-2 rounded-full bg-white"
 													activeClasses="bg-site-19 border-4 border-white"
 													checked={checked}
 												/>
@@ -399,13 +400,11 @@ const RegisterSection = () => {
 							</div>
 
 							<div>
-								<motion.button
-									whileTap={{ scale: 0.95 }}
-									type="submit"
-									className={` transition-colors bg-site-19 text-white relative cursor-pointer uppercase text-center w-full block px-8 py-3 rounded-3xl font-bold tracking-widest `}
-								>
-									Regisztráció
-								</motion.button>
+								<Btn
+									text="Regisztráció"
+									customClasses="w-full bg-site-19 text-white"
+									clickEvent={() => null}
+								/>
 							</div>
 						</form>
 					</div>

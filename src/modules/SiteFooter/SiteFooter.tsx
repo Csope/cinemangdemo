@@ -141,10 +141,6 @@ const SiteFooter = () => {
 						<Link href={'/gyik'}>
 							<a>GYIK</a>
 						</Link>
-
-						<Link href={'/cardio'}>
-							<a>Cardio</a>
-						</Link>
 					</div>
 					<div className="flex text-right gap-3 text-2xl justify-center md:justify-end">
 						<div>

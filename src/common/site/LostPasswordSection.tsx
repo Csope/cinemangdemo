@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SubmitErrorHandler, useForm } from 'react-hook-form';
-import { useSiteStates, useToasts, useUser } from '../../hooks';
+import { useActions, useSiteStates, useToasts, useUser } from '../../hooks';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { GrFacebook } from 'react-icons/gr';
@@ -20,6 +20,8 @@ type FormValues = {
 };
 
 const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
+	const { doDisableScroll, doEnableScroll } = useActions();
+	const popupContent = useRef(null);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [errorMsg, setErrorMsg] = useState<string | JSX.Element | null>(null);
 	const router = useRouter();
@@ -60,6 +62,14 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 	};
 
 	useEffect(() => {
+		if (showForm) {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		} else {
+			doEnableScroll();
+		}
+
 		router.events.on('routeChangeStart', routeChange);
 
 		return () => {
@@ -80,7 +90,8 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="fixed inset-0 overflow-y-auto md:relative pt-12 px-4 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					ref={popupContent}
+					className="fixed inset-0 flex flex-col justify-center  overflow-y-auto md:relative pt-12 px-4 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -90,11 +101,11 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-3">
+					<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
 						Elfelejtett jelszó
 					</h1>
 
-					<div className="text-center mb-2 md:mb-4">
+					<div className="text-center mb-2">
 						Amennyiben már rendelkezel felhasználói fiókkal, kérjük add meg az
 						e-mail címedet! Erre az e-mail címre küldjük ki az új jelszó
 						megadásához szükséges linket!
@@ -110,7 +121,7 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 						</motion.div>
 					)}
 
-					<div>
+					<div className="w-full">
 						<div className="py-4">
 							<form onSubmit={handleSubmit(onSubmit)}>
 								<div className="mb-7">

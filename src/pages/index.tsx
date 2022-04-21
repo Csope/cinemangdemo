@@ -15,6 +15,7 @@ import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 import { ClassType, FrontPageResponseType, ResType } from '../types';
 import { CategoryTypes } from '../types/ClassFilterTypes';
+import CardioHeroImage from '../../public/images/cardio-hero.jpg';
 
 type PropTypes = {
 	events: {
@@ -76,12 +77,15 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
 				</div>
 			</TriangleDividerNextItem>
-			<div className="bg-site-2 md:hidden pb-3" style={{ marginBottom: -2 }}>
+			<div
+				className="bg-site-2 md:hidden pb-3 pt-4"
+				style={{ marginBottom: -2 }}
+			>
 				<h1 className="h1-shadow text-center h1-shadow--white">
 					Csoportos órák
 				</h1>
 			</div>
-			<div className="text-center bg-site-2 px-4 md:px-0">
+			<div className="text-center bg-site-2 px-4 md:px-0 pb-12 md:pb-0">
 				<LinkBtn
 					text="Összes óratípus"
 					customClasses="btn-dark mx-auto mt-3 w-full md:w-auto"
@@ -89,7 +93,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 				/>
 			</div>
 			<div className="w-full">
-				<div className="bg-site-2 pt-14 pb-14 md:pt-16 md:pb-12">
+				<div className="bg-site-9 md:bg-site-2 pt-9 pb-12 md:pt-16 md:pb-12">
 					<div className="container">
 						<TwoColClassSection
 							delay={4000}
@@ -110,7 +114,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 						/>
 					</div>
 				</div>
-				<div className="pt-14 pb-14 md:pt-12 md:pb-12 bg-site-9">
+				<div className="pt-10 pb-12 md:pt-12 md:pb-12 bg-site-2 md:bg-site-9">
 					<div className="container">
 						<TwoColClassSection
 							delay={5000}
@@ -132,7 +136,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 					</div>
 				</div>
 
-				<div className="bg-site-2 pt-12 pb-12">
+				<div className="bg-site-9 md:bg-site-2 pt-10 pb-12">
 					<div className="container">
 						<TwoColClassSection
 							delay={4500}
@@ -154,10 +158,10 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 					</div>
 				</div>
 			</div>
-			<div className="bg-site-2 w-full">
+			<div className="bg-site-9 md:bg-site-2 w-full">
 				<ParallaxBannerImage
 					customClasses="parallax-banner-homepage"
-					src="https://images.pexels.com/photos/1954524/pexels-photo-1954524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+					src={CardioHeroImage.src}
 				/>
 			</div>
 			<TriangleDivider
@@ -170,7 +174,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
 				</div>
 			</TriangleDividerNextItem>
-			<div className="bg-site-10 md:hidden pb-3">
+			<div className="bg-site-10 md:hidden pb-3  pt-4">
 				<h1 className="h1-shadow text-center h1-shadow--cian">
 					Cardio részleg
 				</h1>

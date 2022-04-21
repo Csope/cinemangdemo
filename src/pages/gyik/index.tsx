@@ -4,8 +4,8 @@ const GyikIndex = () => {
 	return (
 		<div className="page">
 			<div className="container">
-				<div className="bg-white rounded-3xl px-10 pb-6 pt-10 drop-shadow-md mb-10">
-					<h1 className="h1-shadow h1-shadow--purple mb-6">
+				<div className="bg-white rounded-xl md:rounded-3xl px-4 mx-4 md:mx-0 md:px-10 pb-6 pt-10 drop-shadow-md mb-10">
+					<h1 className="h1-shadow h1-shadow--purple mb-6 text-center md:text-left">
 						Gyakran ismételt kérdések
 					</h1>
 

@@ -11,8 +11,8 @@ const ProfilePasses = () => {
 	const passes = data?.data.passes || [];
 
 	return (
-		<div className="bg-site-1 py-7  md:rounded-xl mb-8">
-			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
+		<div className="bg-site-1 py-7 rounded-xl mb-8">
+			<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-5">
 				Bérletek
 			</h1>
 
@@ -46,7 +46,7 @@ const ProfilePasses = () => {
 										{pass.type.title}
 									</td>
 									<td className="py-6 text-center">
-										{pass.used_points} / {pass.max_points}
+										{pass.max_points - pass.used_points} / {pass.max_points}
 									</td>
 									<td className="py-6 text-center whitespace-nowrap px-4 md:px-0">
 										{format(new Date(pass.start), 'yyyy.MM.dd - HH:mm')}

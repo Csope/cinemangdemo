@@ -43,16 +43,16 @@ const ReservationResponse = () => {
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-3">
+					<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
 						Vásárlás
 					</h1>
 
 					<div className="rounded-xl pt-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
 						<div className="mb-4">
-							<div className="text-site-4 uppercase text-lg">
+							<div className="text-site-4 uppercase md:text-lg">
 								Tranzakció azonosító
 							</div>
-							<div className="text-2xl">
+							<div className="text-xl md:text-2xl">
 								{
 									reservationPurchaseInProgress?.purchase_details
 										?.transaction_number
@@ -60,30 +60,32 @@ const ReservationResponse = () => {
 							</div>
 						</div>
 						<div className="mb-4">
-							<div className="text-site-4 uppercase text-lg">Oktató</div>
-							<div className="text-2xl">
+							<div className="text-site-4 uppercase md:text-lg">Oktató</div>
+							<div className="text-xl md:text-2xl">
 								{session?.trainer.last_name} {session?.trainer.first_name}
 							</div>
 						</div>
 
 						<div className="mb-4">
-							<div className="text-site-4 uppercase text-lg">Dátum</div>
-							<div className="text-2xl">
+							<div className="text-site-4 uppercase md:text-lg">Dátum</div>
+							<div className="text-xl md:text-2xl">
 								{session?.date && format(new Date(session?.date), 'yyyy-MM-dd')}
 							</div>
 						</div>
 
 						<div className="mb-4">
-							<div className="text-site-4 uppercase text-lg">Időtartam</div>
-							<div className="text-2xl">
+							<div className="text-site-4 uppercase md:text-lg">Időtartam</div>
+							<div className="text-xl md:text-2xl">
 								{session?.start && format(new Date(session?.start), 'HH:mm')} -{' '}
 								{session?.end && format(new Date(session?.end), 'HH:mm')}
 							</div>
 						</div>
 
 						<div className="mb-4">
-							<div className="text-site-4 uppercase text-lg">Helyszín</div>
-							<div className="text-2xl">{session?.location.title}</div>
+							<div className="text-site-4 uppercase md:text-lg">Helyszín</div>
+							<div className="text-xl md:text-2xl">
+								{session?.location.title}
+							</div>
 						</div>
 
 						{reservationPurchaseInProgress.status === 'COMPLETED' && (

@@ -118,14 +118,14 @@ const ReservationDialog = () => {
 				</div>
 				<div>
 					<div className="text-center text-sm mb-1">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-						vitae!
+						A "Vásárlás" gombra kattintva elhagyod a Sugár Fitness weboldalát és
+						átirányítunk az OTP SimplePay biztonságos fizető felületére.
 						<a
 							className="text-site-4 underline ml-2"
 							target={'_blank'}
 							href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
 						>
-							További információ
+							"További információ"
 						</a>
 					</div>
 					<img
@@ -204,7 +204,7 @@ const ReservationDialog = () => {
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-3">
+					<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
 						Foglalás
 					</h1>
 
@@ -216,24 +216,26 @@ const ReservationDialog = () => {
 						<>
 							<div className="rounded-xl pt-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
 								<div className="mb-4">
-									<div className="text-site-4 uppercase text-lg">Oktató</div>
-									<div className="text-2xl">
+									<div className="text-site-4 uppercase md:text-lg">Oktató</div>
+									<div className="text-xl md:text-2xl">
 										{selectedSession?.trainer.last_name}{' '}
 										{selectedSession?.trainer.first_name}
 									</div>
 								</div>
 
 								<div className="mb-4">
-									<div className="text-site-4 uppercase text-lg">Dátum</div>
-									<div className="text-2xl">
+									<div className="text-site-4 uppercase md:text-lg">Dátum</div>
+									<div className="text-xl md:text-2xl">
 										{selectedSession?.date &&
 											format(new Date(selectedSession?.date), 'yyyy-MM-dd')}
 									</div>
 								</div>
 
 								<div className="mb-4">
-									<div className="text-site-4 uppercase text-lg">Időtartam</div>
-									<div className="text-2xl">
+									<div className="text-site-4 uppercase md:text-lg">
+										Időtartam
+									</div>
+									<div className="text-xl md:text-2xl">
 										{selectedSession?.start &&
 											format(new Date(selectedSession?.start), 'HH:mm')}{' '}
 										-{' '}
@@ -243,17 +245,19 @@ const ReservationDialog = () => {
 								</div>
 
 								<div className="mb-4">
-									<div className="text-site-4 uppercase text-lg">Helyszín</div>
-									<div className="text-2xl">
+									<div className="text-site-4 uppercase md:text-lg">
+										Helyszín
+									</div>
+									<div className="text-xl md:text-2xl">
 										{selectedSession?.location.title}
 									</div>
 								</div>
 
 								<div className="mb-6">
-									<div className="text-site-4 uppercase text-lg">
+									<div className="text-site-4 uppercase md:text-lg">
 										Férőhelyek
 									</div>
-									<div className="text-2xl">
+									<div className="text-xl md:text-2xl">
 										{selectedSession?.current_headcount}/
 										{selectedSession?.max_headcount}
 									</div>

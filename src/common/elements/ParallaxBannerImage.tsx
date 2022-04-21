@@ -9,7 +9,7 @@ interface PropTypes {
 const ParallaxBannerImage = ({ src, customClasses }: PropTypes) => {
 	return (
 		<ParallaxBanner
-			layers={[{ image: src, speed: -10 }]}
+			layers={[{ image: src, speed: -14 }]}
 			className={`aspect-[2/1] ${customClasses}`}
 		/>
 	);

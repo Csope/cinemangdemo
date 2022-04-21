@@ -37,8 +37,8 @@ const TransformedSwiper = ({
 			modules={[EffectCards, Autoplay]}
 			className="TransformedSwiper"
 		>
-			{imgSrcs.map((src) => (
-				<SwiperSlide key={src}>
+			{imgSrcs.map((src, i) => (
+				<SwiperSlide key={src || i}>
 					<img src={src} />
 				</SwiperSlide>
 			))}

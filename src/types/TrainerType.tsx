@@ -6,6 +6,7 @@ export default interface TrainerType {
 	position: string;
 	preview_url: string;
 	related_class_types: object;
+	gender: 'F' | 'M';
 	others?: {
 		videos?: string[];
 	};

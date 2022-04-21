@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { FiAlertCircle } from 'react-icons/fi';
 import { SessionType } from '../../types';
 import { unescape } from 'lodash';
 import { format } from 'date-fns';
 import Btn from '../elements/buttons/Btn';
-import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
+import DefaultEmployeeFemaleImg from '../../../public/images/defaults/oktato_default-female.jpg';
+import DefaultEmployeeMaleImg from '../../../public/images/defaults/oktato_default-male.jpg';
 import {
 	useActions,
 	useSelectedSession,
@@ -19,6 +19,7 @@ import DifficultyThree from '../icons/difficulties/DifficultyThree';
 import { useGetReservations } from '../../queries';
 import { ReservationType } from '../../types';
 import ContentLoader from '../elements/ContentLoader';
+import ConfirmationPopup from './ConfirmationPopup';
 
 type PropTypes = {
 	session: SessionType | undefined;
@@ -26,6 +27,9 @@ type PropTypes = {
 };
 
 function ClassDescription({ session, hideParentPopup }: PropTypes) {
+	const [showConfirm, setShowConfirm] = useState<ReservationType | false>(
+		false
+	);
 	const { notify } = useToasts();
 	const { status } = useUser();
 	const [onAttempt, setOnAttempt] = useState(false);
@@ -36,14 +40,12 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 		useGetReservations();
 	const trainerImage = session?.trainer.preview_url
 		? session?.trainer.preview_url
-		: DefaultEmployeeImg.src;
+		: session?.trainer.gender === 'F'
+		? DefaultEmployeeFemaleImg.src
+		: DefaultEmployeeMaleImg.src;
 
-	const resignReservation = async (
-		e: MouseEvent,
-		reservation: ReservationType
-	) => {
-		e.stopPropagation();
-
+	const resignReservation = async (reservation: ReservationType) => {
+		setShowConfirm(false);
 		setOnAttempt(true);
 
 		const res = await doResignReservation(reservation.id);
@@ -91,8 +93,8 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 				<Btn
 					text={
 						<ContentLoader
-							width="w-7"
-							height="h-7"
+							width="w-5 md:w-7"
+							height="h-5 md:h-7"
 							spinnerColor="border-white"
 						/>
 					}
@@ -108,8 +110,10 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 				<Btn
 					text="Lemondás"
 					customClasses="w-full btn-dark"
-					// @ts-ignore
-					clickEvent={(e) => resignReservation(e, hasReservation)}
+					clickEvent={(e) => {
+						e.stopPropagation;
+						setShowConfirm(hasReservation);
+					}}
 				/>
 			);
 		} else {
@@ -127,7 +131,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 	return (
 		<div className="flex flex-col-reverse px-4 flex-wrap md:flex-row-reverse md:items-start lg:flex-row lg:flex-nowrap lg:gap-8">
 			<div
-				className="text-center lg:text-left mb-8 lg:basis-5/12 overflow-auto custom-scrollbar--light pr-5"
+				className="text-justify md:text-center lg:text-left mb-8 lg:basis-5/12 overflow-auto custom-scrollbar--dark pr-5"
 				style={{ maxHeight: 430 }}
 			>
 				<div
@@ -136,7 +140,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					}}
 				></div>
 			</div>
-			<div className="mb-8 flex flex-col-reverse md:mb-0 md:flex-col md:basis-3/12 lg:basis-2/12">
+			<div className="hidden md:flex mb-8 flex-col-reverse md:mb-0 md:flex-col md:basis-3/12 lg:basis-2/12">
 				<div className="bg-site-8 md:mb-8 rounded-xl p-4 text-center">
 					<div className="mb-4">
 						<img className="rounded-xl" src={trainerImage} />
@@ -152,9 +156,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 							<div className="inline-block w-12">
 								<DifficultyTwo />
 							</div>
-							<div style={{ color: '#ffe546' }} className="text-xl uppercase">
-								Normál
-							</div>
+							<div className="text-xl uppercase text-site-4">Normál</div>
 						</>
 					)}
 					{session?.class?.difficulty === DifficultyTypes.BEGINNER && (
@@ -162,9 +164,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 							<div className="inline-block w-12">
 								<DifficultyOne />
 							</div>
-							<div style={{ color: '#81e13f' }} className="text-xl uppercase">
-								KEZDŐ
-							</div>
+							<div className="text-xl uppercase text-site-4">KEZDŐ</div>
 						</>
 					)}
 					{session?.class?.difficulty === DifficultyTypes.ADVENCED && (
@@ -172,9 +172,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 							<div className="inline-block w-12">
 								<DifficultyThree />
 							</div>
-							<div style={{ color: '#fe3825' }} className="text-xl uppercase">
-								Haladó
-							</div>
+							<div className="text-xl uppercase text-site-4">Haladó</div>
 						</>
 					)}
 				</div>
@@ -217,6 +215,16 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					</div>
 				)}
 			</div>
+
+			<ConfirmationPopup
+				show={showConfirm ? true : false}
+				cancelAction={() => setShowConfirm(false)}
+				confirmAction={() => resignReservation(showConfirm as ReservationType)}
+				title="Megerősítés"
+				text="Biztos, hogy le szeretnéd mondani a foglalásod?"
+				cancelText="Mégsem"
+				confirmText="Lemondás"
+			/>
 		</div>
 	);
 }

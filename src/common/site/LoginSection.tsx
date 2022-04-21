@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react';
-import React, { useState, useEffect, MouseEvent } from 'react';
+import React, { useState, useEffect, MouseEvent, useRef } from 'react';
 import { SubmitErrorHandler, useForm } from 'react-hook-form';
-import { useSiteStates, useToasts, useUser } from '../../hooks';
+import { useActions, useSiteStates, useToasts, useUser } from '../../hooks';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
 import { GrFacebook } from 'react-icons/gr';
@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
+
 interface PropTypes {
 	showLogin: boolean;
 	hideLogin: () => void;
@@ -23,10 +24,12 @@ type FormValues = {
 const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 	const [loading, setLoading] = useState<boolean>(false);
 	const [errorMsg, setErrorMsg] = useState<string | JSX.Element | null>(null);
+	const popupContent = useRef(null);
 	const router = useRouter();
 	const { doShowLostPassword, doHideLogin } = useSiteStates();
 	const { doSignInCredentials, doResendVerifyEmail } = useUser();
 	const { notify } = useToasts();
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const {
 		register,
 		handleSubmit,
@@ -99,11 +102,20 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 	};
 
 	useEffect(() => {
+		if (showLogin) {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		} else {
+			doEnableScroll();
+		}
+
 		router.events.on('routeChangeStart', routeChange);
 
 		return () => {
 			reset();
 			setErrorMsg(null);
+
 			router.events.off('routeChangeStart', routeChange);
 		};
 	}, [showLogin]);
@@ -118,17 +130,18 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="fixed inset-0 overflow-y-auto md:relative pb-8 md:pb-0 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					ref={popupContent}
+					className="fixed inset-0 overflow-y-auto md:relative pb-8 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
-						className="absolute cursor-pointer right-5 top-4 text-site-4 text-2xl"
+						className="absolute cursor-pointer right-5 top-4 text-site-4 text-3xl"
 						onClick={hideLogin}
 					>
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-3">
+					<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
 						Bejelentkezés
 					</h1>
 
@@ -236,7 +249,12 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 											>
 												<GrFacebook />
 											</div>
-											Belépés facebook fiókkal
+											<span
+												style={{ fontSize: 14 }}
+												className="whitespace-nowrap ml-3"
+											>
+												Belépés facebook fiókkal
+											</span>
 										</>
 									}
 								/>
@@ -250,7 +268,12 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 											<div className="absolute left-5 top-1/2 -translate-y-1/2 text-xl">
 												<FcGoogle />
 											</div>
-											Belépés google fiókkal
+											<span
+												style={{ fontSize: 15 }}
+												className="whitespace-nowrap ml-3"
+											>
+												Belépés google fiókkal
+											</span>
 										</>
 									}
 								/>

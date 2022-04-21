@@ -1,7 +1,7 @@
 import { Menu, Transition } from '@headlessui/react';
 import { useSession } from 'next-auth/react';
-import React, { useState } from 'react';
-import { useUser, useSiteStates } from '../../hooks';
+import React, { useEffect, useRef, useState } from 'react';
+import { useUser, useSiteStates, useActions } from '../../hooks';
 import { UserIcon } from '@heroicons/react/solid';
 import { IoTriangle } from 'react-icons/io5';
 import Link from 'next/link';
@@ -18,10 +18,12 @@ const variants = {
 const menu = [{ title: 'Profil', path: '/profile' }];
 
 const MobileHeaderUser = () => {
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const { doSignOut, user } = useUser();
 	const [isOpen, setIsOpen] = useState(false);
 	const { showLogin, doShowLogin, doHideLogin } = useSiteStates();
 	const { status } = useSession();
+	const popupContent = useRef(null);
 
 	const toggleLogin = () => {
 		if (status === 'loading') return;
@@ -35,11 +37,21 @@ const MobileHeaderUser = () => {
 		doSignOut();
 	};
 
+	useEffect(() => {
+		if (isOpen) {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		} else {
+			doEnableScroll();
+		}
+	}, [isOpen]);
+
 	return (
-		<div className="md:hidden">
+		<div className="w-2/12 md:hidden">
 			{status === 'authenticated' ? (
 				<div className="nav-user__image" onClick={() => setIsOpen(!isOpen)}>
-					<div className="relative">
+					<div className="relative flex justify-end">
 						{user?.avatar ? (
 							<img
 								// @ts-ignore
@@ -47,14 +59,14 @@ const MobileHeaderUser = () => {
 								className=" bg-glow-purple"
 							/>
 						) : (
-							<div className="h-10 w-10 bg-gray-200 border border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
-								<UserIcon className="p-2 text-site-4" />
+							<div className="h-10 w-10 bg-gray-200 border saturate-0  border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
+								<img src={DefaultUserImage.src} />
 							</div>
 						)}
 					</div>
 				</div>
 			) : (
-				<div className="flex flex-col items-center" onClick={toggleLogin}>
+				<div className="flex justify-end" onClick={toggleLogin}>
 					<div className="h-10 w-10 bg-gray-200 border saturate-0  border-site-2 rounded-full cursor-pointer bg-glow-purple relative">
 						<img src={DefaultUserImage.src} />
 					</div>
@@ -62,6 +74,7 @@ const MobileHeaderUser = () => {
 			)}
 
 			<motion.div
+				ref={popupContent}
 				animate={isOpen && status === 'authenticated' ? 'open' : 'closed'}
 				transition={{ type: 'spring', bounce: 0 }}
 				initial={{ x: '100%' }}
@@ -77,10 +90,10 @@ const MobileHeaderUser = () => {
 
 				<div className="text-center flex flex-col divide-y-2 divide-purple-50 divide-opacity-40">
 					{menu.map((item) => (
-						<div className="mb-3">
+						<div className="mb-3" key={item.path}>
 							<Link href={item.path}>
 								<a
-									className="text-2xl tracking-wider text-site-4"
+									className="text-lg tracking-wider text-site-4"
 									onClick={() => setIsOpen(!isOpen)}
 								>
 									{item.title}
@@ -90,8 +103,11 @@ const MobileHeaderUser = () => {
 					))}
 					<div className="pt-3">
 						<button
-							className="text-2xl tracking-wider text-site-4"
-							onClick={() => doLogout()}
+							className="text-lg tracking-wider text-site-4"
+							onClick={() => {
+								doLogout();
+								setIsOpen(!isOpen);
+							}}
 						>
 							Kijelentkezés
 						</button>

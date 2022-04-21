@@ -8,7 +8,8 @@ import { useGetTrainers } from '../../queries';
 import { TrainerType } from '../../types';
 import { unescape } from 'lodash';
 import LinkBtn from '../../common/elements/buttons/LinkBtn';
-import DefaultEmployeeImg from '../../../public/images/defaults/default-employee.jpeg';
+import DefaultEmployeeFemaleImg from '../../../public/images/defaults/oktato_default-female.jpg';
+import DefaultEmployeeMaleImg from '../../../public/images/defaults/oktato_default-male.jpg';
 import { motion } from 'framer-motion';
 
 type PropTypes = {
@@ -30,9 +31,9 @@ const Trainers: NextPage<PropTypes> = () => {
 
 	return (
 		<div className="Trainers_page page">
-			<div className="container">
+			<div className="mb-6 md:mb-0 container">
 				<div>
-					<h1 className="h1-shadow h1-shadow--purple text-center mb-8">
+					<h1 className="h1-shadow h1-shadow--purple text-center mb-8 hidden md:block">
 						Oktatók
 					</h1>
 				</div>
@@ -43,15 +44,17 @@ const Trainers: NextPage<PropTypes> = () => {
 				) : (
 					<FiveColSwiper
 						initialSlide={2}
-						onSlideChange={(swiper: any) => {
-							if (trainers) {
-								setSelectedTrainer(trainers[swiper.snapIndex]);
+						onSlideChange={(index: number) => {
+							if (trainers && trainers[index]) {
+								setSelectedTrainer(trainers[index]);
 							}
 						}}
 						imgSrcs={trainers.map((trainer) =>
 							trainer.preview_url
 								? `${trainer.preview_url}`
-								: DefaultEmployeeImg.src
+								: trainer.gender === 'F'
+								? DefaultEmployeeFemaleImg.src
+								: DefaultEmployeeMaleImg.src
 						)}
 					/>
 				)}
@@ -77,7 +80,7 @@ const Trainers: NextPage<PropTypes> = () => {
 					<motion.div
 						animate={{ opacity: 1, scale: 1 }}
 						initial={{ opacity: 0.3, scale: 0.95 }}
-						className="container px-4 md:px-0"
+						className="container px-4 md:px-0 pb-10"
 						key={selectedTrainer.first_name + selectedTrainer.last_name}
 					>
 						<div>
@@ -124,14 +127,14 @@ const Trainers: NextPage<PropTypes> = () => {
 							></div>
 						</div>
 
-						<div className="grid grid-cols-2 gap-10 flex-wrap">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-10 flex-wrap">
 							{selectedTrainer?.others?.videos?.map((video) => (
 								// @ts-ignore
-								<div key={video.link}>
+								<div key={video.link} className="trainer-youtube">
 									<iframe
 										style={{ borderRadius: '14px' }}
 										width="100%"
-										height="350px"
+										height="100%"
 										// @ts-ignore
 										src={video.link}
 										frameBorder="0"

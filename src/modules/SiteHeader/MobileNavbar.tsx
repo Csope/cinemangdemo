@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useActions } from '../../hooks';
 
 const variants = {
 	open: { x: 0 },
@@ -18,22 +20,28 @@ const menu = [
 ];
 
 const MobileNavbar = () => {
+	const { doDisableScroll, doEnableScroll } = useActions();
 	const [isOpen, setIsOpen] = useState(false);
+	const router = useRouter();
+	const popupContent = useRef(null);
 
 	useEffect(() => {
 		if (isOpen) {
-			document.body.style.overflowY = 'hidden';
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		} else {
-			document.body.style.overflowY = 'auto';
+			doEnableScroll();
 		}
 	}, [isOpen]);
 
 	return (
-		<div className="md:hidden">
+		<div className="w-2/12 md:hidden">
 			<div className="text-2xl text-site-4" onClick={() => setIsOpen(!isOpen)}>
 				<FiMenu />
 			</div>
 			<motion.div
+				ref={popupContent}
 				animate={isOpen ? 'open' : 'closed'}
 				transition={{ type: 'spring', bounce: 0 }}
 				variants={variants}
@@ -49,10 +57,12 @@ const MobileNavbar = () => {
 
 				<div className="text-center flex flex-col divide-y-2 divide-purple-50 divide-opacity-40">
 					{menu.map((item) => (
-						<div className="mb-3 pt-3">
+						<div className="mb-3 pt-3" key={item.path}>
 							<Link href={item.path}>
 								<a
-									className="text-2xl tracking-wider text-site-4"
+									className={`text-lg tracking-wider text-site-4 ${
+										router.pathname === item.path ? 'font-bold' : ''
+									}`}
 									onClick={() => setIsOpen(!isOpen)}
 								>
 									{item.title}

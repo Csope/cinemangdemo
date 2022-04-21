@@ -38,11 +38,13 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 					Sajnos nincs találat!
 				</div>
 			) : (
-				<div className="container pt-6">
+				<div className="container pt-6 mb-6 md:mb-0">
 					<FiveColSwiper
-						onSlideChange={(swiper) =>
-							setSelectedSession(sessions[swiper.snapIndex])
-						}
+						onSlideChange={(index: number) => {
+							if (sessions && sessions[index]) {
+								setSelectedSession(sessions[index]);
+							}
+						}}
 						initialSlide={0}
 						imgSrcs={swiperData.map((data) => `${data.src}`)}
 						hasFavorite={swiperData.map((data) => data.favoriteId)}

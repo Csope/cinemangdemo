@@ -12,6 +12,7 @@ import {
 	SessionType,
 } from '../types';
 import useUser from './useUser';
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 interface OrderReturnType {
 	status: boolean;
@@ -221,12 +222,23 @@ const useActions = () => {
 		}
 	};
 
+	const doDisableScroll = (refElement: any) => {
+		disableBodyScroll(refElement);
+		document.documentElement.style.overflow = 'hidden';
+	};
+	const doEnableScroll = () => {
+		clearAllBodyScrollLocks();
+		document.documentElement.style.overflow = 'auto';
+	};
+
 	return {
 		doCreateReservation,
 		doPurchaseTicket,
 		doResignReservation,
 		doPurchasePass,
 		doSendContactMessage,
+		doDisableScroll,
+		doEnableScroll,
 	};
 };
 

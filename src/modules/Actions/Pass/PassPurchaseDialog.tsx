@@ -165,14 +165,15 @@ const PassPurchaseDialog = () => {
 
 								<div className="mt-3">
 									<div className="text-center text-sm mb-1">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Temporibus, vitae!
+										A "Vásárlás" gombra kattintva elhagyod a Sugár Fitness
+										weboldalát és átirányítunk az OTP SimplePay biztonságos
+										fizető felületére.
 										<a
 											className="text-site-4 underline ml-2"
 											target={'_blank'}
 											href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
 										>
-											További információ
+											"További információ"
 										</a>
 									</div>
 									<img

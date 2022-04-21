@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow } from 'swiper';
 import { Swiper as SwiperInstance } from 'swiper/types';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import FavoriteMark from '../site/FavoriteMark';
-import { useFavorites } from '../../hooks';
+import { useDebounce, useFavorites } from '../../hooks';
 
 interface PropTypes {
 	initialSlide: number;
@@ -21,6 +21,8 @@ const FiveColSwiper = ({
 	hasFavorite,
 	hasInfo,
 }: PropTypes) => {
+	const [activeSlideValue, setActiveSlideValue] = useState(0);
+	const debouncedActiveSlideValue = useDebounce(activeSlideValue, 200);
 	const [controlledSwiper, setControlledSwiper] =
 		useState<SwiperInstance | null>(null);
 	const { favorites } = useFavorites();
@@ -35,16 +37,38 @@ const FiveColSwiper = ({
 		}
 	};
 
+	useEffect(() => {
+		onSlideChange(debouncedActiveSlideValue);
+	}, [debouncedActiveSlideValue]);
+
 	return (
-		<div className="px-10 relative">
+		<div className="md:px-10 relative">
 			<Swiper
 				effect={'coverflow'}
 				breakpoints={{
+					0: {
+						slidesPerView: 2,
+						coverflowEffect: {
+							rotate: 10,
+							stretch: -20,
+							depth: 100,
+						},
+					},
 					576: {
 						slidesPerView: 3,
+						coverflowEffect: {
+							rotate: 20,
+							stretch: -40,
+							depth: 100,
+						},
 					},
 					768: {
 						slidesPerView: 5,
+						coverflowEffect: {
+							rotate: 20,
+							stretch: -40,
+							depth: 100,
+						},
 					},
 				}}
 				grabCursor={true}
@@ -58,16 +82,16 @@ const FiveColSwiper = ({
 					modifier: 1,
 					slideShadows: false,
 				}}
-				onSlideChangeTransitionEnd={onSlideChange}
+				onSlideChange={(e: any) => setActiveSlideValue(e.snapIndex)}
 				modules={[EffectCoverflow]}
 				className="FiveColSwiper"
-				allowTouchMove={false}
+				allowTouchMove={true}
 				slideToClickedSlide={true}
 			>
 				{imgSrcs.map((src, i) => (
 					<SwiperSlide key={i}>
 						<div className="relative">
-							<img src={src} className="select-none cursor-pointer" />
+							<img src={src} className="select-none" />
 							{hasFavorite && genFavorite(hasFavorite[i])}
 							{hasInfo && (
 								<div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black text-white bg-opacity-70 text-sm italic font-light px-5 py-1 rounded">
@@ -80,13 +104,13 @@ const FiveColSwiper = ({
 			</Swiper>
 
 			<div
-				className="FiveColSwiper__prev-btn text-site-2 cursor-pointer"
+				className="FiveColSwiper__prev-btn text-site-2 cursor-pointer hidden md:block"
 				onClick={() => controlledSwiper?.slidePrev()}
 			>
 				<BsChevronCompactLeft />
 			</div>
 			<div
-				className="FiveColSwiper__next-btn text-site-2 cursor-pointer"
+				className="FiveColSwiper__next-btn text-site-2 cursor-pointer hidden md:block"
 				onClick={() => controlledSwiper?.slideNext()}
 			>
 				<BsChevronCompactRight />

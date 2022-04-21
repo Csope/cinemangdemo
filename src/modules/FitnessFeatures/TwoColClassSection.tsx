@@ -42,7 +42,6 @@ const TwoColClassSection = ({
 
 	return (
 		<div
-			ref={ref}
 			className={`flex items-center flex-col text-justify md:text-left px-4 md:px-0 ${
 				direction === 'text-img' ? 'md:flex-row' : 'md:flex-row-reverse'
 			}`}
@@ -64,7 +63,7 @@ const TwoColClassSection = ({
 				}}
 			>
 				<h3 className={`h3 mb-4 text-center md:text-left`}>{classTitle}</h3>
-				<div className="mb-12 md:mb-10 text-white leading-7">
+				<div className="mb-12 md:mb-10 text-white leading-7" ref={ref}>
 					{classDescription}
 				</div>
 				<div className="text-center md:text-right mb-14 md:mb-0">

@@ -8,6 +8,7 @@ import ConfirmationPopup from '../../common/site/ConfirmationPopup';
 import { useActions, useToasts, useUser } from '../../hooks';
 import { useGetReservations } from '../../queries';
 import { ReservationType } from '../../types';
+import DefaultClassImage from '../../../public/images/defaults/oratipus_default.jpg';
 
 const ProfileReservations = () => {
 	const [showConfirm, setShowConfirm] = useState<false | number>(false);
@@ -32,8 +33,8 @@ const ProfileReservations = () => {
 	};
 
 	return (
-		<div className="bg-site-1 py-7 px-4 md:px-6 md:rounded-xl mb-8 relative">
-			<h1 className="text-2xl text-center text-site-4 italic font-black uppercase mb-5">
+		<div className="bg-site-1 py-7 px-4 md:px-6 rounded-xl mb-8 relative">
+			<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-5">
 				Foglalásaim
 			</h1>
 
@@ -65,40 +66,48 @@ const ProfileReservations = () => {
 								<div className="grid grid-cols-1 gap-10 md:gap-0 md:grid-cols-2 mb-5">
 									<div className="pt-3">
 										<img
-											src={`${reservation.session.class.preview_url}`}
+											src={`${
+												!reservation.session.class.preview_url
+													? reservation.session.class.preview_url
+													: DefaultClassImage.src
+											}`}
 											alt="class image"
-											className="rounded-xl w-9/12"
+											className="rounded-xl w-9/12 mx-auto"
 										/>
 									</div>
 									<div className="text-center">
 										<div className="mb-4">
-											<div className="text-site-4 uppercase text-lg">
+											<div className="text-site-4 uppercase md:text-lg">
 												Oktató
 											</div>
-											<div className="text-white text-2xl">
+											<div className="text-white text-xl md:text-2xl">
 												{reservation.session.trainer.last_name}{' '}
 												{reservation.session.trainer.first_name}
 											</div>
 										</div>
 										<div className="mb-4">
-											<div className="text-site-4 uppercase text-lg">Dátum</div>
-											<div className="text-white text-2xl">{date}</div>
+											<div className="text-site-4 uppercase md:text-lg">
+												Dátum
+											</div>
+											<div className="text-white text-xl md:text-2xl">
+												{date}
+											</div>
 										</div>
 										<div className="mb-4">
-											<div className="text-site-4 uppercase text-lg">
+											<div className="text-site-4 uppercase md:text-lg">
 												Időtartam
 											</div>
-											<div className="text-white text-2xl">
+											<div className="text-white text-xl md:text-2xl">
 												{startHour}
 												{' - '}
 												{endHour}
 											</div>
 										</div>
 										<div className="mb-4">
-											<div className="text-site-4 uppercase text-lg">
+											<div className="text-site-4 uppercase md:text-lg">
 												Helyszín
 											</div>
-											<div className="text-white text-2xl">
+											<div className="text-white text-xl md:text-2xl">
 												{reservation.session.location.title}
 											</div>
 										</div>

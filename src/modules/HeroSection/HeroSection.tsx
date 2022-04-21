@@ -138,7 +138,8 @@ const HeroSection = ({ events }: PropTypes) => {
 						{events.map((event) => (
 							<SwiperSlide key={event.id}>
 								<div className={`w-full transformed-image-container`}>
-									<img src={event.preview_url} />
+									{/* <img src={event.preview_url} /> */}
+									<img src={test1.src} />
 								</div>
 							</SwiperSlide>
 						))}
