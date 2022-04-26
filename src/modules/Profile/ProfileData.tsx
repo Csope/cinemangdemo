@@ -40,8 +40,6 @@ const ProfileData = () => {
 	const [onAttempt, setOnAttempt] = useState(false);
 
 	const onSubmit = async () => {
-		console.log(gender);
-
 		if (
 			!isDirty &&
 			isEqual(

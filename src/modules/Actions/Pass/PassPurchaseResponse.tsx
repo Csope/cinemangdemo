@@ -1,20 +1,15 @@
+//@ts-nocheck
 import { Dialog } from '@headlessui/react';
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { FaRegSmile, FaShoppingCart } from 'react-icons/fa';
-import Btn from '../../../common/elements/buttons/Btn';
-import ContentLoader from '../../../common/elements/ContentLoader';
+import { FaRegSmile } from 'react-icons/fa';
 import { useActions, useSiteStates } from '../../../hooks';
-import SimpleLogo from '../../../../public/images/simple.png';
-import { getHufFormat } from '../../../utils';
-import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
-import { FaRegCalendarAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion';
 import { PassType } from '../../../types';
 import { HiOutlineEmojiSad } from 'react-icons/hi';
 
 const PassPurchaseResponse = () => {
+	const { doEnableScroll, doDisableScroll } = useActions();
+	const popupContent = useRef(null);
 	const { passPurchaseInProgress, doHidePassPurchaseResponse } =
 		useSiteStates();
 
@@ -22,11 +17,19 @@ const PassPurchaseResponse = () => {
 		doHidePassPurchaseResponse();
 	};
 
+	useEffect(() => {
+		if (!passPurchaseInProgress) {
+			doEnableScroll();
+		} else {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		}
+	}, [passPurchaseInProgress]);
+
 	if (!passPurchaseInProgress) return null;
 
-	// @ts-ignore
 	const pass: PassType = passPurchaseInProgress.request.page_data?.pass;
-	console.log(passPurchaseInProgress);
 
 	return (
 		<Dialog
@@ -38,6 +41,7 @@ const PassPurchaseResponse = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
+					ref={popupContent}
 					className="relative h-screen overflow-y-auto md:h-auto lg:w-6/12 bg-site-1 bg-glow-purple pt-10 md:pt-8  rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
@@ -74,10 +78,7 @@ const PassPurchaseResponse = () => {
 								Érvényesség kezdete
 							</div>
 							<div className="text-2xl relative">
-								{
-									// @ts-ignore
-									passPurchaseInProgress.request.page_data.startDate
-								}
+								{passPurchaseInProgress.request.page_data.startDate}
 							</div>
 						</div>
 					</div>

@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
+import { signIn } from 'next-auth/react';
 
 interface PropTypes {
 	showLogin: boolean;
@@ -88,6 +89,12 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 			hideLogin();
 		} else {
 			setErrorMsg('Hibás felhasználónév / jelszó');
+		}
+	};
+
+	const signInSocial = (provider: 'facebook' | 'google' | 'apple') => {
+		if (provider === 'facebook') {
+			signIn('facebook');
 		}
 	};
 
@@ -227,7 +234,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<Btn
 										text="Belépés e-mail címmel"
 										customClasses="btn-dark w-full"
-										clickEvent={() => console.log('credentiols login')}
+										clickEvent={() => console.log('credentials login')}
 									/>
 								</div>
 								<div className="relative mb-8">
@@ -240,7 +247,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 							<div className="mb-4">
 								<Btn
 									customClasses="btn-light text-black w-full"
-									clickEvent={() => console.log('login fb')}
+									clickEvent={() => signInSocial('facebook')}
 									text={
 										<>
 											<div

@@ -8,5 +8,7 @@ namespace NodeJS {
 		NEXT_PUBLIC_GOOGLE_API_KEY: string;
 		NEXTAUTH_SECRET: string;
 		NEXTAUTH_URL: string;
+		FACEBOOK_CLIENT_ID: string;
+		FACEBOOK_CLIENT_SECRET: string;
 	}
 }

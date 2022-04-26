@@ -1,5 +1,5 @@
 import { Dialog } from '@headlessui/react';
-import React, { MouseEvent, useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { FaShoppingCart } from 'react-icons/fa';
 import Btn from '../../../common/elements/buttons/Btn';
@@ -15,11 +15,12 @@ import { PassType } from '../../../types';
 
 const PassPurchaseDialog = () => {
 	const [startDate, setStartDate] = useState(null);
+	const popupContent = useRef(null);
 	const [startDateErr, setStartDateErr] = useState<null | string>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [onAttempt, setOnAttempt] = useState(false);
 	const { selectedPass, doSetSelectedPass } = useSiteStates();
-	const { doPurchasePass } = useActions();
+	const { doPurchasePass, doDisableScroll, doEnableScroll } = useActions();
 	const { notify } = useToasts();
 	const handleStartDateChange = (e: any) => {
 		setIsOpen(!isOpen);
@@ -58,6 +59,11 @@ const PassPurchaseDialog = () => {
 			setStartDate(null);
 			setIsOpen(false);
 			setStartDateErr(null);
+			doEnableScroll();
+		} else {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		}
 	}, [selectedPass]);
 
@@ -71,6 +77,7 @@ const PassPurchaseDialog = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
+					ref={popupContent}
 					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto bg-site-1 bg-glow-purple p-4 pt-10 md:p-8 md:pt-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>

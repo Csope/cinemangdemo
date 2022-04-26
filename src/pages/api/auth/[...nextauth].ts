@@ -1,10 +1,21 @@
 import axios from 'axios';
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
+import FacebookProvider from 'next-auth/providers/facebook';
 import { ResType, UserType } from '../../../types';
 
 export default NextAuth({
 	providers: [
+		FacebookProvider({
+			clientId: process.env.FACEBOOK_CLIENT_ID,
+			clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+			// profile(profile, tokens) {
+			// 	console.log(profile);
+			// 	console.log(tokens);
+
+			// 	return profile;
+			// },
+		}),
 		Credentials({
 			name: 'Credentials',
 			credentials: {
@@ -45,6 +56,10 @@ export default NextAuth({
 	],
 
 	callbacks: {
+		async signIn(data) {
+			// further validation
+			return true;
+		},
 		async jwt({ token, account, user }) {
 			if (account) {
 				token.id = user?.id;

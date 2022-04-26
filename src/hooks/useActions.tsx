@@ -223,9 +223,12 @@ const useActions = () => {
 	};
 
 	const doDisableScroll = (refElement: any) => {
-		disableBodyScroll(refElement);
+		disableBodyScroll(refElement, {
+			reserveScrollBarGap: true,
+		});
 		document.documentElement.style.overflow = 'hidden';
 	};
+
 	const doEnableScroll = () => {
 		clearAllBodyScrollLocks();
 		document.documentElement.style.overflow = 'auto';
