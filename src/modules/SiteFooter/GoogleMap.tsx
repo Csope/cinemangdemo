@@ -11,8 +11,6 @@ const GoogleMap = () => {
 	const [markerPos, setMarkerPos] = useState(null);
 
 	const render = (status: Status) => {
-		console.log(status);
-
 		if (status === Status.FAILURE) return <div>'ERROR'</div>;
 		return <div>'LOADING'</div>;
 	};

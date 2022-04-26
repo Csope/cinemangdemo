@@ -40,8 +40,6 @@ const ProfileData = () => {
 	const [onAttempt, setOnAttempt] = useState(false);
 
 	const onSubmit = async () => {
-		console.log(gender);
-
 		if (
 			!isDirty &&
 			isEqual(
@@ -161,7 +159,7 @@ const ProfileData = () => {
 					Adatok
 				</h1>
 
-				<form onSubmit={handleSubmit(onSubmit, onError)}>
+				<form onSubmit={handleSubmit(onSubmit, onError)} autoComplete={'false'}>
 					<div className="mb-5">
 						<label htmlFor="lastname" className="ml-1 mb-1 block">
 							Vezetéknév*
@@ -204,9 +202,7 @@ const ProfileData = () => {
 					</div>
 					<div className="grid grid-cols-2 gap-5 mb-5">
 						<div>
-							<label htmlFor="lastname" className="ml-1 mb-1 block">
-								Születési idő*
-							</label>
+							<label className="ml-1 mb-1 block">Születési idő*</label>
 							<DatePicker
 								className="white-input"
 								selected={birthdate}
@@ -218,15 +214,6 @@ const ProfileData = () => {
 								dropdownMode="select"
 								maxDate={new Date()}
 							/>
-							{/* {valErrors.birthdate && (
-								<motion.div
-									animate={{ y: 0 }}
-									initial={{ y: 10 }}
-									className="mt-2 text-rose-700"
-								>
-									{valErrors.birthdate}
-								</motion.div>
-							)} */}
 						</div>
 					</div>
 					<div className="mb-5  ml-1">

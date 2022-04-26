@@ -62,7 +62,6 @@ const CareerFormDialog = () => {
 	});
 
 	const onSubmit = async () => {
-		console.log('submit');
 		setOnAttempt(true);
 
 		setTimeout(() => {
@@ -208,7 +207,7 @@ const CareerFormDialog = () => {
 									<Btn
 										text="Kérem keressenek"
 										customClasses="btn-dark w-full"
-										clickEvent={() => console.log('send career form')}
+										clickEvent={() => null}
 									/>
 								</div>
 							</form>

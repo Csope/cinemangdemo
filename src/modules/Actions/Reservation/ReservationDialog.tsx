@@ -1,7 +1,7 @@
 import { Dialog } from '@headlessui/react';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Btn from '../../../common/elements/buttons/Btn';
@@ -20,6 +20,7 @@ import SimpleLogo from '../../../../public/images/simple.png';
 
 const ReservationDialog = () => {
 	const { notify } = useToasts();
+	const popupContent = useRef(null);
 	const [onAttempt, setOnAttempt] = useState<boolean>(false);
 	const { refetchReservations } = useGetReservations();
 	const [hasReservationResponse, setHasReservationResponse] =
@@ -28,7 +29,12 @@ const ReservationDialog = () => {
 		ReservabilityType | undefined
 	>(undefined);
 	const { user } = useUser();
-	const { doCreateReservation, doPurchaseTicket } = useActions();
+	const {
+		doCreateReservation,
+		doPurchaseTicket,
+		doDisableScroll,
+		doEnableScroll,
+	} = useActions();
 	const {
 		selectedSessionDispatch,
 		selectedSessionState: { selectedSession },
@@ -89,7 +95,9 @@ const ReservationDialog = () => {
 		if (reservability.session_full) {
 			return (
 				<div className="pb-8">
-					<div>Session is full</div>
+					<div>
+						Sajnáljuk, erre az órára online foglalás/vásárlás már nem lehetséges
+					</div>
 				</div>
 			);
 		}
@@ -177,6 +185,11 @@ const ReservationDialog = () => {
 		if (!selectedSession) {
 			setOnAttempt(false);
 			setHasReservationResponse(false);
+			doEnableScroll();
+		} else {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
 		}
 	}, [selectedSession]);
 
@@ -194,7 +207,8 @@ const ReservationDialog = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8"
+					ref={popupContent}
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
 					style={{ maxWidth: 500 }}
 				>
 					<div

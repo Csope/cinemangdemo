@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useClassFilter } from '../../hooks';
-import { SessionType, TrainerType } from '../../types';
-import { ViewList } from '../../types/ClassFilterTypes';
+import { LocationType, SessionType, TrainerType } from '../../types';
+import {
+	CategoryTypes,
+	DifficultyTypes,
+	ViewList,
+} from '../../types/ClassFilterTypes';
 import FilteredClassesCalendarView from './FilteredClassesCalendarView';
 import FilteredClassesListView from './FilteredClassesListView';
 import FilteredClassesSwiperView from './FilteredClassesSwiperView';
@@ -62,7 +66,7 @@ function BaseFilteredClasses({
 				const [sMin, sMax] = startTime;
 
 				// TODO: FIX time filter
-				if (sMin >= sHour || sMax <= sHour) {
+				if (sMin > sHour || sMax < sHour) {
 					return false;
 				}
 			}
@@ -71,7 +75,6 @@ function BaseFilteredClasses({
 				const trainerFullname =
 					session.trainer.first_name + ' ' + session.trainer.last_name;
 				const className = session.class.title;
-				console.log(className);
 
 				if (
 					!trainerFullname.toLowerCase().includes(search.toLowerCase()) &&
@@ -89,10 +92,12 @@ function BaseFilteredClasses({
 
 	return (
 		<>
-			<ExpandedFilter
-				show={filterExpanded && view !== ViewList.CALENDAR}
-				sessions={filteredSessions}
-			/>
+			<div className="bg-site-7">
+				<ExpandedFilter
+					show={filterExpanded && view !== ViewList.CALENDAR}
+					sessions={filteredSessions}
+				/>
+			</div>
 
 			{view !== ViewList.CALENDAR && <ActiveFilters />}
 

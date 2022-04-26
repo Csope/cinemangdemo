@@ -51,7 +51,7 @@ const ActiveFilters = () => {
 
 	return (
 		<div className="bg-site-6">
-			<div className="container flex justify-center gap-3 py-4 px-4">
+			<div className="container flex justify-center flex-wrap gap-3 py-4 px-4">
 				{search && (
 					<SimpleButton
 						// @ts-ignore

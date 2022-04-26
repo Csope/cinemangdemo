@@ -8,7 +8,6 @@ const DifficultyTwo = () => {
 				version="1.1"
 				x="0px"
 				y="0px"
-				height=""
 				viewBox="0 0 335.6 335.6"
 				fill="white"
 			>

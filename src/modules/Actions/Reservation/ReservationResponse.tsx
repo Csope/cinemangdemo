@@ -1,19 +1,31 @@
 import { Dialog } from '@headlessui/react';
 import { format } from 'date-fns';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { FaRegSmile } from 'react-icons/fa';
-import { useSiteStates } from '../../../hooks';
+import { useActions, useSiteStates } from '../../../hooks';
 import { SessionType } from '../../../types';
 import { HiOutlineEmojiSad } from 'react-icons/hi';
 
 const ReservationResponse = () => {
+	const { doDisableScroll, doEnableScroll } = useActions();
+	const popupContent = useRef(null);
 	const { reservationPurchaseInProgress, doHideReservationPurchaseResponse } =
 		useSiteStates();
 
 	const hidePopup = () => {
 		doHideReservationPurchaseResponse();
 	};
+
+	useEffect(() => {
+		if (!reservationPurchaseInProgress) {
+			doEnableScroll();
+		} else {
+			if (popupContent.current) {
+				doDisableScroll(popupContent.current);
+			}
+		}
+	}, [reservationPurchaseInProgress]);
 
 	if (!reservationPurchaseInProgress) {
 		return null;
@@ -33,7 +45,8 @@ const ReservationResponse = () => {
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
-					className="relative h-screen overflow-y-auto md:h-auto md:w-auto w-full lg:w-6/12 bg-site-1 bg-glow-purple md:rounded-xl pt-8"
+					ref={popupContent}
+					className="relative h-screen overflow-y-auto md:h-auto md:w-auto w-full lg:w-6/12 bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
 					style={{ maxWidth: 500 }}
 				>
 					<div

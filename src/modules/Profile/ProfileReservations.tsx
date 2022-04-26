@@ -6,7 +6,7 @@ import Btn from '../../common/elements/buttons/Btn';
 import ContentLoader from '../../common/elements/ContentLoader';
 import ConfirmationPopup from '../../common/site/ConfirmationPopup';
 import { useActions, useToasts, useUser } from '../../hooks';
-import { useGetReservations } from '../../queries';
+import { useGetOwnedPasses, useGetReservations } from '../../queries';
 import { ReservationType } from '../../types';
 import DefaultClassImage from '../../../public/images/defaults/oratipus_default.jpg';
 
@@ -14,6 +14,7 @@ const ProfileReservations = () => {
 	const [showConfirm, setShowConfirm] = useState<false | number>(false);
 	const { reservations, isFetchingReservations, refetchReservations } =
 		useGetReservations();
+	const ownedPasses = useGetOwnedPasses();
 	const [onAttempt, setOnAttempt] = useState(false);
 	const { doResignReservation } = useActions();
 	const { notify } = useToasts();
@@ -26,6 +27,7 @@ const ProfileReservations = () => {
 
 		if (resignResponse.status) {
 			refetchReservations();
+			ownedPasses.refetch();
 			notify('SUCCESS', resignResponse.message);
 		} else {
 			notify('ERROR', resignResponse.message);

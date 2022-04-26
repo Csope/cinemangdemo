@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
+import { signIn } from 'next-auth/react';
 
 interface PropTypes {
 	showLogin: boolean;
@@ -91,6 +92,12 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 		}
 	};
 
+	const signInSocial = (provider: 'facebook' | 'google' | 'apple') => {
+		if (provider === 'facebook') {
+			signIn('facebook');
+		}
+	};
+
 	const routeChange = () => {
 		hideLogin();
 	};
@@ -131,7 +138,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 				<div
 					ref={popupContent}
-					className="fixed inset-0 overflow-y-auto md:relative pb-8 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="fixed inset-0 overflow-y-auto md:relative pb-12 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -227,7 +234,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<Btn
 										text="Belépés e-mail címmel"
 										customClasses="btn-dark w-full"
-										clickEvent={() => console.log('credentiols login')}
+										clickEvent={() => console.log('credentials login')}
 									/>
 								</div>
 								<div className="relative mb-8">
@@ -240,7 +247,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 							<div className="mb-4">
 								<Btn
 									customClasses="btn-light text-black w-full"
-									clickEvent={() => console.log('login fb')}
+									clickEvent={() => signInSocial('facebook')}
 									text={
 										<>
 											<div
