@@ -78,7 +78,7 @@ const PassPurchaseDialog = () => {
 
 				<div
 					ref={popupContent}
-					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto bg-site-1 bg-glow-purple p-4 pt-10 md:p-8 md:pt-8 rounded-xl"
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto bg-site-1 bg-glow-purple p-4 pt-10 pb-10 md:pb-8 md:p-8 md:pt-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -98,7 +98,7 @@ const PassPurchaseDialog = () => {
 						</div>
 					) : (
 						<>
-							<div className="rounded-xl md:px-4 pt-3 pb-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
+							<div className="rounded-xl md:px-4 pt-3 pb-8 md:pb-3 text-center mt-4 md:mr-8 mb-8 md:mb-0 md:mt-0 md:basis-8/12 lg:mr-0 lg:basis-5/12 ">
 								<div className="mb-3">
 									<div className="text-site-4 uppercase text-lg">
 										Bérlet típusa

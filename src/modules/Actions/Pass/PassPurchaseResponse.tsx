@@ -42,7 +42,7 @@ const PassPurchaseResponse = () => {
 
 				<div
 					ref={popupContent}
-					className="relative h-screen overflow-y-auto md:h-auto lg:w-6/12 bg-site-1 bg-glow-purple pt-10 md:pt-8  rounded-xl"
+					className="relative h-screen overflow-y-auto md:h-auto lg:w-6/12 bg-site-1 bg-glow-purple pb-8 md:pb-0 pt-10 md:pt-8  rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div

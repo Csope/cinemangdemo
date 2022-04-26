@@ -138,7 +138,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 				<div
 					ref={popupContent}
-					className="fixed inset-0 overflow-y-auto md:relative pb-8 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="fixed inset-0 overflow-y-auto md:relative pb-12 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div

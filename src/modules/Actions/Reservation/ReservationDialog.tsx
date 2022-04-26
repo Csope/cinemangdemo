@@ -208,7 +208,7 @@ const ReservationDialog = () => {
 
 				<div
 					ref={popupContent}
-					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8"
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
 					style={{ maxWidth: 500 }}
 				>
 					<div

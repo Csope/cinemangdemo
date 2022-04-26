@@ -46,7 +46,7 @@ const ReservationResponse = () => {
 
 				<div
 					ref={popupContent}
-					className="relative h-screen overflow-y-auto md:h-auto md:w-auto w-full lg:w-6/12 bg-site-1 bg-glow-purple md:rounded-xl pt-8"
+					className="relative h-screen overflow-y-auto md:h-auto md:w-auto w-full lg:w-6/12 bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
 					style={{ maxWidth: 500 }}
 				>
 					<div

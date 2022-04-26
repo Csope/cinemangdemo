@@ -91,7 +91,7 @@ const LostPasswordSection = ({ showForm, hideForm }: PropTypes) => {
 
 				<div
 					ref={popupContent}
-					className="fixed inset-0 flex flex-col justify-center  overflow-y-auto md:relative pt-12 px-4 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="fixed inset-0 flex flex-col justify-center overflow-y-auto md:relative pt-12 pb-12 px-4 md:pt-8 h-screen md:h-auto w-full md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div

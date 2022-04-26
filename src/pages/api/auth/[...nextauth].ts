@@ -9,12 +9,9 @@ export default NextAuth({
 		FacebookProvider({
 			clientId: process.env.FACEBOOK_CLIENT_ID,
 			clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-			// profile(profile, tokens) {
-			// 	console.log(profile);
-			// 	console.log(tokens);
-
-			// 	return profile;
-			// },
+			authorization: {
+				params: { scope: 'email,public_profile,user_gender,user_birthday' },
+			},
 		}),
 		Credentials({
 			name: 'Credentials',
@@ -57,9 +54,22 @@ export default NextAuth({
 
 	callbacks: {
 		async signIn(data) {
-			// further validation
+			const { account } = data;
+
+			if (account?.type === 'oauth') {
+				// validate social login
+				const provider = account.provider;
+				const accessToken = account.access_token;
+
+				//ajax
+				data.user.token = 'TESTETETETETET';
+
+				return true;
+			}
+
 			return true;
 		},
+
 		async jwt({ token, account, user }) {
 			if (account) {
 				token.id = user?.id;
@@ -95,6 +105,14 @@ export default NextAuth({
 				return session;
 			}
 		},
+	},
+
+	pages: {
+		signIn: '/',
+		signOut: '/',
+		error: '/',
+		verifyRequest: '/',
+		newUser: '/',
 	},
 
 	secret: process.env.NEXTAUTH_SECRET,

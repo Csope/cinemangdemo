@@ -5,7 +5,7 @@ import FiveColSwiper from '../../common/swiper/FiveColSwiper';
 import ClassDescription from '../../common/site/ClassDescription';
 import { SessionType } from '../../types';
 import { isEmpty } from 'lodash';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { format } from 'date-fns';
 import FavoriteMark from '../../common/site/FavoriteMark';
 import DefaultClass from '../../../public/images/defaults/oratipus_default.jpg';
@@ -27,10 +27,6 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 		info: format(new Date(session.start), 'HH:mm'),
 	}));
 
-	useEffect(() => {
-		setSelectedSession(sessions[0]);
-	}, [sessions]);
-
 	return (
 		<div className="FilteredClassesSwiperView bg-site-1">
 			{isEmpty(sessions) ? (
@@ -40,6 +36,7 @@ function FilteredClassesSwiperView({ sessions }: PropTypes) {
 			) : (
 				<div className="container pt-6 mb-6 md:mb-0">
 					<FiveColSwiper
+						key={sessions.map((session) => session.id).join('')}
 						onSlideChange={(index: number) => {
 							if (sessions && sessions[index]) {
 								setSelectedSession(sessions[index]);
