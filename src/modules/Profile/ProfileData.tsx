@@ -11,8 +11,10 @@ import DatePicker from 'react-datepicker';
 import { format, isEqual } from 'date-fns';
 import { RadioGroup } from '@headlessui/react';
 import RadioOption from '../../common/elements/form/RadioOption';
+import PasswordVisibilityIcon from '../../common/site/PasswordVisibilityIcon';
 
 const ProfileData = () => {
+	const [showPassword, setShowPassword] = useState(false);
 	const { user, doUpdateUserData, doSetUserState } = useUser();
 	const [gender, setGender] = useState<'F' | 'M' | 'X'>(user?.gender || 'X');
 	const [birthdate, setBirthdate] = useState(
@@ -143,6 +145,8 @@ const ProfileData = () => {
 					gender,
 				};
 			});
+		} else if (updateRes.errors.length > 0) {
+			notify('ERROR', updateRes.errors[0]?.message);
 		} else {
 			notify('ERROR', updateRes.message);
 		}
@@ -258,12 +262,20 @@ const ProfileData = () => {
 						<label htmlFor="currentPassword" className="ml-1 mb-1 block">
 							Jelenlegi jelszó
 						</label>
-						<input
-							id="currentPassword"
-							type="password"
-							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
-							{...register('currentPassword')}
-						/>
+						<div className="relative">
+							<input
+								id="currentPassword"
+								type={`${showPassword ? 'text' : 'password'}`}
+								className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+								{...register('currentPassword')}
+							/>
+							<div className="absolute top-1/2 -translate-y-1/2 right-0 text-site-4 bg-white p-2 text-2xl">
+								<PasswordVisibilityIcon
+									show={showPassword}
+									clickEvent={(e) => setShowPassword(!showPassword)}
+								/>
+							</div>
+						</div>
 						{errors.currentPassword && (
 							<motion.div
 								className="mt-2 text-rose-700"
@@ -280,7 +292,7 @@ const ProfileData = () => {
 						</label>
 						<input
 							id="newPassword"
-							type="password"
+							type={`${showPassword ? 'text' : 'password'}`}
 							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
 							{...register('newPassword')}
 						/>
@@ -300,7 +312,7 @@ const ProfileData = () => {
 						</label>
 						<input
 							id="confirmPassword"
-							type="password"
+							type={`${showPassword ? 'text' : 'password'}`}
 							className=" w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
 							{...register('confirmPassword')}
 						/>

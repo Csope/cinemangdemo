@@ -185,6 +185,7 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 		</div>
 	);
 };
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	try {
 		const {

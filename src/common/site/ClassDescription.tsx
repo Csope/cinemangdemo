@@ -130,10 +130,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 
 	return (
 		<div className="flex flex-col-reverse px-4 flex-wrap md:flex-row-reverse md:items-start lg:flex-row lg:flex-nowrap lg:gap-8">
-			<div
-				className="text-justify md:text-center lg:text-left mb-8 lg:basis-5/12 overflow-auto custom-scrollbar--dark pr-5"
-				style={{ maxHeight: 430 }}
-			>
+			<div className="text-justify md:text-center lg:text-left mb-8 lg:basis-5/12 overflow-auto custom-scrollbar--dark md:pr-5 class__description">
 				<div
 					dangerouslySetInnerHTML={{
 						__html: unescape(session?.class.description),

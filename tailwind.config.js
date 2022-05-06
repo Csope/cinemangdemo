@@ -42,6 +42,7 @@ module.exports = {
 				'site-20': '#bdc7d4',
 				'site-21': '#a6a6a6',
 				'site-22': '#4bc941',
+				'site-23': '#68b432',
 			},
 		},
 	},

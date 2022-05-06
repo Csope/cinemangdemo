@@ -2,7 +2,7 @@ import React from 'react';
 
 const DifficultyTwo = () => {
 	return (
-		<div className="rounded-full p-1" style={{ backgroundColor: '#ffe546' }}>
+		<div className="rounded-full p-1" style={{ backgroundColor: '#ffc000' }}>
 			<svg
 				className="w-full"
 				version="1.1"

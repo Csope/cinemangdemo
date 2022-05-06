@@ -70,12 +70,12 @@ const FormWithMap = () => {
 							Kapcsolat
 						</h1>
 						<div className="mb-5">
-							<label htmlFor="name" className="text-white mb-1 block">
+							<label htmlFor="f_name" className="text-white mb-1 block">
 								Név
 							</label>
 							<input
 								type="text"
-								id="name"
+								id="f_name"
 								className={`white-input ${
 									errors.name ? 'border-2 border-rose-500' : ''
 								}`}
@@ -85,12 +85,12 @@ const FormWithMap = () => {
 							/>
 						</div>
 						<div className="mb-5">
-							<label htmlFor="email" className="text-white mb-1 block">
+							<label htmlFor="f_email" className="text-white mb-1 block">
 								E-mail cím
 							</label>
 							<input
 								type="email"
-								id="email"
+								id="f_email"
 								className={`white-input ${
 									errors.email ? 'border-2 border-rose-500' : ''
 								}`}

@@ -10,5 +10,9 @@ namespace NodeJS {
 		NEXTAUTH_URL: string;
 		FACEBOOK_CLIENT_ID: string;
 		FACEBOOK_CLIENT_SECRET: string;
+		GOOGLE_CLIENT_ID: string;
+		GOOGLE_CLIENT_SECRET: string;
+		APPLE_ID: string;
+		APPLE_SECRET: string;
 	}
 }

@@ -10,7 +10,12 @@ import { removeAuthToken, setAuthToken } from '../utils';
 interface DoUpdateUserReturnDataType {
 	status: boolean;
 	message: string;
-	errors: object[] | [];
+	errors:
+		| {
+				field: string;
+				message: string;
+		  }[]
+		| [];
 }
 interface DoCreateUserReturnDataType {
 	status: boolean;
@@ -87,6 +92,35 @@ const useUser = () => {
 		}
 	};
 
+	const doRegisterSocial = async (
+		userData: RegisterUserType & { token: string },
+		provider: string
+	) => {
+		const returnData: DoCreateUserReturnDataType = {
+			status: false,
+			message: 'Belső kiszolgálóhiba, próbáld újra később',
+			errors: [],
+		};
+
+		try {
+			const { data } = await axios.post<ResType<UserType>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/social/register/${provider}`,
+				userData
+			);
+
+			returnData.status = data.status;
+			returnData.message = data.message || '';
+			// @ts-ignore
+			returnData.errors = data.errors || [];
+
+			return returnData;
+		} catch (error) {
+			console.log(error);
+
+			return returnData;
+		}
+	};
+
 	const doUpdateUserData = async (
 		newUserData: UpdateUserType
 	): Promise<DoUpdateUserReturnDataType> => {
@@ -104,6 +138,7 @@ const useUser = () => {
 
 			returnData.status = data.status;
 			returnData.message = data.message || '';
+			// @ts-ignore
 			returnData.errors = data.errors || [];
 
 			return returnData;
@@ -223,6 +258,7 @@ const useUser = () => {
 		doSendLostPassword,
 		doChangePassword,
 		doVerifyEmail,
+		doRegisterSocial,
 	};
 };
 
