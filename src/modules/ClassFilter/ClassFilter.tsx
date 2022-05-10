@@ -11,6 +11,7 @@ import { SessionType } from '../../types';
 import { CategoryTypes, ViewList } from '../../types/ClassFilterTypes';
 import { format } from 'date-fns';
 import { useRouter } from 'next/router';
+import { getNextDates } from '../../utils';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -33,12 +34,12 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	useEffect(() => {
 		const fSessions = sessions.filter((session) => {
 			const sDate = format(new Date(session.start), 'yyyy-MM-dd');
-			const filDate = format(startDate, 'yyyy-MM-dd');
+			const filDates = startDate.map((_sDate) => format(_sDate, 'yyyy-MM-dd'));
 
 			if (favorites && !_f.favorites.includes(session.class.title))
 				return false;
 
-			if (sDate !== filDate) {
+			if (!filDates.includes(sDate)) {
 				return false;
 			}
 
@@ -66,9 +67,16 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 	 */
 	useEffect(() => {
 		if (s && v) {
+			const dates = getNextDates(7, true);
+
 			classFilterDispatch({
 				type: 'SET_VIEW',
-				payload: ViewList.SWIPER,
+				payload: ViewList.LIST,
+			});
+
+			classFilterDispatch({
+				type: 'SET_START_DATE',
+				payload: dates,
 			});
 
 			if (s === 'category') {

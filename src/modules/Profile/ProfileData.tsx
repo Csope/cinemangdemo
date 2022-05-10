@@ -357,7 +357,10 @@ const ProfileData = () => {
 					</div>
 				)}
 			</div>
-			<ProfileAvatar />
+			<div>Hello</div>
+			<div className="order-4 grid-rows-1 grid-col-2">
+				<ProfileAvatar />
+			</div>
 		</div>
 	);
 };

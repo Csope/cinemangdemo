@@ -4,7 +4,6 @@ import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../../common/elements/buttons/LinkBtn';
 import TransformedSwiper from '../../common/swiper/TransformedSwiper';
 import { ButtonPropType } from '../../types';
-import { CategoryTypes } from '../../types/ClassFilterTypes';
 
 interface PropType {
 	classTitle: string;
@@ -49,7 +48,7 @@ const TwoColClassSection = ({
 			<motion.div
 				initial="hidden"
 				animate={controls}
-				className="w-full md:w-2/3"
+				className="w-full md:w-6/12"
 				transition={{ type: 'spring', bounce: 0 }}
 				variants={{
 					hidden: {
@@ -77,8 +76,10 @@ const TwoColClassSection = ({
 			<motion.div
 				initial="hidden"
 				animate={controls}
-				className={`w-56 md:w-1/3 md:flex ${
-					direction === 'img-text' ? 'md:justify-start' : 'md:justify-end'
+				className={`w-full md:w-6/12 md:flex ${
+					direction === 'img-text'
+						? 'md:justify-start md:mr-10'
+						: 'md:justify-end md:ml-10'
 				}`}
 				transition={{ type: 'spring', bounce: 0 }}
 				variants={{
@@ -92,7 +93,7 @@ const TwoColClassSection = ({
 					},
 				}}
 			>
-				<div className=" md:w-56 md:mr-10 md:ml-10">
+				<div className="w-full">
 					<TransformedSwiper initialSlide={1} imgSrcs={imgSrcs} delay={delay} />
 				</div>
 			</motion.div>

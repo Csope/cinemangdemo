@@ -102,13 +102,12 @@ export default NextAuth({
 
 	callbacks: {
 		async signIn(signInData) {
-			console.log(signInData);
-
 			const { account, profile, user } = signInData;
 
 			if (account?.type === 'oauth') {
 				const provider = account.provider;
-				const accessToken = provider === 'apple' ? account.id_token : account.access_token;
+				const accessToken =
+					provider === 'apple' ? account.id_token : account.access_token;
 
 				const url = `${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/social/${provider}`;
 

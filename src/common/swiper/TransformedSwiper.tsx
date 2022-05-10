@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperInstance } from 'swiper/types';
 
-import { EffectCards, Autoplay } from 'swiper';
+import { EffectCoverflow, EffectCards, Autoplay } from 'swiper';
 
 interface PropTypes {
 	initialSlide: number;
@@ -20,21 +20,29 @@ const TransformedSwiper = ({
 
 	return (
 		<Swiper
-			effect={'cards'}
+			effect={'coverflow'}
+			centeredSlides={true}
 			grabCursor={false}
 			initialSlide={initialSlide || 0}
 			onSwiper={(swiperInstance) => setControlledSwiper(swiperInstance)}
 			preventClicks={true}
 			allowTouchMove={false}
-			cardsEffect={{
-				slideShadows: false,
-			}}
+			slidesPerView={3}
+			loop={true}
 			autoplay={{
 				delay,
 				disableOnInteraction: false,
 			}}
 			speed={700}
-			modules={[EffectCards, Autoplay]}
+			coverflowEffect={{
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+				slideShadows: false,
+			}}
+			pagination={false}
+			modules={[EffectCoverflow, Autoplay]}
 			className="TransformedSwiper"
 		>
 			{imgSrcs.map((src, i) => (

@@ -1,4 +1,5 @@
 import { Dialog, Switch } from '@headlessui/react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -7,6 +8,7 @@ import Btn from '../../../common/elements/buttons/Btn';
 
 import ContentLoader from '../../../common/elements/ContentLoader';
 import { useSiteStates, useToasts } from '../../../hooks';
+import { ResType } from '../../../types';
 
 type FormValues = {
 	email: string;
@@ -15,31 +17,32 @@ type FormValues = {
 };
 
 const classesData = [
-	'Alakformáló',
-	'BodyArt',
-	'Box',
-	'Callanetics',
-	'Core Training',
-	'Cross Training',
-	'DeepWork',
-	'FitBox',
-	'Gerinctréning',
-	'HardCore',
-	'Interval Mix',
-	'Jóga',
-	'Jump',
-	'Kangoo',
-	'Kettlebell',
-	'Pilates',
-	'Salsa Fitness',
-	'Senior Torna',
-	'Spinning',
-	'Step',
-	'Stretching',
-	'TRX',
-	'Zumba',
-	'Egyéb',
-	'Funkcionális Köredzés',
+	{ id: '0', name: 'Alakformáló' },
+	{ id: '1', name: 'BodyArt' },
+	{ id: '2', name: 'Box' },
+	{ id: '3', name: 'Callanetics' },
+	{ id: '4', name: 'Core Training' },
+	{ id: '5', name: 'Cross Training' },
+	{ id: '6', name: 'DeepWork' },
+	{ id: '7', name: 'FitBox' },
+	{ id: '8', name: 'FitFight' },
+	{ id: '9', name: 'Funkcionális Köredzés' },
+	{ id: '10', name: 'Gerinctréning' },
+	{ id: '11', name: 'HardCore' },
+	{ id: '12', name: 'Interval Mix' },
+	{ id: '13', name: 'Jóga' },
+	{ id: '14', name: 'Jump' },
+	{ id: '15', name: 'Kangoo' },
+	{ id: '16', name: 'Kettlebell' },
+	{ id: '17', name: 'Pilates' },
+	{ id: '18', name: 'Salsa Fitness' },
+	{ id: '19', name: 'Senior Torna' },
+	{ id: '20', name: 'Spinning' },
+	{ id: '21', name: 'Step' },
+	{ id: '22', name: 'Stretching' },
+	{ id: '23', name: 'TRX' },
+	{ id: '24', name: 'Zumba' },
+	{ id: '25', name: 'Egyéb' },
 ];
 
 const CareerFormDialog = () => {
@@ -62,11 +65,33 @@ const CareerFormDialog = () => {
 	});
 
 	const onSubmit = async () => {
+		const email = getValues('email');
+		const name = getValues('name');
+		const phone = getValues('phone');
+
 		setOnAttempt(true);
 
-		setTimeout(() => {
-			setOnAttempt(false);
-		}, 2000);
+		try {
+			const { data } = await axios.post<ResType<any>>(
+				`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/applicants`,
+				{
+					email,
+					name,
+					phone,
+					classes: selectedClasses,
+				}
+			);
+
+			if (data.status) {
+				notify('SUCCESS', data.message || '');
+			} else {
+				notify('ERROR', data.message || '');
+			}
+		} catch (error) {
+			notify('ERROR', 'Belső kiszolgálóhiba, próbáld újra később');
+		}
+
+		setOnAttempt(false);
 	};
 
 	const selectedClassChange = (className: string) => {
@@ -183,21 +208,21 @@ const CareerFormDialog = () => {
 
 								<div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-5">
 									{classesData.map((_class) => (
-										<div className="flex flex-row" key={_class}>
+										<div className="flex flex-row" key={_class.id}>
 											<Switch
-												checked={selectedClasses.includes(_class)}
-												onChange={() => selectedClassChange(_class)}
+												checked={selectedClasses.includes(_class.name)}
+												onChange={() => selectedClassChange(_class.name)}
 												className={`${
-													selectedClasses.includes(_class)
+													selectedClasses.includes(_class.name)
 														? 'bg-site-3'
 														: 'bg-white'
 												}  h-4 w-4 rounded border-white border-2`}
 											/>
 											<div
 												className="ml-2 cursor-pointer"
-												onClick={() => selectedClassChange(_class)}
+												onClick={() => selectedClassChange(_class.name)}
 											>
-												{_class}
+												{_class.name}
 											</div>
 										</div>
 									))}

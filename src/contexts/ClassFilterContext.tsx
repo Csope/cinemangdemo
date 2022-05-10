@@ -12,7 +12,7 @@ const initState: ClassFilterStateTypes = {
 	category: null,
 	startTime: null,
 	endTime: null,
-	startDate: new Date(),
+	startDate: [new Date()],
 	difficulty: null,
 	location: '',
 	type: '',

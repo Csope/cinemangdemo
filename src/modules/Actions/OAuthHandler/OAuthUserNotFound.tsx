@@ -2,6 +2,7 @@ import { Dialog } from '@headlessui/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { signIn } from 'next-auth/react';
+import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -66,7 +67,11 @@ const OAuthUserNotFound = ({
 						)}
 
 						{progress === 'existing' && (
-							<ExistingWrapper token={token} provider={provider} />
+							<ExistingWrapper
+								token={token}
+								provider={provider}
+								cancelAction={cancelAction}
+							/>
 						)}
 
 						<div
@@ -88,25 +93,26 @@ const QuestionWrapper = ({ existingUserClick, newUserClick }: any) => {
 	return (
 		<div>
 			<h1 className="text-center h1-shadow h1-shadow--purple text-2xl mb-4 px-4">
-				Lorem ipsum dolor sit amet consectetur
+				Ezen az E-mail címen nincs regisztráció!
 			</h1>
 
 			<div className="text-center px-6 text-lg mb-6">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum
-				dolor sit amet consectetur adipisicing elit. Placeat, quisquam!
+				Amennyiben már regisztrált tagunk vagy, a regisztrációkor megadott
+				e-mail címeddel jelentkezz be. Ha még nem regisztráltál kérlek kattints
+				a "regisztráció" gombra.
 			</div>
 
-			<div className="grid grid-cols-1 reverse md:grid-cols-2 gap-4 md:gap-10 w-full">
+			<div className="grid grid-cols-1 reverse gap-4  w-full">
 				<div>
 					<Btn
-						text="Meglevo"
+						text="Bejelentkezés"
 						clickEvent={existingUserClick}
 						customClasses="btn-light w-full"
 					/>
 				</div>
 				<div>
 					<Btn
-						text="Uj"
+						text="Regisztráció"
 						clickEvent={newUserClick}
 						customClasses="btn-dark w-full"
 					/>
@@ -116,7 +122,7 @@ const QuestionWrapper = ({ existingUserClick, newUserClick }: any) => {
 	);
 };
 
-const ExistingWrapper = ({ provider, token }: any) => {
+const ExistingWrapper = ({ provider, token, cancelAction }: any) => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [onAttempt, setOnAttempt] = useState<boolean>(false);
 	const { notify } = useToasts();
@@ -170,12 +176,21 @@ const ExistingWrapper = ({ provider, token }: any) => {
 	return (
 		<>
 			<div>
-				<h1 className="text-center h1-shadow h1-shadow--purple text-2xl mb-4 px-4">
-					Lorem ipsum dolor sit amet consectetur
+				<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
+					Bejelentkezés
 				</h1>
 
-				<div className="text-center px-6 text-lg mb-6">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit
+				<div className="text-center mb-2 md:mb-4">
+					Nincs még fiókod?
+					<Link href="register">
+						<a
+							className="text-site-4 ml-1"
+							onKeyDown={(e) => e.preventDefault()}
+							onClick={() => cancelAction()}
+						>
+							Regisztrálj most
+						</a>
+					</Link>
 				</div>
 
 				{errorMsg && (
@@ -239,7 +254,7 @@ const ExistingWrapper = ({ provider, token }: any) => {
 						</div>
 
 						<Btn
-							text="Connect"
+							text="Bejelentkezés"
 							clickEvent={() => null}
 							customClasses="btn-dark w-full"
 						/>

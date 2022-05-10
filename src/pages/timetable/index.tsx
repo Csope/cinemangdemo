@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
 import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
 import ReactTooltip from 'react-tooltip';
+import { useRouter } from 'next/router';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -26,6 +27,8 @@ const Timetable: NextPage<PropTypes> = ({
 	sessions,
 	inPurchase,
 }: PropTypes) => {
+	const router = useRouter();
+	const { s, v } = router.query;
 	const { selectedSessionDispatch } = useSelectedSession();
 	const {
 		classFilterState: { view, startDate },
@@ -33,6 +36,8 @@ const Timetable: NextPage<PropTypes> = ({
 	} = useClassFilter();
 
 	const filterClick = (type: ViewList): void => {
+		const newStarDate = startDate[0] ? [startDate[0]] : [];
+		classFilterDispatch({ type: 'SET_START_DATE', payload: newStarDate });
 		classFilterDispatch({ type: 'SET_VIEW', payload: type });
 	};
 	const { doShowReservationPurchaseResponse } = useSiteStates();
