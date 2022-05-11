@@ -12,6 +12,8 @@ import { format, isEqual } from 'date-fns';
 import { RadioGroup } from '@headlessui/react';
 import RadioOption from '../../common/elements/form/RadioOption';
 import PasswordVisibilityIcon from '../../common/site/PasswordVisibilityIcon';
+// @ts-ignore
+import Barcode from 'react-barcode';
 
 const ProfileData = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -157,8 +159,8 @@ const ProfileData = () => {
 	};
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-			<div className="bg-site-1 py-7 px-4 md:px-6 rounded-xl md:mb-8 relative">
+		<div className="Profile-data mb-8 md:mb-12">
+			<div className="userdata">
 				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
 					Adatok
 				</h1>
@@ -357,8 +359,28 @@ const ProfileData = () => {
 					</div>
 				)}
 			</div>
-			<div>Hello</div>
-			<div className="order-4 grid-rows-1 grid-col-2">
+			<div className="barcode">
+				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
+					Bérlet kártyaszám
+				</h1>
+				<div className="barcode-svg ">
+					{!user?.barcode || user?.barcode === '' ? (
+						<div className="text-center">Jelenleg nincs kártyaszámom</div>
+					) : (
+						<div className="bg-white p-2 rounded-2xl">
+							<Barcode
+								value={user?.barcode}
+								marginTop={0}
+								marginBottom={0}
+								height={100}
+								width={3}
+								format={'UPC'}
+							/>
+						</div>
+					)}
+				</div>
+			</div>
+			<div className="avatar">
 				<ProfileAvatar />
 			</div>
 		</div>
