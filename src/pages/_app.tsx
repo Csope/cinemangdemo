@@ -36,6 +36,7 @@ import type { AppProps } from 'next/app';
 import MobileNavbar from '../modules/SiteHeader/MobileNavbar';
 import MobileHeaderUser from '../modules/SiteHeader/MobileHeaderUser';
 import Head from 'next/head';
+import OAuthHandler from '../modules/Actions/OAuthHandler/OAuthHandler';
 
 // React query client
 const queryClient = new QueryClient();
@@ -71,8 +72,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 													</div>
 													<Component {...pageProps} />
 												</div>
-												<CookieManager />
 												<SiteFooter />
+												<CookieManager />
+												<OAuthHandler />
 												<NextNProgress
 													color="#680b65"
 													options={{ showSpinner: false }}

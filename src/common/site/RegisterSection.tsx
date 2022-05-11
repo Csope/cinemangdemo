@@ -12,6 +12,8 @@ import { format } from 'date-fns';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
+import { signIn } from 'next-auth/react';
+import PasswordVisibilityIcon from './PasswordVisibilityIcon';
 
 type FormValues = {
 	email: string;
@@ -21,7 +23,18 @@ type FormValues = {
 	passwordConfirm: string;
 };
 
-const RegisterSection = () => {
+type PropTypes = {
+	hasData?: {
+		email: string;
+		firstname: string;
+		lastname: string;
+		token: string;
+		provider: string;
+	};
+};
+
+const RegisterSection = ({ hasData }: PropTypes) => {
+	const [showPassword, setShowPassword] = useState(false);
 	const [onAttempt, setAttempt] = useState<boolean>(false);
 	const [gender, setGender] = useState<'F' | 'M' | 'X' | undefined>(undefined);
 	const [gdprChecked, setGdprChecked] = useState<boolean>(false);
@@ -37,7 +50,7 @@ const RegisterSection = () => {
 		birthdate: null,
 		gdpr: null,
 	});
-	const { doRegister } = useUser();
+	const { doRegister, doRegisterSocial } = useUser();
 	const { notify } = useToasts();
 	const {
 		register,
@@ -45,7 +58,15 @@ const RegisterSection = () => {
 		getValues,
 		setError,
 		formState: { errors },
-	} = useForm<FormValues>();
+	} = useForm<FormValues>({
+		defaultValues: hasData
+			? {
+					email: hasData.email,
+					firstname: hasData.firstname,
+					lastname: hasData.lastname,
+			  }
+			: { email: '' },
+	});
 
 	const onSubmit = async () => {
 		const email = getValues('email');
@@ -117,29 +138,52 @@ const RegisterSection = () => {
 
 		setAttempt(true);
 
-		const registerAttempt = await doRegister(userData);
+		let registerAttempt;
+
+		if (hasData) {
+			registerAttempt = await doRegisterSocial(
+				{
+					...userData,
+					token: hasData.token,
+				},
+				hasData.provider
+			);
+		} else {
+			registerAttempt = await doRegister(userData);
+		}
 
 		setAttempt(false);
 
 		if (registerAttempt.status) {
-			notify(
-				'INFO',
-				'Sikeres regisztráció, kérlek erősítsd meg az e-mail címedet'
-			);
-			router.push('/');
+			if (hasData) {
+				notify('SUCCESS', 'Lorem ipsum dolor ...');
+				signIn(hasData.provider, {
+					callbackUrl: '/',
+				});
+			} else {
+				notify(
+					'INFO',
+					'Sikeres regisztráció, kérlek erősítsd meg az e-mail címedet'
+				);
+				router.push('/');
+			}
 		} else {
-			// notify('ERROR', registerAttempt.message);
-			registerAttempt.errors.map((err) => {
-				if (err.field === 'first_name')
-					setError('firstname', { message: err.message });
-				if (err.field === 'last_name')
-					setError('lastname', { message: err.message });
-				if (err.field === 'email') setError('email', { message: err.message });
-				if (err.field == 'password')
-					setError('password', { message: err.message });
-				if (err.field === 'first_name')
-					setError('firstname', { message: err.message });
-			});
+			if (registerAttempt.errors.length > 0) {
+				registerAttempt.errors.map((err) => {
+					if (err.field === 'first_name')
+						setError('firstname', { message: err.message });
+					if (err.field === 'last_name')
+						setError('lastname', { message: err.message });
+					if (err.field === 'email')
+						setError('email', { message: err.message });
+					if (err.field == 'password')
+						setError('password', { message: err.message });
+					if (err.field === 'first_name')
+						setError('firstname', { message: err.message });
+				});
+			} else {
+				notify('ERROR', registerAttempt.message);
+			}
 		}
 	};
 
@@ -287,6 +331,7 @@ const RegisterSection = () => {
 									id="email"
 									type="email"
 									className="white-input"
+									readOnly={hasData ? true : false}
 									{...register('email', { required: 'Mező megadása kötelező' })}
 								/>
 								{errors.email && (
@@ -304,19 +349,30 @@ const RegisterSection = () => {
 								<label htmlFor="password" className="ml-1 mb-1 block">
 									Jelszó*
 								</label>
-								<input
-									id="password"
-									type="password"
-									className="white-input"
-									{...register('password', {
-										required: 'Mező megadása kötelező',
-										pattern: {
-											value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
-											message:
-												'A jelszónak tartalmaznia kell legalább egy: nagybetűt, kisbetűt, számot',
-										},
-									})}
-								/>
+
+								<div className="relative">
+									<input
+										id="password"
+										type={`${showPassword ? 'text' : 'password'}`}
+										className="white-input pr-10!"
+										{...register('password', {
+											required: 'Mező megadása kötelező',
+											pattern: {
+												value:
+													/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z?!+-@\(\)\[\]\{\}$%*#\/._]{8,}$/,
+												message:
+													'A jelszónak tartalmaznia kell legalább egy: nagybetűt, kisbetűt, számot',
+											},
+										})}
+									/>
+									<div className="absolute top-1/2 -translate-y-1/2 right-0 text-site-19 bg-white p-2 text-2xl">
+										<PasswordVisibilityIcon
+											show={showPassword}
+											clickEvent={(e) => setShowPassword(!showPassword)}
+										/>
+									</div>
+								</div>
+
 								{errors.password && (
 									<motion.div
 										className="mt-2 text-rose-700"
@@ -334,7 +390,7 @@ const RegisterSection = () => {
 								</label>
 								<input
 									id="password-confirm"
-									type="password"
+									type={`${showPassword ? 'text' : 'password'}`}
 									className="white-input"
 									{...register('passwordConfirm', {
 										required: 'Mező megadása kötelező',

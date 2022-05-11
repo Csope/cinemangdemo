@@ -78,7 +78,7 @@ const PassPurchaseDialog = () => {
 
 				<div
 					ref={popupContent}
-					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto bg-site-1 bg-glow-purple p-4 pt-10 pb-10 md:pb-8 md:p-8 md:pt-8 rounded-xl"
+					className="relative lg:w-6/12 h-screen overflow-y-auto md:overflow-y-visible md:h-auto bg-site-1 bg-glow-purple p-4 pt-10 pb-10 md:pb-8 md:p-8 md:pt-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -166,7 +166,7 @@ const PassPurchaseDialog = () => {
 										clickEvent={() =>
 											passPurchaseClick(selectedPass as PassType)
 										}
-										customClasses="btn-dark w-full flex justify-center items-center"
+										customClasses="bg-site-23 text-white w-full flex justify-center items-center"
 									/>
 								</div>
 

@@ -177,6 +177,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 					) : (
 						sessions.map((session) => {
 							const start = format(new Date(session?.start), 'HH:mm');
+							const startDate = format(new Date(session?.start), 'MM.dd');
 							const end = format(new Date(session?.end), 'HH:mm');
 
 							return (
@@ -187,7 +188,10 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 								>
 									<div className="container text-center md:text-left px-4 py-6 flex flex-col md:flex-row md:items-center md:gap-3">
 										<div className="mb-1 md:mb-0 md:basis-2/12 md:text-xl">
-											{start} - {end}
+											<div className="text-sm">{startDate}</div>
+											<div>
+												{start} - {end}
+											</div>
 										</div>
 										<div className="mb-1 md:mb-0 md:basis-1/12 hidden md:block">
 											<div className="inline-block text-white rounded-full w-8 md:w-12">

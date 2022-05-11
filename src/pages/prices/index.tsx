@@ -141,7 +141,7 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 					</div>
 				))}
 
-				<div className="leading-8 text-justify p-4 md:p-0">
+				<div className="leading-6 md:leading-8 text-justify p-4 md:p-0">
 					Az 5 alkalmas bérletek 30 napig, a 10, illetve 14 alkalmas bérletek 45
 					napig érvényesek. A bérletek meghosszabbítására kiegészítő díj (2 990
 					Ft) megfizetése ellenében van lehetőség, amely 2 hét meghosszabbítást

@@ -2,6 +2,23 @@
 	img {
 		border-radius: $radiusSmall;
 	}
+
+	.swiper-slide {
+		transition: all 0.3s ease-in-out;
+		opacity: 0;
+	}
+
+	.swiper-slide-prev {
+		opacity: 1 !important;
+	}
+
+	.swiper-slide-next {
+		opacity: 1 !important;
+	}
+
+	.swiper-slide-active {
+		opacity: 1 !important;
+	}
 }
 
 .FiveColSwiper {

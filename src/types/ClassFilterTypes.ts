@@ -33,7 +33,7 @@ export interface ClassFilterStateTypes {
 	category: CategoryTypes | null;
 	startTime: number[] | null;
 	endTime: Date | null;
-	startDate: Date;
+	startDate: Date[];
 	difficulty: DifficultyTypes | null;
 	location: string;
 	type: string;
@@ -46,7 +46,7 @@ export type ClassFilterActionTypes =
 	| { type: 'SET_VIEW'; payload: ViewList }
 	| { type: 'SET_START_TIME'; payload: number[] }
 	| { type: 'SET_END_TIME'; payload: Date }
-	| { type: 'SET_START_DATE'; payload: Date }
+	| { type: 'SET_START_DATE'; payload: Date[] }
 	| { type: 'SET_SEARCH'; payload: string }
 	| { type: 'SET_CATEGORY'; payload: CategoryTypes | null }
 	| { type: 'SET_DIFFICULTY'; payload: DifficultyTypes | null }

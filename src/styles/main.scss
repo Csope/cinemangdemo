@@ -50,6 +50,12 @@ img {
 	&::placeholder {
 		color: #c1c1c2;
 	}
+
+	&[readonly] {
+		background-color: #d8dfe7 !important;
+		outline: none;
+		cursor: not-allowed;
+	}
 }
 
 .FormWithMap {
@@ -182,6 +188,7 @@ img {
 		margin-left: -30px;
 		width: auto;
 	}
+
 	&__masonry-grid_column {
 		padding-left: 30px;
 		background-clip: padding-box;
@@ -200,7 +207,6 @@ img {
 		justify-content: center;
 
 		.title {
-			// flex-basis: 40%;
 			font-size: 18px;
 			font-weight: 600;
 
@@ -210,7 +216,6 @@ img {
 		}
 
 		.price {
-			// flex-basis: 60%;
 			text-align: right;
 		}
 
@@ -240,12 +245,12 @@ img {
 .data-table {
 	tbody {
 		tr {
+			&:not(:first-of-type) {
+				margin-top: 10px;
+			}
 			&:not(:last-of-type) {
 				border-bottom: none;
-
-				@media only screen and (min-width: 768px) {
-					border-bottom: 1px solid $siteColor_6;
-				}
+				border-bottom: 1px solid $siteColor_6;
 			}
 		}
 	}
@@ -268,6 +273,61 @@ img {
 
 	@media only screen and (min-width: 768px) {
 		height: 300px;
+	}
+}
+
+.class {
+	&__description {
+		@media only screen and (min-width: 768px) {
+			max-height: 430px;
+		}
+	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.Profile-data {
+	display: grid;
+	gap: 30px;
+	grid-template-rows: auto auto auto;
+	grid-template-areas:
+		'barcode'
+		'userdata'
+		'avatar';
+	@apply grid-cols-1;
+
+	.userdata {
+		grid-area: userdata;
+		@apply bg-site-1 py-7 px-4 md:px-6 rounded-xl relative;
+	}
+
+	.barcode {
+		grid-area: barcode;
+		@apply bg-site-1 py-7 px-4 md:px-6 rounded-xl relative;
+
+		.barcode-svg {
+			svg {
+				width: 100%;
+			}
+		}
+	}
+
+	.avatar {
+		grid-area: avatar;
+	}
+
+	@media only screen and (min-width: 768px) {
+		grid-template-areas:
+			'userdata barcode'
+			'userdata avatar';
+		grid-template-rows: auto auto;
+
+		@apply grid-cols-2;
 	}
 }
 

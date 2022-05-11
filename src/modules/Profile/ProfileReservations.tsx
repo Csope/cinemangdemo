@@ -69,7 +69,7 @@ const ProfileReservations = () => {
 									<div className="pt-3">
 										<img
 											src={`${
-												!reservation.session.class.preview_url
+												reservation.session.class.preview_url
 													? reservation.session.class.preview_url
 													: DefaultClassImage.src
 											}`}

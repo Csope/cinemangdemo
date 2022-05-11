@@ -11,8 +11,12 @@ import DatePicker from 'react-datepicker';
 import { format, isEqual } from 'date-fns';
 import { RadioGroup } from '@headlessui/react';
 import RadioOption from '../../common/elements/form/RadioOption';
+import PasswordVisibilityIcon from '../../common/site/PasswordVisibilityIcon';
+// @ts-ignore
+import Barcode from 'react-barcode';
 
 const ProfileData = () => {
+	const [showPassword, setShowPassword] = useState(false);
 	const { user, doUpdateUserData, doSetUserState } = useUser();
 	const [gender, setGender] = useState<'F' | 'M' | 'X'>(user?.gender || 'X');
 	const [birthdate, setBirthdate] = useState(
@@ -143,6 +147,8 @@ const ProfileData = () => {
 					gender,
 				};
 			});
+		} else if (updateRes.errors.length > 0) {
+			notify('ERROR', updateRes.errors[0]?.message);
 		} else {
 			notify('ERROR', updateRes.message);
 		}
@@ -153,8 +159,8 @@ const ProfileData = () => {
 	};
 
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-			<div className="bg-site-1 py-7 px-4 md:px-6 rounded-xl md:mb-8 relative">
+		<div className="Profile-data mb-8 md:mb-12">
+			<div className="userdata">
 				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
 					Adatok
 				</h1>
@@ -258,12 +264,20 @@ const ProfileData = () => {
 						<label htmlFor="currentPassword" className="ml-1 mb-1 block">
 							Jelenlegi jelszó
 						</label>
-						<input
-							id="currentPassword"
-							type="password"
-							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
-							{...register('currentPassword')}
-						/>
+						<div className="relative">
+							<input
+								id="currentPassword"
+								type={`${showPassword ? 'text' : 'password'}`}
+								className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
+								{...register('currentPassword')}
+							/>
+							<div className="absolute top-1/2 -translate-y-1/2 right-0 text-site-4 bg-white p-2 text-2xl">
+								<PasswordVisibilityIcon
+									show={showPassword}
+									clickEvent={(e) => setShowPassword(!showPassword)}
+								/>
+							</div>
+						</div>
 						{errors.currentPassword && (
 							<motion.div
 								className="mt-2 text-rose-700"
@@ -280,7 +294,7 @@ const ProfileData = () => {
 						</label>
 						<input
 							id="newPassword"
-							type="password"
+							type={`${showPassword ? 'text' : 'password'}`}
 							className="w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
 							{...register('newPassword')}
 						/>
@@ -300,7 +314,7 @@ const ProfileData = () => {
 						</label>
 						<input
 							id="confirmPassword"
-							type="password"
+							type={`${showPassword ? 'text' : 'password'}`}
 							className=" w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-2"
 							{...register('confirmPassword')}
 						/>
@@ -345,7 +359,30 @@ const ProfileData = () => {
 					</div>
 				)}
 			</div>
-			<ProfileAvatar />
+			<div className="barcode">
+				<h1 className="text-xl md:text-2xl font-montserrat text-center text-site-4 italic font-black uppercase mb-3">
+					Bérlet kártyaszám
+				</h1>
+				<div className="barcode-svg ">
+					{!user?.barcode || user?.barcode === '' ? (
+						<div className="text-center">Jelenleg nincs kártyaszámom</div>
+					) : (
+						<div className="bg-white p-2 rounded-2xl">
+							<Barcode
+								value={user?.barcode}
+								marginTop={0}
+								marginBottom={0}
+								height={100}
+								width={3}
+								format={'UPC'}
+							/>
+						</div>
+					)}
+				</div>
+			</div>
+			<div className="avatar">
+				<ProfileAvatar />
+			</div>
 		</div>
 	);
 };

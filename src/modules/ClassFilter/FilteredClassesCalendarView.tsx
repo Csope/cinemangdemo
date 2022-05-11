@@ -43,13 +43,21 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 
 	const hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
-	let _sessions = [...Array(next7days.length)].map((e) => Array(hours.length));
+	let _sessions: any = [...Array(next7days.length)].map((e) =>
+		Array(hours.length)
+	);
 
 	for (let i = 0; i < next7days.length; i++) {
-		_sessions[i] = [];
+		_sessions[i] = {};
 
-		for (let j = 0; j < hours.length; j++) {
-			_sessions[i][j] = false;
+		for (let l = 0; l < locations.length; l++) {
+			for (let j = 0; j < hours.length; j++) {
+				if (!_sessions[i][locations[l]]) {
+					_sessions[i][locations[l]] = [];
+				}
+
+				_sessions[i][locations[l]][j] = false;
+			}
 		}
 	}
 
@@ -62,7 +70,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 				const dayIndex = i;
 				const hourIndex = hours.indexOf(startHour);
 
-				_sessions[dayIndex][hourIndex] = session;
+				_sessions[dayIndex][session.location.title][hourIndex] = session;
 			}
 		});
 	});
@@ -154,47 +162,52 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						</div>
 					))}
 				</div>
-				{_sessions.map((day, dIndex) => {
+				{_sessions.map((day: any, dIndex: number) => {
 					return (
 						<div className="column" key={dIndex}>
-							{day.map((s, i) => {
-								if (s && s.location.title === selectedLocation) {
-									const start = new Date(s.start);
-									const end = new Date(s.end);
-									const startFormat = format(start, 'HH:mm');
-									const endFormat = format(end, 'HH:mm');
-									const minutes = getMinutes(start);
-									const diffInMinutes = differenceInMinutes(end, start);
-									const unit = 60 / 70;
-									const height = Math.round(diffInMinutes / unit) - 6;
-									const top = (minutes / 60) * 100;
+							{Object.keys(day).map((_location, i) => {
+								if (_location === selectedLocation) {
+									return day[_location].map(
+										(s: SessionType | false, _i: number) => {
+											if (s) {
+												const start = new Date(s.start);
+												const end = new Date(s.end);
+												const startFormat = format(start, 'HH:mm');
+												const endFormat = format(end, 'HH:mm');
+												const minutes = getMinutes(start);
+												const diffInMinutes = differenceInMinutes(end, start);
+												const unit = 60 / 70;
+												const height = Math.round(diffInMinutes / unit) - 6;
+												const top = (minutes / 60) * 100;
 
-									const available = start >= new Date();
-
-									return (
-										<div
-											className={`data-col ${
-												!available ? 'not-available' : ''
-											}`}
-											key={i}
-										>
-											<div
-												onClick={() => available && setShowDescription(s)}
-												className="data-item"
-												style={{ height, top: `${top}%` }}
-											>
-												<div className="time">
-													{startFormat}-{endFormat}
-												</div>
-												<div className="title">{s.class.title}</div>
-												<div className="trainer">
-													{s.trainer.last_name} {s.trainer.first_name}
-												</div>
-											</div>
-										</div>
+												const available = start >= new Date();
+												return (
+													<div
+														className={`data-col ${
+															!available ? 'not-available' : ''
+														}`}
+														key={_i}
+													>
+														<div
+															onClick={() => available && setShowDescription(s)}
+															className="data-item"
+															style={{ height, top: `${top}%` }}
+														>
+															<div className="time">
+																{startFormat}-{endFormat}
+															</div>
+															<div className="title">{s.class.title}</div>
+															<div className="trainer">
+																{s.trainer.last_name} {s.trainer.first_name}
+															</div>
+														</div>
+													</div>
+												);
+											} else {
+												return <div key={_i}></div>;
+											}
+										}
 									);
-								} else {
-									return <div key={i}></div>;
 								}
 							})}
 						</div>

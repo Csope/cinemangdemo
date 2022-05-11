@@ -121,7 +121,7 @@ const ReservationDialog = () => {
 								<span className="">2.490 Ft</span>
 							</>
 						}
-						customClasses="btn-dark w-full flex justify-center items-center"
+						customClasses="bg-site-23 text-white w-full flex justify-center items-center"
 					/>
 				</div>
 				<div>

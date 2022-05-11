@@ -8,6 +8,7 @@ import Btn from '../../common/elements/buttons/Btn';
 import ContentLoader from '../../common/elements/ContentLoader';
 import { useToasts, useUser } from '../../hooks';
 import { ResType } from '../../types';
+import { GoPrimitiveDot } from 'react-icons/go';
 
 type FormValues = {
 	password: string;
@@ -63,19 +64,22 @@ const ForgottenPasword = ({ hash }: PropTypes) => {
 		<div className="page">
 			<div className="pb-8">
 				<div
-					className="relative pt-12 md:pt-8 mx-auto w-full md:w-6/12 bg-site-1  md:p-8 md:rounded-xl"
+					className="relative pt-8 pb-8 px-4 md:pt-8 w-auto md:w-6/12 bg-site-1 mx-4 md:mx-auto md:p-8 rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div>
-						<h1 className="text-center h1-shadow h1-shadow--purple text-3xl mb-6">
+						<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-6">
 							Jelszó módosítása
 						</h1>
 					</div>
 
-					<div className="text-center mb-2 md:mb-10">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-						natus voluptatibus odio nulla culpa dignissimos accusantium tenetur
-						voluptatem consectetur soluta.
+					<div className="text-center text- mb-2 md:mb-10">
+						Kérlek add meg az új jelszavadat. <br />
+						Jelszó formátum:
+						<ul>
+							<li>&#x2022; Minimum 8 karakter hosszú </li>
+							<li>&#x2022; és Tartalmazzon legalább 1 nagybetűt és 1 számot</li>
+						</ul>
 					</div>
 
 					<form onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +94,8 @@ const ForgottenPasword = ({ hash }: PropTypes) => {
 								{...register('password', {
 									required: 'Mező megadása kötelező',
 									pattern: {
-										value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/,
+										value:
+											/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z?!+-@\(\)\[\]\{\}$%*#\/._]{8,}$/,
 										message:
 											'A jelszónak tartalmaznia kell legalább egy: nagybetűt, kisbetűt, számot',
 									},

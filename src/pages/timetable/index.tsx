@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
 import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
 import ReactTooltip from 'react-tooltip';
+import { useRouter } from 'next/router';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -26,6 +27,8 @@ const Timetable: NextPage<PropTypes> = ({
 	sessions,
 	inPurchase,
 }: PropTypes) => {
+	const router = useRouter();
+	const { s, v } = router.query;
 	const { selectedSessionDispatch } = useSelectedSession();
 	const {
 		classFilterState: { view, startDate },
@@ -33,6 +36,8 @@ const Timetable: NextPage<PropTypes> = ({
 	} = useClassFilter();
 
 	const filterClick = (type: ViewList): void => {
+		const newStarDate = startDate[0] ? [startDate[0]] : [];
+		classFilterDispatch({ type: 'SET_START_DATE', payload: newStarDate });
 		classFilterDispatch({ type: 'SET_VIEW', payload: type });
 	};
 	const { doShowReservationPurchaseResponse } = useSiteStates();
@@ -53,33 +58,42 @@ const Timetable: NextPage<PropTypes> = ({
 				<h1 className="px-4 h1-shadow h1-shadow--purple text-center">
 					Csoportos órakereső
 				</h1>
-				<div className="flex mt-4 md:mt-0 justify-center text-xl text-site-1 md:absolute md:right-5 md:top-1/2 md:-translate-y-1/2">
+				<div className="flex relative mt-10 md:mt-0 justify-center text-xl text-site-1 md:absolute md:right-5 md:top-1/2 md:-translate-y-1/2">
 					<div
-						className={`pl-3 pr-2 py-2 rounded-tl-2xl rounded-bl-2xl cursor-pointer ${
+						className={`pl-3 pr-2 py-2 rounded-tl-3xl rounded-bl-3xl cursor-pointer ${
 							view === ViewList.SWIPER ? 'bg-site-4' : 'bg-site-6'
 						} `}
 						onClick={() => filterClick(ViewList.SWIPER)}
 						data-tip="Kártyanézet"
 					>
-						<IconCard fillColor="#e3d5ec" />
+						<IconCard
+							fillColor={view === ViewList.SWIPER ? '#e3d5ec' : '#680b65'}
+						/>
 					</div>
 					<div
 						className={`p-2 border-l-site-1 border-l border-r border-r-site-1 cursor-pointer ${
 							view === ViewList.CALENDAR ? 'bg-site-4' : 'bg-site-6'
 						}`}
 						onClick={() => filterClick(ViewList.CALENDAR)}
-						data-tip="Naptár nézet"
+						data-tip="Naptárnézet"
 					>
-						<IconCal fillColor="#e3d5ec" />
+						<IconCal
+							fillColor={view === ViewList.CALENDAR ? '#e3d5ec' : '#680b65'}
+						/>
 					</div>
 					<div
-						className={`pl-2 pr-3 py-2 rounded-tr-2xl rounded-br-2xl cursor-pointer ${
+						className={`pl-2 pr-3 py-2 rounded-tr-3xl rounded-br-3xl cursor-pointer ${
 							view === ViewList.LIST ? 'bg-site-4' : 'bg-site-6'
 						}`}
 						onClick={() => filterClick(ViewList.LIST)}
 						data-tip="Listanézet"
 					>
-						<IconList fillColor="#e3d5ec" />
+						<IconList
+							fillColor={view === ViewList.LIST ? '#e3d5ec' : '#680b65'}
+						/>
+					</div>
+					<div className="absolute bottom-full text-site-3 text-sm mb-2 select-none">
+						Nézetváltás
 					</div>
 				</div>
 			</div>

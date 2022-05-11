@@ -23,12 +23,12 @@ const HeroSection = ({ events }: PropTypes) => {
 	});
 
 	const transformImageOnScroll = () => {
-		const firstPicToptop = firstPicRef.current?.offsetTop;
+		const firstPicTop = firstPicRef.current?.offsetTop;
 		const firstPicHeight = firstPicRef.current?.clientHeight;
 		const scrollPosition = window.pageYOffset;
 
-		if (firstPicHeight && firstPicToptop) {
-			const firstPicMaxVisiblePxFromTop = firstPicToptop + firstPicHeight;
+		if (firstPicHeight && firstPicTop) {
+			const firstPicMaxVisiblePxFromTop = firstPicTop + firstPicHeight;
 
 			const firstPicScrollInPercentage =
 				(scrollPosition / firstPicMaxVisiblePxFromTop) * 100;

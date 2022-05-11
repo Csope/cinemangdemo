@@ -4,13 +4,14 @@ import { SubmitErrorHandler, useForm } from 'react-hook-form';
 import { useActions, useSiteStates, useToasts, useUser } from '../../hooks';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
-import { GrFacebook } from 'react-icons/gr';
+import { GrFacebook, GrApple } from 'react-icons/gr';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import ContentLoader from '../elements/ContentLoader';
 import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
 import { signIn } from 'next-auth/react';
+import PasswordVisibilityIcon from './PasswordVisibilityIcon';
 
 interface PropTypes {
 	showLogin: boolean;
@@ -23,6 +24,7 @@ type FormValues = {
 };
 
 const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
+	const [showPassword, setShowPassword] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [errorMsg, setErrorMsg] = useState<string | JSX.Element | null>(null);
 	const popupContent = useRef(null);
@@ -94,7 +96,21 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 	const signInSocial = (provider: 'facebook' | 'google' | 'apple') => {
 		if (provider === 'facebook') {
-			signIn('facebook');
+			signIn('facebook', {
+				callbackUrl: '/',
+			});
+		}
+
+		if (provider === 'google') {
+			signIn('google', {
+				callbackUrl: '/',
+			});
+		}
+
+		if (provider === 'apple') {
+			signIn('apple', {
+				callbackUrl: '/',
+			});
 		}
 	};
 
@@ -203,14 +219,22 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									<label htmlFor="password" className="ml-1 mb-1 block">
 										Jelszó*
 									</label>
-									<input
-										id="password"
-										type="password"
-										className="white-input"
-										{...register('password', {
-											required: 'Mező megadása kötelező',
-										})}
-									/>
+									<div className="relative">
+										<input
+											id="password"
+											type={`${showPassword ? 'text' : 'password'}`}
+											className="white-input"
+											{...register('password', {
+												required: 'Mező megadása kötelező',
+											})}
+										/>
+										<div className="absolute top-1/2 -translate-y-1/2 right-0 text-site-3 bg-white p-2 text-2xl">
+											<PasswordVisibilityIcon
+												show={showPassword}
+												clickEvent={(e) => setShowPassword(!showPassword)}
+											/>
+										</div>
+									</div>
 									{errors.password && (
 										<motion.div
 											className="mt-2 text-rose-700"
@@ -266,10 +290,11 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 									}
 								/>
 							</div>
-							<div>
+
+							<div className="mb-4">
 								<Btn
 									customClasses="btn-light text-black w-full"
-									clickEvent={() => console.log('login google')}
+									clickEvent={() => signInSocial('google')}
 									text={
 										<>
 											<div className="absolute left-5 top-1/2 -translate-y-1/2 text-xl">
@@ -280,6 +305,29 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 												className="whitespace-nowrap ml-3"
 											>
 												Belépés google fiókkal
+											</span>
+										</>
+									}
+								/>
+							</div>
+
+							<div>
+								<Btn
+									customClasses="btn-light text-black w-full"
+									clickEvent={() => signInSocial('apple')}
+									text={
+										<>
+											<div
+												className="absolute left-5 top-1/2 -translate-y-1/2 text-xl"
+												style={{ color: '#000' }}
+											>
+												<GrApple />
+											</div>
+											<span
+												style={{ fontSize: 14 }}
+												className="whitespace-nowrap ml-3"
+											>
+												Belépés Apple fiókkal
 											</span>
 										</>
 									}
