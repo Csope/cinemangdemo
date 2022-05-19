@@ -58,6 +58,14 @@ img {
 	}
 }
 
+.PhoneInputInput {
+	@apply w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-5 ml-2;
+
+	&::placeholder {
+		color: #c1c1c2;
+	}
+}
+
 .FormWithMap {
 	.gmap-wrapper {
 		height: 100%;

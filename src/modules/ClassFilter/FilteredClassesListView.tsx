@@ -23,6 +23,7 @@ import DifficultyThree from '../../common/icons/difficulties/DifficultyThree';
 import { useGetReservations } from '../../queries';
 import ContentLoader from '../../common/elements/ContentLoader';
 import ConfirmationPopup from '../../common/site/ConfirmationPopup';
+import { hu } from 'date-fns/locale';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -177,7 +178,13 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 					) : (
 						sessions.map((session) => {
 							const start = format(new Date(session?.start), 'HH:mm');
-							const startDate = format(new Date(session?.start), 'MM.dd');
+							const startDate = format(
+								new Date(session?.start),
+								'MMMM d., eeee',
+								{
+									locale: hu,
+								}
+							);
 							const end = format(new Date(session?.end), 'HH:mm');
 
 							return (
@@ -214,7 +221,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 												<div>
 													<BsDot />
 												</div>
-												<div>{session.location.title}</div>
+												<div>{session.location.title} terem</div>
 												<div>
 													<BsDot />
 												</div>

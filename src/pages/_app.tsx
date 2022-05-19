@@ -12,12 +12,15 @@ import {
 	SiteStatesProvider,
 	UserProvider,
 } from '../contexts';
+import MobileNavbar from '../modules/SiteHeader/MobileNavbar';
+import MobileHeaderUser from '../modules/SiteHeader/MobileHeaderUser';
+import Head from 'next/head';
+import OAuthHandler from '../modules/Actions/OAuthHandler/OAuthHandler';
 import NextNProgress from 'nextjs-progressbar';
 import { ToastContainer } from 'react-toastify';
 import InitPageLoad from '../modules/InitPageLoad';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { hu } from 'date-fns/locale';
-import CookieConsent from 'react-cookie-consent';
 registerLocale('hu', hu);
 setDefaultLocale('hu');
 
@@ -31,12 +34,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/globals.scss';
 import '../styles/main.scss';
+import 'react-phone-number-input/style.css';
 
 import type { AppProps } from 'next/app';
-import MobileNavbar from '../modules/SiteHeader/MobileNavbar';
-import MobileHeaderUser from '../modules/SiteHeader/MobileHeaderUser';
-import Head from 'next/head';
-import OAuthHandler from '../modules/Actions/OAuthHandler/OAuthHandler';
 
 // React query client
 const queryClient = new QueryClient();

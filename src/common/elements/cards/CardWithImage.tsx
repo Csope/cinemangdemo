@@ -17,7 +17,11 @@ const CardWithImage = ({ imgSrc, bodyContent }: PropTypes) => {
 		<div className="CardWithImage drop-shadow-md rounded-xl md:rounded-none">
 			<div>
 				<div className="CardWithImage__header">
-					<img src={imgSrc} alt="card-image" />
+					<img
+						src={imgSrc}
+						alt="card-image"
+						style={{ minHeight: 120, backgroundColor: '#e5e1d8' }}
+					/>
 				</div>
 				<div className="CardWithImage__body">{bodyContent}</div>
 			</div>

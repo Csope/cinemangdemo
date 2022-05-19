@@ -7,16 +7,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative, Pagination, Autoplay } from 'swiper';
 
 type PropTypes = {
-	events: {
+	banners: {
 		id: number;
-		title: string;
-		description: string;
-		sort: number;
-		preview_url: string;
+		target_url: string;
+		type: number;
+		picture_url: string;
 	}[];
 };
 
-const HeroSection = ({ events }: PropTypes) => {
+const HeroSection = ({ banners }: PropTypes) => {
 	const firstPicRef = useRef<HTMLInputElement>(null);
 	const [degree, setDegree] = useState({
 		first: 0,
@@ -65,11 +64,11 @@ const HeroSection = ({ events }: PropTypes) => {
 				className="hidden md:block"
 				style={{ marginBottom: `-${8 * degree.first}px` }}
 			>
-				{events[0] && (
+				{banners[0] && (
 					<div ref={firstPicRef}>
 						<TransformedImage
 							imgAlt="image"
-							imgSrc={test1.src}
+							imgSrc={banners[0].picture_url}
 							transform={`rotateX(-${3 + degree.first * 0.8}deg) scale(${
 								0.95 - degree.first / 300
 							})`}
@@ -78,11 +77,11 @@ const HeroSection = ({ events }: PropTypes) => {
 				)}
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 mt-3 md:-mt-10">
-					{events[1] && (
+					{banners[1] && (
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={test2.src}
+								imgSrc={banners[1].picture_url}
 								transform={`rotateY(3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(-${3 + degree.first / 3}deg) scale(${
@@ -94,11 +93,11 @@ const HeroSection = ({ events }: PropTypes) => {
 						</div>
 					)}
 
-					{events[2] && (
+					{banners[2] && (
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={test3.src}
+								imgSrc={banners[2].picture_url}
 								transform={`rotateY(-3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(${3 + degree.first / 3}deg) scale(${
@@ -135,11 +134,10 @@ const HeroSection = ({ events }: PropTypes) => {
 							disableOnInteraction: false,
 						}}
 					>
-						{events.map((event) => (
-							<SwiperSlide key={event.id}>
+						{banners.map((banner) => (
+							<SwiperSlide key={banner.id}>
 								<div className={`w-full transformed-image-container`}>
-									{/* <img src={event.preview_url} /> */}
-									<img src={test1.src} />
+									<img src={banner.picture_url} />
 								</div>
 							</SwiperSlide>
 						))}

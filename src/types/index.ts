@@ -16,6 +16,7 @@ import PurchasePassType from './PurchasePassType';
 import FrontPageResponseType from './FrontPageResponseType';
 import OrderType from './OrderTypes';
 import PriceType from './PriceTypes';
+import EventType from './EvenType';
 
 export type {
 	UserType,
@@ -36,4 +37,5 @@ export type {
 	PurchasePassType,
 	OrderType,
 	PriceType,
+	EventType,
 };

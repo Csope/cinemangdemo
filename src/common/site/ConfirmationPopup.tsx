@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { useActions } from '../../hooks';
 import Btn from '../elements/buttons/Btn';
+import ContentLoader from '../elements/ContentLoader';
 
 type PropTypes = {
 	show: boolean;
@@ -12,6 +13,7 @@ type PropTypes = {
 	text: string;
 	cancelText: string;
 	confirmText: string;
+	loading?: boolean;
 };
 
 const ConfirmationPopup = ({
@@ -22,6 +24,7 @@ const ConfirmationPopup = ({
 	text,
 	cancelText,
 	confirmText,
+	loading,
 }: PropTypes) => {
 	const popupContent = useRef(null);
 	const { doDisableScroll, doEnableScroll } = useActions();
@@ -81,6 +84,12 @@ const ConfirmationPopup = ({
 							</div>
 						</div>
 					</div>
+
+					{loading && (
+						<div className="absolute inset-0 flex justify-center items-center bg-site-1 rounded-xl bg-opacity-70">
+							<ContentLoader />
+						</div>
+					)}
 				</div>
 			</div>
 		</Dialog>

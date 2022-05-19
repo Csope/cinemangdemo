@@ -38,6 +38,7 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 	const [onAttempt, setAttempt] = useState<boolean>(false);
 	const [gender, setGender] = useState<'F' | 'M' | 'X' | undefined>(undefined);
 	const [gdprChecked, setGdprChecked] = useState<boolean>(false);
+	const [termsChecked, setTermsChecked] = useState<boolean>(false);
 	const [newsletterChecked, setNewsletterChecked] = useState<boolean>(false);
 	const [birthdate, setBirthdate] = useState<Date | undefined>(undefined);
 	const router = useRouter();
@@ -45,10 +46,12 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 		gender: string | null;
 		birthdate: string | null;
 		gdpr: string | null;
+		terms: string | null;
 	}>({
 		gender: null,
 		birthdate: null,
 		gdpr: null,
+		terms: null,
 	});
 	const { doRegister, doRegisterSocial } = useUser();
 	const { notify } = useToasts();
@@ -96,6 +99,17 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 			valFlag = true;
 		} else {
 			setValErrors((prevVal) => ({ ...prevVal, gender: null }));
+		}
+
+		if (!termsChecked) {
+			setValErrors((prevVal) => ({
+				...prevVal,
+				terms: 'Mező megadása kötelező',
+			}));
+
+			valFlag = true;
+		} else {
+			setValErrors((prevVal) => ({ ...prevVal, terms: null }));
 		}
 
 		if (!gdprChecked) {
@@ -411,6 +425,39 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 								<div className="flex">
 									<div className="mr-4">
 										<Switch
+											checked={termsChecked}
+											onChange={setTermsChecked}
+											className={`${
+												termsChecked ? 'bg-site-19' : 'bg-white'
+											}  h-5 w-5 rounded border-white border-4`}
+										/>
+									</div>
+									<div>
+										Elolvastam és tudomásul vettem a{' '}
+										<a
+											href="/hazirend"
+											target={'_blank'}
+											className="text-site-19 underline"
+										>
+											Házirendet
+										</a>
+									</div>
+								</div>
+								{valErrors.terms && (
+									<motion.div
+										animate={{ y: 0 }}
+										initial={{ y: 10 }}
+										className="mt-2 text-rose-700"
+									>
+										{valErrors.terms}
+									</motion.div>
+								)}
+							</div>
+
+							<div className="mb-3">
+								<div className="flex">
+									<div className="mr-4">
+										<Switch
 											checked={gdprChecked}
 											onChange={setGdprChecked}
 											className={`${
@@ -420,15 +467,13 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 									</div>
 									<div>
 										Elolvastam és elfogadom a{' '}
-										<Link href="#">
-											<a
-												href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
-												target={'_blank'}
-												className="text-site-19 underline"
-											>
-												Sugár Fitness adatvédelmi tájékoztatóját
-											</a>
-										</Link>
+										<a
+											href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
+											target={'_blank'}
+											className="text-site-19 underline"
+										>
+											Sugár Fitness adatvédelmi tájékoztatóját
+										</a>
 									</div>
 								</div>
 								{valErrors.gdpr && (

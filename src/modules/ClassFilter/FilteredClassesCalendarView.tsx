@@ -115,7 +115,10 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						}`}
 						onClick={() => setSelectedLocation(location)}
 					>
-						{location}
+						<div>{location}</div>
+						<div className="text-xs font-medium" style={{ color: '#965d94' }}>
+							terem
+						</div>
 					</div>
 				))}
 			</div>
