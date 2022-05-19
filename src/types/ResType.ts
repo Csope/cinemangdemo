@@ -11,6 +11,7 @@ export enum DataTypes {
 	RESERVABILITY = 'reservability',
 	FRONTPAGE = 'frontpage',
 	ORDER = 'order',
+	EVENTS = 'events',
 }
 
 export default interface ResType<T> {

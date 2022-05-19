@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useAnimation } from 'framer-motion';
 import type { GetServerSideProps, NextPage } from 'next';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../common/elements/buttons/LinkBtn';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
@@ -13,17 +13,24 @@ import CareerSection from '../modules/FitnessFeatures/CareerSection';
 import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
 import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
-import { ClassType, FrontPageResponseType, ResType } from '../types';
+import {
+	ClassType,
+	FrontPageResponseType,
+	ReservationType,
+	ResType,
+} from '../types';
 import { CategoryTypes } from '../types/ClassFilterTypes';
 import CardioHeroImage from '../../public/images/cardio-hero.jpg';
+import { useRouter } from 'next/router';
+import ConfirmationPopup from '../common/site/ConfirmationPopup';
+import { useActions, useToasts } from '../hooks';
 
 type PropTypes = {
-	events: {
+	banners: {
 		id: number;
-		title: string;
-		description: string;
-		sort: number;
-		preview_url: string;
+		target_url: string;
+		type: number;
+		picture_url: string;
 	}[];
 	classTypes: {
 		cardio: ClassType[];
@@ -32,7 +39,14 @@ type PropTypes = {
 	};
 };
 
-const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
+const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
+	const {
+		query: { delHash },
+	} = useRouter();
+	const { notify } = useToasts();
+	const { doResignReservationWithHash } = useActions();
+	const [showDelReservation, setShowDelReservation] = useState(false);
+	const [delLoading, setDelLoading] = useState(false);
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
 	const [fhRef, fhInView] = useInView({
@@ -43,6 +57,25 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 		threshold: 1,
 		rootMargin: '0px 0px -100px 0px',
 	});
+
+	const resignReservation = async (hash: string) => {
+		try {
+			setDelLoading(true);
+			const res = await doResignReservationWithHash(hash);
+
+			if (res.status) {
+				notify('SUCCESS', res.message);
+			} else {
+				notify('ERROR', res.message);
+			}
+
+			setDelLoading(false);
+			setShowDelReservation(false);
+		} catch (error) {
+			setDelLoading(false);
+			notify('ERROR', 'Belső kiszolgálóhiba, próbáld újra később');
+		}
+	};
 
 	useEffect(() => {
 		if (fhInView) {
@@ -62,12 +95,18 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 		}
 	}, [secondHeadingControl, shInView]);
 
+	useEffect(() => {
+		if (delHash) {
+			setShowDelReservation(true);
+		}
+	}, []);
+
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
 				<Link href="/sales-events" passHref>
 					<div className="container ">
-						<HeroSection events={events} />
+						<HeroSection banners={banners} />
 					</div>
 				</Link>
 			</div>
@@ -171,17 +210,28 @@ const Home: NextPage<PropTypes> = ({ events, classTypes }: PropTypes) => {
 			/>
 			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
 				<div className="mt-10 hidden md:block">
-					<h1 className="h1-shadow h1-shadow--cian">Cardio részleg</h1>
+					<h1 className="h1-shadow h1-shadow--cian">Cardio és Egészség</h1>
 				</div>
 			</TriangleDividerNextItem>
 			<div className="bg-site-10 md:hidden pb-3  pt-4">
 				<h1 className="h1-shadow text-center h1-shadow--cian">
-					Cardio részleg
+					Cardio és Egészség
 				</h1>
 			</div>
 			<CardioSection />
 			<CareerSection />
 			<FormWithMap />
+
+			<ConfirmationPopup
+				show={showDelReservation}
+				cancelAction={() => setShowDelReservation(false)}
+				confirmAction={() => resignReservation((delHash as string) || '')}
+				title="Megerősítés"
+				text="Biztos, hogy le szeretnéd mondani a foglalásod?"
+				cancelText="Mégsem"
+				confirmText="Lemondás"
+				loading={delLoading}
+			/>
 		</div>
 	);
 };
@@ -198,7 +248,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 		return {
 			props: {
-				events: frontpage?.events || [],
+				banners: frontpage?.banners || [],
 				classTypes: frontpage?.class_types || [],
 			},
 		};
@@ -207,7 +257,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 		return {
 			props: {
-				events: [],
+				banners: [],
 				classTypes: [],
 			},
 		};

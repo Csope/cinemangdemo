@@ -1,12 +1,11 @@
 import ClassType from './ClassType';
 
 export default interface FrontPageResponseType {
-	events: {
+	banners: {
 		id: number;
-		title: string;
-		description: string;
-		sort: number;
-		preview_url: string;
+		target_url: string;
+		type: number;
+		picture_url: string;
 	}[];
 	class_types: {
 		cardio: ClassType[];

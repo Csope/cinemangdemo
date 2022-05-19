@@ -6,6 +6,7 @@ import { UserContext } from '../contexts';
 import { ResType, UserType } from '../types';
 import { RegisterUserType, UpdateUserType } from '../types/UserType';
 import { removeAuthToken, setAuthToken } from '../utils';
+import useToasts from './useToasts';
 
 interface DoUpdateUserReturnDataType {
 	status: boolean;
@@ -30,6 +31,7 @@ interface DoCreateUserReturnDataType {
 
 const useUser = () => {
 	const { data, status } = useSession();
+	const { notify } = useToasts();
 	const { userState, setUserState } = useContext(UserContext);
 	const user = data?.user;
 
@@ -62,7 +64,7 @@ const useUser = () => {
 
 	const doSignOut = async () => {
 		const response = await signOut({ redirect: false });
-
+		notify('SUCCESS', 'Sikeres kijelentkezés');
 		return response;
 	};
 

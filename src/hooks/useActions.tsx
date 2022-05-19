@@ -52,6 +52,28 @@ const useActions = () => {
 		}
 	};
 
+	const doResignReservationWithHash = async (hash: string) => {
+		const returnData = {
+			status: false,
+			message: 'Belső kiszolgálóhiba, próbáld újra később',
+			errors: [],
+		};
+
+		try {
+			const { data } = await axios.delete(
+				`${process.env.NEXT_PUBLIC_ORDER_SERVICE_ROUTE}/orders/reservation/by_hash/${hash}`
+			);
+
+			returnData.status = data.status;
+			returnData.message = data.message;
+			returnData.errors = data.errors;
+
+			return returnData;
+		} catch (error) {
+			return returnData;
+		}
+	};
+
 	const doCreateReservation = async (sessionId: number) => {
 		const returnData: OrderReturnType = {
 			status: false,
@@ -242,6 +264,7 @@ const useActions = () => {
 		doSendContactMessage,
 		doDisableScroll,
 		doEnableScroll,
+		doResignReservationWithHash,
 	};
 };
 

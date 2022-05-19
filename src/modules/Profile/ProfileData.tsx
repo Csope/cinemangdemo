@@ -219,6 +219,7 @@ const ProfileData = () => {
 								showYearDropdown
 								dropdownMode="select"
 								maxDate={new Date()}
+								name="birthdate"
 							/>
 						</div>
 					</div>

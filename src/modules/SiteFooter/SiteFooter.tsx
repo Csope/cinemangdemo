@@ -65,7 +65,7 @@ const SiteFooter = () => {
 						Elérhetőség
 					</div>
 					<div className="mb-8 md:mb-6 text-center md:text-left">
-						<div>1148. Budapest, Örs vezér tere 24.</div>
+						<div>1148 Budapest, Örs vezér tere 24.</div>
 						<div>Sugár Üzletközpont (bejárat az Üzletközpont 2. emeletén)</div>
 						<div className="text-site-16">
 							<a href="mailto:info@sugarfitness.hu">info@sugarfitness.hu</a>

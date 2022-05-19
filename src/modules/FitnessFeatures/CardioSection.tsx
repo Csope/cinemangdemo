@@ -14,7 +14,7 @@ import CardioWaterIcon from '../../common/icons/fitness/CardioWaterIcon';
 const CardioSection = () => {
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
-		threshold: 0.4,
+		threshold: 0.2,
 		triggerOnce: true,
 	});
 
@@ -34,7 +34,7 @@ const CardioSection = () => {
 		>
 			<div className="container">
 				<motion.div
-					className="flex flex-col md:flex-row px-4 md:px-0 items-center gap-10"
+					className="flex flex-col md:flex-row px-4 md:px-0 items-start gap-10 md:mt-6"
 					initial="hidden"
 					animate={controls}
 					transition={{ type: 'spring', bounce: 0 }}
@@ -50,9 +50,6 @@ const CardioSection = () => {
 					}}
 				>
 					<div className="w-full md:w-2/5 md:mb-8 leading-7">
-						<h3 className="h3 text-site-11 text-center md:text-left">
-							Élet, erō, egészség!
-						</h3>
 						<div className="text-justify md:text-left" ref={ref}>
 							Fitness termünkben új modern Mátrix géppark várja az edzeni
 							vágyókat. Erősítő részlegünkön nem kifejezetten a nagy izom

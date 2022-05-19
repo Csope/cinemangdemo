@@ -5,7 +5,7 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import Btn from '../../../common/elements/buttons/Btn';
-
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import ContentLoader from '../../../common/elements/ContentLoader';
 import { useSiteStates, useToasts } from '../../../hooks';
 import { ResType } from '../../../types';
@@ -13,7 +13,6 @@ import { ResType } from '../../../types';
 type FormValues = {
 	email: string;
 	name: string;
-	phone: string;
 };
 
 const classesData = [
@@ -47,7 +46,12 @@ const classesData = [
 
 const CareerFormDialog = () => {
 	const [onAttempt, setOnAttempt] = useState(false);
+	const [phone, setPhone] = useState('');
+	const [phoneError, setPhoneError] = useState<string | null>(null);
 	const [selectedClasses, setSelectedClasses] = useState<string[]>([]);
+	const [selectedClassesError, setSelectedClassesError] = useState<
+		string | null
+	>(null);
 	const { showCareerForm, doHideCareerForm } = useSiteStates();
 	const { notify } = useToasts();
 	const {
@@ -60,14 +64,30 @@ const CareerFormDialog = () => {
 		defaultValues: {
 			email: '',
 			name: '',
-			phone: '',
 		},
 	});
 
 	const onSubmit = async () => {
+		let flag = true;
+
+		if (!isValidPhoneNumber(phone)) {
+			setPhoneError('Hibás formátum');
+			flag = false;
+		} else {
+			setPhoneError(null);
+		}
+
+		if (selectedClasses.length < 1) {
+			setSelectedClassesError('Legalább 1 óratípust kötelező választani');
+			flag = false;
+		} else {
+			setSelectedClassesError(null);
+		}
+
+		if (!flag) return;
+
 		const email = getValues('email');
 		const name = getValues('name');
-		const phone = getValues('phone');
 
 		setOnAttempt(true);
 
@@ -106,6 +126,10 @@ const CareerFormDialog = () => {
 	useEffect(() => {
 		if (!showCareerForm) {
 			setSelectedClasses([]);
+			setPhoneError(null);
+			setPhone('');
+			setSelectedClasses([]);
+			setSelectedClassesError(null);
 			reset();
 		}
 	}, [showCareerForm]);
@@ -183,29 +207,44 @@ const CareerFormDialog = () => {
 									)}
 								</div>
 
-								<div className="mb-7">
+								<div className="mb-5">
 									<label htmlFor="phone" className="ml-1 mb-1 block">
 										Telefonszám*
 									</label>
-									<input
-										id="phone"
-										type="text"
-										className="white-input"
-										{...register('phone', {
-											required: 'Mező megadása kötelező',
-										})}
-									/>
-									{errors.phone && (
+									<div className="pl-2">
+										<PhoneInput
+											placeholder="Enter phone number"
+											value={phone}
+											// @ts-ignore
+											onChange={setPhone}
+											international
+											defaultCountry="HU"
+										/>
+									</div>
+
+									{phoneError && (
+										<motion.div
+											className="mt-2 text-rose-700 ml-2"
+											animate={{ opacity: 1 }}
+											initial={{ opacity: 0 }}
+										>
+											{phoneError}
+										</motion.div>
+									)}
+								</div>
+
+								<div className="ml-1 mb-7">
+									Kérjük válaszd ki mely órák megtartásához van végzettséged
+									{selectedClassesError && (
 										<motion.div
 											className="mt-2 text-rose-700"
 											animate={{ opacity: 1 }}
 											initial={{ opacity: 0 }}
 										>
-											{errors.phone.message}
+											{selectedClassesError}
 										</motion.div>
 									)}
 								</div>
-
 								<div className="grid grid-cols-2 md:grid-cols-3 gap-2 mb-5">
 									{classesData.map((_class) => (
 										<div className="flex flex-row" key={_class.id}>

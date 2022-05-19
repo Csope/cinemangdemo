@@ -16,7 +16,7 @@ const CareerSection = () => {
 	});
 	const controls = useAnimation();
 	const { ref, inView } = useInView({
-		threshold: 0.6,
+		threshold: 0.3,
 		triggerOnce: true,
 	});
 
@@ -51,13 +51,13 @@ const CareerSection = () => {
 						},
 					}}
 				>
-					<h1
-						className="h1-shadow h1-shadow--gray mb-4 text-center md:text-left md:pt-8"
-						ref={ref}
-					>
+					<h1 className="h1-shadow h1-shadow--gray mb-4 text-center md:text-left md:pt-8">
 						Karrier
 					</h1>
-					<div className="text-gray-800 leading-7 w-full md:w-3/4 text-justify md:text-left">
+					<div
+						ref={ref}
+						className="text-gray-800 leading-7 w-full md:w-3/4 text-justify md:text-left"
+					>
 						A főváros jól megközelíthető pontján, a Sugár Üzletközpontban,
 						modern környezetben és felszereltséggel, több mint negyven különböző
 						óratípussal várja vendégeit a Sugár Fitness! Hatvan szakképzett,
