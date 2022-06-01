@@ -210,12 +210,12 @@ const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
 			/>
 			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
 				<div className="mt-10 hidden md:block">
-					<h1 className="h1-shadow h1-shadow--cian">Cardio és Egészség</h1>
+					<h1 className="h1-shadow h1-shadow--cian">Cardio és Erősítő</h1>
 				</div>
 			</TriangleDividerNextItem>
 			<div className="bg-site-10 md:hidden pb-3  pt-4">
 				<h1 className="h1-shadow text-center h1-shadow--cian">
-					Cardio és Egészség
+					Cardio és Erősítő
 				</h1>
 			</div>
 			<CardioSection />
