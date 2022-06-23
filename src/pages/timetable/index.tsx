@@ -1,6 +1,3 @@
-import { BsViewList } from 'react-icons/bs';
-import { GoCalendar } from 'react-icons/go';
-import { HiMap } from 'react-icons/hi';
 import IconList from '../../common/icons/IconList';
 import IconCard from '../../common/icons/IconCard';
 import IconCal from '../../common/icons/IconCal';
@@ -16,7 +13,7 @@ import { useEffect } from 'react';
 import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
 import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
 import ReactTooltip from 'react-tooltip';
-import { useRouter } from 'next/router';
+import LoginSection from '../../common/site/LoginSection';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -27,8 +24,6 @@ const Timetable: NextPage<PropTypes> = ({
 	sessions,
 	inPurchase,
 }: PropTypes) => {
-	const router = useRouter();
-	const { s, v } = router.query;
 	const { selectedSessionDispatch } = useSelectedSession();
 	const {
 		classFilterState: { view, startDate },
@@ -110,6 +105,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { hash } = context.query;
 
 	if (hash && hash !== '') {
+		
+		console.log(`has found: ${hash}`)
+
 		try {
 			const { data } = await axios.get<ResType<OrderType>>(
 				`${process.env.NEXT_PUBLIC_ORDER_SERVICE_ROUTE}/orders/by_hash/${hash}`
@@ -126,6 +124,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				};
 			}
 		} catch (error) {
+			
 			return {
 				redirect: {
 					permanent: false,

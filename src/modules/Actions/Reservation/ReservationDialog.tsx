@@ -1,6 +1,5 @@
 import { Dialog } from '@headlessui/react';
 import { format } from 'date-fns';
-import { motion } from 'framer-motion';
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
@@ -17,8 +16,9 @@ import { ReservabilityType, SessionType } from '../../../types';
 import { FaShoppingCart, FaRegSmile } from 'react-icons/fa';
 import Link from 'next/link';
 import SimpleLogo from '../../../../public/images/simple.png';
+import { getHufFormat, openUrl } from '../../../utils';
 
-const ReservationDialog = () => {
+const ReservationDialog = ({ mobileApp = false }) => {
 	const { notify } = useToasts();
 	const popupContent = useRef(null);
 	const [onAttempt, setOnAttempt] = useState<boolean>(false);
@@ -51,10 +51,14 @@ const ReservationDialog = () => {
 	const purchaseTicket = async (session: SessionType) => {
 		setOnAttempt(true);
 
-		const res = await doPurchaseTicket(session);
+		const res = await doPurchaseTicket(session, mobileApp);
 
 		if (res.status && res.paymentUrl) {
-			window.location.assign(res.paymentUrl);
+			if (mobileApp) {
+				openUrl(res.paymentUrl);
+			} else {
+				window.location.assign(res.paymentUrl);
+			}
 		} else {
 			setOnAttempt(false);
 			notify('ERROR', res.message);
@@ -118,7 +122,7 @@ const ReservationDialog = () => {
 						text={
 							<>
 								<FaShoppingCart className="mr-4" />{' '}
-								<span className="">2.490 Ft</span>
+								<span className="">{getHufFormat(reservability.price)}</span>
 							</>
 						}
 						customClasses="bg-site-23 text-white w-full flex justify-center items-center"
@@ -131,6 +135,7 @@ const ReservationDialog = () => {
 						<a
 							className="text-site-4 underline ml-2"
 							target={'_blank'}
+							rel="noreferrer"
 							href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
 						>
 							"További információ"
@@ -201,14 +206,14 @@ const ReservationDialog = () => {
 		<Dialog
 			open={selectedSession ? true : false}
 			onClose={clearSelectedSession}
-			className="fixed z-10 inset-0 overflow-y-auto"
+			className="fixed z-30 inset-0 overflow-y-auto"
 		>
 			<div className="flex items-center justify-center min-h-screen  relative">
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />
 
 				<div
 					ref={popupContent}
-					className="relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
+					className="mobile-popup relative lg:w-6/12 h-screen overflow-y-auto md:h-auto md:w-auto w-full bg-site-1 bg-glow-purple md:rounded-xl pt-8 pb-8 md:pb-0"
 					style={{ maxWidth: 500 }}
 				>
 					<div
@@ -218,7 +223,11 @@ const ReservationDialog = () => {
 						<AiFillCloseCircle />
 					</div>
 
-					<h1 className="text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3">
+					<h1
+						className={`text-center h1-shadow h1-shadow--purple text-2xl md:text-3xl mb-3 ${
+							mobileApp ? 'hidden' : 'block'
+						}`}
+					>
 						Foglalás
 					</h1>
 

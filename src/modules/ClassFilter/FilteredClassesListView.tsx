@@ -261,7 +261,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 
 					<div
 						ref={popupContent}
-						className="fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl"
+						className="mobile-popup fixed inset-0 bg-site-1 overflow-y-auto md:relative container md:bg-glow-purple  md:rounded-2xl"
 					>
 						<div className="px-4 bg-site-8 py-3 md:rounded-tl-2xl md:rounded-tr-2xl ">
 							<div className="relative ">

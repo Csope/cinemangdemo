@@ -186,5 +186,21 @@ export default NextAuth({
 		newUser: '/',
 	},
 
+	session: {
+		maxAge: 30 * 24 * 60 * 60 * 12,
+	},
+
+	cookies: {
+		sessionToken: {
+			name: 'ng-fitness-session-token',
+			options: {
+				path: '/',
+				httpOnly: false,
+				sameSite: 'none',
+				secure: true,
+			},
+		},
+	},
+
 	secret: process.env.NEXTAUTH_SECRET,
 });

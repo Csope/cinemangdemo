@@ -6,14 +6,14 @@ import Btn from '../../../common/elements/buttons/Btn';
 import ContentLoader from '../../../common/elements/ContentLoader';
 import { useActions, useSiteStates, useToasts } from '../../../hooks';
 import SimpleLogo from '../../../../public/images/simple.png';
-import { getHufFormat } from '../../../utils';
+import { getHufFormat, openUrl } from '../../../utils';
 import DatePicker from 'react-datepicker';
 import { addMonths, format } from 'date-fns';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { motion, MotionConfig } from 'framer-motion';
 import { PassType } from '../../../types';
 
-const PassPurchaseDialog = () => {
+const PassPurchaseDialog = ({ mobileApp = false }) => {
 	const [startDate, setStartDate] = useState(null);
 	const popupContent = useRef(null);
 	const [startDateErr, setStartDateErr] = useState<null | string>(null);
@@ -22,6 +22,7 @@ const PassPurchaseDialog = () => {
 	const { selectedPass, doSetSelectedPass } = useSiteStates();
 	const { doPurchasePass, doDisableScroll, doEnableScroll } = useActions();
 	const { notify } = useToasts();
+
 	const handleStartDateChange = (e: any) => {
 		setIsOpen(!isOpen);
 		setStartDate(e);
@@ -44,10 +45,14 @@ const PassPurchaseDialog = () => {
 		const formattedDate = format(startDate, 'yyyy-MM-dd');
 
 		setOnAttempt(true);
-		const res = await doPurchasePass(pass, formattedDate);
+		const res = await doPurchasePass(pass, formattedDate, mobileApp);
 
 		if (res.status && res.paymentUrl) {
-			window.location.assign(res.paymentUrl);
+			if (mobileApp) {
+				openUrl(res.paymentUrl);
+			} else {
+				window.location.assign(res.paymentUrl);
+			}
 		} else {
 			setOnAttempt(false);
 			notify('ERROR', res.message);
@@ -178,6 +183,7 @@ const PassPurchaseDialog = () => {
 										<a
 											className="text-site-4 underline ml-2"
 											target={'_blank'}
+											rel="noreferrer"
 											href="https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf"
 										>
 											"További információ"

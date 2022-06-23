@@ -10,6 +10,40 @@
 	}
 }
 
+.mobile-filter {
+	.ListCloseIcon {
+		background-color: $siteColor_4;
+		width: 47px;
+		height: 47px;
+
+		&.marked {
+			background: $siteColor_4;
+
+			.ListCloseIcon__second {
+				transform: rotate(45deg) translateY(-7px) translateX(-2px);
+			}
+			.ListCloseIcon__third {
+				transform: rotate(-45deg) translateY(-11px) translateX(5px);
+			}
+		}
+
+		&__first {
+			width: 50%;
+		}
+		&__second {
+			width: 30%;
+		}
+		&__third {
+			width: 10%;
+		}
+		&__first,
+		&__second,
+		&__third {
+			background-color: white !important;
+		}
+	}
+}
+
 .ListCloseIcon {
 	display: inline-block;
 	background: white;

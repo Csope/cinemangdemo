@@ -437,6 +437,7 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 										<a
 											href="/hazirend"
 											target={'_blank'}
+											rel="noreferrer"
 											className="text-site-19 underline"
 										>
 											Házirendet
@@ -470,6 +471,7 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 										<a
 											href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
 											target={'_blank'}
+											rel="noreferrer"
 											className="text-site-19 underline"
 										>
 											Sugár Fitness adatvédelmi tájékoztatóját

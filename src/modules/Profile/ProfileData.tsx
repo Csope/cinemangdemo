@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useToast } from 'react-toastify';
 import Btn from '../../common/elements/buttons/Btn';
 import { useUser, useToasts } from '../../hooks';
 import { UpdateUserType } from '../../types/UserType';
@@ -157,6 +156,11 @@ const ProfileData = () => {
 	const onError = () => {
 		console.log('err');
 	};
+
+	// useEffect(() => {
+	// 	console.log('user changed');
+	// 	console.log(user);
+	// }, [user]);
 
 	return (
 		<div className="Profile-data mb-8 md:mb-12">

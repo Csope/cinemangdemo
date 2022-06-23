@@ -6,7 +6,11 @@ import { getRealDifficultyName } from '../../utils';
 import { AiFillStar } from 'react-icons/ai';
 import { CategoryTypes } from '../../types/ClassFilterTypes';
 
-const ActiveFilters = () => {
+type PropTypes = {
+	bgColor?: string;
+};
+
+const ActiveFilters = ({ bgColor = 'bg-site-6' }: PropTypes) => {
 	const {
 		classFilterState: {
 			category,
@@ -50,7 +54,7 @@ const ActiveFilters = () => {
 	};
 
 	return (
-		<div className="bg-site-6">
+		<div className={`${bgColor}`}>
 			<div className="container flex justify-center flex-wrap gap-3 py-4 px-4">
 				{search && (
 					<SimpleButton

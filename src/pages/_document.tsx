@@ -11,7 +11,7 @@ export default function Document() {
 					rel="stylesheet"
 				/>
 			</Head>
-			<body className="font-roboto">
+			<body className="web-layout font-roboto">
 				<Main />
 				<NextScript />
 			</body>

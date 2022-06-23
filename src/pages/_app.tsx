@@ -1,9 +1,6 @@
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import MainNavbar from '../modules/SiteHeader/MainNavbar';
-import HeaderLogo from '../modules/SiteHeader/HeaderLogo';
-import SiteFooter from '../modules/SiteFooter/SiteFooter';
 import CookieManager from '../modules/CookieManager/CookieManager';
 import {
 	ClassFilterProvider,
@@ -12,8 +9,6 @@ import {
 	SiteStatesProvider,
 	UserProvider,
 } from '../contexts';
-import MobileNavbar from '../modules/SiteHeader/MobileNavbar';
-import MobileHeaderUser from '../modules/SiteHeader/MobileHeaderUser';
 import Head from 'next/head';
 import OAuthHandler from '../modules/Actions/OAuthHandler/OAuthHandler';
 import NextNProgress from 'nextjs-progressbar';
@@ -34,7 +29,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../styles/globals.scss';
 import '../styles/main.scss';
+import '../styles/mobile-app.scss';
 import 'react-phone-number-input/style.css';
+
+//layouts
+import MobileLayout from '../modules/Layouts/MobileLayout';
+import WebLayout from '../modules/Layouts/WebLayout';
+const layouts = {
+	mobile: MobileLayout,
+	web: WebLayout,
+};
 
 import type { AppProps } from 'next/app';
 
@@ -42,6 +46,9 @@ import type { AppProps } from 'next/app';
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+	// @ts-ignore
+	const Layout = Component?.layout ? layouts[Component.layout] : layouts['web'];
+
 	return (
 		<SessionProvider session={pageProps.session}>
 			<UserProvider>
@@ -59,20 +66,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 														content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover"
 													/>
 												</Head>
-												<div className="main-wrapper bg-site-17">
-													<div className="w-full py-3">
-														<div className="container relative">
-															<div className="flex px-4 md:px-0 items-center">
-																<MobileNavbar />
-																<HeaderLogo />
-																<MobileHeaderUser />
-															</div>
-															<MainNavbar />
-														</div>
-													</div>
+												<Layout>
 													<Component {...pageProps} />
-												</div>
-												<SiteFooter />
+												</Layout>
 												<CookieManager />
 												<OAuthHandler />
 												<NextNProgress
