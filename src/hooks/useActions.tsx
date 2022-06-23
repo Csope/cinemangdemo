@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React from 'react';
 import { useRouter } from 'next/router';
 import {
 	CreateReservationType,
@@ -111,7 +110,10 @@ const useActions = () => {
 		}
 	};
 
-	const doPurchaseTicket = async (session: SessionType) => {
+	const doPurchaseTicket = async (
+		session: SessionType,
+		mobileApp: boolean = false
+	) => {
 		const returnData: OrderReturnType = {
 			status: false,
 			message: 'Belső kiszolgálóhiba, próbáld újra később',
@@ -119,8 +121,12 @@ const useActions = () => {
 		};
 
 		try {
+			const returnUrl = mobileApp
+				? `sugarfitness:/${router.pathname}?hash=`
+				: `${process.env.NEXT_PUBLIC_BASE_URL}/timetable?hash=`;
+
 			const reqData: PurchaseReservationType = {
-				return_url: process.env.NEXT_PUBLIC_BASE_URL + router.pathname,
+				return_url: returnUrl,
 
 				// @ts-ignore
 				customer_id: user?.id,
@@ -162,7 +168,11 @@ const useActions = () => {
 		}
 	};
 
-	const doPurchasePass = async (pass: PassType, startDate: string) => {
+	const doPurchasePass = async (
+		pass: PassType,
+		startDate: string,
+		mobileApp: boolean = false
+	) => {
 		const returnData: OrderReturnType = {
 			status: false,
 			message: 'Belső kiszolgálóhiba, próbáld újra később',
@@ -170,8 +180,12 @@ const useActions = () => {
 		};
 
 		try {
+			const returnUrl = mobileApp
+				? `sugarfitness:/${router.pathname}?hashpass=`
+				: `${process.env.NEXT_PUBLIC_BASE_URL}/prices?hash=`;
+
 			const reqData: PurchasePassType = {
-				return_url: process.env.NEXT_PUBLIC_BASE_URL + router.pathname,
+				return_url: returnUrl,
 
 				// @ts-ignore
 				customer_id: user?.id,
@@ -245,15 +259,17 @@ const useActions = () => {
 	};
 
 	const doDisableScroll = (refElement: any) => {
-		disableBodyScroll(refElement, {
-			reserveScrollBarGap: true,
-		});
-		document.documentElement.style.overflow = 'hidden';
+		return;
+		// disableBodyScroll(refElement, {
+		// 	reserveScrollBarGap: true,
+		// });
+		// document.documentElement.style.overflow = 'hidden';
 	};
 
 	const doEnableScroll = () => {
-		clearAllBodyScrollLocks();
-		document.documentElement.style.overflow = 'auto';
+		return;
+		// clearAllBodyScrollLocks();
+		// document.documentElement.style.overflow = 'auto';
 	};
 
 	return {

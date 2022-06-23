@@ -7,21 +7,17 @@ type ErrorTypes = 'userNotFound' | 'oauthInternalError' | null;
 const OAuthHandler = () => {
 	const [error, setError] = useState<ErrorTypes>(null);
 	const {
-		asPath,
-		replace,
 		query: { oautherror, firstname, lastname, email, provider, token },
 	} = useRouter();
 
 	useEffect(() => {
 		if (oautherror === 'userNotFound') {
 			console.log('userNotFound');
-			// replace(asPath, undefined);
 			setError(oautherror);
 		}
 
 		if (oautherror === 'oauthInternalError') {
 			console.log('oauthInternalError');
-			// replace('/test');
 			setError(oautherror);
 		}
 	}, []);

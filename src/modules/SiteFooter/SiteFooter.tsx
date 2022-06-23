@@ -123,13 +123,21 @@ const SiteFooter = () => {
 				</div>
 				<div className="w-full md:w-3/12 mb-4 text-center md:text-right text-site-16 font-bold">
 					<div className="flex flex-col gap-1 mb-6">
-						<a href="https://sugarmozi.hu/" target={'_blank'}>
+						<a href="https://sugarmozi.hu/" target={'_blank'} rel="noreferrer">
 							Sugár Mozi
 						</a>
-						<a href="https://www.sugarbowling.hu/" target={'_blank'}>
+						<a
+							href="https://www.sugarbowling.hu/"
+							target={'_blank'}
+							rel="noreferrer"
+						>
 							Sugár Bowling & Pub
 						</a>
-						<a href="https://www.sugarjatszohaz.hu/" target={'_blank'}>
+						<a
+							href="https://www.sugarjatszohaz.hu/"
+							target={'_blank'}
+							rel="noreferrer"
+						>
 							Sugár Játszóház
 						</a>
 					</div>
@@ -147,6 +155,7 @@ const SiteFooter = () => {
 							<a
 								href="https://www.instagram.com/sugar_fitnessbp/"
 								target={'_blank'}
+								rel="noreferrer"
 							>
 								<FiInstagram />
 							</a>
@@ -155,12 +164,17 @@ const SiteFooter = () => {
 							<a
 								href="https://www.facebook.com/sugarfitness/"
 								target={'_blank'}
+								rel="noreferrer"
 							>
 								<FiFacebook />
 							</a>
 						</div>
 						<div>
-							<a href="https://twitter.com/sugarfitnessbp" target={'_blank'}>
+							<a
+								href="https://twitter.com/sugarfitnessbp"
+								target={'_blank'}
+								rel="noreferrer"
+							>
 								<FiTwitter />
 							</a>
 						</div>
@@ -183,6 +197,7 @@ const SiteFooter = () => {
 					<a
 						href="http://fx.fotexnet.hu/docs/adatvedelmitajekoztatoSF.pdf"
 						target={'_blank'}
+						rel="noreferrer"
 					>
 						Adatvédelmi szabályzat
 					</a>

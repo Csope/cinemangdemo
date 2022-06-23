@@ -1,6 +1,6 @@
 import { Dialog } from '@headlessui/react';
 import React, { useState, useEffect, MouseEvent, useRef } from 'react';
-import { SubmitErrorHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useActions, useSiteStates, useToasts, useUser } from '../../hooks';
 import Link from 'next/link';
 import { FcGoogle } from 'react-icons/fc';
@@ -12,10 +12,13 @@ import { useRouter } from 'next/router';
 import Btn from '../elements/buttons/Btn';
 import { signIn } from 'next-auth/react';
 import PasswordVisibilityIcon from './PasswordVisibilityIcon';
+import { openUrl } from '../../utils';
 
 interface PropTypes {
 	showLogin: boolean;
 	hideLogin: () => void;
+	mobileApp?: boolean;
+	closable?: boolean;
 }
 
 type FormValues = {
@@ -23,14 +26,19 @@ type FormValues = {
 	password: string;
 };
 
-const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
+const LoginSection = ({
+	showLogin,
+	hideLogin,
+	mobileApp = false,
+	closable = true,
+}: PropTypes) => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [loading, setLoading] = useState<boolean>(false);
 	const [errorMsg, setErrorMsg] = useState<string | JSX.Element | null>(null);
 	const popupContent = useRef(null);
 	const router = useRouter();
 	const { doShowLostPassword, doHideLogin } = useSiteStates();
-	const { doSignInCredentials, doResendVerifyEmail } = useUser();
+	const { doSignInCredentials, doResendVerifyEmail, status } = useUser();
 	const { notify } = useToasts();
 	const { doDisableScroll, doEnableScroll } = useActions();
 	const {
@@ -125,13 +133,13 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 	};
 
 	useEffect(() => {
-		if (showLogin) {
-			if (popupContent.current) {
-				doDisableScroll(popupContent.current);
-			}
-		} else {
-			doEnableScroll();
-		}
+		// if (showLogin) {
+		// 	if (popupContent.current) {
+		// 		doDisableScroll(popupContent.current);
+		// 	}
+		// } else {
+		// 	doEnableScroll();
+		// }
 
 		router.events.on('routeChangeStart', routeChange);
 
@@ -147,18 +155,20 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 		<Dialog
 			open={showLogin}
 			onClose={hideLogin}
-			className="fixed z-10 inset-0 overflow-y-auto"
+			className="fixed z-20 inset-0 overflow-y-auto"
 		>
 			<div className="flex items-center justify-center min-h-screen">
 				<Dialog.Overlay className="hidden md:block fixed inset-0 opacity-80 bg-white" />
 
 				<div
 					ref={popupContent}
-					className="fixed inset-0 overflow-y-auto md:relative pb-12 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
+					className="mobile-popup fixed inset-0 overflow-y-auto md:relative pb-12 md:pb-6 pt-12 md:pt-8 md:w-6/12 bg-site-1 md:bg-glow-purple md:p-8 md:rounded-xl"
 					style={{ maxWidth: 500 }}
 				>
 					<div
-						className="absolute cursor-pointer right-5 top-4 text-site-4 text-3xl"
+						className={`absolute cursor-pointer right-5 top-4 text-site-4 text-3xl ${
+							!closable ? 'hidden' : 'block'
+						}`}
 						onClick={hideLogin}
 					>
 						<AiFillCloseCircle />
@@ -170,14 +180,29 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 
 					<div className="text-center mb-2 md:mb-4">
 						Nincs még fiókod?
-						<Link href="register">
+						{mobileApp ? (
 							<a
 								className="text-site-4 ml-1"
-								onKeyDown={(e) => e.preventDefault()}
+								onKeyDown={(e) => {
+									e.preventDefault();
+								}}
+								onClick={(e) => {
+									e.preventDefault();
+									openUrl(`${process.env.NEXT_PUBLIC_BASE_URL}/register`);
+								}}
 							>
 								Regisztrálj most
 							</a>
-						</Link>
+						) : (
+							<Link href={`register`}>
+								<a
+									className="text-site-4 ml-1"
+									onKeyDown={(e) => e.preventDefault()}
+								>
+									Regisztrálj most
+								</a>
+							</Link>
+						)}
 					</div>
 
 					{errorMsg && (
@@ -261,14 +286,16 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 										clickEvent={() => console.log('credentials login')}
 									/>
 								</div>
-								<div className="relative mb-8">
+								<div
+									className={`relative mb-8 ${mobileApp ? 'hidden' : 'block'}`}
+								>
 									<div className=" w-full h-px bg-black"></div>
 									<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-site-1 px-2">
 										vagy
 									</div>
 								</div>
 							</form>
-							<div className="mb-4">
+							<div className={`${mobileApp ? 'hidden' : 'block'} mb-4`}>
 								<Btn
 									customClasses="btn-light text-black w-full"
 									clickEvent={() => signInSocial('facebook')}
@@ -291,7 +318,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 								/>
 							</div>
 
-							<div className="mb-4">
+							<div className={`${mobileApp ? 'hidden' : 'block'} mb-4`}>
 								<Btn
 									customClasses="btn-light text-black w-full"
 									clickEvent={() => signInSocial('google')}
@@ -311,7 +338,7 @@ const LoginSection = ({ showLogin, hideLogin }: PropTypes) => {
 								/>
 							</div>
 
-							<div>
+							<div className={`${mobileApp ? 'hidden' : 'block'}`}>
 								<Btn
 									customClasses="btn-light text-black w-full"
 									clickEvent={() => signInSocial('apple')}

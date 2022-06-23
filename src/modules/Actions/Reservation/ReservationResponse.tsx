@@ -39,7 +39,7 @@ const ReservationResponse = () => {
 		<Dialog
 			open={reservationPurchaseInProgress ? true : false}
 			onClose={hidePopup}
-			className="fixed z-10 inset-0 overflow-y-auto"
+			className="fixed z-30 inset-0 overflow-y-auto"
 		>
 			<div className="flex items-center justify-center min-h-screen  relative">
 				<Dialog.Overlay className="fixed inset-0 opacity-80 bg-white" />

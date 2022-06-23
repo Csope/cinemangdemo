@@ -1,18 +1,17 @@
-import type { NextPage } from 'next';
-import { useEffect, useState } from 'react';
-import ContentLoader from '../../common/elements/ContentLoader';
-import TriangleDivider from '../../common/elements/TriangleDivider';
-import TriangleDividerNextItem from '../../common/elements/TriangleDividerNextItem';
-import FiveColSwiper from '../../common/swiper/FiveColSwiper';
-import { useGetTrainers } from '../../queries';
-import { TrainerType } from '../../types';
-import { unescape } from 'lodash';
-import LinkBtn from '../../common/elements/buttons/LinkBtn';
-import DefaultEmployeeFemaleImg from '../../../public/images/defaults/oktato_default-female.jpg';
-import DefaultEmployeeMaleImg from '../../../public/images/defaults/oktato_default-male.jpg';
 import { motion } from 'framer-motion';
+import { unescape } from 'lodash';
+import { useState, useEffect } from 'react';
+import LinkBtn from '../../../common/elements/buttons/LinkBtn';
+import ContentLoader from '../../../common/elements/ContentLoader';
+import TriangleDivider from '../../../common/elements/TriangleDivider';
+import TriangleDividerNextItem from '../../../common/elements/TriangleDividerNextItem';
+import FiveColSwiper from '../../../common/swiper/FiveColSwiper';
+import { useGetTrainers } from '../../../queries';
+import { TrainerType } from '../../../types';
+import DefaultEmployeeFemaleImg from '../../../../public/images/defaults/oktato_default-female.jpg';
+import DefaultEmployeeMaleImg from '../../../../public/images/defaults/oktato_default-male.jpg';
 
-const Trainers: NextPage = () => {
+const MobileTrainers = () => {
 	const { data, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<
 		TrainerType | undefined
@@ -27,49 +26,55 @@ const Trainers: NextPage = () => {
 
 	return (
 		<div className="Trainers_page page">
-			<div className="mb-6 md:mb-0 container">
-				<div>
-					<h1 className="h1-shadow h1-shadow--purple text-center mb-8 hidden md:block">
-						Oktatók
-					</h1>
-				</div>
+			<div className="container">
 				{isLoading ? (
-					<div className="flex items-center justify-center pt-20 pb-28">
+					<div className="flex items-center justify-center pt-6 pb-10">
 						<ContentLoader />
 					</div>
+				) : trainers.length > 0 ? (
+					<>
+						<div className="mb-6">
+							<FiveColSwiper
+								initialSlide={0}
+								onSlideChange={(index: number) => {
+									if (trainers && trainers[index]) {
+										setSelectedTrainer(trainers[index]);
+									}
+								}}
+								imgSrcs={trainers.map((trainer) =>
+									trainer.preview_url
+										? `${trainer.preview_url}`
+										: trainer.gender === 'F'
+										? DefaultEmployeeFemaleImg.src
+										: DefaultEmployeeMaleImg.src
+								)}
+							/>
+						</div>
+
+						<TriangleDivider bgClass="bg-site-3" mTop={-20} />
+
+						<TriangleDividerNextItem>
+							<div className="bg-site-2 mt-10 hidden md:block">
+								<motion.h1
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1 }}
+									className="h1-shadow h1-shadow--white"
+									key={
+										selectedTrainer?.last_name ||
+										'' + selectedTrainer?.first_name
+									}
+								>
+									{selectedTrainer?.last_name} {selectedTrainer?.first_name}
+								</motion.h1>
+							</div>
+						</TriangleDividerNextItem>
+					</>
 				) : (
-					<FiveColSwiper
-						initialSlide={0}
-						onSlideChange={(index: number) => {
-							if (trainers && trainers[index]) {
-								setSelectedTrainer(trainers[index]);
-							}
-						}}
-						imgSrcs={trainers.map((trainer) =>
-							trainer.preview_url
-								? `${trainer.preview_url}`
-								: trainer.gender === 'F'
-								? DefaultEmployeeFemaleImg.src
-								: DefaultEmployeeMaleImg.src
-						)}
-					/>
+					<div className="px-4 text-center text-base h1-shadow h1-shadow--purple">
+						Sajnos nincs találat!
+					</div>
 				)}
 			</div>
-
-			<TriangleDivider bgClass="bg-site-3" mTop={-20} />
-
-			<TriangleDividerNextItem>
-				<div className="bg-site-2 mt-10 hidden md:block">
-					<motion.h1
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						className="h1-shadow h1-shadow--white"
-						key={selectedTrainer?.last_name || '' + selectedTrainer?.first_name}
-					>
-						{selectedTrainer?.last_name} {selectedTrainer?.first_name}
-					</motion.h1>
-				</div>
-			</TriangleDividerNextItem>
 
 			{selectedTrainer && (
 				<div className="bg-site-2 pb-0 md:pb-16">
@@ -98,7 +103,7 @@ const Trainers: NextPage = () => {
 						<div className="flex gap-6 justify-center mb-10 md:mb-14 flex-wrap">
 							<LinkBtn
 								text="Összes óratípus"
-								href={`/timetable?s=trainer&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
+								href={`/mobile/timetable?s=trainer&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
 								customClasses="btn-dark w-full md:w-auto"
 							/>
 
@@ -109,7 +114,7 @@ const Trainers: NextPage = () => {
 									// @ts-ignore
 									text={selectedTrainer.related_class_types[key].title}
 									// @ts-ignore
-									href={`/timetable?s=type&v=${selectedTrainer.related_class_types[key].title}&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
+									href={`/mobile/timetable?s=type&v=${selectedTrainer.related_class_types[key].title}&v=${selectedTrainer.last_name} ${selectedTrainer.first_name}`}
 									customClasses="btn-dark w-full md:w-auto"
 								/>
 							))}
@@ -148,4 +153,6 @@ const Trainers: NextPage = () => {
 	);
 };
 
-export default Trainers;
+MobileTrainers.layout = 'mobile';
+
+export default MobileTrainers;

@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// axios.defaults.timeout = 1000;
+
 /**
  * Set global Authorization header
  *

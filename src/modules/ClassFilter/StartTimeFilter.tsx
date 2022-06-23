@@ -4,12 +4,26 @@ import { useClassFilter, useDebounce } from '../../hooks';
 import marks from '../../static/startTimeMarks';
 
 function StartTimeFilter() {
-	const [sliderValue, setSliderValue] = useState([0, 14]);
-	const debouncedValue = useDebounce(sliderValue, 500);
 	const {
 		classFilterDispatch,
 		classFilterState: { startTime },
 	} = useClassFilter();
+
+	const min = Object.keys(marks).find(
+		(key: any) => startTime && marks[key].value === startTime[0]
+	);
+
+	const max = Object.keys(marks).find(
+		(key: any) => startTime && marks[key].value === startTime[1]
+	);
+
+	const initMinMax = [parseInt(min || ''), parseInt(max || '')];
+
+	const [sliderValue, setSliderValue] = useState([
+		initMinMax[0] || 0,
+		initMinMax[1] || 14,
+	]);
+	const debouncedValue = useDebounce(sliderValue, 500);
 
 	useEffect(() => {
 		const [min, max] = debouncedValue;
