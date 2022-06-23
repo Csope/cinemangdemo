@@ -16,7 +16,7 @@ body.mobile-layout {
 		}
 
 		.mobile-layout-footer {
-			background-color: #1d1d1d;
+			background-color: #ffffff;
 			width: 100%;
 		}
 	}
@@ -67,7 +67,7 @@ body.mobile-layout {
 			justify-content: center;
 			align-items: center;
 			left: -5px;
-			box-shadow: 0px 3px 6px 3px #060606;
+			box-shadow: 0px 3px 6px 3px #fff;
 			@apply bg-site-4;
 		}
 
@@ -81,7 +81,7 @@ body.mobile-layout {
 		top: 0;
 		height: calc(100vh - 55px);
 		width: 100%;
-		background-color: #272727;
+		background-color: #fff;
 		padding: 20px;
 		display: flex;
 		justify-content: center;

@@ -23,7 +23,7 @@ const MobileAppNavbar = () => {
 
 	return (
 		<div className="mobile-app-nav">
-			<div className="grid grid-cols-2 text-white">
+			<div className="grid grid-cols-2 text-dark">
 				<Link href={'/mobile/timetable'} as="">
 					<a style={{ fontSize: 10 }}>
 						<div
@@ -31,7 +31,7 @@ const MobileAppNavbar = () => {
 							className={`${
 								router.pathname === '/mobile/timetable'
 									? 'text-site-9'
-									: 'text-white'
+									: 'text-dark'
 							} flex items-center justify-center flex-col h-full`}
 						>
 							<div className="icon text-xl">
@@ -48,7 +48,7 @@ const MobileAppNavbar = () => {
 							className={`${
 								router.pathname === '/mobile/trainers'
 									? 'text-site-9'
-									: 'text-white'
+									: 'text-dark'
 							} flex items-center justify-center flex-col h-full`}
 						>
 							<div className="icon text-xl">
@@ -68,7 +68,7 @@ const MobileAppNavbar = () => {
 				</Link>
 			</div>
 
-			<div className="grid grid-cols-2 text-white">
+			<div className="grid grid-cols-2 text-dark">
 				<Link href={'/mobile/news'} as="">
 					<a style={{ fontSize: 10 }}>
 						<div
@@ -77,7 +77,7 @@ const MobileAppNavbar = () => {
 							className={`${
 								router.pathname === '/mobile/news'
 									? 'text-site-9'
-									: 'text-white'
+									: 'text-dark'
 							} flex items-center justify-center flex-col h-full`}
 						>
 							<div className="icon text-xl">
