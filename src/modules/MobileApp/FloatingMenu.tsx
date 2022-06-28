@@ -21,7 +21,7 @@ const FloatingMenu = ({ close }: PropTypes) => {
 					className={`${
 						router.pathname === '/mobile/prices'
 							? 'text-site-9'
-							: 'text-gray-300'
+							: 'text-gray-900'
 					} floating-item`}
 				>
 					<FaMoneyBill />
@@ -34,7 +34,7 @@ const FloatingMenu = ({ close }: PropTypes) => {
 					className={`${
 						router.pathname === '/mobile/hazirend'
 							? 'text-site-9'
-							: 'text-gray-300'
+							: 'text-gray-900'
 					} floating-item`}
 				>
 					<ImNewspaper />
@@ -45,7 +45,7 @@ const FloatingMenu = ({ close }: PropTypes) => {
 				<a
 					onClick={() => close()}
 					className={`${
-						router.pathname === '/mobile/gyik' ? 'text-site-9' : 'text-gray-300'
+						router.pathname === '/mobile/gyik' ? 'text-site-9' : 'text-gray-900'
 					} floating-item`}
 				>
 					<RiQuestionnaireFill />
@@ -58,7 +58,7 @@ const FloatingMenu = ({ close }: PropTypes) => {
 					className={`${
 						router.pathname === '/mobile/contacts'
 							? 'text-site-9'
-							: 'text-gray-300'
+							: 'text-gray-900'
 					} floating-item`}
 				>
 					<MdContactMail />
