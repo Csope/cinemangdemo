@@ -154,7 +154,7 @@ const ExistingWrapper = ({ provider, token, cancelAction }: any) => {
 			);
 
 			if (data.status) {
-				notify('SUCCESS', 'Lorem ipsum dorol sit amte');
+				notify('SUCCESS', 'Sikeres bejelentkezés');
 				signIn(provider, {
 					callbackUrl: '/',
 				});

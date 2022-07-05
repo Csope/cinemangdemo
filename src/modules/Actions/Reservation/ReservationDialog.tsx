@@ -18,7 +18,12 @@ import Link from 'next/link';
 import SimpleLogo from '../../../../public/images/simple.png';
 import { getHufFormat, openUrl } from '../../../utils';
 
-const ReservationDialog = ({ mobileApp = false }) => {
+type PropTypes = {
+	mobileApp?: boolean;
+	updateSession: (id: number) => void;
+};
+
+const ReservationDialog = ({ mobileApp = false, updateSession }: PropTypes) => {
 	const { notify } = useToasts();
 	const popupContent = useRef(null);
 	const [onAttempt, setOnAttempt] = useState<boolean>(false);
@@ -75,6 +80,7 @@ const ReservationDialog = ({ mobileApp = false }) => {
 
 			if (res.status) {
 				setHasReservationResponse(true);
+				updateSession(selectedSession.id);
 				refetchReservations();
 			} else {
 				notify('ERROR', res.message);
@@ -278,7 +284,7 @@ const ReservationDialog = ({ mobileApp = false }) => {
 
 								<div className="mb-6">
 									<div className="text-site-4 uppercase md:text-lg">
-										Férőhelyek
+										Foglaltság
 									</div>
 									<div className="text-xl md:text-2xl">
 										{selectedSession?.current_headcount}/

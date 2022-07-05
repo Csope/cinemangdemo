@@ -16,45 +16,45 @@ const SiteFooter = () => {
 							<tbody>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
-										Hetfő
+										Hétfő
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>6:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Kedd
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>6:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Szerda
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>6:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Csütörtök
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>6:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Péntek
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>6:00 - 21:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Szombat
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>8:00 - 20:00</td>
 								</tr>
 								<tr>
 									<td className="pr-4 text-gray-300 text-right md:text-left">
 										Vasárnap
 									</td>
-									<td>8:00 - 21:00</td>
+									<td>8:00 - 20:00</td>
 								</tr>
 							</tbody>
 						</table>

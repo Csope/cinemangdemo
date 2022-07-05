@@ -9,11 +9,10 @@ import { ResType, SessionType, OrderType } from '../../types';
 import type { NextPage } from 'next';
 import { ViewList } from '../../types/ClassFilterTypes';
 import { useClassFilter, useSelectedSession, useSiteStates } from '../../hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReservationDialog from '../../modules/Actions/Reservation/ReservationDialog';
 import ReservationResponse from '../../modules/Actions/Reservation/ReservationResponse';
 import ReactTooltip from 'react-tooltip';
-import LoginSection from '../../common/site/LoginSection';
 
 type PropTypes = {
 	sessions: SessionType[];
@@ -24,6 +23,7 @@ const Timetable: NextPage<PropTypes> = ({
 	sessions,
 	inPurchase,
 }: PropTypes) => {
+	const [_sessions, setSessions] = useState([...sessions]);
 	const { selectedSessionDispatch } = useSelectedSession();
 	const {
 		classFilterState: { view, startDate },
@@ -36,6 +36,29 @@ const Timetable: NextPage<PropTypes> = ({
 		classFilterDispatch({ type: 'SET_VIEW', payload: type });
 	};
 	const { doShowReservationPurchaseResponse } = useSiteStates();
+
+	const updateSession = async (sessionId: number) => {
+		try {
+			const res = await axios.get(
+				`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/${sessionId}`
+			);
+
+			if (res.data.data && res.data.status && res.data.data.session) {
+				const newSessions = [..._sessions];
+
+				const index = _sessions.findIndex(
+					(session) => session.id === sessionId
+				);
+
+				newSessions[index].current_headcount =
+					res.data.data.session.current_headcount;
+
+				setSessions([...newSessions]);
+			}
+		} catch (error) {
+			console.log('Error on updating session');
+		}
+	};
 
 	useEffect(() => {
 		if (inPurchase) {
@@ -92,8 +115,9 @@ const Timetable: NextPage<PropTypes> = ({
 					</div>
 				</div>
 			</div>
-			<ClassFilter sessions={sessions} />
-			<ReservationDialog />
+
+			<ClassFilter sessions={_sessions} updateSession={updateSession} />
+			<ReservationDialog updateSession={(id: number) => updateSession(id)} />
 			<ReservationResponse />
 			<ReactTooltip place="top" effect="solid" />
 		</div>
@@ -105,8 +129,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const { hash } = context.query;
 
 	if (hash && hash !== '') {
-		
-		console.log(`has found: ${hash}`)
+		console.log(`has found: ${hash}`);
 
 		try {
 			const { data } = await axios.get<ResType<OrderType>>(
@@ -124,7 +147,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				};
 			}
 		} catch (error) {
-			
 			return {
 				redirect: {
 					permanent: false,

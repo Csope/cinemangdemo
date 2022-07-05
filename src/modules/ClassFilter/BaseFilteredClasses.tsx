@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useClassFilter } from '../../hooks';
-import { LocationType, SessionType, TrainerType } from '../../types';
-import {
-	CategoryTypes,
-	DifficultyTypes,
-	ViewList,
-} from '../../types/ClassFilterTypes';
+import { SessionType } from '../../types';
+import { ViewList } from '../../types/ClassFilterTypes';
 import FilteredClassesCalendarView from './FilteredClassesCalendarView';
 import FilteredClassesListView from './FilteredClassesListView';
 import FilteredClassesSwiperView from './FilteredClassesSwiperView';
-import { format, getHours } from 'date-fns';
+import { getHours } from 'date-fns';
 import ExpandedFilter from './ExpandedFilter';
 import ActiveFilters from './ActiveFilters';
 
@@ -17,12 +13,14 @@ type PropTypes = {
 	sessions: SessionType[];
 	originalSessions: SessionType[];
 	filterExpanded: boolean;
+	updateSession: (id: number) => void;
 };
 
 function BaseFilteredClasses({
 	originalSessions,
 	sessions,
 	filterExpanded,
+	updateSession,
 }: PropTypes) {
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
 
@@ -106,13 +104,20 @@ function BaseFilteredClasses({
 					<FilteredClassesSwiperView
 						key={startDate.toString()}
 						sessions={filteredSessions}
+						updateSession={updateSession}
 					/>
 				)}
 				{view === ViewList.CALENDAR && (
-					<FilteredClassesCalendarView sessions={originalSessions} />
+					<FilteredClassesCalendarView
+						updateSession={updateSession}
+						sessions={originalSessions}
+					/>
 				)}
 				{view === ViewList.LIST && (
-					<FilteredClassesListView sessions={filteredSessions} />
+					<FilteredClassesListView
+						sessions={filteredSessions}
+						updateSession={updateSession}
+					/>
 				)}
 			</div>
 		</>

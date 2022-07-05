@@ -18,9 +18,10 @@ import { useActions } from '../../hooks';
 
 type PropTypes = {
 	sessions: SessionType[];
+	updateSession: (id: number) => void;
 };
 
-function FilteredClassesCalendarView({ sessions }: PropTypes) {
+function FilteredClassesCalendarView({ sessions, updateSession }: PropTypes) {
 	const popupContent = useRef(null);
 	const { doDisableScroll, doEnableScroll } = useActions();
 	const calendarbox = useRef(null);
@@ -242,7 +243,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 			doEnableScroll();
 		}
 	}, [showDescription]);
-
+	console.log(updateSession);
 	return (
 		<>
 			<div className="mt-8 bg-site-1">
@@ -313,6 +314,7 @@ function FilteredClassesCalendarView({ sessions }: PropTypes) {
 						<div className="bg-site-1 py-8 md:rounded-bl-2xl md:rounded-br-2xl">
 							<div>
 								<ClassDescription
+									updateSession={updateSession}
 									session={showDescription}
 									hideParentPopup={() => setShowDescription(undefined)}
 								/>

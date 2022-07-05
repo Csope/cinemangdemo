@@ -9,32 +9,32 @@ const MobileContacts = () => {
 
 					<div>
 						<div className="flex gap-3 justify-center mb-3">
-							<div>Hetfő</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div>Hétfő</div>
+							<div className="font-bold">6:00 - 21:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Kedd</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">6:00 - 21:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Szerda</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">6:00 - 21:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Csütörtök</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">6:00 - 21:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Péntek</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">6:00 - 21:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Szombat</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">8:00 - 20:00</div>
 						</div>
 						<div className="flex gap-3 justify-center mb-3">
 							<div>Vasárnap</div>
-							<div className="font-bold">8:00 - 21:00</div>
+							<div className="font-bold">8:00 - 20:00</div>
 						</div>
 					</div>
 				</div>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { format, addDays } from 'date-fns';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ContentLoader from '../../../common/elements/ContentLoader';
 import IconCard from '../../../common/icons/IconCard';
 import IconList from '../../../common/icons/IconList';
@@ -27,6 +27,7 @@ type PropTypes = {
 };
 
 const MobileTimetable = ({ sessions, inPurchase, hashPass }: PropTypes) => {
+	const [_sessions, setSessions] = useState([...sessions]);
 	const router = useRouter();
 	const {
 		doShowReservationPurchaseResponse,
@@ -44,6 +45,29 @@ const MobileTimetable = ({ sessions, inPurchase, hashPass }: PropTypes) => {
 		const newStarDate = startDate[0] ? [startDate[0]] : [];
 		classFilterDispatch({ type: 'SET_START_DATE', payload: newStarDate });
 		classFilterDispatch({ type: 'SET_VIEW', payload: type });
+	};
+
+	const updateSession = async (sessionId: number) => {
+		try {
+			const res = await axios.get(
+				`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/sessions/${sessionId}`
+			);
+
+			if (res.data.data && res.data.status && res.data.data.session) {
+				const newSessions = [..._sessions];
+
+				const index = _sessions.findIndex(
+					(session) => session.id === sessionId
+				);
+
+				newSessions[index].current_headcount =
+					res.data.data.session.current_headcount;
+
+				setSessions([...newSessions]);
+			}
+		} catch (error) {
+			console.log('Error on updating session');
+		}
 	};
 
 	useEffect(() => {
@@ -103,7 +127,7 @@ const MobileTimetable = ({ sessions, inPurchase, hashPass }: PropTypes) => {
 							<ActiveFilters bgColor="bg-transparent" />
 						</div>
 						<div>
-							<ClassFilter sessions={sessions} />
+							<ClassFilter updateSession={updateSession} sessions={sessions} />
 						</div>
 					</div>
 				) : (
@@ -112,7 +136,10 @@ const MobileTimetable = ({ sessions, inPurchase, hashPass }: PropTypes) => {
 					</div>
 				)}
 
-				<ReservationDialog mobileApp={true} />
+				<ReservationDialog
+					updateSession={(id: number) => updateSession(id)}
+					mobileApp={true}
+				/>
 				<ReservationResponse />
 
 				{showLogin && (

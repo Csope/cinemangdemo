@@ -13,11 +13,13 @@ import DefaultClass from '../../../public/images/defaults/oratipus_default.jpg';
 type PropTypes = {
 	sessions: SessionType[];
 	swiperBg?: string;
+	updateSession: (id: number) => void;
 };
 
 function FilteredClassesSwiperView({
 	sessions,
 	swiperBg = 'bg-site-1',
+	updateSession,
 }: PropTypes) {
 	const [selectedSession, setSelectedSession] = useState<
 		SessionType | undefined
@@ -93,7 +95,10 @@ function FilteredClassesSwiperView({
 										customClasses="mt-3 text-3xl"
 									/>
 								</h1>
-								<ClassDescription session={selectedSession} />
+								<ClassDescription
+									session={selectedSession}
+									updateSession={updateSession}
+								/>
 							</motion.div>
 						</div>
 					)}

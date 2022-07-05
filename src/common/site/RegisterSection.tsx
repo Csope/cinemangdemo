@@ -170,7 +170,7 @@ const RegisterSection = ({ hasData }: PropTypes) => {
 
 		if (registerAttempt.status) {
 			if (hasData) {
-				notify('SUCCESS', 'Lorem ipsum dolor ...');
+				notify('SUCCESS', 'Sikeres bejelentkezés');
 				signIn(hasData.provider, {
 					callbackUrl: '/',
 				});
