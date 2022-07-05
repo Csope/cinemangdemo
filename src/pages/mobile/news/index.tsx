@@ -14,8 +14,8 @@ const MobileNews = ({ events }: PropTypes) => {
 			<div className="container">
 				<div className="mx-4 flex flex-col gap-10">
 					{events &&
-						events.map((event, i) => {
-							return i < 5 ? (
+						events.map((event, i) => 
+							(
 								<CardWithImage
 									mobileApp={true}
 									key={event.event_id}
@@ -32,8 +32,8 @@ const MobileNews = ({ events }: PropTypes) => {
 										</div>
 									}
 								/>
-							) : null;
-						})}
+							) 
+						)}
 				</div>
 			</div>
 		</div>

@@ -27,9 +27,10 @@ import { hu } from 'date-fns/locale';
 
 type PropTypes = {
 	sessions: SessionType[];
+	updateSession: (id: number) => void;
 };
 
-function FilteredClassesListView({ sessions }: PropTypes) {
+function FilteredClassesListView({ sessions, updateSession }: PropTypes) {
 	const popupContent = useRef(null);
 	const { doDisableScroll, doEnableScroll } = useActions();
 	const [showConfirm, setShowConfirm] = useState<ReservationType | false>(
@@ -117,6 +118,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 
 		if (res.status) {
 			notify('SUCCESS', res.message);
+			updateSession(reservation.session.id);
 			refetchReservations();
 		} else {
 			notify('ERROR', res.message);
@@ -279,6 +281,7 @@ function FilteredClassesListView({ sessions }: PropTypes) {
 						<div className="bg-site-1 py-8 md:rounded-bl-2xl md:rounded-br-2xl">
 							<div className="container">
 								<ClassDescription
+									updateSession={updateSession}
 									session={showDescription}
 									hideParentPopup={() => setShowDescription(undefined)}
 								/>

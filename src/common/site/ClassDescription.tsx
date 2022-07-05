@@ -24,9 +24,14 @@ import ConfirmationPopup from './ConfirmationPopup';
 type PropTypes = {
 	session: SessionType | undefined;
 	hideParentPopup?: () => void;
+	updateSession: (id: number) => void;
 };
 
-function ClassDescription({ session, hideParentPopup }: PropTypes) {
+function ClassDescription({
+	session,
+	hideParentPopup,
+	updateSession,
+}: PropTypes) {
 	const [showConfirm, setShowConfirm] = useState<ReservationType | false>(
 		false
 	);
@@ -52,6 +57,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 
 		if (res.status) {
 			notify('SUCCESS', res.message);
+			updateSession(reservation.session.id);
 			refetchReservations();
 		} else {
 			notify('ERROR', res.message);
@@ -199,7 +205,7 @@ function ClassDescription({ session, hideParentPopup }: PropTypes) {
 					<div className="text-white text-xl">{session?.location.title}</div>
 				</div>
 				<div className="mb-6">
-					<div className="text-site-4 uppercase">Férőhelyek</div>
+					<div className="text-site-4 uppercase">Foglaltság</div>
 					<div className="text-white text-xl">
 						{session?.current_headcount}/{session?.max_headcount}
 					</div>

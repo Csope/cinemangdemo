@@ -13,9 +13,10 @@ type PropTypes = {
 	sessions: SessionType[];
 	originalSessions: SessionType[];
 	filterExpanded: boolean;
+	updateSession: (id: number) => void;
 };
 
-function BaseFilteredClasses({ sessions }: PropTypes) {
+function BaseFilteredClasses({ sessions, updateSession }: PropTypes) {
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
 	const [toggleFilter, setToggleFitler] = useState(false);
 
@@ -91,10 +92,14 @@ function BaseFilteredClasses({ sessions }: PropTypes) {
 						key={startDate.toString()}
 						sessions={filteredSessions}
 						swiperBg="bg-transparent"
+						updateSession={updateSession}
 					/>
 				)}
 				{view === ViewList.LIST && (
-					<FilteredClassesListView sessions={filteredSessions} />
+					<FilteredClassesListView
+						sessions={filteredSessions}
+						updateSession={updateSession}
+					/>
 				)}
 			</div>
 

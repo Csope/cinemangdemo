@@ -15,9 +15,10 @@ import { getNextDates } from '../../utils';
 
 type PropTypes = {
 	sessions: SessionType[];
+	updateSession: (id: number) => void;
 };
 
-function ClassFilter({ sessions }: PropTypes): JSX.Element {
+function ClassFilter({ sessions, updateSession }: PropTypes): JSX.Element {
 	const _f = useFavorites();
 	const [filterExpanded, setFilterExpanded] = useState(false);
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
@@ -53,7 +54,7 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 		});
 
 		setFilteredSessions(fSessions);
-	}, [startDate, category, favorites, _f.favorites]);
+	}, [sessions, startDate, category, favorites, _f.favorites]);
 
 	/**
 	 * Close expended filter on view change
@@ -160,6 +161,7 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 				</>
 			)}
 			<BaseFilteredClasses
+				updateSession={updateSession}
 				filterExpanded={filterExpanded}
 				sessions={filteredSessions}
 				originalSessions={sessions}

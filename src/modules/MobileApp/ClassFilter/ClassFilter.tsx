@@ -9,9 +9,10 @@ import { getNextDates } from '../../../utils';
 
 type PropTypes = {
 	sessions: SessionType[];
+	updateSession: (id: number) => void;
 };
 
-function ClassFilter({ sessions }: PropTypes): JSX.Element {
+function ClassFilter({ sessions, updateSession }: PropTypes): JSX.Element {
 	const _f = useFavorites();
 	const [filterExpanded, setFilterExpanded] = useState(false);
 	const [filteredSessions, setFilteredSessions] = useState<SessionType[]>([]);
@@ -118,6 +119,7 @@ function ClassFilter({ sessions }: PropTypes): JSX.Element {
 				filterExpanded={filterExpanded}
 				sessions={filteredSessions}
 				originalSessions={sessions}
+				updateSession={updateSession}
 			/>
 		</div>
 	);
