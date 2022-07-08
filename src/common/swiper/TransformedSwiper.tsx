@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperInstance } from 'swiper/types';
-
-import { EffectCoverflow, EffectCards, Autoplay } from 'swiper';
+import { EffectCoverflow, Autoplay } from 'swiper';
+import { genSvgImageLoader } from '../../utils';
+import Image from 'next/image';
 
 interface PropTypes {
 	initialSlide: number;
 	imgSrcs: string[];
 	delay: number;
 }
+
+const svgBG = genSvgImageLoader(700, 475);
 
 const TransformedSwiper = ({
 	initialSlide,
@@ -47,7 +50,16 @@ const TransformedSwiper = ({
 		>
 			{imgSrcs.map((src, i) => (
 				<SwiperSlide key={src || i}>
-					<img src={src} />
+					<div className="relative lazy-img-container lazy-img-container__swiper-x3">
+						<Image
+							src={src || svgBG}
+							alt="class-img"
+							layout="fill"
+							className="lazy-img"
+							placeholder="blur"
+							blurDataURL={svgBG}
+						/>
+					</div>
 				</SwiperSlide>
 			))}
 		</Swiper>

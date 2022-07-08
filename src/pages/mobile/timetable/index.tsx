@@ -222,7 +222,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				},
 			},
 			{
-				timeout: 5000,
+				timeout: 12000,
 			}
 		);
 

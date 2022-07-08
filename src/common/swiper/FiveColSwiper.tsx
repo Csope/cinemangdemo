@@ -5,6 +5,8 @@ import { Swiper as SwiperInstance } from 'swiper/types';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import FavoriteMark from '../site/FavoriteMark';
 import { useDebounce, useFavorites } from '../../hooks';
+import { genSvgImageLoader } from '../../utils';
+import Image from 'next/image';
 
 interface PropTypes {
 	initialSlide: number;
@@ -13,6 +15,8 @@ interface PropTypes {
 	hasFavorite?: string[] | undefined;
 	hasInfo?: string[] | undefined;
 }
+
+const svgBG = genSvgImageLoader(700, 475);
 
 const FiveColSwiper = ({
 	initialSlide,
@@ -91,7 +95,16 @@ const FiveColSwiper = ({
 				{imgSrcs.map((src, i) => (
 					<SwiperSlide key={i}>
 						<div className="relative">
-							<img src={src} className="select-none" />
+							<div className="relative lazy-img-container lazy-img-container__swiper-x5">
+								<Image
+									src={src || svgBG}
+									alt="card-img"
+									layout="fill"
+									className="lazy-img"
+									placeholder="blur"
+									blurDataURL={svgBG}
+								/>
+							</div>
 							{hasFavorite && genFavorite(hasFavorite[i])}
 							{hasInfo && (
 								<div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black text-white bg-opacity-70 text-sm italic font-light px-5 py-1 rounded">
