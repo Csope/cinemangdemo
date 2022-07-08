@@ -1,4 +1,5 @@
-import { IoMdArrowDropdown } from 'react-icons/io';
+import Image from 'next/image';
+import { genSvgImageLoader } from '../../../utils';
 
 type PropTypes = {
 	/**
@@ -14,6 +15,8 @@ type PropTypes = {
 	mobileApp?: boolean;
 };
 
+const svgBG = genSvgImageLoader(700, 475);
+
 const CardWithImage = ({
 	imgSrc,
 	bodyContent,
@@ -23,11 +26,16 @@ const CardWithImage = ({
 		<div className="CardWithImage rounded-xl md:rounded-none">
 			<div>
 				<div className="CardWithImage__header">
-					<img
-						src={imgSrc}
-						alt="card-image"
-						style={{ minHeight: 120, backgroundColor: '#e5e1d8' }}
-					/>
+					<div className="relative lazy-img-container lazy-img-container__card">
+						<Image
+							src={imgSrc || svgBG}
+							alt="card-img"
+							layout="fill"
+							className="lazy-img lazy-img__right"
+							placeholder="blur"
+							blurDataURL={svgBG}
+						/>
+					</div>
 				</div>
 				<div className="CardWithImage__body overflow-hidden">
 					<div style={{ padding: '18px 16px' }}>{bodyContent}</div>

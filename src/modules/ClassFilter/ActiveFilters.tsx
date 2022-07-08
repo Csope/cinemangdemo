@@ -5,6 +5,7 @@ import { IoClose } from 'react-icons/io5';
 import { getRealDifficultyName } from '../../utils';
 import { AiFillStar } from 'react-icons/ai';
 import { CategoryTypes } from '../../types/ClassFilterTypes';
+import { format } from 'date-fns';
 
 type PropTypes = {
 	bgColor?: string;
@@ -21,6 +22,7 @@ const ActiveFilters = ({ bgColor = 'bg-site-6' }: PropTypes) => {
 			trainer,
 			favorites,
 			search,
+			startDate,
 		},
 		classFilterDispatch,
 	} = useClassFilter();
@@ -33,7 +35,8 @@ const ActiveFilters = ({ bgColor = 'bg-site-6' }: PropTypes) => {
 		type ||
 		trainer ||
 		search ||
-		favorites;
+		favorites ||
+		startDate.length > 0;
 
 	if (!show) return null;
 
@@ -56,6 +59,16 @@ const ActiveFilters = ({ bgColor = 'bg-site-6' }: PropTypes) => {
 	return (
 		<div className={`${bgColor}`}>
 			<div className="container flex justify-center flex-wrap gap-3 py-4 px-4">
+				{startDate.length > 0 &&
+					startDate.map((_start) => (
+						<SimpleButton
+							text={format(_start, 'yyyy-MM-dd')}
+							// clickEvent={() =>
+							// 	classFilterDispatch({ type: 'SET_SEARCH', payload: '' })
+							// }
+							customClasses="bg-white text-site-4"
+						/>
+					))}
 				{search && (
 					<SimpleButton
 						// @ts-ignore
@@ -128,7 +141,6 @@ const ActiveFilters = ({ bgColor = 'bg-site-6' }: PropTypes) => {
 						appendAfter={<IoClose className="ml-2 text-lg" />}
 					/>
 				)}
-
 				{favorites && (
 					<SimpleButton
 						text={<AiFillStar className="text-site-4 text-lg" />}
