@@ -86,10 +86,6 @@ export default NextAuth({
 					}
 				);
 
-				console.log(user)
-				console.log(token)
-				console.log(reason)
-
 				if (reason === 'not_verified') throw new Error('not_verified');
 
 				if (status && user) {
@@ -119,8 +115,6 @@ export default NextAuth({
 					const { data } = await axios.post<ResType<any>>(url, {
 						token: accessToken,
 					});
-
-					console.log(data)
 
 					if (!data.status) {
 						return `/?oautherror=userNotFound&token=${encodeURIComponent(
@@ -168,8 +162,6 @@ export default NextAuth({
 					}
 				);
 
-				console.log(data)
-				
 				if (!data.status) {
 					session.error = true;
 				}
@@ -180,7 +172,7 @@ export default NextAuth({
 
 				return session;
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 				session.error = true;
 				return session;
 			}
