@@ -9,18 +9,24 @@ import { useSiteStates, useUser } from '../../hooks';
 import { getHufFormat } from '../../utils';
 import PassPurchaseResponse from '../../modules/Actions/Pass/PassPurchaseResponse';
 import { unescape } from 'lodash';
+import { useGetPrices } from '../../queries';
+import ContentLoader from '../../common/elements/ContentLoader';
 
 type PropTypes = {
-	passTypes: any;
+	// passTypes: any;
 	inPurchase: OrderType | false;
-	prices: PriceType[];
+	// prices: PriceType[];
 };
 
-const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
+const Prices = ({ inPurchase }: PropTypes) => {
 	const { status } = useUser();
 	const { doShowLogin } = useSiteStates();
 	const { selectedPass, doSetSelectedPass, doShowPassPurchaseResponse } =
 		useSiteStates();
+	const {
+		isLoading,
+		data: { passTypes, prices },
+	} = useGetPrices();
 
 	const groupType = passTypes?.non_discounted?.group || [];
 	const fitnessType = passTypes?.non_discounted?.fitness || [];
@@ -41,6 +47,14 @@ const Prices = ({ passTypes, inPurchase, prices }: PropTypes) => {
 			doShowPassPurchaseResponse(inPurchase);
 		}
 	}, []);
+
+	if (isLoading) {
+		return (
+			<div className="w-full mt-10 mb-20 flex justify-center">
+				<ContentLoader />
+			</div>
+		);
+	}
 
 	return (
 		<div className="Prices page">
@@ -206,35 +220,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		}
 	}
 
-	//FIXME: use proper res type
-	try {
-		const {
-			data: {
-				// @ts-ignore
-				data: { pass_types, prices },
-			},
-			// @ts-ignore
-		} = await axios.get<ResType<{ pass_types }>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/tradeables`
-		);
-
-		return {
-			props: {
-				passTypes: pass_types || [],
-				prices: prices || [],
-				inPurchase,
-			},
-		};
-	} catch (error) {
-		return {
-			props: {
-				passTypes: [],
-				prices: [],
-
-				inPurchase,
-			},
-		};
-	}
+	return {
+		props: {
+			inPurchase,
+		},
+	};
 };
 
 export default Prices;

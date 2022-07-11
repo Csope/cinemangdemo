@@ -12,6 +12,9 @@ const getTrainers = async () => {
 
 export default function useGetTrainers() {
 	return useQuery('trainers', getTrainers, {
-		retry: false,
+		retry: 3,
+		staleTime: Infinity,
+		cacheTime: Infinity,
+		refetchOnWindowFocus: false,
 	});
 }

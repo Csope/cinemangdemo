@@ -1,16 +1,29 @@
-import { GetServerSideProps } from 'next';
 import React from 'react';
 import CardWithImage from '../../common/elements/cards/CardWithImage';
 import Masonry from 'react-masonry-css';
-import axios from 'axios';
-import { EventType, ResType } from '../../types';
+import { EventType } from '../../types';
 import { unescape } from 'lodash';
+import ContentLoader from '../../common/elements/ContentLoader';
+import { useGetEvents } from '../../queries';
 
 type PropTypes = {
 	events: EventType[];
 };
 
-const SalesAndEvents = ({ events }: PropTypes) => {
+const SalesAndEvents = () => {
+	const {
+		isLoading,
+		data: { events },
+	} = useGetEvents();
+
+	if (isLoading) {
+		return (
+			<div className="w-full mt-10 mb-20 flex justify-center">
+				<ContentLoader />
+			</div>
+		);
+	}
+
 	return (
 		<div className="SalesAndEvents page">
 			<div className="container pb-6 md:pb-10">
@@ -52,28 +65,28 @@ const SalesAndEvents = ({ events }: PropTypes) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	try {
-		const {
-			data: {
-				data: { events },
-			},
-		} = await axios.get<ResType<EventType[]>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/events`
-		);
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+// 	try {
+// 		const {
+// 			data: {
+// 				data: { events },
+// 			},
+// 		} = await axios.get<ResType<EventType[]>>(
+// 			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/events`
+// 		);
 
-		return {
-			props: {
-				events: events || [],
-			},
-		};
-	} catch (error) {
-		return {
-			props: {
-				events: [],
-			},
-		};
-	}
-};
+// 		return {
+// 			props: {
+// 				events: events || [],
+// 			},
+// 		};
+// 	} catch (error) {
+// 		return {
+// 			props: {
+// 				events: [],
+// 			},
+// 		};
+// 	}
+// };
 
 export default SalesAndEvents;

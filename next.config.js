@@ -7,7 +7,11 @@ const nextConfig = {
 		includePaths: [path.join(__dirname, 'styles')],
 	},
 	images: {
-		domains: ['gateway.sugarfitness.hu', 'localhost'],
+		domains: [
+			'gateway.sugarfitness.hu',
+			'localhost',
+			'fotexnet-fitness-production.s3.eu-north-1.amazonaws.com',
+		],
 	},
 	redirects: async () => [
 		{

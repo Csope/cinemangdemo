@@ -10,6 +10,6 @@ export default interface FrontPageResponseType {
 	class_types: {
 		cardio: ClassType[];
 		mobility: ClassType[];
-		aplifier: ClassType[];
+		amplifier: ClassType[];
 	};
 }

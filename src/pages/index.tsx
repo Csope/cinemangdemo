@@ -24,22 +24,28 @@ import CardioHeroImage from '../../public/images/cardio-hero.jpg';
 import { useRouter } from 'next/router';
 import ConfirmationPopup from '../common/site/ConfirmationPopup';
 import { useActions, useToasts } from '../hooks';
+import { useGetFrontpageData } from '../queries';
+import ContentLoader from '../common/elements/ContentLoader';
 
-type PropTypes = {
-	banners: {
-		id: number;
-		target_url: string;
-		type: number;
-		picture_url: string;
-	}[];
-	classTypes: {
-		cardio: ClassType[];
-		mobility: ClassType[];
-		amplifier: ClassType[];
-	};
-};
+// type PropTypes = {
+// 	banners: {
+// 		id: number;
+// 		target_url: string;
+// 		type: number;
+// 		picture_url: string;
+// 	}[];
+// 	classTypes: {
+// 		cardio: ClassType[];
+// 		mobility: ClassType[];
+// 		amplifier: ClassType[];
+// 	};
+// };
 
-const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
+const Home: NextPage = () => {
+	const {
+		isLoading,
+		data: { frontpage },
+	} = useGetFrontpageData();
 	const {
 		query: { delHash },
 	} = useRouter();
@@ -101,12 +107,20 @@ const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
 		}
 	}, []);
 
+	if (isLoading) {
+		return (
+			<div className="w-full mt-10 mb-20 flex justify-center">
+				<ContentLoader />
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<div className="w-full pt-0 md:pt-6 pb-10">
 				<Link href="/sales-events" passHref>
 					<div className="container ">
-						<HeroSection banners={banners} />
+						{frontpage?.banners && <HeroSection banners={frontpage.banners} />}
 					</div>
 				</Link>
 			</div>
@@ -134,66 +148,78 @@ const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
 			<div className="w-full">
 				<div className="bg-site-9 md:bg-site-2 pt-9 pb-12 md:pt-16 md:pb-12">
 					<div className="container">
-						<TwoColClassSection
-							delay={4000}
-							direction="text-img"
-							classTitle={'Cardio'}
-							classDescription={
-								'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
-							}
-							imgSrcs={
-								classTypes?.cardio?.map((_class) => _class.preview_url) || []
-							}
-							buttonInfo={{
-								isLink: true,
-								linkHref: '/',
-								text: 'Cardió órák',
-							}}
-							linkHref={`/timetable?s=category&v=${CategoryTypes.CARDIO}`}
-						/>
+						{frontpage?.class_types && (
+							<TwoColClassSection
+								delay={4000}
+								direction="text-img"
+								classTitle={'Cardio'}
+								classDescription={
+									'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
+								}
+								imgSrcs={
+									frontpage.class_types?.cardio?.map(
+										(_class) => _class.preview_url
+									) || []
+								}
+								buttonInfo={{
+									isLink: true,
+									linkHref: '/',
+									text: 'Cardió órák',
+								}}
+								linkHref={`/timetable?s=category&v=${CategoryTypes.CARDIO}`}
+							/>
+						)}
 					</div>
 				</div>
 				<div className="pt-10 pb-12 md:pt-12 md:pb-12 bg-site-2 md:bg-site-9">
 					<div className="container">
-						<TwoColClassSection
-							delay={5000}
-							classTitle={'Erősítő'}
-							direction="img-text"
-							classDescription={
-								'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
-							}
-							imgSrcs={
-								classTypes?.amplifier?.map((_class) => _class.preview_url) || []
-							}
-							buttonInfo={{
-								isLink: true,
-								linkHref: '/',
-								text: 'Erősítő órák',
-							}}
-							linkHref={`/timetable?s=category&v=${CategoryTypes.AMPLIFIER}`}
-						/>
+						{frontpage?.class_types && (
+							<TwoColClassSection
+								delay={5000}
+								classTitle={'Erősítő'}
+								direction="img-text"
+								classDescription={
+									'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
+								}
+								imgSrcs={
+									frontpage.class_types?.amplifier?.map(
+										(_class) => _class.preview_url
+									) || []
+								}
+								buttonInfo={{
+									isLink: true,
+									linkHref: '/',
+									text: 'Erősítő órák',
+								}}
+								linkHref={`/timetable?s=category&v=${CategoryTypes.AMPLIFIER}`}
+							/>
+						)}
 					</div>
 				</div>
 
 				<div className="bg-site-9 md:bg-site-2 pt-10 pb-12">
 					<div className="container">
-						<TwoColClassSection
-							delay={4500}
-							direction="text-img"
-							classTitle={'Mobilitás'}
-							classDescription={
-								'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
-							}
-							imgSrcs={
-								classTypes?.mobility?.map((_class) => _class.preview_url) || []
-							}
-							buttonInfo={{
-								isLink: true,
-								linkHref: '/',
-								text: 'Mobilitás órák',
-							}}
-							linkHref={`/timetable?s=category&v=${CategoryTypes.MOBILITY}`}
-						/>
+						{frontpage?.class_types && (
+							<TwoColClassSection
+								delay={4500}
+								direction="text-img"
+								classTitle={'Mobilitás'}
+								classDescription={
+									'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
+								}
+								imgSrcs={
+									frontpage.class_types?.mobility?.map(
+										(_class) => _class.preview_url
+									) || []
+								}
+								buttonInfo={{
+									isLink: true,
+									linkHref: '/',
+									text: 'Mobilitás órák',
+								}}
+								linkHref={`/timetable?s=category&v=${CategoryTypes.MOBILITY}`}
+							/>
+						)}
 					</div>
 				</div>
 			</div>
@@ -236,32 +262,32 @@ const Home: NextPage<PropTypes> = ({ banners, classTypes }: PropTypes) => {
 	);
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-	try {
-		const {
-			data: {
-				data: { frontpage },
-			},
-		} = await axios.get<ResType<FrontPageResponseType>>(
-			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/frontpage`
-		);
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+// 	try {
+// 		const {
+// 			data: {
+// 				data: { frontpage },
+// 			},
+// 		} = await axios.get<ResType<FrontPageResponseType>>(
+// 			`${process.env.NEXT_PUBLIC_API_ROUTE}/fitness/page_data/frontpage`
+// 		);
 
-		return {
-			props: {
-				banners: frontpage?.banners || [],
-				classTypes: frontpage?.class_types || [],
-			},
-		};
-	} catch (error) {
-		console.log(error);
+// 		return {
+// 			props: {
+// 				banners: frontpage?.banners || [],
+// 				classTypes: frontpage?.class_types || [],
+// 			},
+// 		};
+// 	} catch (error) {
+// 		console.log(error);
 
-		return {
-			props: {
-				banners: [],
-				classTypes: [],
-			},
-		};
-	}
-};
+// 		return {
+// 			props: {
+// 				banners: [],
+// 				classTypes: [],
+// 			},
+// 		};
+// 	}
+// };
 
 export default Home;
