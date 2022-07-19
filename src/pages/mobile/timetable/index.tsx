@@ -123,7 +123,7 @@ const MobileTimetable = ({ sessions, inPurchase, hashPass }: PropTypes) => {
 							</div>
 						</div>
 
-						<div>
+						<div className="-mt-5 -mb-4">
 							<ActiveFilters bgColor="bg-transparent" />
 						</div>
 						<div>

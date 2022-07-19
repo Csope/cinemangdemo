@@ -43,6 +43,10 @@ function ExpandedFilter({ show, sessions }: PropTypes) {
 			_types.push(session.class.short_title);
 	});
 
+	_locations.sort();
+	_trainers.sort();
+	_types.sort();
+
 	const setDifficultyClick = (type: DifficultyTypes) => {
 		if (type === difficulty) {
 			classFilterDispatch({

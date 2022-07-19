@@ -243,7 +243,7 @@ function FilteredClassesCalendarView({ sessions, updateSession }: PropTypes) {
 			doEnableScroll();
 		}
 	}, [showDescription]);
-	console.log(updateSession);
+
 	return (
 		<>
 			<div className="mt-8 bg-site-1">

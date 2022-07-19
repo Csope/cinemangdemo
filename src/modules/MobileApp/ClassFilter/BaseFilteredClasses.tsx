@@ -96,10 +96,12 @@ function BaseFilteredClasses({ sessions, updateSession }: PropTypes) {
 					/>
 				)}
 				{view === ViewList.LIST && (
-					<FilteredClassesListView
-						sessions={filteredSessions}
-						updateSession={updateSession}
-					/>
+					<div className="mt-4">
+						<FilteredClassesListView
+							sessions={filteredSessions}
+							updateSession={updateSession}
+						/>
+					</div>
 				)}
 			</div>
 
