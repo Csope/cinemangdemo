@@ -12,6 +12,24 @@ import DefaultEmployeeFemaleImg from '../../../public/images/defaults/oktato_def
 import DefaultEmployeeMaleImg from '../../../public/images/defaults/oktato_default-male.jpg';
 import { motion } from 'framer-motion';
 
+const orderTrainers = (trainers: TrainerType[], index: number) => {
+	const orderedTrainers: TrainerType[] = [];
+
+	trainers.map((trainer, i) => {
+		if (i === 2) {
+			orderedTrainers.push(trainers[index]);
+		}
+
+		if (i === index) {
+			return;
+		}
+
+		orderedTrainers.push(trainer);
+	});
+
+	return orderedTrainers;
+};
+
 const Trainers: NextPage = () => {
 	const { data, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<
@@ -19,9 +37,16 @@ const Trainers: NextPage = () => {
 	>(undefined);
 	const trainers = data?.data.trainers || [];
 
+	const findMakarIndex = trainers.findIndex(
+		(trainer) => trainer.last_name.toLowerCase() === 'makár'
+	);
+
+	const orderedTrainers =
+		findMakarIndex > -1 ? orderTrainers(trainers, findMakarIndex) : trainers;
+
 	useEffect(() => {
-		if (!selectedTrainer && data?.data.trainers) {
-			setSelectedTrainer(data?.data.trainers[0]);
+		if (!selectedTrainer && orderedTrainers[2]) {
+			setSelectedTrainer(orderedTrainers[2]);
 		}
 	}, [data]);
 
@@ -39,13 +64,13 @@ const Trainers: NextPage = () => {
 					</div>
 				) : (
 					<FiveColSwiper
-						initialSlide={0}
+						initialSlide={2}
 						onSlideChange={(index: number) => {
-							if (trainers && trainers[index]) {
-								setSelectedTrainer(trainers[index]);
+							if (orderedTrainers && orderedTrainers[index]) {
+								setSelectedTrainer(orderedTrainers[index]);
 							}
 						}}
-						imgSrcs={trainers.map((trainer) =>
+						imgSrcs={orderedTrainers.map((trainer) =>
 							trainer.preview_url
 								? `${trainer.preview_url}`
 								: trainer.gender === 'F'

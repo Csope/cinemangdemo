@@ -11,6 +11,24 @@ import { TrainerType } from '../../../types';
 import DefaultEmployeeFemaleImg from '../../../../public/images/defaults/oktato_default-female.jpg';
 import DefaultEmployeeMaleImg from '../../../../public/images/defaults/oktato_default-male.jpg';
 
+const orderTrainers = (trainers: TrainerType[], index: number) => {
+	const orderedTrainers: TrainerType[] = [];
+
+	trainers.map((trainer, i) => {
+		if (i === 1) {
+			orderedTrainers.push(trainers[index]);
+		}
+
+		if (i === index) {
+			return;
+		}
+
+		orderedTrainers.push(trainer);
+	});
+
+	return orderedTrainers;
+};
+
 const MobileTrainers = () => {
 	const { data, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<
@@ -18,9 +36,16 @@ const MobileTrainers = () => {
 	>(undefined);
 	const trainers = data?.data.trainers || [];
 
+	const findMakarIndex = trainers.findIndex(
+		(trainer) => trainer.last_name.toLowerCase() === 'makár'
+	);
+
+	const orderedTrainers =
+		findMakarIndex > -1 ? orderTrainers(trainers, findMakarIndex) : trainers;
+
 	useEffect(() => {
-		if (!selectedTrainer && data?.data.trainers) {
-			setSelectedTrainer(data?.data.trainers[0]);
+		if (!selectedTrainer && orderedTrainers[1]) {
+			setSelectedTrainer(orderedTrainers[1]);
 		}
 	}, [data]);
 
@@ -31,17 +56,17 @@ const MobileTrainers = () => {
 					<div className="flex items-center justify-center pt-6 pb-10">
 						<ContentLoader />
 					</div>
-				) : trainers.length > 0 ? (
+				) : orderedTrainers.length > 0 ? (
 					<>
 						<div className="mb-6">
 							<FiveColSwiper
-								initialSlide={0}
+								initialSlide={1}
 								onSlideChange={(index: number) => {
-									if (trainers && trainers[index]) {
-										setSelectedTrainer(trainers[index]);
+									if (orderedTrainers && orderedTrainers[index]) {
+										setSelectedTrainer(orderedTrainers[index]);
 									}
 								}}
-								imgSrcs={trainers.map((trainer) =>
+								imgSrcs={orderedTrainers.map((trainer) =>
 									trainer.preview_url
 										? `${trainer.preview_url}`
 										: trainer.gender === 'F'
