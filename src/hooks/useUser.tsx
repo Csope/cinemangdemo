@@ -246,6 +246,26 @@ const useUser = () => {
 		}
 	};
 
+	const doDeleteProfile = async () => {
+		try {
+			if (!user?.id) throw new Error('UserId not found');
+
+			const { data } = await axios.delete<ResType<[]>>(
+				`${process.env.NEXT_PUBLIC_USER_SERVICE_ROUTE}/users/${user.id}`
+			);
+
+			return {
+				status: data.status,
+				message: data.message || 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		} catch (error) {
+			return {
+				status: false,
+				message: 'Belső kiszolgálóhiba, próbáld újra később',
+			};
+		}
+	};
+
 	return {
 		data,
 		status,
@@ -261,6 +281,7 @@ const useUser = () => {
 		doChangePassword,
 		doVerifyEmail,
 		doRegisterSocial,
+		doDeleteProfile,
 	};
 };
 
