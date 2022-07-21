@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import { useUser } from '../../hooks';
+import DeleteProfile from '../../modules/Profile/DeleteProfile';
 import ProfileContent from '../../modules/Profile/ProfileContent';
 
 const Profile = () => {
@@ -21,6 +22,8 @@ const Profile = () => {
 					</h1>
 				</div>
 				<ProfileContent />
+
+				<DeleteProfile />
 			</div>
 		</div>
 	);

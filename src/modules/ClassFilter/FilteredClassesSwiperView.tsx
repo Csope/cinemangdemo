@@ -36,7 +36,7 @@ function FilteredClassesSwiperView({
 	return (
 		<div className={`FilteredClassesSwiperView ${swiperBg}`}>
 			{isEmpty(sessions) ? (
-				<div className="bg-white divide-site-2 border-t border-b border-site-2 ">
+				<div className="bg-white divide-site-2 mt-4 border-t border-b border-site-2 ">
 					<div className="text-center py-20 text-xl h1-shadow h1-shadow--purple">
 						Sajnos nincs találat!
 					</div>

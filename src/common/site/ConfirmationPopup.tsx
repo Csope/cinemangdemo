@@ -67,7 +67,7 @@ const ConfirmationPopup = ({
 
 						<div className="text-center px-6 text-lg mb-6">{text}</div>
 
-						<div className="grid grid-cols-1 reverse md:grid-cols-2 gap-4 md:gap-10 w-full">
+						<div className="grid grid-cols-1 reverse md:grid-cols-2 gap-6 md:gap-10 w-full">
 							<div>
 								<Btn
 									text={cancelText}
