@@ -11,23 +11,6 @@ import { TrainerType } from '../../../types';
 import DefaultEmployeeFemaleImg from '../../../../public/images/defaults/oktato_default-female.jpg';
 import DefaultEmployeeMaleImg from '../../../../public/images/defaults/oktato_default-male.jpg';
 
-const orderTrainers = (trainers: TrainerType[], index: number) => {
-	const orderedTrainers: TrainerType[] = [];
-
-	trainers.map((trainer, i) => {
-		if (i === 1) {
-			orderedTrainers.push(trainers[index]);
-		}
-
-		if (i === index) {
-			return;
-		}
-
-		orderedTrainers.push(trainer);
-	});
-
-	return orderedTrainers;
-};
 
 const MobileTrainers = () => {
 	const { data, isLoading } = useGetTrainers();
@@ -40,12 +23,9 @@ const MobileTrainers = () => {
 		(trainer) => trainer.last_name.toLowerCase() === 'makár'
 	);
 
-	const orderedTrainers =
-		findMakarIndex > -1 ? orderTrainers(trainers, findMakarIndex) : trainers;
-
 	useEffect(() => {
-		if (!selectedTrainer && orderedTrainers[1]) {
-			setSelectedTrainer(orderedTrainers[1]);
+		if (!selectedTrainer && data?.data.trainers) {
+			setSelectedTrainer(data?.data.trainers[0]);
 		}
 	}, [data]);
 
@@ -56,17 +36,17 @@ const MobileTrainers = () => {
 					<div className="flex items-center justify-center pt-6 pb-10">
 						<ContentLoader />
 					</div>
-				) : orderedTrainers.length > 0 ? (
+				) : trainers.length > 0  ? (
 					<>
 						<div className="mb-6">
 							<FiveColSwiper
-								initialSlide={1}
+								initialSlide={findMakarIndex}
 								onSlideChange={(index: number) => {
-									if (orderedTrainers && orderedTrainers[index]) {
-										setSelectedTrainer(orderedTrainers[index]);
+									if (trainers && trainers[index]) {
+										setSelectedTrainer(trainers[index]);
 									}
 								}}
-								imgSrcs={orderedTrainers.map((trainer) =>
+								imgSrcs={trainers.map((trainer) =>
 									trainer.preview_url
 										? `${trainer.preview_url}`
 										: trainer.gender === 'F'
@@ -119,11 +99,8 @@ const MobileTrainers = () => {
 								{selectedTrainer?.last_name} {selectedTrainer?.first_name}
 							</h1>
 						</div>
-						<div className="text-center p-quote p-quote--white">
+						<div className="text-center pb-6 p-quote p-quote--white">
 							{unescape(selectedTrainer.motto)}
-						</div>
-						<div className="text-center font-montserrat italic text-white py-6 md:py-10">
-							{selectedTrainer.position}
 						</div>
 						<div className="flex gap-6 justify-center mb-10 md:mb-14 flex-wrap">
 							<LinkBtn
@@ -144,7 +121,6 @@ const MobileTrainers = () => {
 								/>
 							))}
 						</div>
-
 						<div className="text-white mb-10">
 							<div
 								dangerouslySetInnerHTML={{
