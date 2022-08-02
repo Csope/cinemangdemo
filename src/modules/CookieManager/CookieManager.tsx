@@ -2,7 +2,7 @@ import CookieConsent from 'react-cookie-consent';
 
 const CookieManager = () => {
 	return (
-		<CookieConsent
+		<CookieConsent 
 			style={{ background: '#a768b3', alignItems: 'center' }}
 			buttonStyle={{
 				color: 'white',

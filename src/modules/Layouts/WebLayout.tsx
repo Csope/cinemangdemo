@@ -1,3 +1,4 @@
+import CookieManager from '../CookieManager/CookieManager';
 import SiteFooter from '../SiteFooter/SiteFooter';
 import HeaderLogo from '../SiteHeader/HeaderLogo';
 import MainNavbar from '../SiteHeader/MainNavbar';
@@ -25,7 +26,9 @@ const WebLayout = ({ children }: PropType) => {
 				{children}
 			</div>
 			<SiteFooter />
+			<CookieManager />
 		</div>
+		
 	);
 };
 

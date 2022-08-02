@@ -1,7 +1,6 @@
 import { SessionProvider } from 'next-auth/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import CookieManager from '../modules/CookieManager/CookieManager';
 import {
 	ClassFilterProvider,
 	SelectedSessionProvider,
@@ -69,7 +68,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 												<Layout>
 													<Component {...pageProps} />
 												</Layout>
-												<CookieManager />
+												
 												<OAuthHandler />
 												<NextNProgress
 													color="#680b65"
