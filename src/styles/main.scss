@@ -419,10 +419,7 @@ input:-webkit-autofill:active {
 	background:cover;
 }
 
-.square-grid-bg{
+.pattern{
+	background-image: url('../../public/pattern.png');
 	position: sticky;
-	background-size: 4px 4px;
-	background-image:
-    linear-gradient(to right, rgba(0,0,0, 0.3) 2px, transparent 2px),
-    linear-gradient(to bottom, rgba(0,0,0, 0.3) 2px, transparent 2px);
 }

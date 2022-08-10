@@ -15,7 +15,7 @@ const WebLayout = ({ children }: PropType) => {
 	return (
 		<div className="web-layout-wrapper">
 					<VideoBg />
-			<div className="main-wrapper square-grid-bg">
+			<div className="main-wrapper pattern">
 				<div className="w-full py-3">
 					<div className="container relative">
 						<div className="flex px-4 md:px-0 items-center">
