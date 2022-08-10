@@ -117,13 +117,13 @@ const FiveColSwiper = ({
 			</Swiper>
 
 			<div
-				className="FiveColSwiper__prev-btn text-site-2 cursor-pointer hidden md:block"
+				className="FiveColSwiper__prev-btn text-site-6 cursor-pointer hidden md:block"
 				onClick={() => controlledSwiper?.slidePrev()}
 			>
 				<BsChevronCompactLeft />
 			</div>
 			<div
-				className="FiveColSwiper__next-btn text-site-2 cursor-pointer hidden md:block"
+				className="FiveColSwiper__next-btn text-site-6 cursor-pointer hidden md:block"
 				onClick={() => controlledSwiper?.slideNext()}
 			>
 				<BsChevronCompactRight />

@@ -19,8 +19,8 @@ function SimpleButton({
 	return (
 		<motion.button
 			onClick={clickEvent}
-			className={`flex items-center justify-center text-center rounded-2xl py-1 px-4 text-sm uppercase tracking-wider ${customClasses}`}
-		>
+			className={`flex items-center justify-center text-center rounded-3xl py-1 px-4 uppercase tracking-wider ${customClasses}`}
+			>
 			{appendBefore && appendBefore}
 			{text}
 			{appendAfter && appendAfter}

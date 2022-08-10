@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
+const withVideos = require('next-videos');
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -13,6 +14,7 @@ const nextConfig = {
 			'fotexnet-fitness-production.s3.eu-north-1.amazonaws.com',
 		],
 	},
+	
 	redirects: async () => [
 		{
 			source: '/:path*',
@@ -23,4 +25,4 @@ const nextConfig = {
 	],
 };
 
-module.exports = nextConfig;
+module.exports = withVideos();

@@ -10,8 +10,8 @@ const menu = [
 	{ title: 'Kezdőlap', path: '/' },
 	{ title: 'Árak', path: '/prices' },
 	{ title: 'Akciók/Események', path: '/sales-events' },
-	{ title: 'Oktatók', path: '/trainers' },
-	{ title: 'Órarend', path: '/timetable' },
+	// { title: 'Oktatók', path: '/trainers' },
+	// { title: 'Órarend', path: '/timetable' },
 ];
 
 const MainNavbar = (): JSX.Element => {
@@ -25,7 +25,7 @@ const MainNavbar = (): JSX.Element => {
 				<div className="relative">
 					<div className="hidden md:block">
 						<div className="flex flex-col top-full left-0 right-0 z-50 ">
-							<nav className="w-full text-center flex flex-row justify-center gap-8 uppercase p-6 md:p-2  text-md text-site-4">
+							<nav className="w-full text-center flex flex-row justify-center gap-8 uppercase p-6 md:p-2  text-md text-white">
 								{menu.map((item, i) => (
 									<Link key={i} href={item.path}>
 										<a

@@ -4,6 +4,7 @@ import { getNextDates } from '../../utils';
 import { hu } from 'date-fns/locale';
 import { useClassFilter } from '../../hooks';
 import { ViewList } from '../../types/ClassFilterTypes';
+import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 
 function DateFilter(): JSX.Element {
 	const {
@@ -53,32 +54,47 @@ function DateFilter(): JSX.Element {
 			return (
 				<div
 					key={i}
-					className={`w-1/3 md:w-auto py-2 md:px-6 inline-block cursor-pointer select-none ${
-						filteredStartDate.includes(formattedDate) && 'bg-site-4 text-site-1'
-					}`}
+					className={`w-1/3 md:w-auto py-2 md:px-3 inline-block cursor-pointer select-none rounded-full ${filteredStartDate.includes(formattedDate) && 'bg-site-4 text-site-6'
+						}`}
 					onClick={() => handleDateClick(formattedDate, date)}
 				>
 					<div className="flex flex-col justify-center items-center">
-						<div className="whitespace-nowrap uppercase text-xs">
+						<div className="whitespace-nowrap uppercase text-xs font-bold px-3">
 							{i === 0
 								? 'MA'
 								: format(date, 'EEEE', {
-										locale: hu,
-								  })}
+									locale: hu,
+								})}
 						</div>
-						<div className="whitespace-nowrap uppercase text-sm">
+						<div className="whitespace-nowrap uppercase text-sm font-bold">
 							{formattedDate}
 						</div>
 					</div>
+
 				</div>
+
 			);
 		});
 	};
 
 	return (
-		<div className="w-full bg-site-6 mt-8">
-			<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-4 md:flex md:justify-center custom-scrollbar--dark">
-				{generateDates()}
+		<div className='relative'>
+			<div
+				className="FiveColSwiper__date-prev text-site-6 cursor-pointer hidden md:block"
+				onClick={() => console.log}
+			>
+				<BsChevronCompactLeft />
+			</div>
+			<div
+				className="FiveColSwiper__date-next text-site-6 cursor-pointer hidden md:block"
+				onClick={() => console.log}
+			>
+				<BsChevronCompactRight />
+			</div>
+			<div className="w-full bg-site-2 pt-8">
+				<div className="container max-w-full md:max-w-none overflow-x-scroll md:overflow-x-auto whitespace-nowrap text-site-6 md:flex md:justify-center custom-scrollbar--dark">
+					{generateDates()}
+				</div>
 			</div>
 		</div>
 	);

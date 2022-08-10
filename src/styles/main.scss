@@ -58,6 +58,7 @@ img {
 	}
 }
 
+
 .PhoneInputInput {
 	@apply w-full rounded px-2 py-3 focus-visible:outline focus-visible:outline-site-5 ml-2;
 
@@ -92,7 +93,7 @@ img {
 }
 
 .page {
-	padding-top: 20px;
+	// padding-top: 20px;
 }
 
 .cookie-link {
@@ -117,10 +118,11 @@ img {
 	}
 }
 
+
 .TriangleDividerNextItem {
 	width: 100%;
 	margin-top: -40px;
-	margin-bottom: -2px;
+	// margin-bottom: -2px;
 	height: 40px;
 	clip-path: polygon(0 100%, 50% 0, 100% 100%, 100% 100%, 50% 100%, 0 100%);
 
@@ -183,7 +185,8 @@ img {
 }
 
 .site-footer {
-	background-image: url('../../public//images//pattern-footer.png');
+	// background-image: url('../../public//images//pattern-footer.png');
+	background-color: black;
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -388,16 +391,38 @@ input:-webkit-autofill:active {
 	}
 
 	&__card {
-		height: 180px;
+		width: 150px;
+		height: 220px;
 
-		@media only screen and (min-width: 450px) {
-			height: 185px;
-		}
-		@media only screen and (min-width: 540px) {
-			height: 240px;
-		}
-		@media only screen and (min-width: 768px) {
-			height: 255px;
-		}
+		// @media only screen and (min-width: 450px) {
+		// 	height: 185px;
+		// }
+		// @media only screen and (min-width: 540px) {
+		// 	height: 240px;
+		// }
+		// @media only screen and (min-width: 768px) {
+		// 	height: 255px;
+		// }
 	}
+}
+
+.contact-background-triangle{
+	background-image:
+	linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+	url('../../public/images/contactBG.jpg');
+}
+.contact-background{
+	background-image:
+		linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0) 100%),
+		url('../../public/images/contactBG.jpg');
+
+	background:cover;
+}
+
+.square-grid-bg{
+	position: sticky;
+	background-size: 4px 4px;
+	background-image:
+    linear-gradient(to right, rgba(0,0,0, 0.3) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(0,0,0, 0.3) 2px, transparent 2px);
 }

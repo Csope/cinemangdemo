@@ -4,23 +4,31 @@ interface PropTypes {
 	children: React.ReactNode;
 	bgClass?: string;
 	borderColor?: string;
+	mTop?: number;
+	height?: number;
+	customClass?: string;
 }
 
 const TriangleDividerNextItem = ({
 	children,
 	bgClass,
 	borderColor,
+	mTop,
+	height,
+	customClass,
+
 }: PropTypes) => {
 	return (
 		<div
-			className={`TriangleDividerNextItem  ${
+			className={`TriangleDividerNextItem ${customClass} ${
 				bgClass ? bgClass : 'bg-site-2'
-			} flex items-center justify-center`}
-			style={{
-				borderBottom: borderColor
-					? `1px solid ${borderColor}`
-					: '1px solid #bd9acc',
-			}}
+			} ${ mTop ? mTop : '' } flex items-center justify-center`}
+			style={{marginTop: mTop, height: height }}
+			// style={{
+			// 	borderBottom: borderColor
+			// 		? `1px solid ${borderColor}`
+			// 		: '1px solid #bd9acc',
+			// }}
 		>
 			{children}
 		</div>

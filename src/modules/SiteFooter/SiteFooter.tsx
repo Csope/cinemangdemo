@@ -2,11 +2,13 @@ import Link from 'next/link';
 import React from 'react';
 import { FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi';
 import BrandLogo from '../../common/site/BrandLogo';
+import FormWithMap from './FormWithMap';
 
 const SiteFooter = () => {
 	return (
 		<div className="site-footer bg-site-15 text-white">
-			<div className="container flex flex-col md:flex-row px-4 py-10">
+			<FormWithMap/>
+			<div className="container flex flex-col md:flex-row px-4 py-10 bg-black">
 				<div className="w-full md:w-3/12 mb-8">
 					<div className=" font-bold mb-4 md:mb-6 text-center md:text-left">
 						Nyitvatartás

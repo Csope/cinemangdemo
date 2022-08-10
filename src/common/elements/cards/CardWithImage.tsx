@@ -6,11 +6,12 @@ type PropTypes = {
 	 * Source of the header image
 	 */
 	imgSrc: string;
+	customClass?: string;
 
 	/**
 	 * Body content
 	 */
-	bodyContent: JSX.Element;
+	bodyContent: string;
 
 	mobileApp?: boolean;
 };
@@ -21,25 +22,24 @@ const CardWithImage = ({
 	imgSrc,
 	bodyContent,
 	mobileApp = false,
+	customClass,
 }: PropTypes) => {
 	return (
-		<div className="CardWithImage rounded-xl md:rounded-none">
-			<div>
-				<div className="CardWithImage__header">
-					<div className="relative lazy-img-container lazy-img-container__card">
-						<Image
-							src={imgSrc || svgBG}
-							alt="card-img"
-							layout="fill"
-							className="lazy-img lazy-img__right"
-							placeholder="blur"
-							blurDataURL={svgBG}
-						/>
-					</div>
+		<div className="CardWithImage md:rounded-xl bg-site-4 w-50">
+			<div className="CardWithImage__header">
+				<div className="relative lazy-img-container lazy-img-container__card h-36">
+					<Image
+						src={imgSrc || svgBG}
+						alt="card-img"
+						layout="fill"
+						className="lazy-img lazy-img__right"
+						placeholder="blur"
+						blurDataURL={svgBG}
+					/>
 				</div>
-				<div className="CardWithImage__body overflow-hidden">
-					<div style={{ padding: '18px 16px' }}>{bodyContent}</div>
-				</div>
+			</div>
+			<div className="CardWithImage__body overflow-hidden text-center">
+				<div style={{ padding: '8px 8px' }} className={`text-mon ${customClass}`} >{bodyContent}</div>
 			</div>
 		</div>
 	);

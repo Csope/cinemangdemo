@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import TransformedImage from '../../common/elements/TransformedImage';
-import test1 from '../../../public/images/cks_kezdoBerlet.jpg';
-import test2 from '../../../public/images/cks_ujraNyitva2.jpg';
-import test3 from '../../../public/images/cks_villam12.jpg';
+// import test1 from '../../../public/images/cks_kezdoBerlet.jpg';
+// import test2 from '../../../public/images/cks_ujraNyitva2.jpg';
+// import test3 from '../../../public/images/cks_villam12.jpg';
+import test1 from '../../../public/images/banners/1.jpeg';
+import test2 from '../../../public/images/banners/2.jpeg';
+import test3 from '../../../public/images/banners/3.jpeg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCreative, Pagination, Autoplay } from 'swiper';
 
 type PropTypes = {
-	banners: {
+	banners?: {
 		id: number;
 		target_url: string;
 		type: number;
@@ -20,7 +23,7 @@ const HeroSection = ({ banners }: PropTypes) => {
 	const [degree, setDegree] = useState({
 		first: 0,
 	});
-
+const array = [1,2,3]
 	const transformImageOnScroll = () => {
 		const firstPicTop = firstPicRef.current?.offsetTop;
 		const firstPicHeight = firstPicRef.current?.clientHeight;
@@ -64,24 +67,24 @@ const HeroSection = ({ banners }: PropTypes) => {
 				className="hidden md:block"
 				style={{ marginBottom: `-${8 * degree.first}px` }}
 			>
-				{banners[0] && (
+				{/* {banners[0] && ( */}
 					<div ref={firstPicRef}>
 						<TransformedImage
 							imgAlt="image"
-							imgSrc={banners[0].picture_url}
+							imgSrc={test1.src}
 							transform={`rotateX(-${3 + degree.first * 0.8}deg) scale(${
 								0.95 - degree.first / 300
 							})`}
 						/>
 					</div>
-				)}
+				{/* )} */}
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 mt-3 md:-mt-10">
-					{banners[1] && (
+					{/* {banners[1] && ( */}
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={banners[1].picture_url}
+								imgSrc={test2.src}
 								transform={`rotateY(3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(-${3 + degree.first / 3}deg) scale(${
@@ -91,13 +94,13 @@ const HeroSection = ({ banners }: PropTypes) => {
 								}px)`}
 							/>
 						</div>
-					)}
+					{/* )} */}
 
-					{banners[2] && (
+					{/* {banners[2] && ( */}
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={banners[2].picture_url}
+								imgSrc={test3.src}
 								transform={`rotateY(-3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(${3 + degree.first / 3}deg) scale(${
@@ -107,7 +110,7 @@ const HeroSection = ({ banners }: PropTypes) => {
 								}px)`}
 							/>
 						</div>
-					)}
+					{/* )} */}
 				</div>
 			</div>
 
@@ -134,10 +137,11 @@ const HeroSection = ({ banners }: PropTypes) => {
 							disableOnInteraction: false,
 						}}
 					>
-						{banners.map((banner) => (
-							<SwiperSlide key={banner.id}>
+						
+						{array.map((array) => (
+							<SwiperSlide key={1}>
 								<div className={`w-full transformed-image-container`}>
-									<img src={banner.picture_url} />
+									<img src={''} />
 								</div>
 							</SwiperSlide>
 						))}

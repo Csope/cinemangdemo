@@ -19,10 +19,9 @@
 		// box-shadow: 1px 3px 8px 0px #27a7b3;
 		@apply bg-site-5 text-site-11;
 	}
-	.btn-gray {
+	.btn-red {
 		// box-shadow: 1px 3px 8px 0px #252626;
-		background-color: #cccdd2;
-		@apply text-gray-900;
+		@apply bg-site-16 text-white;
 	}
 	.btn-magenta {
 		// box-shadow: 1px 3px 8px 0px #252626;
@@ -32,6 +31,13 @@
 		// box-shadow: 1px 3px 8px 0px #252626;
 		// background-color: #a6a6a6;
 		@apply text-white bg-site-21;
+	}
+	.text-mon{
+		@apply font-bold font-montserrat;
+	}
+
+	.text-stretch{
+		font-stretch: expanded;
 	}
 
 	.h3 {
@@ -63,7 +69,7 @@
 	}
 
 	.h1-shadow {
-		@apply uppercase font-extrabold italic text-xl font-montserrat;
+		@apply uppercase font-extrabold text-xl font-montserrat;
 
 		@media only screen and (min-width: 576px) {
 			@apply text-2xl;
@@ -75,10 +81,10 @@
 			font-size: 32px;
 		}
 
-		&--white {
-			@apply text-white;
-			text-shadow: 2px 2px #9467a8;
-		}
+		// &--white {
+		// 	@apply text-white;
+		// 	text-shadow: 2px 2px #9467a8;
+		// }
 
 		&--white-2 {
 			@apply text-white;
@@ -107,10 +113,16 @@
 	}
 
 	.bg-white-linear {
-		background: linear-gradient(0deg, #e3d5ec 0%, #e3d5ec 50%, white 100%);
+		background: linear-gradient(0deg, #e3d5ec 0%, #e3d5ec 50%, #f9faff 100%);
 	}
 	.bg-purple-linear {
-		background: linear-gradient(0deg, #bc9acc 0%, #b391c3 50%, #9772a9 100%);
+		background: linear-gradient(0deg, #f9faff 0%, #b391c3 50%, #9772a9 100%);
+	}
+	.bg-gray-linear {
+		background: linear-gradient(0deg, #f9faff 0%, #d6dcec 50%, #cbd2ee 100%);
+	}
+	.bg-gray-linear2 {
+		background: linear-gradient(0deg, #f9faff 0%, #d6dcec 50%, #b7bdd5 100%);
 	}
 	.bg-cian-linear {
 		background: linear-gradient(0deg, #d3e6ea 0%, #e8f4f7 50%, #ffffff 100%);

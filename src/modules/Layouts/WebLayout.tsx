@@ -4,6 +4,8 @@ import HeaderLogo from '../SiteHeader/HeaderLogo';
 import MainNavbar from '../SiteHeader/MainNavbar';
 import MobileHeaderUser from '../SiteHeader/MobileHeaderUser';
 import MobileNavbar from '../SiteHeader/MobileNavbar';
+import VideoBg from '../../common/elements/VideoBg';
+import FormWithMap from '../SiteFooter/FormWithMap';
 
 type PropType = {
 	children: JSX.Element;
@@ -12,7 +14,8 @@ type PropType = {
 const WebLayout = ({ children }: PropType) => {
 	return (
 		<div className="web-layout-wrapper">
-			<div className="main-wrapper bg-site-17">
+					<VideoBg />
+			<div className="main-wrapper square-grid-bg">
 				<div className="w-full py-3">
 					<div className="container relative">
 						<div className="flex px-4 md:px-0 items-center">
@@ -28,7 +31,7 @@ const WebLayout = ({ children }: PropType) => {
 			<SiteFooter />
 			<CookieManager />
 		</div>
-		
+
 	);
 };
 

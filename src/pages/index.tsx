@@ -8,6 +8,7 @@ import LinkBtn from '../common/elements/buttons/LinkBtn';
 import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
 import TriangleDivider from '../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../common/elements/TriangleDividerNextItem';
+import VideoBg from '../common/elements/VideoBg';
 import CardioSection from '../modules/FitnessFeatures/CardioSection';
 import CareerSection from '../modules/FitnessFeatures/CareerSection';
 import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
@@ -26,7 +27,21 @@ import ConfirmationPopup from '../common/site/ConfirmationPopup';
 import { useActions, useToasts } from '../hooks';
 import { useGetFrontpageData } from '../queries';
 import ContentLoader from '../common/elements/ContentLoader';
+import IconCard from '../common/icons/IconCard';
+import IconList from '../common/icons/IconList';
+import DateFilter from '../modules/ClassFilter/DateFilter';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
+import FiveColSwiper from '../common/swiper/FiveColSwiper';
+import Cinema from '../../public/norman.jpeg';
+import { motion } from 'framer-motion';
+
+
+import { useQuery } from 'react-query';
+import SimpleButton from '../common/elements/buttons/SimpleButton';
+import CardWithImage from '../common/elements/cards/CardWithImage';
+import MovieList from './list';
 // type PropTypes = {
 // 	banners: {
 // 		id: number;
@@ -42,6 +57,7 @@ import ContentLoader from '../common/elements/ContentLoader';
 // };
 
 const Home: NextPage = () => {
+
 	const {
 		isLoading,
 		data: { frontpage },
@@ -53,6 +69,12 @@ const Home: NextPage = () => {
 	const { doResignReservationWithHash } = useActions();
 	const [showDelReservation, setShowDelReservation] = useState(false);
 	const [delLoading, setDelLoading] = useState(false);
+	const [show, setShow] = useState(true);
+
+	const ToggleData = () => {
+		setShow(!show);
+	};
+	const testArray = [1, 2, 3, 4, 5];
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
 	const [fhRef, fhInView] = useInView({
@@ -114,139 +136,139 @@ const Home: NextPage = () => {
 			</div>
 		);
 	}
-
 	return (
-		<div>
+		<div className='relative'>
 			<div className="w-full pt-0 md:pt-6 pb-10">
 				<Link href="/sales-events" passHref>
-					<div className="container ">
-						{frontpage?.banners && <HeroSection banners={frontpage.banners} />}
+					<div className="container">
+						{/* {frontpage?.banners && <HeroSection banners={frontpage.banners} />} */}
+						<HeroSection />
 					</div>
 				</Link>
 			</div>
 			<TriangleDivider bgClass="bg-site-3" mTop={-40} />
-			<TriangleDividerNextItem bgClass="bg-purple-linear">
-				<div className="mt-10 hidden md:block ">
-					<h1 className="h1-shadow h1-shadow--white">Csoportos órák</h1>
+			<TriangleDividerNextItem bgClass="bg-gray-linear">
+				<div className="mt-16 md:block ">
+					<h1 className="h1-shadow">Moziműsor</h1>
 				</div>
 			</TriangleDividerNextItem>
-			<div
+			{/* <div
 				className="bg-site-2 md:hidden pb-3 pt-4"
 				style={{ marginBottom: -2 }}
 			>
 				<h1 className="h1-shadow text-center h1-shadow--white">
 					Csoportos órák
 				</h1>
-			</div>
-			<div className="text-center bg-site-2 px-4 md:px-0 pb-12 md:pb-0">
-				<LinkBtn
+			</div> */}
+			<div className="flex justify-center gap-2 bg-site-2 px-4 md:px-0 pb-12 md:pb-0">
+				{/* <LinkBtn
 					text="Összes óratípus"
 					customClasses="btn-dark mx-auto mt-3 w-full md:w-auto"
 					href="/timetable"
-				/>
-			</div>
-			<div className="w-full">
-				<div className="bg-site-9 md:bg-site-2 pt-9 pb-12 md:pt-16 md:pb-12">
-					<div className="container">
-						{frontpage?.class_types && (
-							<TwoColClassSection
-								delay={4000}
-								direction="text-img"
-								classTitle={'Cardio'}
-								classDescription={
-									'A cardio edzés lényege, hogy felpörgeti a pulzust, így a szervezet több zsírt éget el. Egy komplex zsírégető edzés nem csak ugrálásból áll, hiszen az anyagcsere fokozásához az izomfejlesztés éppúgy fontos. Az a legjobb, ha pulzusnövelő és erősítő gyakorlatok váltják egymást.'
-								}
-								imgSrcs={
-									frontpage.class_types?.cardio?.map(
-										(_class) => _class.preview_url
-									) || []
-								}
-								buttonInfo={{
-									isLink: true,
-									linkHref: '/',
-									text: 'Cardió órák',
-								}}
-								linkHref={`/timetable?s=category&v=${CategoryTypes.CARDIO}`}
-							/>
-						)}
+				/> */}
+				{/* Keresō form ../../common/form mappapaba csinalni egy componenst */}
+				<div className="px-3 py-2 rounded-full cursor-pointer bg-site-4">
+					<IconCard fillColor='#6b78a4' />
+				</div>
+				<div className="px-3 py-2 rounded-full cursor-pointer bg-site-6">
+					<IconList fillColor='#f4f8f7' />
+				</div>
+				<input className="w-1/4 block rounded-full py-1 pl-10 pr-7" style={{ border: "1px solid #5f698b" }}
+					type="search" name="search" placeholder="Keresés" />
+				<div className='flex'>
+					<div className="pl-3 pr-2 py-2 rounded-tl-3xl rounded-bl-3xl cursor-pointer bg-site-4">
+						<IconCard fillColor='#6b78a4' />
+					</div>
+					<div className="pl-2 pr-3 py-2 rounded-tr-3xl rounded-br-3xl cursor-pointer bg-site-6">
+						<IconList fillColor='#f4f8f7' />
 					</div>
 				</div>
-				<div className="pt-10 pb-12 md:pt-12 md:pb-12 bg-site-2 md:bg-site-9">
-					<div className="container">
-						{frontpage?.class_types && (
-							<TwoColClassSection
-								delay={5000}
-								classTitle={'Erősítő'}
-								direction="img-text"
-								classDescription={
-									'Az erősítő edzés lényege, hogy megnöveli az izomtömeget, ezáltal átalakul a test felépítése és a szervezet anyagcseréje. Ezekkel az edzésformákkal javul a kondíciónk, alkalmas lehet tömegnövelésre, alakformálásra is.'
-								}
-								imgSrcs={
-									frontpage.class_types?.amplifier?.map(
-										(_class) => _class.preview_url
-									) || []
-								}
-								buttonInfo={{
-									isLink: true,
-									linkHref: '/',
-									text: 'Erősítő órák',
-								}}
-								linkHref={`/timetable?s=category&v=${CategoryTypes.AMPLIFIER}`}
-							/>
-						)}
+			</div>
+			<div className='Trainers_page page bg-site-2'>
+				<div className='container'>
+					<div className='md:px-10 relative'>
+						<DateFilter />
 					</div>
+				</div>
+				<div className='flex justify-center py-4'>
+					<SimpleButton customClasses='bg-site-27 text-white' clickEvent={ToggleData} text={!show ? "Normál nézet" : 'Lista nézet'} />
+				</div>
+			</div>
+			{show && <div className="Trainers_page page bg-site-2 pb-10 border-b-2">
+				<div className="mb-8 container">
+
+					{isLoading ? (
+						<div className="flex items-center justify-center pt-20 pb-28">
+							<ContentLoader />
+						</div>
+					) : (
+						<FiveColSwiper
+							initialSlide={5}
+							onSlideChange={(index: number) => {
+							}}
+							imgSrcs={[Cinema.src, Cinema.src, Cinema.src, Cinema.src, Cinema.src]
+							}
+						/>
+					)}
 				</div>
 
-				<div className="bg-site-9 md:bg-site-2 pt-10 pb-12">
-					<div className="container">
-						{frontpage?.class_types && (
-							<TwoColClassSection
-								delay={4500}
-								direction="text-img"
-								classTitle={'Mobilitás'}
-								classDescription={
-									'Ezeken az órákon kifejezetten a különböző izomcsoportokra fókuszálunk és növeljük testünk rugalmasságát is. Erősítő és nyújtó gyakorlatok is megtalálhatók bennük és kifejezetten a gerinc egészségére is nagy hangsúlyt fektetünk. Kezdők és idősebbek is bátran elkezdhetik vele a mozgást.'
-								}
-								imgSrcs={
-									frontpage.class_types?.mobility?.map(
-										(_class) => _class.preview_url
-									) || []
-								}
-								buttonInfo={{
-									isLink: true,
-									linkHref: '/',
-									text: 'Mobilitás órák',
-								}}
-								linkHref={`/timetable?s=category&v=${CategoryTypes.MOBILITY}`}
-							/>
-						)}
+				{/* <TriangleDivider bgClass="bg-site-6" mTop={-20} /> */}
+
+				<TriangleDividerNextItem customClass='flex-col pb-10' height={250} mTop={-95} bgClass='bg-gray-linear2'>
+					<div className='tracking-widest'>
+						<div className="mt-12 text-center">
+							<p className='text-xl font-medium'>Az Arthur-átok</p>
+						</div>
+						<p className='font-light text-lg'>szinkronizált, francia horror, 18</p>
+						<div className='flex justify-center mt-4 gap-2'>
+							<SimpleButton text={'premier'} customClasses="bg-site-25 text-white py-0 px-5" />
+							<SimpleButton text={'price'} customClasses="bg-site-26 text-white py-0" />
+						</div>
 					</div>
-				</div>
+					<LinkBtn
+						text="Vetítési Idōpontok"
+						href={''}
+						customClasses="bg-site-27 w-full md:w-auto mt-4 text-white"
+					/>
+				</TriangleDividerNextItem>
+			</div>}
+			{!show && <div className="Trainers_page page bg-site-2 pb-8">
+				<MovieList array={testArray} />
+			</div>}
+
+			<div className="bg-site-2 pb-36 md:pt-11">
+				<motion.div
+					animate={{ opacity: 1, scale: 1 }}
+					initial={{ opacity: 0.3, scale: 0.95 }}
+					className="container px-4 md:px-0 pb-10"
+					key={null}
+				>
+					<div className='mb-10'>
+						<h1
+							className="h1-shadow text-center mb-4 h1-shadow--white"
+							key={
+								null}
+						>
+							Hamarosan érkezō filmjeink
+						</h1>
+					</div>
+					<div className="flex gap-6 justify-center mb-10 md:mb-14 flex-wrap">
+						<CardWithImage bodyContent='Augusztus 11.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='elővétel!' customClass='bg-site-25 text-white uppercase' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+						<CardWithImage bodyContent='Augusztus 20.' imgSrc='/movie.jpeg' />
+					</div>
+				</motion.div>
 			</div>
-			<div className="bg-site-9 md:bg-site-2 w-full">
-				<ParallaxBannerImage
-					customClasses="parallax-banner-homepage"
-					src={CardioHeroImage.src}
-				/>
-			</div>
-			<TriangleDivider
-				mTop={-155}
-				bgClass="bg-site-11"
-				customClasses="TriangleDivider--parallax"
-			/>
-			<TriangleDividerNextItem bgClass="bg-cian-linear" borderColor="#d3e6ea">
-				<div className="mt-10 hidden md:block">
-					<h1 className="h1-shadow h1-shadow--cian">Cardio és Erősítő</h1>
-				</div>
-			</TriangleDividerNextItem>
-			<div className="bg-site-10 md:hidden pb-3  pt-4">
-				<h1 className="h1-shadow text-center h1-shadow--cian">
-					Cardio és Erősítő
-				</h1>
-			</div>
-			<CardioSection />
-			<CareerSection />
-			<FormWithMap />
+
+			{/* <FormWithMap /> */}
 
 			<ConfirmationPopup
 				show={showDelReservation}
@@ -258,6 +280,7 @@ const Home: NextPage = () => {
 				confirmText="Lemondás"
 				loading={delLoading}
 			/>
+			{console.log(frontpage)}
 		</div>
 	);
 };

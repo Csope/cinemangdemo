@@ -12,6 +12,7 @@ import DefaultEmployeeFemaleImg from '../../../public/images/defaults/oktato_def
 import DefaultEmployeeMaleImg from '../../../public/images/defaults/oktato_default-male.jpg';
 import { motion } from 'framer-motion';
 
+
 const Trainers: NextPage = () => {
 	const { data, isLoading } = useGetTrainers();
 	const [selectedTrainer, setSelectedTrainer] = useState<

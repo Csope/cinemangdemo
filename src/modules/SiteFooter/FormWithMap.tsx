@@ -8,6 +8,8 @@ import { validateEmail } from '../../utils';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 import Map from './GoogleMap';
 import GoogleMap from './GoogleMap';
+import TriangleDivider from '../../common/elements/TriangleDivider';
+import TriangleDividerNextItem from '../../common/elements/TriangleDividerNextItem';
 
 type FormValues = {
 	email: string;
@@ -55,79 +57,84 @@ const FormWithMap = () => {
 	};
 
 	return (
-		<div className="bg-site-14 FormWithMap">
-			<div className="md:container w-full flex flex-col-reverse md:flex-row gap-0 md:gap-28 items-strech">
-				<div className="basis-full">
-					<div className="gmap-wrapper">
-						<div className="gmap">
-							<GoogleMap />
+		<div className="FormWithMap">
+			<div className='contact-background bg-size-'>
+				<TriangleDivider
+					mTop={-150}
+					bgClass="bg-site-11"
+				/>
+				<TriangleDividerNextItem bgClass='contact-background-triangle'>
+				</TriangleDividerNextItem>
+				<div className="md:container w-full flex flex-col-reverse md:flex-row gap-0 md:gap-28 items-strech">
+					<div className="basis-full">
+						<div className="gmap-wrapper">
+							<div className="gmap">
+								<GoogleMap />
+							</div>
 						</div>
 					</div>
-				</div>
-				<div className="w-full md:basis-full py-6 md:py-14 px-4">
-					<form onSubmit={handleSubmit(onSubmit)} className="relative">
-						<h1 className=" h1-shadow h1-shadow--white-2 mb-5 text-center md:text-left pt-3 md:pt-0">
-							Kapcsolat
-						</h1>
-						<div className="mb-5">
-							<label htmlFor="f_name" className="text-white mb-1 block">
-								Név
-							</label>
-							<input
-								type="text"
-								id="f_name"
-								className={`white-input ${
-									errors.name ? 'border-2 border-rose-500' : ''
-								}`}
-								{...register('name', {
-									required: 'Mező megadása kötelező',
-								})}
-							/>
-						</div>
-						<div className="mb-5">
-							<label htmlFor="f_email" className="text-white mb-1 block">
-								E-mail cím
-							</label>
-							<input
-								type="email"
-								id="f_email"
-								className={`white-input ${
-									errors.email ? 'border-2 border-rose-500' : ''
-								}`}
-								{...register('email', {
-									required: 'Mező megadása kötelező',
-								})}
-							/>
-						</div>
-						<div className="mb-8 md:mb-6">
-							<label htmlFor="message" className="text-white mb-1 block">
-								Üzenet szövege
-							</label>
-							<textarea
-								id="message"
-								className={`white-textarea ${
-									errors.message ? 'border-2 border-rose-500' : ''
-								}`}
-								style={{ minHeight: 170 }}
-								{...register('message', {
-									required: 'Mező megadása kötelező',
-								})}
-							/>
-						</div>
-						<div className="text-center md:text-right">
-							<Btn
-								text="Küldés"
-								customClasses="btn-gray w-full md:w-auto"
-								clickEvent={() => true}
-							/>
-						</div>
-
-						{onAttempt && (
-							<div className="absolute inset-0 flex justify-center items-center bg-site-14 rounded-xl bg-opacity-70">
-								<ContentLoader spinnerColor="white" />
+					<div className="w-full md:basis-full py-6 md:py-14 px-4">
+						<form onSubmit={handleSubmit(onSubmit)} className="relative">
+							<h1 className=" h1-shadow h1-shadow--white-2 mb-5 text-center md:text-left pt-3 md:pt-0">
+								Kapcsolat
+							</h1>
+							<div className="mb-5">
+								<label htmlFor="f_name" className="text-white mb-1 block">
+									Név
+								</label>
+								<input
+									type="text"
+									id="f_name"
+									className={`white-input ${errors.name ? 'border-2 border-rose-500' : ''
+										}`}
+									{...register('name', {
+										required: 'Mező megadása kötelező',
+									})}
+								/>
 							</div>
-						)}
-					</form>
+							<div className="mb-5">
+								<label htmlFor="f_email" className="text-white mb-1 block">
+									E-mail cím
+								</label>
+								<input
+									type="email"
+									id="f_email"
+									className={`white-input ${errors.email ? 'border-2 border-rose-500' : ''
+										}`}
+									{...register('email', {
+										required: 'Mező megadása kötelező',
+									})}
+								/>
+							</div>
+							<div className="mb-8 md:mb-6">
+								<label htmlFor="message" className="text-white mb-1 block">
+									Üzenet szövege
+								</label>
+								<textarea
+									id="message"
+									className={`white-textarea ${errors.message ? 'border-2 border-rose-500' : ''
+										}`}
+									style={{ minHeight: 170 }}
+									{...register('message', {
+										required: 'Mező megadása kötelező',
+									})}
+								/>
+							</div>
+							<div className="text-center md:text-right">
+								<Btn
+									text="Küldés"
+									customClasses="btn-red w-full md:w-64"
+									clickEvent={() => true}
+								/>
+							</div>
+
+							{onAttempt && (
+								<div className="absolute inset-0 flex justify-center items-center bg-site-14 rounded-xl bg-opacity-70">
+									<ContentLoader spinnerColor="white" />
+								</div>
+							)}
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
