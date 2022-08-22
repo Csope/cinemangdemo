@@ -3,8 +3,21 @@ import React from 'react';
 import { FiFacebook, FiInstagram, FiTwitter } from 'react-icons/fi';
 import BrandLogo from '../../common/site/BrandLogo';
 import FormWithMap from './FormWithMap';
+import { useGetFrontpageData } from '../../queries';
 
 const SiteFooter = () => {
+
+	const {
+		isLoading,
+		data: { frontpage },
+	} = useGetFrontpageData();
+
+
+	if (isLoading) {
+		return (
+			<div></div>
+		);
+	}
 	return (
 		<div className="site-footer bg-site-15 text-white">
 			<FormWithMap/>

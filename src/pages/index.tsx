@@ -42,6 +42,14 @@ import { useQuery } from 'react-query';
 import SimpleButton from '../common/elements/buttons/SimpleButton';
 import CardWithImage from '../common/elements/cards/CardWithImage';
 import MovieList from './list';
+import { ViewList } from '../types/ClassFilterTypes';
+import { useClassFilter, useSelectedSession, useSiteStates } from '../hooks';
+import FilterView from './filter';
+// @ts-ignore
+import FeatherIcon from 'feather-icons-react';
+import StartTimeFilter from '../modules/ClassFilter/StartTimeFilter';
+
+
 // type PropTypes = {
 // 	banners: {
 // 		id: number;
@@ -69,11 +77,7 @@ const Home: NextPage = () => {
 	const { doResignReservationWithHash } = useActions();
 	const [showDelReservation, setShowDelReservation] = useState(false);
 	const [delLoading, setDelLoading] = useState(false);
-	const [show, setShow] = useState(true);
-
-	const ToggleData = () => {
-		setShow(!show);
-	};
+	let [filter, setFilter] = useState('card');
 	const testArray = [1, 2, 3, 4, 5];
 	const firstHeadingControl = useAnimation();
 	const secondHeadingControl = useAnimation();
@@ -136,6 +140,7 @@ const Home: NextPage = () => {
 			</div>
 		);
 	}
+
 	return (
 		<div className='relative'>
 			<div className="w-full pt-0 md:pt-6 pb-10">
@@ -168,21 +173,15 @@ const Home: NextPage = () => {
 				/> */}
 				{/* Keresō form ../../common/form mappapaba csinalni egy componenst */}
 				<div className="px-3 py-2 rounded-full cursor-pointer bg-site-4">
-					<IconCard fillColor='#6b78a4' />
+					<FeatherIcon icon="percent"/>
 				</div>
-				<div className="px-3 py-2 rounded-full cursor-pointer bg-site-6">
-					<IconList fillColor='#f4f8f7' />
+				<div className="px-3 py-2 rounded-full cursor-pointer bg-site-4">
+					<FeatherIcon icon="star"/>
 				</div>
 				<input className="w-1/4 block rounded-full py-1 pl-10 pr-7" style={{ border: "1px solid #5f698b" }}
 					type="search" name="search" placeholder="Keresés" />
-				<div className='flex'>
-					<div className="pl-3 pr-2 py-2 rounded-tl-3xl rounded-bl-3xl cursor-pointer bg-site-4">
-						<IconCard fillColor='#6b78a4' />
-					</div>
-					<div className="pl-2 pr-3 py-2 rounded-tr-3xl rounded-br-3xl cursor-pointer bg-site-6">
-						<IconList fillColor='#f4f8f7' />
-					</div>
-				</div>
+
+				<FilterView filter={filter} doAction={setFilter} />
 			</div>
 			<div className='Trainers_page page bg-site-2'>
 				<div className='container'>
@@ -190,11 +189,11 @@ const Home: NextPage = () => {
 						<DateFilter />
 					</div>
 				</div>
-				<div className='flex justify-center py-4'>
-					<SimpleButton customClasses='bg-site-27 text-white' clickEvent={ToggleData} text={!show ? "Normál nézet" : 'Lista nézet'} />
-				</div>
 			</div>
-			{show && <div className="Trainers_page page bg-site-2 pb-10 border-b-2">
+			<div className='bg-site-2 flex justify-center pb-10 pt-5'>
+				<StartTimeFilter/>
+			</div>
+			{filter == 'card' && <div className="Trainers_page page bg-site-2 pb-10 border-b-2">
 				<div className="mb-8 container">
 
 					{isLoading ? (
@@ -232,7 +231,7 @@ const Home: NextPage = () => {
 					/>
 				</TriangleDividerNextItem>
 			</div>}
-			{!show && <div className="Trainers_page page bg-site-2 pb-8">
+			{filter == 'list' && <div className="Trainers_page page bg-site-2 pb-8">
 				<MovieList array={testArray} />
 			</div>}
 
@@ -280,10 +279,11 @@ const Home: NextPage = () => {
 				confirmText="Lemondás"
 				loading={delLoading}
 			/>
-			{console.log(frontpage)}
 		</div>
 	);
 };
+
+
 
 // export const getServerSideProps: GetServerSideProps = async (context) => {
 // 	try {

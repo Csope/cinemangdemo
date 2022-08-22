@@ -55,6 +55,7 @@
     "autoprefixer": "10.4.2",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.9",
+    "feather-icons-react": "^0.5.0",
     "file-loader": "^6.2.0",
     "html-loader": "^4.1.0",
     "postcss": "8.4.5",
