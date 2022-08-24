@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import TransformedImage from '../../common/elements/TransformedImage';
-// import test1 from '../../../public/images/cks_kezdoBerlet.jpg';
-// import test2 from '../../../public/images/cks_ujraNyitva2.jpg';
-// import test3 from '../../../public/images/cks_villam12.jpg';
+
 import test1 from '../../../public/images/banners/1.jpeg';
 import test2 from '../../../public/images/banners/2.jpeg';
 import test3 from '../../../public/images/banners/3.jpeg';
@@ -71,7 +69,7 @@ const array = [1,2,3]
 					<div ref={firstPicRef}>
 						<TransformedImage
 							imgAlt="image"
-							imgSrc={test1.src}
+							imgSrc="images/banners/1.jpeg"
 							transform={`rotateX(-${3 + degree.first * 0.8}deg) scale(${
 								0.95 - degree.first / 300
 							})`}
@@ -84,7 +82,7 @@ const array = [1,2,3]
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={test2.src}
+								imgSrc="images/banners/2.jpeg"
 								transform={`rotateY(3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(-${3 + degree.first / 3}deg) scale(${
@@ -100,7 +98,7 @@ const array = [1,2,3]
 						<div>
 							<TransformedImage
 								imgAlt="image"
-								imgSrc={test3.src}
+								imgSrc="images/banners/3.jpeg"
 								transform={`rotateY(-3deg) rotateX(-${
 									9 + degree.first * 1.2
 								}deg) rotateZ(${3 + degree.first / 3}deg) scale(${

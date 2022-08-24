@@ -5,13 +5,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import LinkBtn from '../common/elements/buttons/LinkBtn';
-import ParallaxBannerImage from '../common/elements/ParallaxBannerImage';
+
 import TriangleDivider from '../common/elements/TriangleDivider';
 import TriangleDividerNextItem from '../common/elements/TriangleDividerNextItem';
-import VideoBg from '../common/elements/VideoBg';
-import CardioSection from '../modules/FitnessFeatures/CardioSection';
-import CareerSection from '../modules/FitnessFeatures/CareerSection';
-import TwoColClassSection from '../modules/FitnessFeatures/TwoColClassSection';
+
 import HeroSection from '../modules/HeroSection/HeroSection';
 import FormWithMap from '../modules/SiteFooter/FormWithMap';
 import {
@@ -34,7 +31,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import FiveColSwiper from '../common/swiper/FiveColSwiper';
-import Cinema from '../../public/norman.jpeg';
+
 import { motion } from 'framer-motion';
 
 
@@ -65,6 +62,8 @@ import StartTimeFilter from '../modules/ClassFilter/StartTimeFilter';
 // };
 
 const Home: NextPage = () => {
+
+	const  Cinema = '/norman.jpeg';
 
 	const {
 		isLoading,
@@ -205,7 +204,7 @@ const Home: NextPage = () => {
 							initialSlide={5}
 							onSlideChange={(index: number) => {
 							}}
-							imgSrcs={[Cinema.src, Cinema.src, Cinema.src, Cinema.src, Cinema.src]
+							imgSrcs={[Cinema, Cinema, Cinema, Cinema, Cinema]
 							}
 						/>
 					)}
